@@ -114,7 +114,7 @@ if (isset($_POST['login'])){
             //log user in
             $_SESSION['gebruikersnaam'] = $gebruikersnaam;
             $_SESSION['succes'] = "U bent nu ingelogd";
-            header('location: index.php');//redirect to home page
+            header('location: mijngegevens.php');//redirect to home page
         }else{
             array_push($errors, "De gebruikersnaam/wachtwoord is niet correct");//doet het niet
             header('location: login.php'); 

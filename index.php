@@ -39,6 +39,7 @@
 				<li><a href="index.php" class="selected">Webshop</a></li>
 				<li><a href="bestellen.php">Bestellen</a></li>				
 				<li><a href="winkelmand.php">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
+        <li><a href="login.php">Inloggen</a></li>
 			</ul>
 		</nav>
 
