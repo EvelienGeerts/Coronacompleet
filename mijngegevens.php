@@ -1,6 +1,6 @@
 <?php include('server.php'); 
      
-    //if user is not logged in, they cannot access this page (optie, kan zo weg)
+    //if klant is not logged in, they cannot access this page (optie, kan zo weg)
     if (empty($_SESSION['gebruikersnaam'])){
         header('location: login.php');
     }
@@ -92,7 +92,7 @@
 
         <?php
         //lijst weergeven van db
-        /*$sql = "SELECT * FROM user;";
+        /*$sql = "SELECT * FROM klant;";
         $result = mysqli_query($db, $sql);
         $resultCheck = mysqli_num_rows($result);
         
@@ -105,12 +105,12 @@
        
         //if ($_SESSION['gebruikersnaam'] = $gebruikersnaam){
             
-        $sql = "SELECT * FROM user WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
+        $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
         $een= mysqli_query($db, $sql);
         $twee= mysqli_num_rows($een);
         if ($twee > 0) {
             while ($row = mysqli_fetch_assoc($een)) {
-            ?>Uw id is <?php echo $row['id'] . " " . "<br>". $row['gebruikersnaam'] . " "."<br>" . $row['email'] . " " . "<br>";
+            ?>Uw id is <?php echo $row['id'] . " " . "<br>". $row['naam'] . " " . "<br>". $row['adres'] . " " . "<br>". $row['postcode'] . " " . "<br>". $row['woonplaats'] . " " . "<br>". $row['telefoonnummer'] . " " . "<br>". $row['gebruikersnaam'] . " "."<br>" . $row['email'] . " " . "<br>";
             }
         }
 

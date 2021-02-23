@@ -2,7 +2,7 @@
 <DOCTYPE html>
 <html>
 <head>
-    <title>User registratie systeem</title>
+    <title>klant registratie systeem</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>

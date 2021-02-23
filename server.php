@@ -1,5 +1,10 @@
 <?php
 session_start();
+$naam = "";
+$adres = "";
+$postcode = "";
+$woonplaats = "";
+$telefoonnummer = "";
 $gebruikersnaam = "";
 $email = "";
 $errors = array();
@@ -7,17 +12,17 @@ $password_1 = "";
 $password_2 = "";
 
 //connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'registration');
+$db = mysqli_connect('localhost', 'root', '', 'coronacompleet');
 
  //maak database aan
 $servername = "localhost";
-$username = "root";
+$klantname = "root";
 $password = "";
-$dbname = "registration";
+$dbname = "coronacompleet";
 
 try  {
     $conn = new
-    PDO("mysql:host=$servername;dbdame=registration", $username, $password);
+    PDO("mysql:host=$servername;dbdame=coronacompleet", $klantname, $password);
     //set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE,
     PDO::ERRMODE_EXCEPTION);
@@ -34,12 +39,33 @@ try  {
 $conn = null;
 
 if (isset($_POST['register'])){
+    $naam = $_POST['naam'];
+    $adres = $_POST['adres'];
+    $postcode = $_POST['postcode'];
+    $woonplaats = $_POST['woonplaats'];
+    $telefoonnummer = $_POST['telefoonnummer'];
     $gebruikersnaam = $_POST['gebruikersnaam'];
     $email = $_POST['email'];
     $password_1 = $_POST['password_1'];
     $password_2 = $_POST['password_2'];
 
     //ensure that form fields are filled properly
+    if (empty($naam)){
+        array_push($errors, " Naam is verplicht"); //add error to errors array
+    }
+    if (empty($adres)){
+        array_push($errors, " Adres is verplicht"); //add error to errors array
+    }
+    if (empty($postcode)){
+        array_push($errors, " Postcode is verplicht"); //add error to errors array
+    }
+    if (empty($woonplaats)){
+        array_push($errors, " Woonplaats is verplicht"); //add error to errors array
+    }
+    if (empty($telefoonnummer)){
+        array_push($errors, " Telefoonnummer is verplicht"); //add error to errors array
+    }
+
     if (empty($gebruikersnaam)){
         array_push($errors, " Gebruikersnaam is verplicht"); //add error to errors array
     }
@@ -72,11 +98,11 @@ if (isset($_POST['register'])){
     */
 
 
-    //if there are no errors, safe user to database
+    //if there are no errors, safe klant to database
     if(count($errors)== 0){
-        $db = mysqli_connect('localhost', 'root', '', 'registration');
+        $db = mysqli_connect('localhost', 'root', '', 'coronacompleet');
         $wachtwoord = md5($password_1);//encrypt password before storing in database(veiligheid)
-       $sql = "INSERT INTO user (gebruikersnaam, email, wachtwoord) VALUES('$gebruikersnaam', '$email','$wachtwoord')"; 
+       $sql = "INSERT INTO klant (naam, adres, postcode, woonplaats, telefoonnummer, gebruikersnaam, email, wachtwoord) VALUES('$naam', '$adres', '$postcode', '$woonplaats', '$telefoonnummer','$gebruikersnaam', '$email','$wachtwoord')"; 
        mysqli_query($db, $sql);
        $_SESSION['gebruikersnaam'] = $gebruikersnaam;
        $_SESSION['succes'] = "U bent nu ingelogd";  
@@ -85,10 +111,10 @@ if (isset($_POST['register'])){
 }
 
 
-//log user in from login page
+//log klant in from login page
 if (isset($_POST['login'])){
     $gebruikersnaam = $_POST['gebruikersnaam'];
-    //$username = mysql_real_escape_string($_POST['username']);
+    //$klantname = mysql_real_escape_string($_POST['klantname']);
     $wachtwoord = $_POST['wachtwoord'];
     //$password_1 = mysql_real_escape_string($_POST['password_1']);
     
@@ -108,10 +134,10 @@ if (isset($_POST['login'])){
 */
     if(count($errors)== 0){
         $wachtwoord = md5($wachtwoord); //encrypt password before comparing with database
-        $query = "SELECT * FROM user WHERE gebruikersnaam= '$gebruikersnaam'AND wachtwoord='$wachtwoord'";
+        $query = "SELECT * FROM klant WHERE gebruikersnaam= '$gebruikersnaam'AND wachtwoord='$wachtwoord'";
         $result = mysqli_query($db, $query);
         if (mysqli_num_rows($result) == 1){
-            //log user in
+            //log klant in
             $_SESSION['gebruikersnaam'] = $gebruikersnaam;
             $_SESSION['succes'] = "U bent nu ingelogd";
             header('location: mijngegevens.php');//redirect to home page
@@ -125,7 +151,7 @@ if (isset($_POST['login'])){
 //inloggen vanuit bestellen
 if (isset($_POST['login2'])){
     $gebruikersnaam = $_POST['gebruikersnaam'];
-    //$username = mysql_real_escape_string($_POST['username']);
+    //$klantname = mysql_real_escape_string($_POST['klantname']);
     $wachtwoord = $_POST['wachtwoord'];
     //$password_1 = mysql_real_escape_string($_POST['password_1']);
     
@@ -145,10 +171,10 @@ if (isset($_POST['login2'])){
 */
     if(count($errors)== 0){
         $wachtwoord = md5($wachtwoord); //encrypt password before comparing with database
-        $query = "SELECT * FROM user WHERE gebruikersnaam= '$gebruikersnaam'AND wachtwoord='$wachtwoord'";
+        $query = "SELECT * FROM klant WHERE gebruikersnaam= '$gebruikersnaam'AND wachtwoord='$wachtwoord'";
         $result = mysqli_query($db, $query);
         if (mysqli_num_rows($result) == 1){
-            //log user in
+            //log klant in
             $_SESSION['gebruikersnaam'] = $gebruikersnaam;
             $_SESSION['succes'] = "U bent nu ingelogd";
             header('location: bestellenIngelogd.php');//redirect to home page
@@ -202,8 +228,8 @@ exit();
     }
 
 //wachtwoord instellen   
-//klopt nog niet, moet eerst user ophalen uit db en dan checken, dan overschrijven ipv nieuwe maken. 
-    //if there are no errors, safe user to database
+//klopt nog niet, moet eerst klant ophalen uit db en dan checken, dan overschrijven ipv nieuwe maken. 
+    //if there are no errors, safe klant to database
     if (isset($_POST['nieuwww'])){
         $email = $_POST['email'];
         $password_1 = $_POST['password_1'];
@@ -223,9 +249,9 @@ exit();
         }
 
     if(count($errors)== 0){
-        $db = mysqli_connect('localhost', 'root', '', 'registration');
+        $db = mysqli_connect('localhost', 'root', '', 'coronacompleet');
         $wachtwoord = md5($password_1);//encrypt password before storing in database(veiligheid)
-       $sql = "INSERT INTO user (gebruikersnaam, email, wachtwoord) VALUES('$gebruikersnaam', '$email','$wachtwoord')"; 
+       $sql = "INSERT INTO klant (gebruikersnaam, email, wachtwoord) VALUES('$gebruikersnaam', '$email','$wachtwoord')"; 
        mysqli_query($db, $sql);
        $_SESSION['gebruikersnaam'] = $gebruikersnaam;
        $_SESSION['succes'] = "U bent nu ingelogd";  

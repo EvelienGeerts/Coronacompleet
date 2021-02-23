@@ -1,7 +1,7 @@
 <?php
 include('server.php'); 
      
-//if user is not logged in, they cannot access this page (optie, kan zo weg)
+//if klant is not logged in, they cannot access this page (optie, kan zo weg)
 if (empty($_SESSION['gebruikersnaam'])){
     header('location: login.php');
 }
@@ -89,7 +89,7 @@ if (empty($_SESSION['gebruikersnaam'])){
           <input type="hidden" name="products" value="<?= $allItems; ?>">
           <input type="hidden" name="grand_total" value="<?= $grand_total; ?>">
           <?php
-            $sql = "SELECT * FROM user WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
+            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
                 $een= mysqli_query($db, $sql);
                 $twee= mysqli_num_rows($een);
                 if ($twee > 0) {

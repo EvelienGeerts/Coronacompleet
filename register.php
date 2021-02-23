@@ -3,7 +3,7 @@
     <html>
 
     <head>
-        <title>User registratie systeem</title>
+        <title>klant registratie systeem</title>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
 
@@ -15,6 +15,27 @@
         <form method="post" action="register.php">
             <!--display validation errors here -->
             <?php include('errors.php'); ?>
+            <div class="input-group">
+                <label>Naam</label>
+                <input type="text" name="naam" value="<?php echo $naam; ?>">
+            </div>
+            <div class="input-group">
+                <label>adres</label>
+                <input type="text" name="adres" value="<?php echo $adres; ?>">
+            </div>
+            <div class="input-group">
+                <label>postcode</label>
+                <input type="text" name="postcode" value="<?php echo $postcode; ?>">
+            </div>
+            <div class="input-group">
+                <label>Woonplaats</label>
+                <input type="text" name="woonplaats" value="<?php echo $woonplaats; ?>">
+            </div>
+            <div class="input-group">
+                <label>telefoonnummer</label>
+                <input type="text" name="telefoonnummer" value="<?php echo $telefoonnummer; ?>">
+            </div>
+
             <div class="input-group">
                 <label>gebruikersnaam</label>
                 <input type="text" name="gebruikersnaam" value="<?php echo $gebruikersnaam; ?>">

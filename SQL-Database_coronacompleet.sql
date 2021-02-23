@@ -29,6 +29,19 @@ CREATE TABLE `producten` (
   `product_code` varchar(50) NOT NULL
 );
 
+
+CREATE TABLE `klant` (
+  `id` int(11) NOT NULL,
+  `naam`varchar(255) NOT NULL,
+  `adres`varchar(255) NOT NULL,
+  `postcode`varchar(6) NOT NULL,
+  `woonplaats`varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `telefoonnummer`int(10) NOT NULL,
+  `gebruikersnaam` varchar(255) NOT NULL,
+  `wachtwoord` varchar(255) NOT NULL
+);
+
 --
 -- INSERT data `producten`
 --
@@ -62,6 +75,15 @@ ALTER TABLE `producten`
   ADD UNIQUE KEY `product_code_2` (`product_code`),
   ADD KEY `product_code` (`product_code`);
 
+ --
+-- Indexen voor tabel `klant`
+--
+ALTER TABLE `klant`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `gebruikersnaam` (`gebruikersnaam`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD UNIQUE KEY `email` (`email`); 
+
 --
 -- AUTO_INCREMENT for `winkelmand`
 --
@@ -80,4 +102,10 @@ ALTER TABLE `bestellingen`
 ALTER TABLE `producten`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
+--
+-- AUTO_INCREMENT voor een tabel `klant`
+--
+ALTER TABLE `klant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+COMMIT;
 
