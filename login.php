@@ -1,4 +1,6 @@
-<?php include('server.php'); ?>
+<?php include('server.php');
+ 
+ session_start();?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -42,7 +44,8 @@
 				<li><a href="index.php">Webshop</a></li>
 				<li><a href="bestellen.php" class="selected">Bestellen</a></li>
 				<li><a href="winkelmand.php">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
-                <li><a href="login.php">Inloggen</a></li>				
+                <li><a href="login.php">Inloggen</a></li>
+				<li><a href="mijngegevens.php">Mijn gegevens</a></li>				
 			</ul>
 		</nav>
 

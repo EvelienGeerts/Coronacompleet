@@ -49,7 +49,8 @@
 				<li><a href="index.php">Webshop</a></li>
 				<li><a href="bestellen.php" class="selected">Bestellen</a></li>
 				<li><a href="winkelmand.php">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
-                <li><a href="login.php">Inloggen</a></li>				
+                <li><a href="login.php">Log in</a></li>
+                <li><a href="mijngegevens.php">Mijn gegevens</a></li>				
 			</ul>
 		</nav>
 
@@ -82,7 +83,7 @@
         <p>Welkom <strong><?php echo $_SESSION['gebruikersnaam']; ?></strong></p>
         <div class="input-group">
         <a href="index.php?logout=1"class="button" >Uitloggen</a>
-        <a href="wijzig.php" class="button">Gegevens wijzigen?</a>
+        <!--<a href="wijzig.php" class="button">Gegevens wijzigen?</a>  alvast voor later-->
           
         </div>          
      
@@ -91,19 +92,6 @@
     
 
         <?php
-        //lijst weergeven van db
-        /*$sql = "SELECT * FROM klant;";
-        $result = mysqli_query($db, $sql);
-        $resultCheck = mysqli_num_rows($result);
-        
-        if ($resultCheck > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-            echo $row['id'] . " " . $row['gebruikersnaam'] . " " . $row['email'] . " " . "<br>";
-            }
-        }
-       */
-       
-        //if ($_SESSION['gebruikersnaam'] = $gebruikersnaam){
             
         $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
         $een= mysqli_query($db, $sql);

@@ -1,6 +1,8 @@
+<?php include('server.php'); ?>
 <?php
   session_start();
-  /*waarvoor is dit precies?*/
+  /*waarvoor is dit precies?
+   Dit zorgt ervoor dat als je naar een andere pagina gaat hij onthoudt wat er in je winkelmand zit*/
 ?>
 
 <!DOCTYPE html>
@@ -45,6 +47,7 @@
 				<li><a href="bestellen.php">Bestellen</a></li>
 				<li><a href="winkelmand.php" class="selected">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
         <li><a href="login.php">Inloggen</a></li>
+        <li><a href="mijngegevens.php">Mijn gegevens</a></li>
 			</ul>
 		</nav>
 

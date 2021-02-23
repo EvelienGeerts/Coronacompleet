@@ -1,3 +1,5 @@
+<?php include('server.php'); ?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -40,6 +42,7 @@
 				<li><a href="bestellen.php">Bestellen</a></li>				
 				<li><a href="winkelmand.php">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
         <li><a href="login.php">Inloggen</a></li>
+        <li><a href="mijngegevens.php">Mijn gegevens</a></li>
 			</ul>
 		</nav>
 
