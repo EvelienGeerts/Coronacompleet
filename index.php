@@ -43,6 +43,7 @@
 				<li><a href="winkelmand.php">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
         <li><a href="login.php">Inloggen</a></li>
         <li><a href="mijngegevens.php">Mijn gegevens</a></li>
+        <li><a href="proberen.php">proberen</a></li> 
 			</ul>
 		</nav>
 

@@ -1,3 +1,4 @@
+CREATE DATABASE coronacompleet;
 
 CREATE TABLE `winkelmand` (
   `id` int(11) NOT NULL,
@@ -11,11 +12,12 @@ CREATE TABLE `winkelmand` (
 
 CREATE TABLE `bestellingen` (
   `id` int(11) NOT NULL,
+  `klantnr`int(11),
   `naam` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `telefoon` varchar(20) NOT NULL,
   `adres` varchar(255) NOT NULL,
-  `pmode` varchar(50) NOT NULL,
+  `pmode` varchar(50) NOT NULL,  /*Wat houdt pmode in?*/
   `producten` varchar(255) NOT NULL,
   `hoeveel_betaald` varchar(100) NOT NULL
 );
@@ -30,8 +32,8 @@ CREATE TABLE `producten` (
 );
 
 
-CREATE TABLE `klant` (
-  `id` int(11) NOT NULL,
+CREATE TABLE `Klant` (
+  `klantnummer` int(11) NOT NULL,
   `naam`varchar(255) NOT NULL,
   `adres`varchar(255) NOT NULL,
   `postcode`varchar(6) NOT NULL,
@@ -66,6 +68,7 @@ ALTER TABLE `winkelmand`
 --
 ALTER TABLE `bestellingen`
   ADD PRIMARY KEY (`id`);
+  
 
 --
 -- Indexes for `producten`
@@ -78,10 +81,10 @@ ALTER TABLE `producten`
  --
 -- Indexen voor tabel `klant`
 --
-ALTER TABLE `klant`
-  ADD PRIMARY KEY (`id`),
+ALTER TABLE `Klant`
+  ADD PRIMARY KEY (`klantnummer`),
   ADD UNIQUE KEY `gebruikersnaam` (`gebruikersnaam`),
-  ADD UNIQUE KEY `id` (`id`),
+  ADD UNIQUE KEY `klantnummer` (`klantnummer`),
   ADD UNIQUE KEY `email` (`email`); 
 
 --
@@ -96,6 +99,8 @@ ALTER TABLE `winkelmand`
 ALTER TABLE `bestellingen`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
+  
+
 --
 -- AUTO_INCREMENT for table `producten`
 --
@@ -106,6 +111,11 @@ ALTER TABLE `producten`
 -- AUTO_INCREMENT voor een tabel `klant`
 --
 ALTER TABLE `klant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `klantnummer` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+ ALTER TABLE `bestellingen`
+ADD CONSTRAINT FK_Klantaccount
+FOREIGN KEY (klantnr) REFERENCES Klant(klantnummer); 
+
 COMMIT;
 

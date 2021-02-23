@@ -89,16 +89,19 @@ if (empty($_SESSION['gebruikersnaam'])){
         <form action="" method="post" id="placeOrder">
           <input type="hidden" name="products" value="<?= $allItems; ?>">
           <input type="hidden" name="grand_total" value="<?= $grand_total; ?>">
+          
           <?php
+            
             $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
-                $een= mysqli_query($db, $sql);
-                $twee= mysqli_num_rows($een);
-                if ($twee > 0) {
-                    while ($row = mysqli_fetch_assoc($een)) {
-                    echo $row['id'] . " " . "<br>". $row['gebruikersnaam'] . " "."<br>" . $row['email'] . " " . "<br>";
+            $een= mysqli_query($db, $sql);
+            $twee= mysqli_num_rows($een);
+            if ($twee > 0) {
+                while ($row = mysqli_fetch_assoc($een)) {
+                ?>Uw id is <?php echo $row['id'] . " " . "<br>". $row['naam'] . " " . "<br>". $row['adres'] . " " . "<br>". $row['postcode'] . " " . "<br>". $row['woonplaats'] . " " . "<br>". $row['telefoonnummer'] . " " . "<br>". $row['gebruikersnaam'] . " "."<br>" . $row['email'] . " " . "<br>";
                 }
-        }
-        ?>
+            }
+          ?>
+
           <h6 class="text-center lead">Selecteer Betalingsmodus </h6>
           <div class="form-group">
             <select name="pmode" class="form-control">
