@@ -98,7 +98,7 @@
         $twee= mysqli_num_rows($een);
         if ($twee > 0) {
             while ($row = mysqli_fetch_assoc($een)) {
-            ?>Uw id is <?php echo $row['id'] . " " . "<br>". $row['naam'] . " " . "<br>". $row['adres'] . " " . "<br>". $row['postcode'] . " " . "<br>". $row['woonplaats'] . " " . "<br>". $row['telefoonnummer'] . " " . "<br>". $row['gebruikersnaam'] . " "."<br>" . $row['email'] . " " . "<br>";
+            ?>Uw klantnummer is <?php echo $row['klantnummer'] . " " . "<br>". $row['naam'] . " " . "<br>". $row['adres'] . " " . "<br>". $row['postcode'] . " " . "<br>". $row['woonplaats'] . " " . "<br>". $row['telefoonnummer'] . " " . "<br>". $row['gebruikersnaam'] . " "."<br>" . $row['email'] . " " . "<br>";
             }
         }
 
