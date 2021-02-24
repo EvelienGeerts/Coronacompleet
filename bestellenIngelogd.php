@@ -61,8 +61,8 @@ if (empty($_SESSION['gebruikersnaam'])){
 						<li><a href='#'>desinfectie</a></li>
 					</ul>
 				</li>
-				<li><a href="index.php">Webshop</a></li>
-				<li><a href="bestellen.php" class="selected">Bestellen</a></li>
+				<li><a href="webshopingelogd.php">Webshop</a></li>
+				<li><a href="bestellenIngelogd.php" class="selected">Bestellen</a></li>
 				<li><a href="winkelmand.php">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>	
         <li><a href="login.php">Inloggen</a></li>	
         <li><a href="mijngegevens.php">Mijn gegevens</a></li>		
@@ -97,7 +97,7 @@ if (empty($_SESSION['gebruikersnaam'])){
             $twee= mysqli_num_rows($een);
             if ($twee > 0) {
                 while ($row = mysqli_fetch_assoc($een)) {
-                ?>Uw id is <?php echo $row['id'] . " " . "<br>". $row['naam'] . " " . "<br>". $row['adres'] . " " . "<br>". $row['postcode'] . " " . "<br>". $row['woonplaats'] . " " . "<br>". $row['telefoonnummer'] . " " . "<br>". $row['gebruikersnaam'] . " "."<br>" . $row['email'] . " " . "<br>";
+                ?>Uw id is <?php echo $row['klantnummer'] . " " . "<br>". $row['naam'] . " " . "<br>". $row['adres'] . " " . "<br>". $row['postcode'] . " " . "<br>". $row['woonplaats'] . " " . "<br>". $row['telefoonnummer'] . " " . "<br>". $row['gebruikersnaam'] . " "."<br>" . $row['email'] . " " . "<br>";
                 }
             }
           ?>
