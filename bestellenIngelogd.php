@@ -3,7 +3,7 @@ include('server.php');
      
 //if klant is not logged in, they cannot access this page (optie, kan zo weg)
 if (empty($_SESSION['gebruikersnaam'])){
-    header('location: login.php');
+    header('location: bestellen.php');
 }
 
 	require 'config.php';
@@ -61,7 +61,7 @@ if (empty($_SESSION['gebruikersnaam'])){
 						<li><a href='#'>desinfectie</a></li>
 					</ul>
 				</li>
-				<li><a href="webshopingelogd.php">Webshop</a></li>
+				<li><a href="index.php">Webshop</a></li>
 				<li><a href="bestellenIngelogd.php" class="selected">Bestellen</a></li>
 				<li><a href="winkelmand.php">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>	
         <li><a href="login.php">Inloggen</a></li>	
