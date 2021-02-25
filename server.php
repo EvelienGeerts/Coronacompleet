@@ -106,7 +106,7 @@ if (isset($_POST['register'])){
        mysqli_query($db, $sql);
        $_SESSION['gebruikersnaam'] = $gebruikersnaam;
        $_SESSION['succes'] = "U bent nu ingelogd";  
-       header('location: index.php');//redirect to home page
+       header('location: webshopingelogd.php');//redirect to home page
     }
 }
 
