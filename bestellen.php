@@ -58,7 +58,6 @@
 				<li><a href="index.php">Webshop</a></li>
 				<li><a href="bestellen.php" class="selected">Bestellen</a></li>
 				<li><a href="winkelmand.php">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
-        <li><a href="login.php">Inloggen</a></li>
         <li><a href="mijngegevens.php">Mijn gegevens</a></li>				
 			</ul>
 		</nav>
@@ -99,7 +98,7 @@
                 Registreren<a href="register.php" class="button">Registreer</a>
             </p>
             <p>
-                Al een account?<a href="loginBestellen.php"class="button" >Log in</a>
+                Al een account?<a href="login.php"class="button" >Log in</a>
             </p> 
           <h6 class="text-center lead">Selecteer Betalingsmodus </h6>
           <div class="form-group">

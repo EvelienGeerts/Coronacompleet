@@ -72,10 +72,7 @@ if (isset($_POST['register'])){
     if (empty($email)){
         array_push($errors, " Email is verplicht"); //add error to errors array
     }
-   //nog naar kijken, werkt nog niet
-    /*if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-        array_push($errors, "Geen geldig emailadres");
-    }*/
+   
     if (empty($password_1)){
         array_push($errors, " Wachtwoord is verplicht"); //add error to errors array
     }
@@ -106,7 +103,7 @@ if (isset($_POST['register'])){
        mysqli_query($db, $sql);
        $_SESSION['gebruikersnaam'] = $gebruikersnaam;
        $_SESSION['succes'] = "U bent nu ingelogd";  
-       header('location: webshopingelogd.php');//redirect to home page
+       header('location: index.php');//redirect to home page
     }
 }
 

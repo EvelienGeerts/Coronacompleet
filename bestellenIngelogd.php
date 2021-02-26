@@ -64,7 +64,6 @@ if (empty($_SESSION['gebruikersnaam'])){
 				<li><a href="index.php">Webshop</a></li>
 				<li><a href="bestellenIngelogd.php" class="selected">Bestellen</a></li>
 				<li><a href="winkelmand.php">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>	
-        <li><a href="login.php">Inloggen</a></li>	
         <li><a href="mijngegevens.php">Mijn gegevens</a></li>		
 			</ul>
 		</nav>
@@ -76,7 +75,7 @@ if (empty($_SESSION['gebruikersnaam'])){
 		</div>
 	</header>
 
-
+  
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6 px-4 pb-4" id="order">
@@ -89,19 +88,76 @@ if (empty($_SESSION['gebruikersnaam'])){
         <form action="" method="post" id="placeOrder">
           <input type="hidden" name="products" value="<?= $allItems; ?>">
           <input type="hidden" name="grand_total" value="<?= $grand_total; ?>">
-          
-          <?php
+          <div class="form-group">Naam
+            <input type="text" name="name"value="<?php
             
             $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
             $een= mysqli_query($db, $sql);
             $twee= mysqli_num_rows($een);
             if ($twee > 0) {
                 while ($row = mysqli_fetch_assoc($een)) {
-                ?>Uw id is <?php echo $row['klantnummer'] . " " . "<br>". $row['naam'] . " " . "<br>". $row['adres'] . " " . "<br>". $row['postcode'] . " " . "<br>". $row['woonplaats'] . " " . "<br>". $row['telefoonnummer'] . " " . "<br>". $row['gebruikersnaam'] . " "."<br>" . $row['email'] . " " . "<br>";
+                echo $row['naam'] . " " ;
                 }
             }
-          ?>
+          ?>" class="form-control" required>
+          </div>
 
+          <div class="form-group">Klantnummer
+            <input type="text" name="klantnr"value="<?php
+            
+            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
+            $een= mysqli_query($db, $sql);
+            $twee= mysqli_num_rows($een);
+            if ($twee > 0) {
+                while ($row = mysqli_fetch_assoc($een)) {
+                echo $row['klantnummer'] . " " ;
+                }
+            }
+          ?>" class="form-control" placeholder="klantnr" required>
+          </div>
+
+          <div class="form-group">Emailadres
+            <input type="email" name="email"value="<?php
+            
+            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
+            $een= mysqli_query($db, $sql);
+            $twee= mysqli_num_rows($een);
+            if ($twee > 0) {
+                while ($row = mysqli_fetch_assoc($een)) {
+                echo $row['email'] . " " ;
+                }
+            }
+          ?>" class="form-control" placeholder="E-Mail" required>
+          </div>
+          <div class="form-group">Telefoonnummer
+            <input type="tel" name="phone"value="<?php
+            
+            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
+            $een= mysqli_query($db, $sql);
+            $twee= mysqli_num_rows($een);
+            if ($twee > 0) {
+                while ($row = mysqli_fetch_assoc($een)) {
+                echo $row['telefoonnummer'] . " " ;
+                }
+            }
+          ?>" class="form-control" placeholder="Telefoon" required>
+          </div>
+
+          <div class="form-group">Adres
+            <input type="text" name="address"value="<?php
+            
+            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
+            $een= mysqli_query($db, $sql);
+            $twee= mysqli_num_rows($een);
+            if ($twee > 0) {
+                while ($row = mysqli_fetch_assoc($een)) {
+                  echo $row['adres']." ". $row['postcode']." ".$row['woonplaats']  . " ";
+                }
+            }
+          ?>" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
+          </div>
+        
+          
           <h6 class="text-center lead">Selecteer Betalingsmodus </h6>
           <div class="form-group">
             <select name="pmode" class="form-control">
@@ -167,5 +223,3 @@ if (empty($_SESSION['gebruikersnaam'])){
 
 </html>
 
-</body>
-</html>

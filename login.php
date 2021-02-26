@@ -44,7 +44,6 @@
 				<li><a href="index.php">Webshop</a></li>
 				<li><a href="bestelleningelogd.php" class="selected">Bestellen</a></li>
 				<li><a href="winkelmand.php">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
-                <li><a href="login.php">Inloggen</a></li>
 				<li><a href="mijngegevens.php">Mijn gegevens</a></li>				
 			</ul>
 		</nav>
