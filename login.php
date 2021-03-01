@@ -1,6 +1,6 @@
 <?php include('server.php');
  
- session_start();?>
+ //session_start();?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>

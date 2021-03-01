@@ -1,6 +1,6 @@
 <?php include('server.php'); ?>
 <?php
-  session_start();
+  //session_start();
   /*waarvoor is dit precies?
    Dit zorgt ervoor dat als je naar een andere pagina gaat hij onthoudt wat er in je winkelmand zit*/
 ?>

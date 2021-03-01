@@ -6,6 +6,7 @@
 -- Gegenereerd op: 01 mrt 2021 om 19:03
 -- Serverversie: 10.4.17-MariaDB
 -- PHP-versie: 8.0.0
+CREATE DATABASE coronacompleet;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
