@@ -16,13 +16,13 @@ $db = mysqli_connect('localhost', 'root', '', 'coronacompleet');
 
  //maak database aan
 $servername = "localhost";
-$klantname = "root";
+$username = "root";
 $password = "";
 $dbname = "coronacompleet";
 
 try  {
     $conn = new
-    PDO("mysql:host=$servername;dbdame=coronacompleet", $klantname, $password);
+    PDO("mysql:host=$servername;dbdame=coronacompleet", $username, $password);
     //set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE,
     PDO::ERRMODE_EXCEPTION);

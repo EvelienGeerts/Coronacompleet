@@ -1,5 +1,11 @@
-<?php include('server.php'); ?>
 <?php
+include('server.php'); 
+     
+//if klant is not logged in, they cannot access this page (optie, kan zo weg)
+if (empty($_SESSION['gebruikersnaam'])){
+    header('location: bestellen.php');
+}
+
 	require 'config.php';
 
 	$grand_total = 0;
@@ -56,9 +62,9 @@
 					</ul>
 				</li>
 				<li><a href="index.php">Webshop</a></li>
-				<li><a href="bestellen.php" class="selected">Bestellen</a></li>
-				<li><a href="winkelmand.php">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
-        <li><a href="mijngegevens.php">Mijn gegevens</a></li>				
+				<li><a href="bestellenIngelogd.php" class="selected">Bestellen</a></li>
+				<li><a href="winkelmand.php">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>	
+        <li><a href="mijngegevens.php">Mijn gegevens</a></li>		
 			</ul>
 		</nav>
 
@@ -69,7 +75,7 @@
 		</div>
 	</header>
 
-
+  
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6 px-4 pb-4" id="order">
@@ -82,24 +88,76 @@
         <form action="" method="post" id="placeOrder">
           <input type="hidden" name="products" value="<?= $allItems; ?>">
           <input type="hidden" name="grand_total" value="<?= $grand_total; ?>">
-          <div class="form-group">
-            <input type="text" name="name" class="form-control" placeholder="Naam" required>
+          <div class="form-group">Naam
+            <input type="text" name="name"value="<?php
+            
+            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
+            $een= mysqli_query($db, $sql);
+            $twee= mysqli_num_rows($een);
+            if ($twee > 0) {
+                while ($row = mysqli_fetch_assoc($een)) {
+                echo $row['naam'] . " " ;
+                }
+            }
+          ?>" class="form-control" required>
           </div>
-          <div class="form-group">
-            <input type="email" name="email" class="form-control" placeholder="E-Mail" required>
+
+          <div class="form-group">Klantnummer
+            <input type="text" name="klantnr"value="<?php
+            
+            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
+            $een= mysqli_query($db, $sql);
+            $twee= mysqli_num_rows($een);
+            if ($twee > 0) {
+                while ($row = mysqli_fetch_assoc($een)) {
+                echo $row['klantnummer'] . " " ;
+                }
+            }
+          ?>" class="form-control" placeholder="klantnr" required>
           </div>
-          <div class="form-group">
-            <input type="tel" name="phone" class="form-control" placeholder="Telefoon" required>
+
+          <div class="form-group">Emailadres
+            <input type="email" name="email"value="<?php
+            
+            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
+            $een= mysqli_query($db, $sql);
+            $twee= mysqli_num_rows($een);
+            if ($twee > 0) {
+                while ($row = mysqli_fetch_assoc($een)) {
+                echo $row['email'] . " " ;
+                }
+            }
+          ?>" class="form-control" placeholder="E-Mail" required>
           </div>
-          <div class="form-group">
-            <textarea name="address" class="form-control" rows="3" cols="10" placeholder="Voer hier het afleveradres in..."></textarea>
+          <div class="form-group">Telefoonnummer
+            <input type="tel" name="phone"value="<?php
+            
+            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
+            $een= mysqli_query($db, $sql);
+            $twee= mysqli_num_rows($een);
+            if ($twee > 0) {
+                while ($row = mysqli_fetch_assoc($een)) {
+                echo $row['telefoonnummer'] . " " ;
+                }
+            }
+          ?>" class="form-control" placeholder="Telefoon" required>
           </div>
-          <p>
-                Registreren<a href="register.php" class="button">Registreer</a>
-            </p>
-            <p>
-                Al een account?<a href="login.php"class="button" >Log in</a>
-            </p> 
+
+          <div class="form-group">Adres
+            <input type="text" name="address"value="<?php
+            
+            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
+            $een= mysqli_query($db, $sql);
+            $twee= mysqli_num_rows($een);
+            if ($twee > 0) {
+                while ($row = mysqli_fetch_assoc($een)) {
+                  echo $row['adres']." ". $row['postcode']." ".$row['woonplaats']  . " ";
+                }
+            }
+          ?>" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
+          </div>
+        
+          
           <h6 class="text-center lead">Selecteer Betalingsmodus </h6>
           <div class="form-group">
             <select name="pmode" class="form-control">
@@ -165,5 +223,3 @@
 
 </html>
 
-</body>
-</html>

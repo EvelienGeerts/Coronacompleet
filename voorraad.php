@@ -43,7 +43,7 @@
 					</ul>
 				</li>
 				<li><a href="index.php" class="selected">Webshop</a></li>
-				<li><a href="bestellenIngelogd.php">Bestellen</a></li>				
+				<li><a href="bestellen.php">Bestellen</a></li>				
 				<li><a href="winkelmand.php">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
         <li><a href="mijngegevens.php">Mijn gegevens</a></li>
         <li><a href="proberen.php">proberen</a></li> 

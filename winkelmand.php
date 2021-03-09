@@ -3,7 +3,13 @@
   //session_start();
   /*waarvoor is dit precies?
    Dit zorgt ervoor dat als je naar een andere pagina gaat hij onthoudt wat er in je winkelmand zit*/
+
+   //if klant is not logged in, they cannot access this page 
+   if (empty($_SESSION['gebruikersnaam'])){
+    header('location: login.php');
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="nl">
@@ -44,7 +50,7 @@
 					</ul>
 				</li>
 				<li><a href="index.php">Webshop</a></li>
-				<li><a href="bestellenIngelogd.php">Bestellen</a></li>
+				<li><a href="bestellen.php">Bestellen</a></li>
 				<li><a href="winkelmand.php" class="selected">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
         <li><a href="mijngegevens.php">Mijn gegevens</a></li>
 			</ul>
