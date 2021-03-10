@@ -84,3 +84,6 @@ INSERT INTO `producten` (`productnummer`, `naam`, `prijs`, `image`, `voorraad`) 
 ('7', 'Sneltest', '59.95', 'image/testPic1b.jpeg', 20);
 
 
+
+asdasdasd
+
