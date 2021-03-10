@@ -1,31 +1,31 @@
 CREATE DATABASE coronacompleet2;
 
 CREATE TABLE `klanten` (
-  `email` varchar(255) NOT NULL UNIQUE ,
-  `naam`varchar(255) NOT NULL,
-  `adres`varchar(255) NOT NULL,
-  `postcode`char(6) NOT NULL,
-  `woonplaats`varchar(255) NOT NULL,
-  `gebruikersnaam` varchar(255) NOT NULL UNIQUE ,
+  `email` varchar(30) NOT NULL UNIQUE ,
+  `naam` varchar(50) NOT NULL,
+  `adres` varchar(50) NOT NULL,
+  `postcode` char(6) NOT NULL,
+  `woonplaats`varchar(50) NOT NULL,
+  `gebruikersnaam` varchar(20) NOT NULL UNIQUE ,
   `telefoonnummer`int(10) NOT NULL,
-  `wachtwoord` varchar(255) NOT NULL
+  `wachtwoord` varchar(20) NOT NULL
 );
 
 CREATE TABLE `winkelmand` (
-  `email` varchar(255) NOT NULL,
+  `email` varchar(30) NOT NULL,
   `productnummer` int(50),
-  `aantal` int(10) NOT NULL
+  `aantal` int(225) NOT NULL
 );
 
 CREATE TABLE `producten` (
   `productnummer` INT(50),
-  `naam` varchar(255) NOT NULL,
-  `prijs` varchar(100) NOT NULL,
+  `naam` varchar(50) NOT NULL,
+  `prijs` varchar(50) NOT NULL,
   `image` varchar(255) NOT NULL,
   `voorraad` INT(50) NOT NULL
 );
 
-CREATE TABLE `order` (
+CREATE TABLE `orders` (
   `ordernummer`INT(11) NOT NULL,
   `productnummer` INT(50) NOT NULL, 
   `aantal` int(10) NOT NULL
@@ -33,9 +33,20 @@ CREATE TABLE `order` (
 
 CREATE TABLE `bestellingen` (
   `ordernummer` int(11) NOT NULL,
-  `email klant`VARCHAR(255),
+  `email klant` VARCHAR(30),
   `betaalmethode` varchar(255) NOT NULL,
-  `totaalbetaald` varchar(255) NOT NULL
+  `totaalbetaald` varchar(50) NOT NULL
+);
+
+CREATE TABLE `werknemers` (
+  `personeelsnummer` int(10),
+  `naam`varchar(50) NOT NULL,
+  `adres`varchar(50) NOT NULL,
+  `postcode`char(6) NOT NULL,
+  `woonplaats`varchar(50) NOT NULL,
+  `gebruikersnaam` varchar(20) NOT NULL UNIQUE ,
+  `telefoonnummer`int(10) NOT NULL,
+  `wachtwoord` varchar(20) NOT NULL
 );
 
 --
@@ -70,6 +81,20 @@ ALTER TABLE `bestellingen`
   ADD PRIMARY KEY (`ordernummer`),
   ADD FOREIGN KEY (`email klant`)
   REFERENCES `klanten`(`email`)
+  ;
+
+  --
+-- Indexes for `werknemers`
+--
+ALTER TABLE `werknemers`
+  ADD PRIMARY KEY (`personeelsnummer`),
+  ;
+
+  --
+-- AUTO_INCREMENT for 'werknemers'
+--
+ALTER TABLE `werknemers`
+  MODIFY `personeelsnummer` int(11) NOT NULL AUTO_INCREMENT;
   ;
 
 --
