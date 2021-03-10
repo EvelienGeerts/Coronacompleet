@@ -35,4 +35,10 @@ Verander deze regel in xampp/phpmyadmin/config.inc.php:
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
 Om phpMyAdmin te laten vragen om uw MySQL gebruikersnaam en wachtwoord.
 
+
+
+DROP USER 'CCAdmin'@'localhost'; 
+DROP USER 'CCAdmin'@'127.0.0.1';
+DROP USER 'CCAdmin'@'::1';
+
 */

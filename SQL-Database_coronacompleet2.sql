@@ -1,3 +1,7 @@
+CREATE DATABASE coronacompleet;
+
+USE coronacompleet;
+
 CREATE TABLE `klanten` (
   `email` VARCHAR(30) NOT NULL,
   `naam` VARCHAR(50) NOT NULL,
@@ -83,7 +87,4 @@ INSERT INTO `producten` (`productnummer`, `naam`, `prijs`, `image`, `voorraad`) 
 ('6', 'Desinfectie', '159.95', 'image/desinfectie1.jpg', 20),
 ('7', 'Sneltest', '59.95', 'image/testPic1b.jpeg', 20);
 
-
-
-asdasdasd
 
