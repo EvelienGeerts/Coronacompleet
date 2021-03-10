@@ -23,9 +23,9 @@ FOR 'CCAdmin'@'::1' = PASSWORD('CCAdmin');
 GRANT ALL PRIVILEGES ON 
 `coronacompleet`.* TO 'CCAdmin'@'localhost' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON 
-`mediawiki`.* TO 'CCAdmin'@'127.0.0.1' WITH GRANT OPTION;
+`coronacompleet`.* TO 'CCAdmin'@'127.0.0.1' WITH GRANT OPTION;
 GRANT ALL PRIVILEGES ON 
-`mediawiki`.* TO 'CCAdmin'@'::1' WITH GRANT OPTION;
+`coronacompleet`.* TO 'CCAdmin'@'::1' WITH GRANT OPTION;
 
 ------------------------------------------------------------------------------------
 /* 
