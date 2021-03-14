@@ -99,15 +99,11 @@ INSERT INTO `klanten`(`email`, `naam`, `adres`, `postcode`, `woonplaats`,`gebrui
 ('oabd@burgas.vip', 'Vikram Kreios','marktstraat 16', '5373ae', 'scheveningen', 'vikram', '0638329083', 'wachtwoord9' ),
 ('vmii@bjsulu.com', 'Horace Kumar','marktstraat 16', '5373ae', 'scheveningen', 'kumar', '0638456083', 'wachtwoord10' );
 
+INSERT INTO `werknemers`(`personeelsnummer`, `naam`, `adres`, `postcode`, `woonplaats`,`gebruikersnaam`, `telefoonnummer`, `wachtwoord`) VALUES 
+('1', 'Evelien Geerts','marktstraat 22', '5373ae', 'scheveningen', 'EvelienAdmin', '0612345678', 'AdminWW1' ),
+('2', 'Michiel Elffrich','Kerkplein 12', '5887dg', 'Breda', 'MichielAdmin', '0645678912', 'AdminWW2' ),
+('3', 'Joeri van Dongen','Sint Sebastianusstraat 16a', '5373ae', 'Herpen', 'JoeriAdmin', '0698765432', 'AdminWW3' );
 
-CREATE TABLE `winkelmand` (
-  `email` VARCHAR(30)  NOT NULL,
-  `productnummer` INT(50) NOT NULL,
-  `aantal` INT(225) NOT NULL,
-  PRIMARY KEY (`email`,`productnummer`),
-  FOREIGN KEY (`email`) REFERENCES `klanten`(`email`),
-  FOREIGN KEY (`productnummer`) REFERENCES `producten`(`productnummer`)
-);
 
 
 INSERT INTO `winkelmand` (`email`, `productnummer`, `aantal`) VALUES
