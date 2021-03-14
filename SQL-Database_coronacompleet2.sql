@@ -31,8 +31,10 @@ CREATE TABLE `winkelmand` (
   PRIMARY KEY (`email`,`productnummer`),
   FOREIGN KEY (`email`) REFERENCES `klanten`(`email`),
   FOREIGN KEY (`productnummer`) REFERENCES `producten`(`productnummer`)
-
 );
+
+select 
+
 
 CREATE TABLE `bestellingen` (
   `ordernummer` INT(11) NOT NULL AUTO_INCREMENT,
@@ -79,5 +81,47 @@ INSERT INTO `producten` (`productnummer`, `naam`, `prijs`, `image`, `voorraad`) 
 ('5', 'Handschoen', '25.95', 'image/handschoen1.jpeg', 20),
 ('6', 'Desinfectie', '159.95', 'image/desinfectie1.jpg', 20),
 ('7', 'Sneltest', '59.95', 'image/testPic1b.jpeg', 20);
+
+INSERT INTO `klanten`(`email`, `naam`, `adres`, `postcode`, `woonplaats`,`gebruikersnaam`, `telefoonnummer`, `wachtwoord`) VALUES 
+('piet@hotmail.com', 'Piet van kelp','marktstraat 16', '5373ae', 'scheveningen', 'piet1', '0638329083', 'wachtwoord1' ),
+('klaas@hotmail.com', 'jan klasen','teststraat 12', '5887dg', 'Herpen', 'klaasen2', '0635329083', 'wachtwoord2' ),
+('joep@hotmail.com', 'joep van klad','laurenstraat 20', '4569df', 'Amsterdam', 'klad123', '0638529687', 'wachtwoord3' ),
+('ckhan@isherz.net', 'Alcides Titiana','plein 16', '5373ae', 'scheveningen', 'alci', '0638329083', 'wachtwoord4' ),
+('mialsy@f-look.ru', 'Dzidra Gadise','marktstraat 16', '5373ae', 'scheveningen', 'dzidr', '0614529083', 'wachtwoord5' ),
+('egomes.j@csgoforces.com', 'Signý Lazaros','marktplein 16', '5373ae', 'scheveningen', 'ronald', '0634899083', 'wachtwoord6' ),
+('qdmtelekx@celtric.org', 'Ronald Bragi','leidendam 2', '5373ae', 'scheveningen', 'bragi', '0612329083', 'wachtwoord7' ),
+('5ethanwe@fabhax.com', 'Laila Maria',' 16', '5373ae', 'scheveningen', 'laila', '0638329083', 'wachtwoord8' ),
+('oabd@burgas.vip', 'Vikram Kreios','marktstraat 16', '5373ae', 'scheveningen', 'vikram', '0638329083', 'wachtwoord9' ),
+('vmii@bjsulu.com', 'Horace Kumar','marktstraat 16', '5373ae', 'scheveningen', 'kumar', '0638456083', 'wachtwoord10' );
+
+
+CREATE TABLE `winkelmand` (
+  `email` VARCHAR(30)  NOT NULL,
+  `productnummer` INT(50) NOT NULL,
+  `aantal` INT(225) NOT NULL,
+  PRIMARY KEY (`email`,`productnummer`),
+  FOREIGN KEY (`email`) REFERENCES `klanten`(`email`),
+  FOREIGN KEY (`productnummer`) REFERENCES `producten`(`productnummer`)
+);
+
+
+INSERT INTO `winkelmand` (`email`, `productnummer`, `aantal`) VALUES
+('piet@hotmail.com', '3', '2'),
+('piet@hotmail.com', '4', '3'),
+('piet@hotmail.com', '1', '1'),
+('klaas@hotmail.com', '6', '2'),
+('egomes.j@csgoforces.com', '7', '3'),
+('5ethanwe@fabhax.com', '3', '1'),
+('vmii@bjsulu.com', '4', '1'),
+('vmii@bjsulu.com', '5', '3'),
+('egomes.j@csgoforces.com', '1', '4'),
+('joep@hotmail.com', '3', '5'),
+('mialsy@f-look.ru', '4', '6'),
+('joep@hotmail.com', '1', '1');
+
+SELECT winkelmand.productnummer, producten.naam, winkelmand.aantal
+FROM winkelmand
+INNER JOIN producten ON producten.productnummer = winkelmand.productnummer
+WHERE email = 'piet@hotmail.com'  --- Session name ---
 
 
