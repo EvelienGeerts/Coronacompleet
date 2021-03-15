@@ -33,9 +33,6 @@ CREATE TABLE `winkelmand` (
   FOREIGN KEY (`productnummer`) REFERENCES `producten`(`productnummer`)
 );
 
-select 
-
-
 CREATE TABLE `bestellingen` (
   `ordernummer` INT(11) NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(30),
@@ -100,9 +97,9 @@ INSERT INTO `klanten`(`email`, `naam`, `adres`, `postcode`, `woonplaats`,`gebrui
 ('vmii@bjsulu.com', 'Horace Kumar','marktstraat 16', '5373ae', 'scheveningen', 'kumar', '0638456083', 'wachtwoord10' );
 
 INSERT INTO `werknemers`(`personeelsnummer`, `naam`, `adres`, `postcode`, `woonplaats`,`gebruikersnaam`, `telefoonnummer`, `wachtwoord`) VALUES 
-('1', 'Evelien Geerts','marktstraat 22', '5373ae', 'scheveningen', 'EvelienAdmin', '0612345678', 'AdminWW1' ),
-('2', 'Michiel Elffrich','Kerkplein 12', '5887dg', 'Breda', 'MichielAdmin', '0645678912', 'AdminWW2' ),
-('3', 'Joeri van Dongen','Sint Sebastianusstraat 16a', '5373ae', 'Herpen', 'JoeriAdmin', '0698765432', 'AdminWW3' );
+('', 'Evelien Geerts','marktstraat 22', '5373ae', 'scheveningen', 'EvelienAdmin', '0612345678', 'AdminWW1' ),
+('', 'Michiel Elffrich','Kerkplein 12', '5887dg', 'Breda', 'MichielAdmin', '0645678912', 'AdminWW2' ),
+('', 'Joeri van Dongen','Sint Sebastianusstraat 16a', '5373ae', 'Herpen', 'JoeriAdmin', '0698765432', 'AdminWW3' );
 
 
 
@@ -110,15 +107,10 @@ INSERT INTO `winkelmand` (`email`, `productnummer`, `aantal`) VALUES
 ('piet@hotmail.com', '3', '2'),
 ('piet@hotmail.com', '4', '3'),
 ('piet@hotmail.com', '1', '1'),
-('klaas@hotmail.com', '6', '2'),
-('egomes.j@csgoforces.com', '7', '3'),
-('5ethanwe@fabhax.com', '3', '1'),
-('vmii@bjsulu.com', '4', '1'),
-('vmii@bjsulu.com', '5', '3'),
-('egomes.j@csgoforces.com', '1', '4'),
-('joep@hotmail.com', '3', '5'),
-('mialsy@f-look.ru', '4', '6'),
-('joep@hotmail.com', '1', '1');
+('piet@hotmail.com', '6', '2'),
+('piet@hotmail.com', '7', '3'),
+('piet@hotmail.com', '2', '1'),
+
 
 SELECT winkelmand.productnummer, producten.naam, winkelmand.aantal
 FROM winkelmand
