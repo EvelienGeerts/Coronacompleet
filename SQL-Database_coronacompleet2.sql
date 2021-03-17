@@ -15,6 +15,7 @@ CREATE TABLE `klanten` (
   
 );
 
+
 CREATE TABLE `producten` (
   `productnummer` INT(50) NOT NULL,
   `naam` VARCHAR(50) NOT NULL,
@@ -37,20 +38,21 @@ CREATE TABLE `bestellingen` (
   `ordernummer` INT(11) NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(30),
   `betaalmethode` VARCHAR(255) NOT NULL,
-  `totaalbetaald` VARCHAR(50) NOT NULL,
+  `totaalbedrag` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`ordernummer`),
   FOREIGN KEY (`email`) REFERENCES `klanten`(`email`)
 );
 
 
 CREATE TABLE `orders` (
-  `ordernummer`INT(11) NOT NULL,
+  `ordernummer`INT(11) ,
   `productnummer` INT(50) NOT NULL, 
   `aantal` INT(10) NOT NULL,
   PRIMARY KEY (`ordernummer`,`productnummer`),
   FOREIGN KEY (`ordernummer`) REFERENCES `bestellingen`(`ordernummer`),
   FOREIGN KEY (`productnummer`) REFERENCES `producten`(`productnummer`)
 );
+
 
 
 
@@ -67,9 +69,9 @@ CREATE TABLE `werknemers` (
 );
 
 INSERT INTO `werknemers`(`personeelsnummer`, `naam`, `adres`, `postcode`, `woonplaats`,`gebruikersnaam`, `telefoonnummer`, `wachtwoord`) VALUES 
-('1', 'Evelien Geerts','marktstraat 22', '5373ae', 'scheveningen', 'EvelienAdmin', '0612345678', 'AdminWW1' ),
-('2', 'Michiel Elffrich','Kerkplein 12', '5887dg', 'Breda', 'MichielAdmin', '0645678912', 'AdminWW2' ),
-('3', 'Joeri van Dongen','Sint Sebastianusstraat 16a', '5373ae', 'Herpen', 'JoeriAdmin', '0698765432', 'AdminWW3' )
+('', 'Evelien Geerts','marktstraat 22', '5373ae', 'scheveningen', 'EvelienAdmin', '0612345678', 'AdminWW1' ),
+('', 'Michiel Elffrich','Kerkplein 12', '5887dg', 'Breda', 'MichielAdmin', '0645678912', 'AdminWW2' ),
+('', 'Joeri van Dongen','Sint Sebastianusstraat 16a', '5373ae', 'Herpen', 'JoeriAdmin', '0698765432', 'AdminWW3' )
 ;
 --
 -- INSERT data `producten`
@@ -109,12 +111,42 @@ INSERT INTO `winkelmand` (`email`, `productnummer`, `aantal`) VALUES
 ('piet@hotmail.com', '1', '1'),
 ('piet@hotmail.com', '6', '2'),
 ('piet@hotmail.com', '7', '3'),
-('piet@hotmail.com', '2', '1'),
+('piet@hotmail.com', '2', '1');
 
 
-SELECT winkelmand.productnummer, producten.naam, winkelmand.aantal
+
+
+--- sql queries ---
+
+INSERT INTO winkelmand (email, productnummer, aantal)
+VALUES ('piet@hotmail.com', 3, 3)
+ON DUPLICATE KEY UPDATE aantal = 20
+
+-- bestelgegevens + winkelmand gegevens --
+
+SELECT klanten.email, klanten.naam, klanten.adres, klanten.postcode, klanten.woonplaats, klanten.telefoonnummer, winkelmand.productnummer, winkelmand.aantal
+FROM klanten
+INNER JOIN winkelmand ON winkelmand.email = klanten.email
+
+-- klant drukt op bestellen, gegegevens winkelmand worden geladen --
+
+INSERT INTO bestellingen(email)
+SELECT DISTINCT email
 FROM winkelmand
-INNER JOIN producten ON producten.productnummer = winkelmand.productnummer
-WHERE email = 'piet@hotmail.com'  --- Session name ---
 
+-- start transaction, klant drukt op knop bestellen er wordt hier automatisch ordernummer aangemaakt en geplaatst in orders, bestellingen -- 
 
+start TRANSACTION;
+
+SELECT
+@ordernummer:=MAX(ordernummer)+1
+FROM
+bestellingen;
+
+INSERT INTO bestellingen(ordernummer, email, betaalmethode, totaalbedrag) VALUES
+(@ordernummer, 'piet@hotmail.com', 'paypal', '50');
+
+INSERT INTO orders(ordernummer, productnummer, aantal) VALUES
+(@ordernummer, '2', '3');
+
+COMMIT;
