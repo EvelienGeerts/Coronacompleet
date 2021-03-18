@@ -132,15 +132,14 @@ FROM winkelmand
 -- start transaction, klant drukt op knop bestellen er wordt hier automatisch ordernummer aangemaakt en geplaatst in orders, bestellingen -- 
 
 START TRANSACTION;
-SELECT @ordernummer:=MAX(ordernummer)+1 FROM bestellingen;
+SELECT @ordernummer:=COALESCE(MAX(ordernummer)+1, 1) FROM bestellingen;
 
 SELECT @totaalbedrag:= (select SUM(wm.aantal*p.prijs) from winkelmand wm 
                        inner join producten p on p.productnummer = wm.productnummer);
                        
-select @email:= (SELECT TOP 1 email FROM winkelmand);
+select @email:= (SELECT email FROM winkelmand LIMIT 1);
 
-INSERT INTO bestellingen 
-(@ordernummer, @email, 'paypal', @totaalbedrag);
+INSERT INTO bestellingen values (@ordernummer, @email, 'paypal', @totaalbedrag);
 
 INSERT INTO orders (select @ordernummer, productnummer, aantal from winkelmand);
 
