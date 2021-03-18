@@ -98,11 +98,6 @@ INSERT INTO `klanten`(`email`, `naam`, `adres`, `postcode`, `woonplaats`,`gebrui
 ('oabd@burgas.vip', 'Vikram Kreios','marktstraat 16', '5373ae', 'scheveningen', 'vikram', '0638329083', 'wachtwoord9' ),
 ('vmii@bjsulu.com', 'Horace Kumar','marktstraat 16', '5373ae', 'scheveningen', 'kumar', '0638456083', 'wachtwoord10' );
 
-INSERT INTO `werknemers`(`personeelsnummer`, `naam`, `adres`, `postcode`, `woonplaats`,`gebruikersnaam`, `telefoonnummer`, `wachtwoord`) VALUES 
-('', 'Evelien Geerts','marktstraat 22', '5373ae', 'scheveningen', 'EvelienAdmin', '0612345678', 'AdminWW1' ),
-('', 'Michiel Elffrich','Kerkplein 12', '5887dg', 'Breda', 'MichielAdmin', '0645678912', 'AdminWW2' ),
-('', 'Joeri van Dongen','Sint Sebastianusstraat 16a', '5373ae', 'Herpen', 'JoeriAdmin', '0698765432', 'AdminWW3' );
-
 
 
 INSERT INTO `winkelmand` (`email`, `productnummer`, `aantal`) VALUES
@@ -120,7 +115,7 @@ INSERT INTO `winkelmand` (`email`, `productnummer`, `aantal`) VALUES
 
 INSERT INTO winkelmand (email, productnummer, aantal)
 VALUES ('piet@hotmail.com', 3, 3)
-ON DUPLICATE KEY UPDATE aantal = 20
+ON DUPLICATE KEY UPDATE aantal = aantal + 3
 
 -- bestelgegevens + winkelmand gegevens --
 
@@ -142,10 +137,10 @@ SELECT @ordernummer:=MAX(ordernummer)+1 FROM bestellingen;
 SELECT @totaalbedrag:= (select SUM(wm.aantal*p.prijs) from winkelmand wm 
                        inner join producten p on p.productnummer = wm.productnummer);
                        
-select @email:= (select top 1 email from winkelmand);
+select @email:= (SELECT TOP 1 email FROM winkelmand);
 
 INSERT INTO bestellingen 
-(@ordernummer, @email, 'paypal', @totalbedrag);
+(@ordernummer, @email, 'paypal', @totaalbedrag);
 
 INSERT INTO orders (select @ordernummer, productnummer, aantal from winkelmand);
 
