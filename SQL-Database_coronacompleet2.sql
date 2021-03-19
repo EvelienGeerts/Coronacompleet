@@ -54,8 +54,6 @@ CREATE TABLE `orders` (
 );
 
 
-
-
 CREATE TABLE `werknemers` (
   `personeelsnummer` INT(10) NOT NULL AUTO_INCREMENT,
   `naam`VARCHAR(50) NOT NULL,
@@ -67,6 +65,55 @@ CREATE TABLE `werknemers` (
   `wachtwoord` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`personeelsnummer`)
 );
+
+--
+-- Create users
+--
+
+CREATE USER 'CCAdmin'@'localhost'; 
+CREATE USER 'CCAdmin'@'127.0.0.1';
+CREATE USER 'CCAdmin'@'::1';
+
+CREATE USER 'Werknemer'@'localhost'; 
+CREATE USER 'Werknemer'@'127.0.0.1';
+CREATE USER 'Werknemer'@'::1';
+
+CREATE USER 'Klant'@'localhost'; 
+CREATE USER 'Klant'@'127.0.0.1';
+CREATE USER 'Klant'@'::1';
+
+SET PASSWORD 
+FOR 'CCAdmin'@'localhost' = PASSWORD('CCAdmin');
+SET PASSWORD 
+FOR 'CCAdmin'@'127.0.0.1' = PASSWORD('CCAdmin');
+SET PASSWORD 
+FOR 'CCAdmin'@'::1' = PASSWORD('CCAdmin');
+
+GRANT ALL PRIVILEGES ON 
+*.* TO 'CCAdmin'@'localhost' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON 
+*.* TO 'CCAdmin'@'127.0.0.1' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON 
+*.* TO 'CCAdmin'@'::1' WITH GRANT OPTION;
+
+GRANT ALL PRIVILEGES ON 
+`coronacompleet`.* TO 'Werknemer'@'localhost' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON 
+`coronacompleet`.* TO 'Werknemer'@'127.0.0.1' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON 
+`coronacompleet`.* TO 'Werknemer'@'::1' WITH GRANT OPTION;
+
+GRANT SELECT ON  
+`coronacompleet`.* TO 'Klant'@'localhost' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON 
+`coronacompleet`.* TO 'Klant'@'127.0.0.1' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON 
+`coronacompleet`.* TO 'Klant'@'::1' WITH GRANT OPTION;
+
+
+--
+-- INSERT data `werknemers`
+--
 
 INSERT INTO `werknemers`(`personeelsnummer`, `naam`, `adres`, `postcode`, `woonplaats`,`gebruikersnaam`, `telefoonnummer`, `wachtwoord`) VALUES 
 ('', 'Evelien Geerts','marktstraat 22', '5373ae', 'scheveningen', 'EvelienAdmin', '0612345678', 'AdminWW1' ),
@@ -107,8 +154,6 @@ INSERT INTO `winkelmand` (`email`, `productnummer`, `aantal`) VALUES
 ('piet@hotmail.com', '6', '2'),
 ('piet@hotmail.com', '7', '3'),
 ('piet@hotmail.com', '2', '1');
-
-
 
 
 --- sql queries ---
