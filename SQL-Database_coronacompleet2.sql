@@ -189,3 +189,24 @@ INSERT INTO bestellingen values (@ordernummer, @email, 'paypal', @totaalbedrag);
 INSERT INTO orders (select @ordernummer, productnummer, aantal from winkelmand);
 
 COMMIT;
+
+-- stored procedure voorraad aanpassen-- 
+
+CREATE PROCEDURE `Voorraad_aanpassen`(IN productnr INT, IN aantal INT)
+INSERT INTO producten(`productnummer`,`voorraad`)
+VALUES (productnr, aantal)
+ON DUPLICATE KEY UPDATE voorraad  =  voorraad + aantal;
+
+DELIMITER // 
+CREATE TRIGGER voorraad_laag
+BEFORE UPDATE ON producten
+FOR EACH ROW
+BEGIN
+	DECLARE msg varchar(255);
+    IF new.voorraad <0 THEN
+    SET msg = 'Niet genoeg Voorraad';
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = msg;
+   END IF;
+END //
+DELIMITER ; 
