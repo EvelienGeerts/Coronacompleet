@@ -167,7 +167,7 @@ ON DUPLICATE KEY UPDATE aantal = aantal + 3
 CREATE VIEW bestel_overzicht AS
 SELECT ordernummer, betaalmethode, totaalbedrag
 FROM bestellingen
-Where email = piet@hotmail.com -- user login -- 
+Where email = 'piet@hotmail.com' -- user login -- 
 
 
 -- start transaction, klant drukt op knop bestellen er wordt hier automatisch ordernummer aangemaakt en geplaatst in orders, bestellingen -- 
@@ -214,7 +214,8 @@ WHERE ordernummer = orderNR
 
 -- view van de bestelde producten -- 
 
-SELECT orders.productnummer, producten.naam , SUM(orders.aantal)
+CREATE VIEW Product_verkoop_overzicht AS
+SELECT orders.productnummer, producten.naam , SUM(orders.aantal), select SUM(orders.aantal)
 from orders 
 INNER JOIN producten ON producten.productnummer = orders.productnummer
 group by productnummer 
