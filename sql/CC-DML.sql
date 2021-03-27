@@ -76,7 +76,7 @@ ON DUPLICATE KEY UPDATE voorraad  =  voorraad + aantal;
 
 CREATE PROCEDURE `klantorders`(IN email_klant varchar(255))
 SELECT ordernummer, betaalmethode, totaalbedrag FROM bestellingen
-where  ordernummer = email_klant;
+where  email = email_klant;
 
 -- stored procedure ordernummer opzoeken --
 
