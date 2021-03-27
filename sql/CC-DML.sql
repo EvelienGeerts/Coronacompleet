@@ -55,6 +55,11 @@ SELECT ordernummer, betaalmethode, totaalbedrag
 FROM bestellingen
 Where email = 'piet@hotmail.com'; -- user login -- 
 
+CREATE VIEW order_inzicht AS
+SELECT o.productnummer, p.naam, o.aantal FROM orders o 
+INNER JOIN producten p  on o.productnummer = p.productnummer
+WHERE ordernummer = 1;
+
 -- view van de bestelde producten -- 
 
 CREATE VIEW Product_verkoop_overzicht AS
