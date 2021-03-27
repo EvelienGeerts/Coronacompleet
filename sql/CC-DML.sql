@@ -21,18 +21,24 @@ INSERT INTO `producten` (`productnummer`, `naam`, `prijs`, `image`, `voorraad`) 
 ('5', 'Handschoen', '25.95', 'image/handschoen1.jpeg', 100),
 ('6', 'Desinfectie', '159.95', 'image/desinfectie1.jpg', 100),
 ('7', 'Sneltest', '59.95', 'image/testPic1b.jpeg', 100);
+--
+-- INSERT data `klanten`
+--
 
 INSERT INTO `klanten`(`email`, `naam`, `adres`, `postcode`, `woonplaats`,`gebruikersnaam`, `telefoonnummer`, `wachtwoord`) VALUES 
-('piet@hotmail.com', 'Piet van kelp','marktstraat 16', '5373ae', 'scheveningen', 'piet1', '0638329083', 'wachtwoord1' ),
-('klaas@hotmail.com', 'jan klasen','teststraat 12', '5887dg', 'Herpen', 'klaasen2', '0635329083', 'wachtwoord2' ),
-('joep@hotmail.com', 'joep van klad','laurenstraat 20', '4569df', 'Amsterdam', 'klad123', '0638529687', 'wachtwoord3' ),
-('ckhan@isherz.net', 'Alcides Titiana','plein 16', '5373ae', 'scheveningen', 'alci', '0638329083', 'wachtwoord4' ),
-('mialsy@f-look.ru', 'Dzidra Gadise','marktstraat 16', '5373ae', 'scheveningen', 'dzidr', '0614529083', 'wachtwoord5' ),
-('egomes.j@csgoforces.com', 'Signý Lazaros','marktplein 16', '5373ae', 'scheveningen', 'ronald', '0634899083', 'wachtwoord6' ),
-('qdmtelekx@celtric.org', 'Ronald Bragi','leidendam 2', '5373ae', 'scheveningen', 'bragi', '0612329083', 'wachtwoord7' ),
-('5ethanwe@fabhax.com', 'Laila Maria',' 16', '5373ae', 'scheveningen', 'laila', '0638329083', 'wachtwoord8' ),
-('oabd@burgas.vip', 'Vikram Kreios','marktstraat 16', '5373ae', 'scheveningen', 'vikram', '0638329083', 'wachtwoord9' ),
-('vmii@bjsulu.com', 'Horace Kumar','marktstraat 16', '5373ae', 'scheveningen', 'kumar', '0638456083', 'wachtwoord10' );
+('piet@hotmail.com', 'Piet van kelp','marktstraat 16', '5373ae', 'scheveningen', 'piet1', '0638329083', 'wachtwoord1'),
+('klaas@hotmail.com', 'jan klasen','teststraat 12', '5887dg', 'Herpen', 'klaasen2', '0635329083', 'wachtwoord2'),
+('joep@hotmail.com', 'joep van klad','laurenstraat 20', '4569df', 'Amsterdam', 'klad123', '0638529687', 'wachtwoord3'),
+('ckhan@isherz.net', 'Alcides Titiana','plein 16', '5373ae', 'scheveningen', 'alci', '0638329083', 'wachtwoord4'),
+('mialsy@f-look.ru', 'Dzidra Gadise','marktstraat 16', '5373ae', 'scheveningen', 'dzidr', '0614529083', 'wachtwoord5'),
+('egomes.j@csgoforces.com', 'Signý Lazaros','marktplein 16', '5373ae', 'scheveningen', 'ronald', '0634899083', 'wachtwoord6'),
+('qdmtelekx@celtric.org', 'Ronald Bragi','leidendam 2', '5373ae', 'scheveningen', 'bragi', '0612329083', 'wachtwoord7'),
+('5ethanwe@fabhax.com', 'Laila Maria',' 16', '5373ae', 'scheveningen', 'laila', '0638329083', 'wachtwoord8'),
+('oabd@burgas.vip', 'Vikram Kreios','marktstraat 16', '5373ae', 'scheveningen', 'vikram', '0638329083', 'wachtwoord9'),
+('vmii@bjsulu.com', 'Horace Kumar','marktstraat 16', '5373ae', 'scheveningen', 'kumar', '0638456083', 'wachtwoord10');
+--
+-- INSERT data `winkelmand`
+--
 
 INSERT INTO `winkelmand` (`email`, `productnummer`, `aantal`) VALUES
 ('piet@hotmail.com', '3', '2'),
@@ -103,7 +109,7 @@ SELECT @ordernummer:=COALESCE(MAX(ordernummer)+1, 1) FROM bestellingen;
 SELECT @totaalbedrag:= (select SUM(wm.aantal*p.prijs) from winkelmand wm 
                        inner join producten p on p.productnummer = wm.productnummer);
                        
-select @email:= (SELECT email FROM winkelmand LIMIT 1);
+SELECT @email:= (SELECT email FROM winkelmand LIMIT 1);
 
 INSERT INTO bestellingen values (@ordernummer, @email, 'paypal', @totaalbedrag);
 
