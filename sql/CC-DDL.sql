@@ -1,5 +1,7 @@
 /* CoronaCompleet - Data Definition Language */
+
 DROP DATABASE IF EXISTS coronacompleet;
+
 CREATE DATABASE coronacompleet;
 
 USE coronacompleet;
@@ -16,7 +18,6 @@ CREATE TABLE `klanten` (
   PRIMARY KEY (`email`)
   
 );
-
 
 CREATE TABLE `producten` (
   `productnummer` INT(50) NOT NULL,
