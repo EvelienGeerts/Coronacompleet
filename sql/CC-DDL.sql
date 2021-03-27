@@ -13,8 +13,10 @@ CREATE TABLE `klanten` (
   `gebruikersnaam` VARCHAR(20) NOT NULL UNIQUE,
   `telefoonnummer`INT(10) NOT NULL,
   `wachtwoord` VARCHAR(20) NOT NULL,
-  PRIMARY KEY (`email`)  
+  PRIMARY KEY (`email`)
+  
 );
+
 
 CREATE TABLE `producten` (
   `productnummer` INT(50) NOT NULL,
@@ -32,26 +34,27 @@ CREATE TABLE `winkelmand` (
   PRIMARY KEY (`email`,`productnummer`),
   FOREIGN KEY (`email`) REFERENCES `klanten`(`email`),
   FOREIGN KEY (`productnummer`) REFERENCES `producten`(`productnummer`)
-
 );
 
 CREATE TABLE `bestellingen` (
   `ordernummer` INT(11) NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(30),
   `betaalmethode` VARCHAR(255) NOT NULL,
-  `totaalbetaald` VARCHAR(50) NOT NULL,
+  `totaalbedrag` DOUBLE(6,2) NOT NULL,
   PRIMARY KEY (`ordernummer`),
   FOREIGN KEY (`email`) REFERENCES `klanten`(`email`)
 );
 
+
 CREATE TABLE `orders` (
-  `ordernummer`INT(11) NOT NULL,
+  `ordernummer`INT(11) ,
   `productnummer` INT(50) NOT NULL, 
   `aantal` INT(10) NOT NULL,
   PRIMARY KEY (`ordernummer`,`productnummer`),
   FOREIGN KEY (`ordernummer`) REFERENCES `bestellingen`(`ordernummer`),
   FOREIGN KEY (`productnummer`) REFERENCES `producten`(`productnummer`)
 );
+
 
 CREATE TABLE `werknemers` (
   `personeelsnummer` INT(10) NOT NULL AUTO_INCREMENT,
