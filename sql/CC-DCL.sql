@@ -1,3 +1,16 @@
+
+CREATE USER 'CCAdmin'@'localhost'; 
+CREATE USER 'CCAdmin'@'127.0.0.1';
+CREATE USER 'CCAdmin'@'::1';
+
+CREATE USER 'Werknemer'@'localhost'; 
+CREATE USER 'Werknemer'@'127.0.0.1';
+CREATE USER 'Werknemer'@'::1';
+
+CREATE USER 'Klant'@'localhost'; 
+CREATE USER 'Klant'@'127.0.0.1';
+CREATE USER 'Klant'@'::1';
+
 /* CoronaCompleet - Data Control Language */
 
 GRANT ALL PRIVILEGES ON 
