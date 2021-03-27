@@ -11,6 +11,28 @@ CREATE USER 'Klant'@'localhost';
 CREATE USER 'Klant'@'127.0.0.1';
 CREATE USER 'Klant'@'::1';
 
+SET PASSWORD
+FOR 'CCAdmin'@'localhost' = PASSWORD('CCAdmin'); 
+SET PASSWORD
+FOR 'CCAdmin'@'127.0.0.1' = PASSWORD('CCAdmin');
+SET PASSWORD
+FOR 'CCAdmin'@'::1' = PASSWORD('CCAdmin');
+
+SET PASSWORD
+FOR 'Werknemer'@'localhost' = PASSWORD('CCAdmin'); 
+SET PASSWORD
+FOR 'Werknemer'@'127.0.0.1' = PASSWORD('CCAdmin');
+SET PASSWORD
+FOR 'Werknemer'@'::1' = PASSWORD('CCAdmin');
+
+SET PASSWORD
+FOR 'Klant'@'localhost' = PASSWORD('CCAdmin'); 
+SET PASSWORD
+FOR 'Klant'@'127.0.0.1' = PASSWORD('CCAdmin');
+SET PASSWORD
+FOR 'Klant'@'::1' = PASSWORD('CCAdmin');
+
+
 /* CoronaCompleet - Data Control Language */
 
 GRANT ALL PRIVILEGES ON 
