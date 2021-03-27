@@ -15,8 +15,7 @@ CREATE TABLE `klanten` (
   `gebruikersnaam` VARCHAR(20) NOT NULL UNIQUE,
   `telefoonnummer`INT(10) NOT NULL,
   `wachtwoord` VARCHAR(20) NOT NULL,
-  PRIMARY KEY (`email`)
-  
+  PRIMARY KEY (`email`)  
 );
 
 CREATE TABLE `producten` (
@@ -61,7 +60,7 @@ CREATE TABLE `werknemers` (
   `personeelsnummer` INT(10) NOT NULL AUTO_INCREMENT,
   `naam`VARCHAR(50) NOT NULL,
   `adres`VARCHAR(50) NOT NULL,
-  `postcode`CHAR(6) NOT NULL,
+  `postcode`VARCHAR(6) NOT NULL,
   `woonplaats`VARCHAR(50) NOT NULL,
   `gebruikersnaam` VARCHAR(20) NOT NULL UNIQUE ,
   `telefoonnummer`INT(10) NOT NULL,
