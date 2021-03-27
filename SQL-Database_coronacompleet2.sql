@@ -215,10 +215,14 @@ WHERE ordernummer = orderNR
 -- view van de bestelde producten -- 
 
 CREATE VIEW Product_verkoop_overzicht AS
-SELECT orders.productnummer, producten.naam , SUM(orders.aantal), select SUM(orders.aantal)
+SELECT orders.productnummer, producten.naam , SUM(orders.aantal) AS totaalbesteld, CONCAT(ROUND((SUM(orders.aantal) / (SELECT SUM(orders.aantal)
+from orders 
+INNER JOIN producten ON producten.productnummer = orders.productnummer)) * 100, 2), '%') AS totaal
 from orders 
 INNER JOIN producten ON producten.productnummer = orders.productnummer
-group by productnummer 
+group by productnummer
+
+-- subquery maken, Count
 
 
 -- trigger voorraad laag --
