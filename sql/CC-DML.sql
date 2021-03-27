@@ -1,5 +1,5 @@
 /* CoronaCompleet - Data Manipulation Language */
-
+USE coronacompleet;
 --
 -- INSERT data `werknemers`
 --
@@ -42,13 +42,6 @@ INSERT INTO `winkelmand` (`email`, `productnummer`, `aantal`) VALUES
 ('piet@hotmail.com', '7', '3'),
 ('piet@hotmail.com', '2', '1');
 
-
---- sql querie product selectie en update ---
-
-INSERT INTO winkelmand (email, productnummer, aantal)
-VALUES ('piet@hotmail.com', 3, 3)
-ON DUPLICATE KEY UPDATE aantal = aantal + 3
-
 -- view bestellingen klant -- 
 
 CREATE VIEW bestel_overzicht AS
@@ -65,29 +58,6 @@ INNER JOIN producten ON producten.productnummer = orders.productnummer)) * 100, 
 from orders 
 INNER JOIN producten ON producten.productnummer = orders.productnummer
 group by productnummer;
-
-
--- start transaction, klant drukt op knop bestellen er wordt hier automatisch ordernummer aangemaakt en geplaatst in orders, bestellingen -- 
-
-START TRANSACTION;
-SELECT @ordernummer:=COALESCE(MAX(ordernummer)+1, 1) FROM bestellingen;
-
-SELECT @totaalbedrag:= (select SUM(wm.aantal*p.prijs) from winkelmand wm 
-                       inner join producten p on p.productnummer = wm.productnummer);
-                       
-select @email:= (SELECT email FROM winkelmand LIMIT 1);
-
-INSERT INTO bestellingen values (@ordernummer, @email, 'paypal', @totaalbedrag);
-
-INSERT INTO orders (select @ordernummer, productnummer, aantal from winkelmand);
-
-UPDATE producten p
-INNER JOIN winkelmand w ON p.productnummer = w.productnummer
-SET p.voorraad = p.voorraad - w.aantal;
-
-DELETE FROM winkelmand;
-
-COMMIT;
 
 -- stored procedure voorraad aanpassen-- 
 
@@ -125,6 +95,33 @@ BEGIN
 END //
 DELIMITER ; 
 
+-- start transaction, klant drukt op knop bestellen er wordt hier automatisch ordernummer aangemaakt en geplaatst in orders, bestellingen -- 
+
+START TRANSACTION;
+SELECT @ordernummer:=COALESCE(MAX(ordernummer)+1, 1) FROM bestellingen;
+
+SELECT @totaalbedrag:= (select SUM(wm.aantal*p.prijs) from winkelmand wm 
+                       inner join producten p on p.productnummer = wm.productnummer);
+                       
+select @email:= (SELECT email FROM winkelmand LIMIT 1);
+
+INSERT INTO bestellingen values (@ordernummer, @email, 'paypal', @totaalbedrag);
+
+INSERT INTO orders (select @ordernummer, productnummer, aantal from winkelmand);
+
+UPDATE producten p
+INNER JOIN winkelmand w ON p.productnummer = w.productnummer
+SET p.voorraad = p.voorraad - w.aantal;
+
+DELETE FROM winkelmand;
+
+COMMIT;
+
+
+-- sql querie product selectie en update ---
+INSERT INTO winkelmand (email, productnummer, aantal)
+VALUES ('piet@hotmail.com', 3, 3)
+ON DUPLICATE KEY UPDATE aantal = aantal + 3;
 
 
 SET PASSWORD 

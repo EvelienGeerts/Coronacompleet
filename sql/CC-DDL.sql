@@ -1,5 +1,5 @@
 /* CoronaCompleet - Data Definition Language */
-
+DROP DATABASE IF EXISTS coronacompleet;
 CREATE DATABASE coronacompleet;
 
 USE coronacompleet;
