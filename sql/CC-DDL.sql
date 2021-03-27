@@ -2,7 +2,7 @@
 
 DROP DATABASE IF EXISTS coronacompleet;
 
-CREATE DATABASE coronacompleet USE coronacompleet;
+CREATE DATABASE coronacompleet;
 
 USE coronacompleet;
 
