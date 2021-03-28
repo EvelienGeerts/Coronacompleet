@@ -114,9 +114,8 @@ DELETE FROM winkelmand;
 
 COMMIT;
 
-/*
 -- sql INSERT querie product selectie en update ---
 INSERT INTO winkelmand (email, productnummer, aantal)
 VALUES ('piet@hotmail.com', 3, 3)
 ON DUPLICATE KEY UPDATE aantal = aantal + 3;
-*/
+
