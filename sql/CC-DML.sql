@@ -1,6 +1,6 @@
 /* CoronaCompleet - Data Manipulation Language */
 
-USE coronacompleet
+USE coronacompleet;
 
 -- INSERT data `werknemers`
 INSERT INTO `werknemers`(`personeelsnummer`, `naam`, `adres`, `postcode`, `woonplaats`,`gebruikersnaam`, `telefoonnummer`, `wachtwoord`) VALUES 
