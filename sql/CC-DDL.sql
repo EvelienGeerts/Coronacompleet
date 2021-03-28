@@ -45,7 +45,6 @@ CREATE TABLE `bestellingen` (
   FOREIGN KEY (`email`) REFERENCES `klanten`(`email`)
 );
 
-
 CREATE TABLE `orders` (
   `ordernummer`INT(11) ,
   `productnummer` INT(50) NOT NULL, 
@@ -54,7 +53,6 @@ CREATE TABLE `orders` (
   FOREIGN KEY (`ordernummer`) REFERENCES `bestellingen`(`ordernummer`),
   FOREIGN KEY (`productnummer`) REFERENCES `producten`(`productnummer`)
 );
-
 
 CREATE TABLE `werknemers` (
   `personeelsnummer` INT(10) NOT NULL AUTO_INCREMENT,

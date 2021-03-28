@@ -1,18 +1,15 @@
 /* CoronaCompleet - Data Manipulation Language */
-USE coronacompleet
---
--- INSERT data `werknemers`
---
 
+USE coronacompleet
+
+-- INSERT data `werknemers`
 INSERT INTO `werknemers`(`personeelsnummer`, `naam`, `adres`, `postcode`, `woonplaats`,`gebruikersnaam`, `telefoonnummer`, `wachtwoord`) VALUES 
 ('1', 'Evelien Geerts','marktstraat 22', '5373ae', 'scheveningen', 'EvelienAdmin', '0612345678', 'AdminWW1' ),
 ('2', 'Michiel Elffrich','Kerkplein 12', '5887dg', 'Breda', 'MichielAdmin', '0645678912', 'AdminWW2' ),
 ('3', 'Joeri van Dongen','Sint Sebastianusstraat 16a', '5373ae', 'Herpen', 'JoeriAdmin', '0698765432', 'AdminWW3' )
 ;
---
--- INSERT data `producten`
---
 
+-- INSERT data `producten`
 INSERT INTO `producten` (`productnummer`, `naam`, `prijs`, `image`, `voorraad`) VALUES
 ('1', 'Mondkap zwart', '39.95', 'image/zwart1.png', 100 ),
 ('2', 'Mondkap blauw', '39.95', 'image/blauw1.png', 100),
@@ -21,10 +18,8 @@ INSERT INTO `producten` (`productnummer`, `naam`, `prijs`, `image`, `voorraad`) 
 ('5', 'Handschoen', '25.95', 'image/handschoen1.jpeg', 100),
 ('6', 'Desinfectie', '159.95', 'image/desinfectie1.jpg', 100),
 ('7', 'Sneltest', '59.95', 'image/testPic1b.jpeg', 100);
---
--- INSERT data `klanten`
---
 
+-- INSERT data `klanten`
 INSERT INTO `klanten`(`email`, `naam`, `adres`, `postcode`, `woonplaats`,`gebruikersnaam`, `telefoonnummer`, `wachtwoord`) VALUES 
 ('piet@hotmail.com', 'Piet van kelp','marktstraat 16', '5373ae', 'scheveningen', 'piet1', '0638329083', 'wachtwoord1'),
 ('klaas@hotmail.com', 'jan klasen','teststraat 12', '5887dg', 'Herpen', 'klaasen2', '0635329083', 'wachtwoord2'),
@@ -36,10 +31,8 @@ INSERT INTO `klanten`(`email`, `naam`, `adres`, `postcode`, `woonplaats`,`gebrui
 ('5ethanwe@fabhax.com', 'Laila Maria',' 16', '5373ae', 'scheveningen', 'laila', '0638329083', 'wachtwoord8'),
 ('oabd@burgas.vip', 'Vikram Kreios','marktstraat 16', '5373ae', 'scheveningen', 'vikram', '0638329083', 'wachtwoord9'),
 ('vmii@bjsulu.com', 'Horace Kumar','marktstraat 16', '5373ae', 'scheveningen', 'kumar', '0638456083', 'wachtwoord10');
---
--- INSERT data `winkelmand`
---
 
+-- INSERT data `winkelmand`
 INSERT INTO `winkelmand` (`email`, `productnummer`, `aantal`) VALUES
 ('piet@hotmail.com', '3', '2'),
 ('piet@hotmail.com', '4', '3'),
@@ -48,8 +41,7 @@ INSERT INTO `winkelmand` (`email`, `productnummer`, `aantal`) VALUES
 ('piet@hotmail.com', '7', '3'),
 ('piet@hotmail.com', '2', '1');
 
--- view bestellingen klant -- 
-
+-- VIEW bestellingen klant
 CREATE VIEW bestel_overzicht AS
 SELECT ordernummer, betaalmethode, totaalbedrag
 FROM bestellingen
@@ -60,8 +52,7 @@ SELECT o.productnummer, p.naam, o.aantal FROM orders o
 INNER JOIN producten p  on o.productnummer = p.productnummer
 WHERE ordernummer = 1;
 
--- view van de bestelde producten -- 
-
+-- VIEW van de bestelde producten
 CREATE VIEW Product_verkoop_overzicht AS
 SELECT orders.productnummer, producten.naam , SUM(orders.aantal) AS totaalbesteld, CONCAT(ROUND((SUM(orders.aantal) / (SELECT SUM(orders.aantal)
 from orders 
@@ -70,28 +61,24 @@ from orders
 INNER JOIN producten ON producten.productnummer = orders.productnummer
 group by productnummer;
 
--- stored procedure voorraad aanpassen-- 
-
+-- stored PROCEDURE voorraad aanpassen
 CREATE PROCEDURE `Voorraad_aanpassen`(IN productnr INT, IN aantal INT)
 INSERT INTO producten(`productnummer`,`voorraad`)
 VALUES (productnr, aantal)
 ON DUPLICATE KEY UPDATE voorraad  =  voorraad + aantal;
 
--- stored procedure klant bestellingen opzoeken --
-
+-- stored PROCEDURE klant bestellingen opzoeken
 CREATE PROCEDURE `klantorders`(IN email_klant varchar(255))
 SELECT ordernummer, betaalmethode, totaalbedrag FROM bestellingen
 where  email = email_klant;
 
--- stored procedure ordernummer opzoeken --
-
+-- stored PROCEDURE ordernummer opzoeken
 CREATE PROCEDURE `orderinzicht` (IN orderNR INT)
 SELECT o.productnummer, p.naam, o.aantal FROM orders o 
 INNER JOIN producten p  on o.productnummer = p.productnummer
 WHERE ordernummer = orderNR;
 
--- trigger voorraad laag --
-
+-- TRIGGER voorraad laag
 DELIMITER // 
 CREATE TRIGGER voorraad_laag
 BEFORE UPDATE ON producten
@@ -106,8 +93,7 @@ BEGIN
 END //
 DELIMITER ; 
 
--- start transaction, klant drukt op knop bestellen er wordt hier automatisch ordernummer aangemaakt en geplaatst in orders, bestellingen -- 
-
+-- start TRANSACTION, klant drukt op knop bestellen er wordt hier automatisch ordernummer aangemaakt en geplaatst in orders, bestellingen 
 START TRANSACTION;
 SELECT @ordernummer:=COALESCE(MAX(ordernummer)+1, 1) FROM bestellingen;
 
@@ -128,16 +114,9 @@ DELETE FROM winkelmand;
 
 COMMIT;
 
-
--- sql querie product selectie en update ---
+/*
+-- sql INSERT querie product selectie en update ---
 INSERT INTO winkelmand (email, productnummer, aantal)
 VALUES ('piet@hotmail.com', 3, 3)
 ON DUPLICATE KEY UPDATE aantal = aantal + 3;
-
-
-SET PASSWORD 
-FOR 'CCAdmin'@'localhost' = PASSWORD('CCAdmin');
-SET PASSWORD 
-FOR 'CCAdmin'@'127.0.0.1' = PASSWORD('CCAdmin');
-SET PASSWORD 
-FOR 'CCAdmin'@'::1' = PASSWORD('CCAdmin');
+*/
