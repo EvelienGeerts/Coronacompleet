@@ -1,9 +1,13 @@
+<?php
+?>
+
+
 <!DOCTYPE html>
 <html lang="nl">
 
 <head>
   <meta charset="utf-8" />
-  <meta name="description" content="Coronacompleet. Informatie over onze snelle test voor Sars-cov-2">
+  <meta name="description" content="Coronacompleet. Informatie over onze handschoenen met desinfecterende gel">
   <meta name="keywords" content="coronacompleet, corona, COVID-19, beschermingsmiddelen, handschoenen, mondkapje, desinfectie, test, webshop">
   <title>CORONA COMPLEET</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,7 +23,7 @@
 
   <div class="container">
     <header>
-      <a href="../index.html">
+      <a href="../index.php">
         <h1>CORONA COMPLEET</h1>
       </a>
 
@@ -30,18 +34,18 @@
 
       <nav>
         <ul class="nav-list">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="producten.html" class="selected">Producten</a>
+          <li><a href="../index.php">Home</a></li>
+          <li><a href="producten.php" class="selected">Producten</a>
             <ul class="dropdown">
-              <li><a href='mondkapjeProduct.html'>Mondkap</a></li>
-              <li><a href='handschoenProduct.html'>handschoen</a></li>
-              <li><a href='testProduct.html'>tester</a></li>
-              <li><a href='desinfectieProduct.html'>desinfectie</a></li>
+              <li><a href='mondkapjeProduct.php'>Mondkap</a></li>
+              <li><a href='handschoenProduct.php'>handschoen</a></li>
+              <li><a href='testProduct.php'>tester</a></li>
+              <li><a href='desinfectieProduct.php'>desinfectie</a></li>
             </ul>
           </li>
-          <li><a href="webshop.html">Webshop</a></li>
-          <li><a href="aboutus.html">about us</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="webshop.php">Webshop</a></li>
+          <li><a href="aboutus.php">about us</a></li>
+          <li><a href="contact.php">Contact</a></li>
         </ul>
       </nav>
       <div class="banner">
@@ -50,65 +54,67 @@
         </span>
       </div>
     </header>
+
+    <div>
+
       <div class="container slideImages">
         <div class="complete-slider-wrapper">
-          <div class="slidewrap">
+          <div class=slidewrap>
 
             <div class="mySlides">
               <div class="numbertext">1 / 4</div>
-              <img src="../img/product/tester/testPic1.jpeg" alt="testerPic">
+              <img src="../img/product/handschoen/handschoen1.jpeg" alt="handschoenPic">
             </div>
 
             <div class="mySlides">
               <div class="numbertext">2 / 4</div>
-              <img src="../img/product/tester/test2.jpg" alt="testerPic">
+              <img src="../img/product/handschoen/handschoen8.jpg" alt="handschoenPic">
             </div>
 
             <div class="mySlides">
               <div class="numbertext">3 / 4</div>
-              <img src="../img/product/tester/test3.jpg" alt="testerPic">
+              <img src="../img/product/handschoen/handschoen3.jpg" alt="handschoenPic">
             </div>
 
             <div class="mySlides">
               <div class="numbertext">4 / 4</div>
-              <img src="../img/product/tester/test4.jpg" alt="testerPic">
+              <img src="../img/product/handschoen/handschoen4.jpg" alt="handschoenPic">
             </div>
 
             <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
             <a class="next" onclick="plusSlides(1)">&#10095;</a>
           </div>
 
-          <div class="textWrapperTest">
+          <div class="textWrapperHandschoen">
             <h2>Productbeschrijving</h2>
-            <p>Deze kit is ontworpen voor een accurate en snelle bepaling van SARS - CoV - 2 infectie uit uitstrijkjes.
-              Eventueel aanwezige stoffen van van de SARS-cov-2 in de gegeven monster word gekoppeld met het
-              antis-SARS-Cov-2 aanwezig in het testproduct.
-              Bij een positief resultaat reageerd het door een duidelijke lijn aan te geven zoals weergegeven op de
-              afbeelding.
-              Dit blijft een particulier product en mag niet gebruikt worden als medische toekenning. </p>
-            <p class=webshopLink><a href="webshop.html" class="selected">Klik hier om naar de webshop te gaan.</a></p>
+            <p>Deze handschoen is speciaal ontwikkeld voor een optimale bescherming. Binnenin de handschoen zit een
+              desinfecterende gel die de handen ontdoet van alle virussen en bacteriën. Naast dit effect, zal de dikke
+              buiten laag ervoor zorgen dat er niks kan doordringen tot naar de binnenkant. </p>
+            <p class=webshopLink><a href="webshop.php" class="selected">Klik hier om naar de webshop te gaan.</a></p>
           </div>
+
           <div class="row imagePadding">
             <div class="column">
-              <img class="cursor" src="../img/product/tester/testPic1.jpeg" style="width:100%"
-                onclick="currentSlide(1)" alt="testPic">
+              <img class="cursor" src="../img/product/handschoen/handschoen1.jpeg" style="width:100%"
+                onclick="currentSlide(1)" alt="handschoen1">
             </div>
             <div class="column">
-              <img class="cursor" src="../img/product/tester/test2.jpg" style="width:100%"
-                onclick="currentSlide(2)" alt="testPic">
+              <img class="cursor" src="../img/product/handschoen/handschoen2.png" style="width:100%"
+                onclick="currentSlide(2)" alt="handschoen1">
             </div>
             <div class="column">
-              <img class="cursor" src="../img/product/tester/test3.jpg" style="width:100%"
-                onclick="currentSlide(3)" alt="testPic">
+              <img class="cursor" src="../img/product/handschoen/handschoen3.jpg" style="width:100%"
+                onclick="currentSlide(3)" alt="handschoen1">
             </div>
             <div class="column">
-              <img class="cursor" src="../img/product/tester/test4.jpg" style="width:100%"
-                onclick="currentSlide(4)" alt="testPics">
+              <img class="cursor" src="../img/product/handschoen/handschoen4.jpg" style="width:100%"
+                onclick="currentSlide(4)" alt="handschoen1">
             </div>
           </div>
         </div>
       </div>
- 
+    </div>
+
     <div>
       <footer class="borderfooter">
         <p><strong>CORONA COMPLEET</strong> in partnership with <a href="https://www.u-earth.eu/">U-EARTH</a></p>

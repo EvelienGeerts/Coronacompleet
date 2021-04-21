@@ -1,3 +1,7 @@
+<?php
+?>
+
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -19,7 +23,7 @@
 <body>
 	<div class="container">
 		<header>
-			<a href="../index.html">
+			<a href="../index.php">
 				<h1>CORONA COMPLEET</h1>
 			</a>
 
@@ -30,18 +34,18 @@
 
 			<nav>
 				<ul class="nav-list">
-					<li><a href="../index.html">Home</a></li>
-					<li><a href="producten.html" class="selected">Producten</a>
+					<li><a href="../index.php">Home</a></li>
+					<li><a href="producten.php" class="selected">Producten</a>
 						<ul class="dropdown">
-							<li><a href='mondkapjeProduct.html'>Mondkap</a></li>
-							<li><a href='handschoenProduct.html'>handschoen</a></li>
-							<li><a href='testProduct.html'>tester</a></li>
-							<li><a href='desinfectieProduct.html'>desinfectie</a></li>
+							<li><a href='mondkapjeProduct.php'>Mondkap</a></li>
+							<li><a href='handschoenProduct.php'>handschoen</a></li>
+							<li><a href='testProduct.php'>tester</a></li>
+							<li><a href='desinfectieProduct.php'>desinfectie</a></li>
 						</ul>
 					</li>
-					<li><a href="webshop.html">Webshop</a></li>
-					<li><a href="aboutus.html">About us</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					<li><a href="webshop.php">Webshop</a></li>
+					<li><a href="aboutus.php">About us</a></li>
+					<li><a href="contact.php">Contact</a></li>
 				</ul>
 			</nav>
 
@@ -57,7 +61,7 @@
 				<h2>Producten</h2>
 				<div class="productImages">
 					<div class="Product1">
-						<a href="desinfectieProduct.html"><img src="../img/product/desinfectie/desinfectie1.jpg"
+						<a href="desinfectieProduct.php"><img src="../img/product/desinfectie/desinfectie1.jpg"
 								class="Images" alt="desinfectiePic">
 							<div class="container">
 								<h3><b>Desinfectiepomp</b></h3>
@@ -66,7 +70,7 @@
 						</a>
 					</div>
 					<div class="Product2">
-						<a href="testProduct.html"><img src="../img/product/tester/testPic1.jpeg" class="Images"
+						<a href="testProduct.php"><img src="../img/product/tester/testPic1.jpeg" class="Images"
 								alt="TestPic">
 							<div class="container">
 								<h3><b>Covid-19 Tester</b></h3>
@@ -75,7 +79,7 @@
 						</a>
 					</div>
 					<div class="Product3">
-						<a href="handschoenProduct.html"><img src="../img/product/handschoen/handschoen1.jpeg"
+						<a href="handschoenProduct.php"><img src="../img/product/handschoen/handschoen1.jpeg"
 								class="Images" alt="handschoenPic">
 							<div class="container">
 								<h3>Handschoen</h3>
@@ -84,7 +88,7 @@
 						</a>
 					</div>
 					<div class="Product4">
-						<a href="mondkapjeProduct.html"><img src="../img/product/mondkapje/zwart1.png" class="Images"
+						<a href="mondkapjeProduct.php"><img src="../img/product/mondkapje/zwart1.png" class="Images"
 								alt="mondkapjePic">
 							<div class="container">
 								<h3><b>Mondkapje</b></h3>

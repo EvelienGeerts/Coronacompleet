@@ -103,7 +103,7 @@ if (isset($_POST['register'])){
        mysqli_query($db, $sql);
        $_SESSION['gebruikersnaam'] = $gebruikersnaam;
        $_SESSION['succes'] = "U bent nu ingelogd";  
-       header('location: index.php');//redirect to home page
+       header('location: ../index.php');//redirect to home page
     }
 }
 
@@ -137,10 +137,10 @@ if (isset($_POST['login'])){
             //log klant in
             $_SESSION['gebruikersnaam'] = $gebruikersnaam;
             $_SESSION['succes'] = "U bent nu ingelogd";
-            header('location: mijngegevens.php');//redirect to home page
+            header('location: ../pagina/mijngegevens.php');//redirect to home page
         }else{
             array_push($errors, "De gebruikersnaam/wachtwoord is niet correct");//doet het niet
-            header('location: login.php'); 
+            header('location: ../pagina/login.php'); 
         }
     }
 }
@@ -174,10 +174,10 @@ if (isset($_POST['login2'])){
             //log klant in
             $_SESSION['gebruikersnaam'] = $gebruikersnaam;
             $_SESSION['succes'] = "U bent nu ingelogd";
-            header('location: bestellen.php');//redirect to home page
+            header('location: ../pagina/bestellen.php');//redirect to home page
         }else{
             array_push($errors, "De gebruikersnaam/wachtwoord is niet correct");//doet het niet
-            header('location: loginBestellen.php'); 
+            header('location: ../pagina/loginBestellen.php'); 
         }
     }
 }

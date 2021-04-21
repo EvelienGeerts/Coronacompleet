@@ -1,3 +1,7 @@
+<?php
+?>
+
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -17,7 +21,7 @@
 
 <div class="container">
 	<header>
-		<a href="../index.html"><h1>CORONA COMPLEET</h1></a>
+		<a href="../index.php"><h1>CORONA COMPLEET</h1></a>
 		
 		<div class="hamburger-menu">
 			<i class="fa fa-bars burger" onclick="burgerMenu()"></i>
@@ -26,18 +30,18 @@
 
 		<nav>
 			<ul class="nav-list">
-				<li><a href="../index.html">Home</a></li>
-				<li><a href="producten.html">Producten</a>
+				<li><a href="../index.php">Home</a></li>
+				<li><a href="producten.php">Producten</a>
 					<ul class = "dropdown">
-						<li><a href='mondkapjeProduct.html'>Mondkap</a></li>
-						<li><a href='handschoenProduct.html'>handschoen</a></li>
-						<li><a href='testProduct.html'>tester</a></li>
-						<li><a href='desinfectieProduct.html'>desinfectie</a></li>
+						<li><a href='mondkapjeProduct.php'>Mondkap</a></li>
+						<li><a href='handschoenProduct.php'>handschoen</a></li>
+						<li><a href='testProduct.php'>tester</a></li>
+						<li><a href='desinfectieProduct.php'>desinfectie</a></li>
 					</ul>
 				</li>
-				<li><a href="webshop.html">Webshop</a></li>
-				<li><a href="aboutus.html">About us</a></li>
-				<li><a href="contact.html" class="selected">Contact</a></li>
+				<li><a href="webshop.php">Webshop</a></li>
+				<li><a href="aboutus.php">About us</a></li>
+				<li><a href="contact.php" class="selected">Contact</a></li>
 			</ul>
 		</nav>
 		

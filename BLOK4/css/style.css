@@ -446,8 +446,8 @@ button.button {
 	font-weight: bold;
 	font-size: 20px;
 	border-radius: 0 3px 3px 0;
-	user-select: none;
-	-webkit-user-select: none;
+	klant-select: none;
+	-webkit-klant-select: none;
 	color: grey;
 	left:0;
 }
@@ -701,5 +701,32 @@ div.containerOops {
     text-align: center;
 }
 
+/*
+*************************
+* PoC-edit	            *
+*************************
+*/ 
 
 
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+
+
+/*login*/
+
+
+/* voorraad*/

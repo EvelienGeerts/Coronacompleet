@@ -1,3 +1,7 @@
+<?php
+?>
+
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -18,7 +22,7 @@
 <body>
   <div class="container">
     <header>
-      <a href="../index.html">
+      <a href="../index.php">
         <h1>CORONA COMPLEET</h1>
       </a>
 
@@ -29,18 +33,18 @@
 
       <nav>
         <ul class="nav-list">
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="producten.html" class="selected">Producten</a>
+          <li><a href="../index.php">Home</a></li>
+          <li><a href="producten.php" class="selected">Producten</a>
             <ul class="dropdown">
-              <li><a href='mondkapjeProduct.html'>Mondkap</a></li>
-              <li><a href='handschoenProduct.html'>handschoen</a></li>
-              <li><a href='testProduct.html'>tester</a></li>
-              <li><a href='desinfectieProduct.html'>desinfectie</a></li>
+              <li><a href='mondkapjeProduct.php'>Mondkap</a></li>
+              <li><a href='handschoenProduct.php'>handschoen</a></li>
+              <li><a href='testProduct.php'>tester</a></li>
+              <li><a href='desinfectieProduct.php'>desinfectie</a></li>
             </ul>
           </li>
-          <li><a href="webshop.html">Webshop</a></li>
-          <li><a href="aboutus.html">about us</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="webshop.php">Webshop</a></li>
+          <li><a href="aboutus.php">about us</a></li>
+          <li><a href="contact.php">Contact</a></li>
         </ul>
       </nav>
 
@@ -108,7 +112,7 @@
             kan het U-Mask Model 2 zichzelf reinigen, heeft het een houdbaarheid van 3 jaar en is geschikt voor maximaal
             200 uur gebruik zonder interne bacteriële proliferatie.
           </p>
-          <p class=webshopLink><a href="webshop.html" class="selected">Klik hier om naar de webshop te gaan.</a></p>
+          <p class=webshopLink><a href="webshop.php" class="selected">Klik hier om naar de webshop te gaan.</a></p>
         </div>
 
         <div class="slider-buttons-wrapper">

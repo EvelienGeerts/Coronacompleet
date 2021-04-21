@@ -1,9 +1,4 @@
-<?php include('server.php');
-
-//if klant is not logged in, they cannot access this page (optie, kan zo weg)
-if (empty($_SESSION['gebruikersnaam'])){
-  header('location: login.php');
-}
+<?php
 ?>
 
 
@@ -17,7 +12,7 @@ if (empty($_SESSION['gebruikersnaam'])){
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--hambuger menu-->
 	<link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/bootstrap-grid.css">
-	<link rel="stylesheet" href="css/style.css">												   
+	<link rel="stylesheet" href="css/style.css">
 	<link rel="icon" href="img/favicon.png" type="image/x-icon">
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -25,7 +20,7 @@ if (empty($_SESSION['gebruikersnaam'])){
 
 	<div class="container">
 		<header>
-			<a href="index.html"><h1>CORONA COMPLEET</h1></a>
+			<a href="index.php"><h1>CORONA COMPLEET</h1></a>
 			
 			<div class="hamburger-menu">
 				<i class="fa fa-bars burger" onclick="burgerMenu()"></i>
@@ -34,21 +29,18 @@ if (empty($_SESSION['gebruikersnaam'])){
 				
 			<nav>
 				<ul class="nav-list">
-					<li><a href="index.html" class="selected">Home</a></li>
-					<li><a href="pagina/producten.html">Informatie</a>
+					<li><a href="index.php" class="selected">Home</a></li>
+					<li><a href="pagina/producten.php">Producten</a>
 						<ul class="dropdown">
-							<li><a href='pagina/mondkapjeProduct.html'>Mondkap</a></li>
-							<li><a href='pagina/handschoenProduct.html'>handschoen</a></li>
-							<li><a href='pagina/testProduct.html'>tester</a></li>
-							<li><a href='pagina/desinfectieProduct.html'>desinfectie</a></li>
+							<li><a href='pagina/mondkapjeProduct.php'>Mondkap</a></li>
+							<li><a href='pagina/handschoenProduct.php'>handschoen</a></li>
+							<li><a href='pagina/testProduct.php'>tester</a></li>
+							<li><a href='pagina/desinfectieProduct.php'>desinfectie</a></li>
 						</ul>
 					</li>
-				<li><a href="index.php">Webshop</a></li>
-				<li><a href="bestellen.php" class="selected">Bestellen</a></li>
-				<li><a href="winkelmand.php">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
-				<li><a href="mijngegevens.php">Mijn gegevens</a></li>
-				<li><a href="proberen.php">proberen</a></li> 
-				<li><a href="voorraad.php">voorraad</a></li>
+					<li><a href="pagina/webshop.php">Webshop</a></li>
+					<li><a href="pagina/aboutus.php">About us</a></li>
+					<li><a href="pagina/contact.php">Contact</a></li>
 				</ul>
 			</nav>
 
@@ -93,10 +85,10 @@ if (empty($_SESSION['gebruikersnaam'])){
 			<div class="col-xl-4 col-lg-6 col-md-12 main bordermain3">
 			<h2>Wat kunnen we zelf</h2>	
 			<p>Natuurlijk kunnen we zelf ook dingen doen om onszelf en mensen om ons heen te beschermen. We moeten afstand houden, geen drukke plekken opzoeken en we kunnen beschermingsmiddelen gebruiken.
-				Wat van die beschermingsmiddelen kunt u in onze <a href="pagina/webshop.html">webshop</a> vinden. </p>
+				Wat van die beschermingsmiddelen kunt u in onze <a href="pagina/webshop.php">webshop</a> vinden. </p>
 				
 							
-			<p><a href="pagina/webshop.html" class="button" >Webshop</a></p></div>
+			<p><a href="pagina/webshop.php" class="button" >Webshop</a></p></div>
 		</div>
 
 

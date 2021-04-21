@@ -11,13 +11,13 @@ INSERT INTO `werknemers`(`personeelsnummer`, `naam`, `adres`, `postcode`, `woonp
 
 -- INSERT data `producten`
 INSERT INTO `producten` (`productnummer`, `naam`, `prijs`, `image`, `voorraad`) VALUES
-('1', 'Mondkap zwart', '39.95', 'image/zwart1.png', 100 ),
-('2', 'Mondkap blauw', '39.95', 'image/blauw1.png', 100),
-('3', 'Mondkap roze', '39.95', 'image/roze1.png', 100),
-('4', 'Mondkap groen', '39.95', 'image/groen1.png', 100),
-('5', 'Handschoen', '25.95', 'image/handschoen1.jpeg', 100),
-('6', 'Desinfectie', '159.95', 'image/desinfectie1.jpg', 100),
-('7', 'Sneltest', '59.95', 'image/testPic1b.jpeg', 100);
+('1', 'Mondkap zwart', '39.95', 'img/zwart1.png', 100 ),
+('2', 'Mondkap blauw', '39.95', 'img/blauw1.png', 100),
+('3', 'Mondkap roze', '39.95', 'img/roze1.png', 100),
+('4', 'Mondkap groen', '39.95', 'img/groen1.png', 100),
+('5', 'Handschoen', '25.95', 'img/handschoen1.jpeg', 100),
+('6', 'Desinfectie', '159.95', 'img/desinfectie1.jpg', 100),
+('7', 'Sneltest', '59.95', 'img/testPic1b.jpeg', 100);
 
 -- INSERT data `klanten`
 INSERT INTO `klanten`(`email`, `naam`, `adres`, `postcode`, `woonplaats`,`gebruikersnaam`, `telefoonnummer`, `wachtwoord`) VALUES 

@@ -1,3 +1,7 @@
+<?php
+?>
+
+
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -17,7 +21,7 @@
 
 <div class="container">
 	<header>
-		<a href="../index.html"><h1>CORONA COMPLEET</h1></a>
+		<a href="../index.php"><h1>CORONA COMPLEET</h1></a>
 	
 		<div class="hamburger-menu">
 			<i class="fa fa-bars burger" onclick="burgerMenu()"></i>
@@ -26,18 +30,18 @@
 
 		<nav>
 			<ul class="nav-list">
-				<li><a href="../index.html">Home</a></li>
-				<li><a href="producten.html">Producten</a>
+				<li><a href="../index.php">Home</a></li>
+				<li><a href="producten.php">Producten</a>
 					<ul class = "dropdown">
-						<li><a href='mondkapjeProduct.html'>Mondkap</a></li>
-						<li><a href='handschoenProduct.html'>handschoen</a></li>
-						<li><a href='testProduct.html'>tester</a></li>
-						<li><a href='desinfectieProduct.html'>desinfectie</a></li>
+						<li><a href='mondkapjeProduct.php'>Mondkap</a></li>
+						<li><a href='handschoenProduct.php'>handschoen</a></li>
+						<li><a href='testProduct.php'>tester</a></li>
+						<li><a href='desinfectieProduct.php'>desinfectie</a></li>
 					</ul>
 				</li>
-				<li><a href="webshop.html">Webshop</a></li>
-				<li><a href="aboutus.html" class="selected">About us</a></li>
-				<li><a href="contact.html">Contact</a></li>
+				<li><a href="webshop.php">Webshop</a></li>
+				<li><a href="aboutus.php" class="selected">About us</a></li>
+				<li><a href="contact.php">Contact</a></li>
 			</ul>
 		</nav>
 		
@@ -55,17 +59,17 @@
 			Wij hebben met 4 personen, door gebrek aan kwalitiatief goede beschermingsmiddelen, besloten een website te maken waar je terecht kan voor diverse beschermingsmiddelen.   
 		</p>
 		<p>
-			Wij zijn voor u op zoek gegaan naar het beste wat op dit moment op de markt te koop is en hebben dit voor u beschikbaar gemaakt in onze <a href="webshop.html">webshop.</a> Wij zorgen ervoor dat we de laatste ontwikkelingen goed in de gaten houden en indien er betere kwaliteit beschermingsmiddelen op de markt komen zullen we dit ook gelijk weten en zo spoedig mogelijk via hier aanbieden.
+			Wij zijn voor u op zoek gegaan naar het beste wat op dit moment op de markt te koop is en hebben dit voor u beschikbaar gemaakt in onze <a href="webshop.php">webshop.</a> Wij zorgen ervoor dat we de laatste ontwikkelingen goed in de gaten houden en indien er betere kwaliteit beschermingsmiddelen op de markt komen zullen we dit ook gelijk weten en zo spoedig mogelijk via hier aanbieden.
 		</p>
 		<p>
-			Als u vragen heeft over onze producten, levering of andere vragen kunt u altijd <a href="contact.html">contact</a> met ons opnemen.
+			Als u vragen heeft over onze producten, levering of andere vragen kunt u altijd <a href="contact.php">contact</a> met ons opnemen.
 		</p>
 		<p><a href="mailto:coronacompleet@blabla.nl?Subject=Informatie%20CoronaCompleet" class="button" >Coronacompleet@blabla.nl</a></p>
 		
 		</div>
 		
 		<div class="col-xl-6 col-lg-6 col-md-12 main">
-			<a href="producten.html"><img src="https://media.giphy.com/media/UKpjTejsSpYDPyPkEW/giphy.gif" class= "rounded" alt="gifMondkapje"> 
+			<a href="producten.php"><img src="https://media.giphy.com/media/UKpjTejsSpYDPyPkEW/giphy.gif" class= "rounded" alt="gifMondkapje"> 
 		</a>
 		</div>
 	</div>
