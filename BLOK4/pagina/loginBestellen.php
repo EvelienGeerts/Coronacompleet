@@ -1,14 +1,7 @@
 <?php include('server.php'); ?>
-<DOCTYPE html>
-<html>
-<head>
-    <title>klant registratie systeem</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-    <div class="header">
-    <h2>Login</h2>
-    </div>
+<?php
+ require_once 'header.html';
+ ?>
 
     <form method="post" action="loginBestellen.php">
         <!--display validation errors here -->
@@ -25,7 +18,7 @@
             <button type="submit" name="login2" class="btn">login</button>
         </div>
         <p>
-            Nog geen account?<a href="register.php">Sign up</a>
+            Nog geen account?<a href="pagina/register.php">Sign up</a>
         </p>    
            
     </form>

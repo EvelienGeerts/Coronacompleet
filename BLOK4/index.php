@@ -1,7 +1,3 @@
-<?php
-?>
-
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -41,6 +37,7 @@
 					<li><a href="pagina/webshop.php">Webshop</a></li>
 					<li><a href="pagina/aboutus.php">About us</a></li>
 					<li><a href="pagina/contact.php">Contact</a></li>
+					<li><a href="pagina/mijngegevens.php">Mijn gegevens</a></li>
 				</ul>
 			</nav>
 
@@ -50,6 +47,9 @@
 				</span>
 			</div>
 		</header>
+
+
+
 
 		<div class="row">
 			<div class="col-xl-4 col-lg-6 col-md-12 main">

@@ -99,7 +99,7 @@ if (isset($_POST['register'])){
     if(count($errors)== 0){
         $db = mysqli_connect('localhost', 'root', '', 'coronacompleet');
         $wachtwoord = md5($password_1);//encrypt password before storing in database(veiligheid)
-       $sql = "INSERT INTO klant (naam, adres, postcode, woonplaats, telefoonnummer, gebruikersnaam, email, wachtwoord) VALUES('$naam', '$adres', '$postcode', '$woonplaats', '$telefoonnummer','$gebruikersnaam', '$email','$wachtwoord')"; 
+       $sql = "INSERT INTO klanten (naam, adres, postcode, woonplaats, telefoonnummer, gebruikersnaam, email, wachtwoord) VALUES('$naam', '$adres', '$postcode', '$woonplaats', '$telefoonnummer','$gebruikersnaam', '$email','$wachtwoord')"; 
        mysqli_query($db, $sql);
        $_SESSION['gebruikersnaam'] = $gebruikersnaam;
        $_SESSION['succes'] = "U bent nu ingelogd";  
@@ -131,13 +131,13 @@ if (isset($_POST['login'])){
 */
     if(count($errors)== 0){
         $wachtwoord = md5($wachtwoord); //encrypt password before comparing with database
-        $query = "SELECT * FROM klant WHERE gebruikersnaam= '$gebruikersnaam'AND wachtwoord='$wachtwoord'";
+        $query = "SELECT * FROM klanten WHERE gebruikersnaam= '$gebruikersnaam'AND wachtwoord='$wachtwoord'";
         $result = mysqli_query($db, $query);
         if (mysqli_num_rows($result) == 1){
             //log klant in
             $_SESSION['gebruikersnaam'] = $gebruikersnaam;
             $_SESSION['succes'] = "U bent nu ingelogd";
-            header('location: ../pagina/mijngegevens.php');//redirect to home page
+            header('location: mijngegevens.php');//redirect to home page
         }else{
             array_push($errors, "De gebruikersnaam/wachtwoord is niet correct");//doet het niet
             header('location: ../pagina/login.php'); 
