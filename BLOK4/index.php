@@ -35,6 +35,8 @@
 						</ul>
 					</li>
 					<li><a href="pagina/webshop.php">Webshop</a></li>
+					<li><a href="pagina/bestellen.php">Bestellen</a></li>
+					<li><a href="pagina/winkelmand.php" class="selected">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
 					<li><a href="pagina/aboutus.php">About us</a></li>
 					<li><a href="pagina/contact.php">Contact</a></li>
 					<li><a href="pagina/mijngegevens.php">Mijn gegevens</a></li>

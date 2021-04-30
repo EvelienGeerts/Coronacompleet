@@ -1,57 +1,7 @@
 <?php
+ require_once 'header.html';
 ?>
 
-
-<!DOCTYPE html>
-<html lang="nl">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="description" content="Coronacompleet. Informatie over onze desinfectie dispensor met slimme sensor">
-  <meta name="keywords" content="coronacompleet, corona, COVID-19, beschermingsmiddelen, handschoenen, mondkapje, desinfectie, test, webshop">
-  <title>CORONA COMPLEET</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../css/bootstrap.css">
-  <link rel="stylesheet" href="../css/bootstrap-grid.css">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="icon" href="../img/favicon.png" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
-
-</head>
-<body>
-  <div class="container">
-    <header>
-      <a href="../index.php">
-        <h1>CORONA COMPLEET</h1>
-      </a>
-
-      <div class="hamburger-menu">
-        <i class="fa fa-bars burger" onclick="burgerMenu()"></i>
-        <i class="fa fa-times burger" onclick="burgerMenu()"></i>
-      </div>
-
-      <nav>
-        <ul class="nav-list">
-          <li><a href="../index.php">Home</a></li>
-          <li><a href="producten.php" class="selected">Producten</a>
-            <ul class="dropdown">
-              <li><a href='mondkapjeProduct.php'>Mondkap</a></li>
-              <li><a href='handschoenProduct.php'>handschoen</a></li>
-              <li><a href='testProduct.php'>tester</a></li>
-              <li><a href='desinfectieProduct.php'>desinfectie</a></li>
-            </ul>
-          </li>
-          <li><a href="webshop.php">Webshop</a></li>
-          <li><a href="aboutus.php">about us</a></li>
-          <li><a href="contact.php">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="banner">
-        <span class="spanwrap">
-          Bescherm andere en uzelf met de veiligste en beste kwaliteit producten.
-        </span>
-      </div>
-    </header>
     <div class="row">
     <div class="container slideImages">
       <div class="complete-slider-wrapper">

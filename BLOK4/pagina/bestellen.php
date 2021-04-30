@@ -22,6 +22,7 @@ if (empty($_SESSION['gebruikersnaam'])){
 	}
 	$allItems = implode(', ', $items);
 ?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
