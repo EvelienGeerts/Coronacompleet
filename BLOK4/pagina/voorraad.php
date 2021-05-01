@@ -1,9 +1,7 @@
-<?php include('../models/server.php'); ?>
-<?php
-	require '../models/config.php';?>
-<?php
- require_once 'header.html';
- ?>
+<?php include('../models/server.php');
+	require '../models/config.php';
+ 	require_once 'header.html';
+?>
 
     <body>
 	<form action="" method="post" id="voorraad">
