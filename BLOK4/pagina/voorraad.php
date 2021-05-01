@@ -6,6 +6,7 @@
  ?>
 
     <body>
+	<form action="" method="post" id="voorraad">
 <table>
 
 <tr>
@@ -19,20 +20,20 @@
 
 <?php
 
-$sql = "SELECT id, product_naam, voorraad_aantal FROM producten";
+$sql = "SELECT productnummer, naam, voorraad FROM producten";
 $result = $conn-> query($sql);
 
 $array = array();
 
 if ($result-> num_rows > 0){
 	while ($row = $result -> fetch_assoc()) {
-		$product = "product" . $row['id'];
+		$product = "product" . $row['productnummer'];
 		echo "<tr>
-		<td>" . $row['id'] . "</td>
-		<td>" . $row['product_naam'] . "</td>
-		<td>" . $row['voorraad_aantal'] . "</td>
-		<td><input type='text' name ='".$product."' placeholder = '".$row['product_naam']."'></td>" ;
-		$array[$row['id']] = $product;
+		<td>" . $row['productnummer'] . "</td>
+		<td>" . $row['naam'] . "</td>
+		<td>" . $row['voorraad'] . "</td>
+		<td><input type='text' name ='".$product."' placeholder = '".$row['naam']."'></td>" ;
+		$array[$row['productnummer']] = $product;
 
 	}
 }
@@ -56,7 +57,7 @@ if (isset($_POST['update']))
 	foreach ($array as $key => $value) {
 		if(isset($_POST[$value]) && $_POST[$value] != '')
 		{
-			$query .= "UPDATE producten SET voorraad_aantal = voorraad_aantal + " . $_POST[$value]. " where id = " . $key . ";";
+			$query .= "UPDATE producten SET voorraad = voorraad + " . $_POST[$value]. " where productnummer = " . $key . ";";
 		}
 	}
 	$query_result = mysqli_multi_query($connection, $query);
