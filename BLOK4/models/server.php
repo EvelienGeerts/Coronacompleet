@@ -99,7 +99,7 @@ if (isset($_POST['register'])){
     if(count($errors)== 0){
         $db = mysqli_connect('localhost', 'root', '', 'coronacompleet');
         $wachtwoord = md5($password_1);//encrypt password before storing in database(veiligheid)
-       $sql = "INSERT INTO klanten (naam, adres, postcode, woonplaats, telefoonnummer, gebruikersnaam, email, wachtwoord) VALUES('$naam', '$adres', '$postcode', '$woonplaats', '$telefoonnummer','$gebruikersnaam', '$email','$wachtwoord')"; 
+       $sql = "INSERT INTO klanten (email, naam, adres, postcode, woonplaats, gebruikersnaam, telefoonnummer, wachtwoord) VALUES('$email', '$naam', '$adres', '$postcode', '$woonplaats', '$gebruikersnaam', '$telefoonnummer', '$wachtwoord')"; 
        mysqli_query($db, $sql);
        $_SESSION['gebruikersnaam'] = $gebruikersnaam;
        $_SESSION['succes'] = "U bent nu ingelogd";  
