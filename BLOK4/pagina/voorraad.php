@@ -66,3 +66,28 @@ if (isset($_POST['update']))
 ?>
 
 
+<?php 
+
+	if(isset($_POST['zoeken'])){
+	$zoekquery = $_POST['zoeken'];
+	$zoekquery = preg_replace("#[^0-9a-z]#i","","$zoekquery");
+	$output = '';
+	$query = "SELECT * from producten WHERE productnummer LIKE '%$zoekquery%' or prijs LIKE '%$zoekquery%'";
+	$count = mysqli_num_rows($query);
+	if($count == 0){
+		$output = 'Geen zoekresultaat';
+	}else{
+		while($row=mysql_fetch_array($query)){
+			$prNaam = $row['productnaam'];
+			$prPrijs = $row['prijs'];
+			$output .= "<div>.$prNaam.' '.$prPrijs.</div>";
+		}
+	}
+}
+	
+?>
+		<form action = "voorraad.php" method="post">
+			<input type="text" name="zoeken" placeholder= "zoek voor producten"/>
+			<input type="submit" value=">>"/>
+
+		</form>
