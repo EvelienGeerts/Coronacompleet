@@ -1,6 +1,6 @@
 <?php
  require_once 'header.html';
- ?>
+?>
 
       <div class="container slideImages">
         <div class="complete-slider-wrapper">

@@ -1,5 +1,5 @@
 <?php 
-  include('../models/server.php');
+
   require_once 'header.html';
 ?>
 
@@ -50,6 +50,6 @@
 		<p><strong>CORONA COMPLEET</strong> in partnership with <a href="https://www.u-earth.eu/">U-EARTH</a></p>
 	</footer>	
 </div>
-	
+
 </body>
 </html>

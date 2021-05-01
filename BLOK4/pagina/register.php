@@ -1,8 +1,8 @@
-<?php include('../models/server.php'); ?>
-
-<?php
+<?php include('../models/server.php');
+ 
  require_once 'header.html';
- ?>
+ 
+?>
 	
         <div class="header">
             <h2>Registreer</h2>

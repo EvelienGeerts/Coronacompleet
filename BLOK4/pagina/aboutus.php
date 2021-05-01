@@ -1,6 +1,6 @@
 <?php
  require_once 'header.html';
- ?>
+?>
 	
 	<div class="row">
 		<div class="col-xl-6 col-lg-6 col-md-12 main bordercontact">

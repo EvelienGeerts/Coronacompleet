@@ -1,9 +1,10 @@
-<?php include('../models/server.php');
+<?php include('../models/config.php');
  
+/*
 if (empty($_SESSION['gebruikersnaam'])){
     header('location: login.php');
 }
-
+*/
  require_once 'header.html';
  ?>
 
