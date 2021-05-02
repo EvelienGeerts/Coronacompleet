@@ -1,5 +1,4 @@
 <?php 
-
   require_once 'header.html';
 ?>
 
@@ -19,10 +18,10 @@
             <img src="<?= $row['image'] ?>" class="card-img-top">
             <div class="card-body p-1">
               <h4 class="card-title text-center text-info"><?= $row['naam'] ?></h4>
-              <h5 class="card-text text-center"><i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?= number_format($row['prijs'],2)?></h5>
+              <h5 class="card-text text-center"><i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?= number_format($row['prijs'],2)?></h5> 
             </div>
             <div class="card-footer p-1">
-              <form actie="" class="form-submit">
+              <form action="../models/toevoegen.php" class="form-submit">
                 <div class="row p-2">
                   <div class="col-md-6 py-1 pl-4">
                     <b>Aantal: </b>
