@@ -2,6 +2,8 @@
 
 include('../models/config.php');
  
+
+
 /*
 if (empty($_SESSION['gebruikersnaam'])){
     header('location: login.php');
@@ -37,14 +39,14 @@ session_start();
                 </td>
               </tr>
               <tr>
-                <th>Productnummer</th>
+                <th>P nr.</th>
                 <th>Image</th>
                 <th>Naam</th>
                 <th>Prijs</th>
                 <th>Aantal</th>
                 <th>Totaal Prijs</th>
                 <th>
-                  <a href="actie.php?clear=all" class="badge-danger badge p-1" onclick="return confirm('Winkelmand verwijderen?');"><i class="fas fa-trash"></i>&nbsp;&nbsp;Verwijder</a>
+                  <a href="../models/actie.php?clear=all" class="badge-danger badge p-1" onclick="return confirm('Winkelmand verwijderen?');"><i class="fas fa-trash"></i>&nbsp;&nbsp;Verwijder</a>
                 </th>
               </tr>
             </thead>
@@ -71,11 +73,12 @@ session_start();
                 <td>
 									<i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?= number_format($row['prijs'] * $row['aantal'],2); ?>
 								</td>
+                <td>
                 <input type="hidden" class="pprijs" value="<?= $row['prijs'] ?>">
-                  <a href="actie.php?remove=<?= $row['productnummer'] ?>" class="text-danger lead" onclick="return confirm('Weet u zeker dat u dit artikel wilt verwijderen?');"><i class="fas fa-trash-alt"></i></a>
+                  <a href="../models/actie.php?remove=<?= $row['productnummer'] ?>" class="text-danger lead" onclick="return confirm('Weet u zeker dat u dit artikel wilt verwijderen?');"><i class="fas fa-trash-alt"></i></a>
                 </td>
               </tr>
-              <?php $grand_total += $row['totaal_prijs']; ?>
+
               <?php endwhile; ?>
               <tr>
                 <td colspan="3">

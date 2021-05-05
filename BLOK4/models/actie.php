@@ -47,12 +47,12 @@
 	  echo $rows;
 	}
 
-	// Remove single items from winkelmand
+	// !!WERKT!! Remove single items from winkelmand
 	if (isset($_GET['remove'])) {
-	  $id = $_GET['remove'];
+	  $productnummer = $_GET['remove'];
 
-	  $stmt = $conn->prepare('DELETE FROM winkelmand WHERE id=?');
-	  $stmt->bind_param('i',$id);
+	  $stmt = $conn->prepare('DELETE FROM winkelmand WHERE productnummer=?');
+	  $stmt->bind_param('i',$productnummer);
 	  $stmt->execute();
 
 	  $_SESSION['showAlert'] = 'block';
@@ -60,7 +60,7 @@
 	  header('location:../pagina/winkelmand.php');
 	}
 
-	// Remove all items at once from winkelmand
+	// !!WERKT!! Remove all items at once from winkelmand
 	if (isset($_GET['clear'])) {
 	  $stmt = $conn->prepare('DELETE FROM winkelmand');
 	  $stmt->execute();
