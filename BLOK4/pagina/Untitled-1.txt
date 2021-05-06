@@ -1,0 +1,11 @@
+<?php
+
+session_start();
+
+//SELECT * FROM User WHERE Username = $_POST['username'] AND Password = $_POST['password']
+
+$result = [gegevens van de user]
+
+$_SESSION['username'] = $result['username'];
+$_SESSION['id'] = $result['id'];
+$_SESSION['role'] = $result['role'];

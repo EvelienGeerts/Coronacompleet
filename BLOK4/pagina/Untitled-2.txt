@@ -1,0 +1,10 @@
+<?php
+
+session_start();
+
+if($_SESSION['role'] == 'werknemer')
+{
+    ?>
+    aklsjdflasdjf
+    <?php
+}

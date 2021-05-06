@@ -65,3 +65,11 @@ CREATE TABLE `werknemers` (
   `wachtwoord` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`personeelsnummer`)
 );
+
+CREATE TABLE `zoekGeschiedenis` (
+  `zoekterm` VARCHAR(10) NOT NULL,
+  `datum` DATETIME(6) ,
+  `gebruiker` VARCHAR(25),
+  `zoekID` INT(10)AUTO_INCREMENT,
+  PRIMARY KEY (`zoekID`)
+);
