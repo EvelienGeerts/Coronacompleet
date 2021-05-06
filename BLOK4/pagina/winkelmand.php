@@ -9,7 +9,7 @@ if (empty($_SESSION['gebruikersnaam'])){
     header('location: login.php');
 }
 */
- require_once 'header.html';
+ require_once 'header.php';
  
  
 // cart.php
@@ -78,7 +78,10 @@ session_start();
                   <a href="../models/actie.php?remove=<?= $row['productnummer'] ?>" class="text-danger lead" onclick="return confirm('Weet u zeker dat u dit artikel wilt verwijderen?');"><i class="fas fa-trash-alt"></i></a>
                 </td>
               </tr>
-              <?php $grand_total += $tprijs; ?>      
+            
+              <?php // nog niet goed
+              $grand_total = $row['aantal']; 
+              ?>      
               <?php endwhile; ?>
               <tr>
                 <td colspan="3">

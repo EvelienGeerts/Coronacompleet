@@ -22,11 +22,17 @@
 				<i class="fa fa-bars burger" onclick="burgerMenu()"></i>
 				<i class="fa fa-times burger" onclick="burgerMenu()"></i>	
 			</div>
-				
+
+<?php
+/* Nog uitzoeken waarom alleen class=select op ABOUT us page werkt! 
+en voledige href paden er inzetten zoals bijvoorbeeld
+https://localhost/git-coronacompleet/BLOK4/pagina/webshop.php 
+*/
+?>	
 			<nav>
 				<ul class="nav-list">
-					<li><a href="../index.php" class="selected">Home</a></li>
-					<li><a href="producten.php">Producten</a>
+					<li><a href="../index.php"<?php if(isset($page) && $page == "index") echo " class='selected'";?>>Home</a></li>
+					<li><a href="producten.php"<?php if(isset($page) && $page == "producten") echo " class='selected'";?>>Producten</a>
 						<ul class="dropdown">
 							<li><a href='mondkapjeProduct.php'>Mondkap</a></li>
 							<li><a href='handschoenProduct.php'>handschoen</a></li>
@@ -34,12 +40,12 @@
 							<li><a href='desinfectieProduct.php'>desinfectie</a></li>
 						</ul>
 					</li>
-					<li><a href="webshop.php">Webshop</a></li>
-					<li><a href="voorraad.php">Voorraad</a></li>
-					<li><a href="winkelmand.php">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
-					<li><a href="aboutus.php" <?php if( $page == 'aboutus' ) echo 'class="selected";' ?>  >About us</a></li>
-					<li><a href="contact.php">Contact</a></li>
-					<li><a href="mijngegevens.php">Mijn gegevens</a></li>
+					<li><a href="webshop.php"<?php if(isset($page) && $page == "webshop") echo ' class="selected"';?>>Webshop</a></li>
+					<li><a href="voorraad.php"<?php if(isset($page) && $page == "voorraad") echo " class='selected'";?>>Voorraad</a></li>
+					<li><a href="winkelmand.php"<?php if(isset($page) && $page == "winkelmand") echo " class='selected'";?>>Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
+					<li><a href="aboutus.php"<?php if(isset($page) && $page == "aboutus") echo " class='selected'";?>>About us</a></li>
+					<li><a href="contact.php"<?php if(isset($page) && $page == "contact") echo " class='selected'";?>>Contact</a></li>
+					<li><a href="mijngegevens.php"<?php if(isset($page) && $page == "mijngegevens") echo " class='selected'";?>>Mijn gegevens</a></li>
 				</ul>
 			</nav>
 
