@@ -12,16 +12,15 @@
       "type": "php",
       "request": "launch",
       "port": 9000,
-      "runtimeExecutable": "C:\\xampp\\php\\php.exe"
     },
     {
       "name": "Launch currently open script",
       "type": "php",
       "request": "launch",
+      "runtimeExecutable":"C:\\xampp\\php\\php.exe",
       "program": "${file}",
       "cwd": "${fileDirname}",
       "port": 9000,
-      "runtimeExecutable": "C:\\xampp\\php\\php.exe"
     }
   ]
 }
