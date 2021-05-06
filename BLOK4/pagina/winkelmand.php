@@ -78,7 +78,7 @@ session_start();
                   <a href="../models/actie.php?remove=<?= $row['productnummer'] ?>" class="text-danger lead" onclick="return confirm('Weet u zeker dat u dit artikel wilt verwijderen?');"><i class="fas fa-trash-alt"></i></a>
                 </td>
               </tr>
-
+              <?php $grand_total += $tprijs; ?>      
               <?php endwhile; ?>
               <tr>
                 <td colspan="3">
