@@ -1,4 +1,7 @@
 <?php
+
+$page = 'aboutus';
+
  require_once 'header.html';
 ?>
 	

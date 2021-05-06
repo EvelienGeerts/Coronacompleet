@@ -113,6 +113,20 @@ document.getElementById("rozeButton").onclick = function() {
 };
 
 /********************
+ ** Auto color pro **
+ *******************/
+if ( (window.location.href).indexOf('color=blue') > -1)
+{
+    ShowOrHideElements("blauw", "initial");
+    ShowOrHideElements("zwart", "none");
+    ShowOrHideElements("groen", "none");
+    ShowOrHideElements("roze", "none");
+    currentSlide(0);
+}
+
+
+
+/********************
  ** hamburger-menu **
  *******************/
 
