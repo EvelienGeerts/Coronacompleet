@@ -1,4 +1,5 @@
 <?php 
+  $page = 'webshop';
   require_once 'header.php';
 
 ?>

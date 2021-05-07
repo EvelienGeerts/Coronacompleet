@@ -31,21 +31,21 @@ https://localhost/git-coronacompleet/BLOK4/pagina/webshop.php
 ?>	
 			<nav>
 				<ul class="nav-list">
-					<li><a href="../index.php"<?php if(isset($page) && $page == "index") echo " class='selected'";?>>Home</a></li>
-					<li><a href="producten.php"<?php if(isset($page) && $page == "producten") echo " class='selected'";?>>Producten</a>
+					<li><a href="https://localhost/git-coronacompleet/BLOK4/index.php"<?php if(isset($page) && $page == "index") echo " class='selected'";?>>Home</a></li>
+					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/producten.php"<?php if(isset($page) && $page == "producten") echo " class='selected'";?>>Producten</a>
 						<ul class="dropdown">
-							<li><a href='mondkapjeProduct.php'>Mondkap</a></li>
-							<li><a href='handschoenProduct.php'>handschoen</a></li>
-							<li><a href='testProduct.php'>tester</a></li>
-							<li><a href='desinfectieProduct.php'>desinfectie</a></li>
+							<li><a href='https://localhost/git-coronacompleet/BLOK4/pagina/mondkapjeProduct.php'>Mondkap</a></li>
+							<li><a href='https://localhost/git-coronacompleet/BLOK4/pagina/handschoenProduct.php'>handschoen</a></li>
+							<li><a href='https://localhost/git-coronacompleet/BLOK4/pagina/testProduct.php'>tester</a></li>
+							<li><a href='https://localhost/git-coronacompleet/BLOK4/pagina/desinfectieProduct.php'>desinfectie</a></li>
 						</ul>
 					</li>
-					<li><a href="webshop.php"<?php if(isset($page) && $page == "webshop") echo ' class="selected"';?>>Webshop</a></li>
-					<li><a href="voorraad.php"<?php if(isset($page) && $page == "voorraad") echo " class='selected'";?>>Voorraad</a></li>
-					<li><a href="winkelmand.php"<?php if(isset($page) && $page == "winkelmand") echo " class='selected'";?>>Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
-					<li><a href="aboutus.php"<?php if(isset($page) && $page == "aboutus") echo " class='selected'";?>>About us</a></li>
-					<li><a href="contact.php"<?php if(isset($page) && $page == "contact") echo " class='selected'";?>>Contact</a></li>
-					<li><a href="mijngegevens.php"<?php if(isset($page) && $page == "mijngegevens") echo " class='selected'";?>>Mijn gegevens</a></li>
+					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/webshop.php"<?php if(isset($page) && $page == "webshop") echo ' class="selected"';?>>Webshop</a></li>
+					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/voorraad.php"<?php if(isset($page) && $page == "voorraad") echo " class='selected'";?>>Voorraad</a></li>
+					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/winkelmand.php"<?php if(isset($page) && $page == "winkelmand") echo " class='selected'";?>>Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
+					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/aboutus.php"<?php if(isset($page) && $page == "aboutus") echo " class='selected'";?>>About us</a></li>
+					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/contact.php"<?php if(isset($page) && $page == "contact") echo " class='selected'";?>>Contact</a></li>
+					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php"<?php if(isset($page) && $page == "mijngegevens") echo " class='selected'";?>>Mijn gegevens</a></li>
 				</ul>
 			</nav>
 

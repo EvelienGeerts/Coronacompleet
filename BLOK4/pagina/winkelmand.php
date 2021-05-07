@@ -1,4 +1,5 @@
 <?php 
+$page = 'winkelmand';
 
 include('../models/config.php');
  

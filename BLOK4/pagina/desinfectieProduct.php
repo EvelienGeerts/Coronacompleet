@@ -1,4 +1,5 @@
 <?php
+ $page = 'producten';
  require_once 'header.php';
 ?>
 

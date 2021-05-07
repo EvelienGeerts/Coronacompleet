@@ -1,4 +1,6 @@
 <?php
+$page = 'bestellen';
+
 include('../models/server.php'); 
      
 //if klant is not logged in, they cannot access this page (optie, kan zo weg)

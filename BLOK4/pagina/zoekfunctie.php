@@ -1,4 +1,5 @@
-<?php 
+<?php
+$page = 'zoekfunctie'; 
 include('../models/server.php');
 require '../models/config.php';
 require_once 'header.php';?>
