@@ -84,7 +84,7 @@ session_start();
               ?>
 
               <?php // nog niet goed
-              $grand_total = $row['aantal']; 
+              //$grand_total = $row['aantal']; 
               ?>      
               <?php // endwhile; ?>
               <tr>

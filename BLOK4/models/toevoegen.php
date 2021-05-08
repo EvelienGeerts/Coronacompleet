@@ -11,9 +11,7 @@
     $tprijs = $aantal * $pprijs;
 
 	  $stmt = $conn->prepare("INSERT INTO winkelmand (email, productnummer, aantal) VALUES (?,?,?) ON DUPLICATE KEY UPDATE aantal = aantal + {$aantal};");
-    $stmt->bind_param("sii", $email, $productnummer, $aantal);
-    $stmt->execute();
-  
+    $stmt->execute([$email, $productnummer, $aantal]);
   }
 
   	// Set total price of the product in the winkelmand table

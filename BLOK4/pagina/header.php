@@ -26,12 +26,6 @@
 				<i class="fa fa-times burger" onclick="burgerMenu()"></i>	
 			</div>
 
-<?php
-/* Nog uitzoeken waarom alleen class=select op ABOUT us page werkt! 
-en voledige href paden er inzetten zoals bijvoorbeeld
-https://localhost/git-coronacompleet/BLOK4/pagina/webshop.php 
-*/
-?>	
 			<nav>
 				<ul class="nav-list">
 					<li><a href="https://localhost/git-coronacompleet/BLOK4/index.php"<?php if(isset($page) && $page == "index") echo " class='selected'";?>>Home</a></li>

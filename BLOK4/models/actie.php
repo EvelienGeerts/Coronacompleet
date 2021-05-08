@@ -51,8 +51,8 @@
 	if (isset($_GET['remove'])) {
 	  $productnummer = $_GET['remove'];
 
-	  $stmt = $conn->prepare('DELETE FROM winkelmand WHERE productnummer=?');
-	  $stmt->bind_param('i',$productnummer);
+	  $stmt = $conn->prepare('DELETE FROM winkelmand WHERE productnummer= :productnummer');
+	  $stmt->bindValue(':productnummer',$productnummer);
 	  $stmt->execute();
 
 	  $_SESSION['showAlert'] = 'block';
