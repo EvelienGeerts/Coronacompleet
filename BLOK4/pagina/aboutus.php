@@ -22,7 +22,7 @@ $page = 'aboutus';
 		</div>
 		
 		<div class="col-xl-6 col-lg-6 col-md-12 main">
-			<a href="producten.php"><img src="https://media.giphy.com/media/UKpjTejsSpYDPyPkEW/giphy.gif" class= "rounded" alt="gifMondkapje"> 
+			<a href="producten.php"><img src="https://media.giphy.com/media/UKpjTejsSpYDPyPkEW/giphy.gif" class= "rounded" alt="gifmondkap"> 
 		</a>
 		</div>
 	</div>

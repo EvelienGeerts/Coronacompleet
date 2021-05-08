@@ -481,7 +481,7 @@ button.button {
 	height: 350px;
 }
 	
-.textWrapperMondKapje{
+.textWrapperMondKap{
 	position: absolute;
 	top: 80px;
 	right: 0;
@@ -649,7 +649,7 @@ button.button {
 */
 
 @media (max-width: 992px) {
-	.textWrapperDesinfectie, .textWrapperHandschoen, .textWrapperTest, .textWrapperMondKapje{
+	.textWrapperDesinfectie, .textWrapperHandschoen, .textWrapperTest, .textWrappermondkap{
 		position:initial;
 		top:auto;
 		left:auto;
@@ -673,7 +673,7 @@ button.button {
 		max-width:auto;
 	}
 
-	.complete-slider-wrapper .textWrapperTest, .complete-slider-wrapper .textWrapperMondKapje, .complete-slider-wrapper .textWrapperHandschoen {
+	.complete-slider-wrapper .textWrapperTest, .complete-slider-wrapper .textWrappermondkap, .complete-slider-wrapper .textWrapperHandschoen {
 		flex:0 0 100%;
 		max-width:none;
 		order:3;

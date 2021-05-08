@@ -29,8 +29,8 @@ if (empty($_SESSION['gebruikersnaam'])){
 <html lang="nl">
 <head>
 	<meta charset="utf-8" />
-	<meta name="description" content="Coronacompleet. De beste webshop voor mondkapjes, handschoenen, testen en desinfectie">
-	<meta name="keywords" content="coronacompleet, corona, COVID-19, beschermingsmiddelen, handschoenen, mondkapje, desinfectie, test, webshop">
+	<meta name="description" content="Coronacompleet. De beste webshop voor mondkaps, handschoenen, testen en desinfectie">
+	<meta name="keywords" content="coronacompleet, corona, COVID-19, beschermingsmiddelen, handschoenen, mondkap, desinfectie, test, webshop">
 	<title>CORONA COMPLEET</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">	
 	<link rel="stylesheet" href="../css/bootstrap.css">

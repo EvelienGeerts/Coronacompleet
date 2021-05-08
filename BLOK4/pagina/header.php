@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="description" content="Coronacompleet. Voor duidelijke informatie en goede kwaliteit veiligheidmiddelen.">
-	<meta name="keywords" content="coronacompleet, corona, COVID-19, beschermingsmiddelen, handschoenen, mondkapje, desinfectie, test, webshop">
+	<meta name="keywords" content="coronacompleet, corona, COVID-19, beschermingsmiddelen, handschoenen, mondkap, desinfectie, test, webshop">
 	<title>CORONA COMPLEET</title>
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
 	<link rel="stylesheet" href="../css/bootstrap.css">
@@ -31,7 +31,7 @@
 					<li><a href="https://localhost/git-coronacompleet/BLOK4/index.php"<?php if(isset($page) && $page == "index") echo " class='selected'";?>>Home</a></li>
 					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/producten.php"<?php if(isset($page) && $page == "producten") echo " class='selected'";?>>Producten</a>
 						<ul class="dropdown">
-							<li><a href='https://localhost/git-coronacompleet/BLOK4/pagina/mondkapjeProduct.php'>Mondkap</a></li>
+							<li><a href='https://localhost/git-coronacompleet/BLOK4/pagina/mondkapProduct.php'>Mondkap</a></li>
 							<li><a href='https://localhost/git-coronacompleet/BLOK4/pagina/handschoenProduct.php'>handschoen</a></li>
 							<li><a href='https://localhost/git-coronacompleet/BLOK4/pagina/testProduct.php'>tester</a></li>
 							<li><a href='https://localhost/git-coronacompleet/BLOK4/pagina/desinfectieProduct.php'>desinfectie</a></li>

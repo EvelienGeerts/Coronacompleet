@@ -36,10 +36,10 @@
 						</a>
 					</div>
 					<div class="Product4">
-						<a href="mondkapjeProduct.php"><img src="../img/product/mondkapje/zwart1.png" class="Images"
-								alt="mondkapjePic">
+						<a href="mondkapProduct.php"><img src="../img/product/mondkap/zwart1.png" class="Images"
+								alt="mondkapPic">
 							<div class="container">
-								<h3><b>Mondkapje</b></h3>
+								<h3><b>Mondkap</b></h3>
 								<p>Verschillende kleuren</p>
 							</div>
 						</a>

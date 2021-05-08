@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="description" content="Coronacompleet. Voor duidelijke informatie en goede kwaliteit veiligheidmiddelen.">
-	<meta name="keywords" content="coronacompleet, corona, COVID-19, beschermingsmiddelen, handschoenen, mondkapje, desinfectie, test, webshop">
+	<meta name="keywords" content="coronacompleet, corona, COVID-19, beschermingsmiddelen, handschoenen, mondkap, desinfectie, test, webshop">
 	<title>CORONA COMPLEET</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--hambuger menu-->
 	<link rel="stylesheet" href="css/bootstrap.css">
@@ -28,7 +28,7 @@
 					<li><a href="index.php" class="selected">Home</a></li>
 					<li><a href="pagina/producten.php">Producten</a>
 						<ul class="dropdown">
-							<li><a href='pagina/mondkapjeProduct.php'>Mondkap</a></li>
+							<li><a href='pagina/mondkapProduct.php'>Mondkap</a></li>
 							<li><a href='pagina/handschoenProduct.php'>handschoen</a></li>
 							<li><a href='pagina/testProduct.php'>tester</a></li>
 							<li><a href='pagina/desinfectieProduct.php'>desinfectie</a></li>
