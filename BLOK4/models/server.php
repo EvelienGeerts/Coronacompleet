@@ -1,4 +1,7 @@
 <?php
+// db connecties uit gecomment 
+
+include('../models/config.php');
 session_start();
 $naam = "";
 $adres = "";
@@ -12,7 +15,8 @@ $password_1 = "";
 $password_2 = "";
 
 //connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'coronacompleet');
+// $db = mysqli_connect('localhost', 'root', '', 'coronacompleet');
+
 
  //maak database aan
 $servername = "localhost";
@@ -20,6 +24,7 @@ $username = "root";
 $password = "";
 $dbname = "coronacompleet";
 
+/* config.php
 try  {
     $conn = new
     PDO("mysql:host=$servername;dbdame=coronacompleet", $username, $password);
@@ -30,6 +35,7 @@ try  {
   } catch(PDOException $e)   {
       echo"Connection failed: " . $e->getMessage();
 }
+*/
 
 
 
@@ -97,7 +103,7 @@ if (isset($_POST['register'])){
 
     //if there are no errors, safe klant to database
     if(count($errors)== 0){
-        $db = mysqli_connect('localhost', 'root', '', 'coronacompleet');
+    // -MOET PDO WORDEN config.php-    $db = mysqli_connect('localhost', 'root', '', 'coronacompleet');
         $wachtwoord = md5($password_1);//encrypt password before storing in database(veiligheid)
        $sql = "INSERT INTO klanten (email, naam, adres, postcode, woonplaats, gebruikersnaam, telefoonnummer, wachtwoord) VALUES('$email', '$naam', '$adres', '$postcode', '$woonplaats', '$gebruikersnaam', '$telefoonnummer', '$wachtwoord')"; 
        mysqli_query($db, $sql);
