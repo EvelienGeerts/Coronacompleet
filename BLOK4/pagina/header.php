@@ -19,7 +19,7 @@
 
 	<div class="container">
 		<header>
-			<a href="../index.php"><h1>CORONA COMPLEET</h1></a>
+			<a href="https://localhost/git-coronacompleet/BLOK4/index.php"><h1>CORONA COMPLEET</h1></a>
 			
 			<div class="hamburger-menu">
 				<i class="fa fa-bars burger" onclick="burgerMenu()"></i>
