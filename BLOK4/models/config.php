@@ -1,6 +1,16 @@
 <?php
-	$conn = new mysqli("localhost","root","","coronacompleet");
-	if($conn->connect_error){
-		die("Connectie Mislukt!".$conn->connect_error);
-	}
+$servername = "localhost";
+$database = "coronacompleet";
+$username = "root";
+$password = "";
+
+try {
+  $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+  // set the PDO error mode to exception
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  echo "";
+} catch(PDOException $e) {
+  echo "Connection failed: " . $e->getMessage();
+}
+
 ?>

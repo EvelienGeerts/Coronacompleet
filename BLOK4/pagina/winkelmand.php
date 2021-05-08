@@ -54,36 +54,39 @@ session_start();
             <tbody>
               <?php
                 require '../models/config.php';
-                $stmt = $conn->prepare('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer');
+                $stmt = $conn->query('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer');
                 $stmt->execute();
-                $result = $stmt->get_result();
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $grand_total = 0;
-                while ($row = $result->fetch_assoc()):
+                foreach($result as $row)
+                {
+                echo 
+                '<tr>
+                  <td>'.$row["productnummer"].'</td>
+                  <input type="hidden" class="productnummer" value="'.$row["productnummer"].'">
+                  <td><img src="'.$row["image"].'" width="50"></td>
+                  <td>'.$row["naam"].'</td>
+                  <td>
+                    <i class="fas fa-euro-sign"></i>&nbsp;&nbsp;'.number_format($row["prijs"],2).'
+                  </td>
+                  <td>
+                    <input type="number" class="form-control itemQty" value="'.$row["aantal"].'" style="width:75px;">
+                  </td>
+                  <td>
+                    <i class="fas fa-euro-sign"></i>&nbsp;&nbsp;'.number_format($row["prijs"] * $row["aantal"],2).'
+                  </td>
+                  <td>
+                  <input type="hidden" class="pprijs" value="'.$row["prijs"].'">
+                    <a href="../models/actie.php?remove='.$row["productnummer"].'" class="text-danger lead" onclick="return confirm("Weet u zeker dat u dit artikel wilt verwijderen?");"><i class="fas fa-trash-alt"></i></a>
+                  </td>
+                </tr>';
+                }
               ?>
-              <tr>
-                <td><?= $row['productnummer'] ?></td>
-                <input type="hidden" class="productnummer" value="<?= $row['productnummer'] ?>">
-                <td><img src="<?= $row['image'] ?>" width="50"></td>
-                <td><?= $row['naam'] ?></td>
-                <td>
-                  <i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?= number_format($row['prijs'],2); ?>
-                </td>
-                <td>
-                  <input type="number" class="form-control itemQty" value="<?= $row['aantal'] ?>" style="width:75px;">
-                </td>
-                <td>
-									<i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?= number_format($row['prijs'] * $row['aantal'],2); ?>
-								</td>
-                <td>
-                <input type="hidden" class="pprijs" value="<?= $row['prijs'] ?>">
-                  <a href="../models/actie.php?remove=<?= $row['productnummer'] ?>" class="text-danger lead" onclick="return confirm('Weet u zeker dat u dit artikel wilt verwijderen?');"><i class="fas fa-trash-alt"></i></a>
-                </td>
-              </tr>
-            
+
               <?php // nog niet goed
               $grand_total = $row['aantal']; 
               ?>      
-              <?php endwhile; ?>
+              <?php // endwhile; ?>
               <tr>
                 <td colspan="3">
                   <a href="webshop.php" class="btn btn-success"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Verder winkelen</a>
