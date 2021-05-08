@@ -1,7 +1,7 @@
 <?php 
  $page = 'voorraad';
 	include('../models/server.php');
-	require '../models/config.php';
+	include('../models/config.php');
  	require_once 'header.php';
 ?>
 
@@ -20,13 +20,21 @@
 
 <?php
 
-$sql = "SELECT productnummer, naam, voorraad FROM producten";
+/*$sql = "SELECT productnummer, naam, voorraad FROM producten";
 $result = $conn-> query($sql);
+
+$stmt = $pdo->query("SELECT * FROM users");
+while ($row = $stmt->fetch()) {
+    echo $row['name']."<br />\n";
+}*/
+$stmt = $conn->prepare("SELECT productnummer, naam, voorraad FROM producten");
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_BOTH);
 
 $array = array();
 
-if ($result-> num_rows > 0){
-	while ($row = $result -> fetch_assoc()) {
+
+foreach ($result as $row) {
 		$product = "product" . $row['productnummer'];
 		echo "<tr>
 		<td>" . $row['productnummer'] . "</td>
@@ -36,7 +44,7 @@ if ($result-> num_rows > 0){
 		$array[$row['productnummer']] = $product;
 
 	}
-}
+
 ?>
 </table>
 <BR>
@@ -62,7 +70,7 @@ if (isset($_POST['update']))
 	}
 	$query_result = mysqli_multi_query($connection, $query);
 
-	header("Refresh:0");
+
 	
 }
 ?>
