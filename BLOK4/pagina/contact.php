@@ -1,5 +1,7 @@
 <?php
- require_once 'header.html';
+ $page = 'contact';
+
+ require_once 'header.php';
  ?>
 
 	<div class="container">

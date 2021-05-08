@@ -1,5 +1,6 @@
 <?php
- require_once 'header.html';
+ $page = 'producten';
+ require_once 'header.php';
 ?>
 
       <div class="container slideImages">

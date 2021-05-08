@@ -1,6 +1,6 @@
 <?php include('../models/server.php');?>
  <?php
- require_once 'header.html';
+ require_once 'header.php';
  
  //session_start();
  ?>

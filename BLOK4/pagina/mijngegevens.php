@@ -1,4 +1,7 @@
-<?php include('../models/server.php'); 
+<?php 
+$page = 'mijngegevens';
+
+include('../models/server.php'); 
      
     //if klant is not logged in, they cannot access this page (optie, kan zo weg)
     if (empty($_SESSION['gebruikersnaam'])){
@@ -6,7 +9,7 @@
     }
 ?>
 <?php
-require_once 'header.html';
+require_once 'header.php';
 ?>
 
     <div class="header">

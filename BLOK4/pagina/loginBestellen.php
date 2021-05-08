@@ -1,6 +1,6 @@
 <?php include('server.php'); ?>
 <?php
- require_once 'header.html';
+ require_once 'header.php';
  ?>
 
     <form method="post" action="loginBestellen.php">

@@ -1,57 +1,9 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-	<meta charset="utf-8" />
-	<meta name="description" content="Coronacompleet. Voor duidelijke informatie en goede kwaliteit veiligheidmiddelen.">
-	<meta name="keywords" content="coronacompleet, corona, COVID-19, beschermingsmiddelen, handschoenen, mondkapje, desinfectie, test, webshop">
-	<title>CORONA COMPLEET</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--hambuger menu-->
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/bootstrap-grid.css">
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="icon" href="img/favicon.png" type="image/x-icon">
-	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
+<?php
 
-	<div class="container">
-		<header>
-			<a href="index.php"><h1>CORONA COMPLEET</h1></a>
-			
-			<div class="hamburger-menu">
-				<i class="fa fa-bars burger" onclick="burgerMenu()"></i>
-				<i class="fa fa-times burger" onclick="burgerMenu()"></i>	
-			</div>
-				
-			<nav>
-				<ul class="nav-list">
-					<li><a href="index.php" class="selected">Home</a></li>
-					<li><a href="pagina/producten.php">Producten</a>
-						<ul class="dropdown">
-							<li><a href='pagina/mondkapjeProduct.php'>Mondkap</a></li>
-							<li><a href='pagina/handschoenProduct.php'>handschoen</a></li>
-							<li><a href='pagina/testProduct.php'>tester</a></li>
-							<li><a href='pagina/desinfectieProduct.php'>desinfectie</a></li>
-						</ul>
-					</li>
-					<li><a href="pagina/webshop.php">Webshop</a></li>
-					<li><a href="pagina/bestellen.php">Bestellen</a></li>
-					<li><a href="pagina/winkelmand.php" class="selected">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
-					<li><a href="pagina/aboutus.php">About us</a></li>
-					<li><a href="pagina/contact.php">Contact</a></li>
-					<li><a href="pagina/mijngegevens.php">Mijn gegevens</a></li>
-				</ul>
-			</nav>
+$page = 'index';
 
-			<div class="banner">
-				<span class="spanwrap">
-					Bescherm andere en uzelf met de veiligste en beste kwaliteit producten.
-				</span>
-			</div>
-		</header>
-
-
-
+ require_once 'pagina/header.php';
+?>
 
 		<div class="row">
 			<div class="col-xl-4 col-lg-6 col-md-12 main">

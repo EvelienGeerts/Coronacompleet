@@ -1,6 +1,8 @@
-<?php include('../models/server.php');
+<?php 
+ $page = 'voorraad';
+	include('../models/server.php');
 	require '../models/config.php';
- 	require_once 'header.html';
+ 	require_once 'header.php';
 ?>
 
     <body>
