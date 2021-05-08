@@ -10,7 +10,7 @@ require_once 'header.html';?>
 
 <?php
 if(isset($_POST['zoeken'])){
-$zoekquery = $_POST['zoeken'];
+$zoekquery = mysqli_real_escape_string($_POST['zoeken']);
 $zoekquery = preg_replace("#[^0-9a-z]#i","","$zoekquery");
 $sql = "SELECT * from producten WHERE naam LIKE '%$zoekquery%' or prijs LIKE '%$zoekquery%'";
 $result = $conn->query($sql);
