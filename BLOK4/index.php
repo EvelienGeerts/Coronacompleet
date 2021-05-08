@@ -2,7 +2,7 @@
 
 $page = 'index';
 
- require_once 'header.php';
+ require_once 'pagina/header.php';
 ?>
 
 		<div class="row">
