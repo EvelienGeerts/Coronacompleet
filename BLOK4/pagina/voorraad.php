@@ -2,6 +2,7 @@
  $page = 'voorraad';
 	include('../models/server.php');
 	include('../models/config.php');
+	include('../models/functions.php');
  	require_once 'header.php';
 ?>
 
@@ -27,9 +28,12 @@ $stmt = $pdo->query("SELECT * FROM users");
 while ($row = $stmt->fetch()) {
     echo $row['name']."<br />\n";
 }*/
-$stmt = $conn->prepare("SELECT productnummer, naam, voorraad FROM producten");
+
+/*$stmt = $conn->prepare("SELECT productnummer, naam, voorraad FROM producten");
 $stmt->execute();
-$result = $stmt->fetchAll(PDO::FETCH_BOTH);
+$result = $stmt->fetchAll(PDO::FETCH_BOTH);*/
+
+$result = FetchQuery($conn, "SELECT productnummer, naam, voorraad FROM producten");
 
 $array = array();
 
@@ -69,9 +73,7 @@ if (isset($_POST['update']))
 		}
 	}
 	$query_result = mysqli_multi_query($connection, $query);
-
-
-	
+	echo "<meta http-equiv='refresh' content='0'>";	
 }
 ?>
 
