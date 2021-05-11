@@ -11,6 +11,7 @@ include('../models/config.php');
 ?>
 <?php
 require_once 'header.php';
+include('../models/functions.php');
 ?>
 
     <div class="header">
@@ -44,11 +45,11 @@ require_once 'header.php';
 
         <?php
 
-
-
+$results = ExecuteQuery($conn, "SELECT * FROM klanten WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'");
+/*
 $sql = "SELECT * FROM klanten WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'";
 $results = $conn->query($sql);
-
+*/
 foreach($results as $row)
 {
     echo $row['gebruikersnaam'] . " " . "<br>". $row['naam'] . " " . "<br>". $row['adres'] . " " . "<br>". $row['postcode'] . " " . "<br>". $row['woonplaats'] . " " . "<br>". $row['telefoonnummer'] . " " . "<br>". $row['gebruikersnaam'] . " "."<br>" . $row['email'];

@@ -12,4 +12,23 @@ try {
 } catch(PDOException $e) {
   echo "Connection failed: " . $e->getMessage();
 }
+
+if (session_status() === PHP_SESSION_NONE) {
+
+  session_start();
+
+}
+
+$naam = "";
+$adres = "";
+$postcode = "";
+$woonplaats = "";
+$telefoonnummer = "";
+$gebruikersnaam = "";
+$email = "";
+$errors = array();
+$password_1 = "";
+$password_2 = "";
+
 ?>
+
