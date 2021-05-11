@@ -1,10 +1,3 @@
-<?php
-
-$page = 'aboutus';
-
- require_once 'header.php';
- 
- ?>
 <?PHP
 # We gaan straks cookies gebruiken, dus ob_start() is vereist!
 ob_start ();
@@ -20,7 +13,7 @@ if (isset ($_POST['kiezen']))
     # Cookie met de gekozen taal met de duur van 1 jaar aanmaken
     setcookie ("taal", $_POST['taalkeuze'], time()+60*60*24*7*52);
     # De pagina moet gerefreshed worden voordat de cookie goed werkt bij een $_POST
-    header ("Location: aboutus.php");
+    header ("Location: vertaalfunctie.php");
 }
 
 // Heeft de gebruiker nog geen voorkeur-cookie? Maak dan een cookie aan
@@ -44,37 +37,4 @@ else
      include ("../talen/" . $_COOKIE['taal'] . ".lang.php");
     
 }
-
-
 ?> 
-
-<form action="" method="post">
-            <select name="taalkeuze">
-                <?PHP
-                for ($i=0; $i < count ($aTalen); $i++)
-                {
-                ?>
-                    <option value="<?=$aTalen[$i];?>"><?=$aTalen[$i];?></option>
-                <?PHP
-                }
-                ?>
-            </select>
-            <input name="kiezen" type="submit" value="Kies Taal" />
-        </form>
-        <?PHP
-        
-        echo $_LANG['aboutus'];
-
-        ?>
-	  
-
-	<footer class="borderfooter">
-	<p><strong>CORONA COMPLEET</strong> in partnership with <a href="https://www.u-earth.eu/">U-EARTH</a></p>
-	</footer>
-	
-</div>
-		
-<script src="../js/script.js"></script>
-
-</body>
-</html>
