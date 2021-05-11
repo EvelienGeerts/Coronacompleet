@@ -45,6 +45,10 @@ $page = 'index';
 			<p><a href="pagina/webshop.php" class="button" >Webshop</a></p></div>
 		</div>
 
+<!--tijdelijk ivm vertaalfuntie maken-->		
+<br><br>
+<h2><a href="vertaalfunctie.php" class="button" >vertaalpagina, index</a></h2>
+
 
 <footer class="borderfooter">
 	<p><strong>CORONA COMPLEET</strong> in partnership with <a href="https://www.u-earth.eu/">U-EARTH</a></p>

@@ -59,7 +59,7 @@ if (isset($_POST['register'])){
 
     if(count($errors)== 0){
         //$wachtwoord = md5($wachtwoord); //encrypt password before comparing with database
-        $query = $conn->prepare ("INSERT INTO klanten (email, naam, adres, postcode, woonplaats, gebruikersnaam, telefoonnummer, wachtwoord) VALUES('$email', '$naam', '$adres', '$postcode', '$woonplaats', '$gebruikersnaam', '$telefoonnummer', '$wachtwoord')"); 
+        $query = $conn->prepare ("INSERT INTO klanten (email, naam, adres, postcode, woonplaats, gebruikersnaam, telefoonnummer, wachtwoord) VALUES('$email', '$naam', '$adres', '$postcode', '$woonplaats', '$gebruikersnaam', '$telefoonnummer', '$password_1')"); 
     //if there are no errors, safe klant to database
         $query->execute();
        $_SESSION['gebruikersnaam'] = $gebruikersnaam;
