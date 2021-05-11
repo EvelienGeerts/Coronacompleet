@@ -10,7 +10,7 @@
 
 $result = FetchQuery($conn, "SELECT zoekterm, datum, gebruiker, zoekID  FROM zoekgeschiedenis");
 ?>
-
+<form method="post">
 <div class="container">
   <div class="row">
     <div class="col-12">
@@ -33,12 +33,29 @@ $result = FetchQuery($conn, "SELECT zoekterm, datum, gebruiker, zoekID  FROM zoe
             <td>" . $row['datum'] . "</td>
             <td>" . $row['gebruiker'] . "</td>
             <td>" . $row['zoekID'] . "</td>
-            <td><input type='checkbox' placeholder = '".$row['zoekID']."'></td>" ;}?>
+            <td><input type='checkbox' name = 'checkBox'></td>
+            <td><input type='button' name = 'verwijderRecord'></td>"  ;}?>
             
 
-          </tr>       
+          </tr>   
+              
         </tbody>
       </table>
+      <input type="submit" name="verwijderButton" value="Verwijder data"/>
     </div>
   </div>
+  </form>
 </div>
+
+<?php
+print_r(count($checkbox));
+if(isset($_POST['verwijderButton'])){
+	$checkbox = $_POST['checkBox'];
+	for($i=0;$i<count($checkbox);$i++){
+	$del_id = $checkbox[$i]; 
+	mysqli_query($conn,"DELETE FROM zoekgeschiedenis WHERE zoekID='".$del_id."'");
+	$message = "Data deleted successfully !";
+}
+}
+
+?>
