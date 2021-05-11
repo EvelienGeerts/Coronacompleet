@@ -31,12 +31,14 @@ foreach ($stmt as $row) {
     </div></a>";}
 }
 else
+
 {
+    $currentDate = date('d-m-y H:i:s');
+    $stmt1 = ExecuteQuery($conn, "INSERT INTO `zoekgeschiedenis`(`zoekterm`, `datum`, `gebruiker`, `zoekID`) 
+    VALUES (:zoeksleutel,'$currentDate','$_SESSION[gebruikersnaam]','')",array(':zoeksleutel' => $zoeksleutel)) ;
     echo $Noresult;
 }
 }
-/*LIKE '%$:zoeksleutel%'"*/
+
 ?>
-
-
 

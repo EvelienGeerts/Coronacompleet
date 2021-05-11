@@ -38,7 +38,6 @@
 						</ul>
 					</li>
 					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/webshop.php"<?php if(isset($page) && $page == "webshop") echo ' class="selected"';?>>Webshop</a></li>
-					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/voorraad.php"<?php if(isset($page) && $page == "voorraad") echo " class='selected'";?>>Voorraad</a></li>
 					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/winkelmand.php"<?php if(isset($page) && $page == "winkelmand") echo " class='selected'";?>>Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
 					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/aboutus.php"<?php if(isset($page) && $page == "aboutus") echo " class='selected'";?>>About us</a></li>
 					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/contact.php"<?php if(isset($page) && $page == "contact") echo " class='selected'";?>>Contact</a></li>

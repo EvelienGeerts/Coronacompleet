@@ -21,18 +21,6 @@
 
 <?php
 
-/*$sql = "SELECT productnummer, naam, voorraad FROM producten";
-$result = $conn-> query($sql);
-
-$stmt = $pdo->query("SELECT * FROM users");
-while ($row = $stmt->fetch()) {
-    echo $row['name']."<br />\n";
-}*/
-
-/*$stmt = $conn->prepare("SELECT productnummer, naam, voorraad FROM producten");
-$stmt->execute();
-$result = $stmt->fetchAll(PDO::FETCH_BOTH);*/
-
 $result = FetchQuery($conn, "SELECT productnummer, naam, voorraad FROM producten");
 
 $array = array();
@@ -61,20 +49,22 @@ foreach ($result as $row) {
 
 
 <?php 
-$connection = mysqli_connect("localhost", "root", "");
-$db = mysqli_select_db($connection, 'coronacompleet');
+
 if (isset($_POST['update']))
 {
 	$query = "";
 	foreach ($array as $key => $value) {
 		if(isset($_POST[$value]) && $_POST[$value] != '')
 		{
-			$query .= "UPDATE producten SET voorraad = voorraad + " . $_POST[$value]. " where productnummer = " . $key . ";";
+			$stmt = ExecuteQuery($conn, "UPDATE producten SET voorraad = voorraad + " . ":value". " where productnummer = " . ':key' . ";", array(':value'=>$_POST[$value], ':key'=>$key));
+			print_r($query) ;
 		}
 	}
-	$query_result = mysqli_multi_query($connection, $query);
+
 	echo "<meta http-equiv='refresh' content='0'>";	
 }
+
+
 ?>
 
 
