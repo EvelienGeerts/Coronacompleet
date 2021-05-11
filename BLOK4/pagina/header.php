@@ -45,6 +45,7 @@
 					<ul class="dropdown">
 							<li><a href='https://localhost/git-coronacompleet/BLOK4/pagina/register.php'>registreer</a></li>
 							<li><a href='https://localhost/git-coronacompleet/BLOK4/pagina/login.php'>login</a></li>
+							<li><a href='https://localhost/git-coronacompleet/BLOK4/pagina/login_werknemer.php'>login werknemer</a></li>
 							<li><a href='https://localhost/git-coronacompleet/BLOK4/models/logout.php'>log uit</a></li>
 						</ul>
 					</li>
