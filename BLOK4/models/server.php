@@ -1,48 +1,4 @@
 <?php
-// db connecties uit gecomment 
-
-include('../models/config.php');
-session_start();
-$naam = "";
-$adres = "";
-$postcode = "";
-$woonplaats = "";
-$telefoonnummer = "";
-$gebruikersnaam = "";
-$email = "";
-$errors = array();
-$password_1 = "";
-$password_2 = "";
-
-//connect to the database
-// $db = mysqli_connect('localhost', 'root', '', 'coronacompleet');
-
-
- //maak database aan
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "coronacompleet";
-
-/* config.php
-try  {
-    $conn = new
-    PDO("mysql:host=$servername;dbdame=coronacompleet", $username, $password);
-    //set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE,
-    PDO::ERRMODE_EXCEPTION);
-    echo "connection successfully";
-  } catch(PDOException $e)   {
-      echo"Connection failed: " . $e->getMessage();
-}
-*/
-
-
-
-
-//if the register button is clicked
-
-$conn = null;
 
 if (isset($_POST['register'])){
     $naam = $_POST['naam'];
@@ -99,100 +55,20 @@ if (isset($_POST['register'])){
             }    
     }
     */
+    
 
-
-    //if there are no errors, safe klant to database
     if(count($errors)== 0){
-    // -MOET PDO WORDEN config.php-    $db = mysqli_connect('localhost', 'root', '', 'coronacompleet');
-        $wachtwoord = md5($password_1);//encrypt password before storing in database(veiligheid)
-       $sql = "INSERT INTO klanten (email, naam, adres, postcode, woonplaats, gebruikersnaam, telefoonnummer, wachtwoord) VALUES('$email', '$naam', '$adres', '$postcode', '$woonplaats', '$gebruikersnaam', '$telefoonnummer', '$wachtwoord')"; 
-       mysqli_query($db, $sql);
+        //$wachtwoord = md5($wachtwoord); //encrypt password before comparing with database
+        $query = $conn->prepare ("INSERT INTO klanten (email, naam, adres, postcode, woonplaats, gebruikersnaam, telefoonnummer, wachtwoord) VALUES('$email', '$naam', '$adres', '$postcode', '$woonplaats', '$gebruikersnaam', '$telefoonnummer', '$wachtwoord')"); 
+    //if there are no errors, safe klant to database
+        $query->execute();
        $_SESSION['gebruikersnaam'] = $gebruikersnaam;
        $_SESSION['succes'] = "U bent nu ingelogd";  
-       header('location: ../index.php');//redirect to home page
+       header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');//redirect to home page
     }
 }
 
 
-//log klant in from login page
-if (isset($_POST['login'])){
-    $gebruikersnaam = $_POST['gebruikersnaam'];
-    //$klantname = mysql_real_escape_string($_POST['klantname']);
-    $wachtwoord = $_POST['wachtwoord'];
-    //$password_1 = mysql_real_escape_string($_POST['password_1']);
-    
-    //ensure that form fields are filled properly
-    if (empty($gebruikersnaam)){
-        array_push($errors, "Gebruikersnaam is verplicht"); //add error to errors array
-    }
-    if (empty($wachtwoord)){
-        array_push($errors, "Wachtwoord is verplicht"); //add error to errors array
-    }
-
-/*    if (isset($_POST['login'])){
-        $gebruikersnaam != $_POST['gebruikersnaam'];{
-            array_push($errors, "gebruikersnaam bestaat niet");//alternatief voor else, doet het ook niet.
-        }
-    }
-*/
-    if(count($errors)== 0){
-        $wachtwoord = md5($wachtwoord); //encrypt password before comparing with database
-        $query = "SELECT * FROM klanten WHERE gebruikersnaam= '$gebruikersnaam'AND wachtwoord='$wachtwoord'";
-        $result = mysqli_query($db, $query);
-        if (mysqli_num_rows($result) == 1){
-            //log klant in
-            $_SESSION['gebruikersnaam'] = $gebruikersnaam;
-            $_SESSION['succes'] = "U bent nu ingelogd";
-            header('location: mijngegevens.php');//redirect to home page
-        }else{
-            array_push($errors, "De gebruikersnaam/wachtwoord is niet correct");//doet het niet
-            header('location: ../pagina/login.php'); 
-        }
-    }
-}
-
-//inloggen vanuit bestellen
-if (isset($_POST['login2'])){
-    $gebruikersnaam = $_POST['gebruikersnaam'];
-    //$klantname = mysql_real_escape_string($_POST['klantname']);
-    $wachtwoord = $_POST['wachtwoord'];
-    //$password_1 = mysql_real_escape_string($_POST['password_1']);
-    
-    //ensure that form fields are filled properly
-    if (empty($gebruikersnaam)){
-        array_push($errors, "Gebruikersnaam is verplicht"); //add error to errors array
-    }
-    if (empty($wachtwoord)){
-        array_push($errors, "Wachtwoord is verplicht"); //add error to errors array
-    }
-
-/*    if (isset($_POST['login'])){
-        $gebruikersnaam != $_POST['gebruikersnaam'];{
-            array_push($errors, "gebruikersnaam bestaat niet");//alternatief voor else, doet het ook niet.
-        }
-    }
-*/
-    if(count($errors)== 0){
-        $wachtwoord = md5($wachtwoord); //encrypt password before comparing with database
-        $query = "SELECT * FROM klant WHERE gebruikersnaam= '$gebruikersnaam'AND wachtwoord='$wachtwoord'";
-        $result = mysqli_query($db, $query);
-        if (mysqli_num_rows($result) == 1){
-            //log klant in
-            $_SESSION['gebruikersnaam'] = $gebruikersnaam;
-            $_SESSION['succes'] = "U bent nu ingelogd";
-            header('location: ../pagina/bestellen.php');//redirect to home page
-        }else{
-            array_push($errors, "De gebruikersnaam/wachtwoord is niet correct");//doet het niet
-            header('location: ../pagina/loginBestellen.php'); 
-        }
-    }
-}
-
-//uitloggen
-if(isset($_GET['logout'])){
-    session_unset();
-    session_destroy();
-}
 
 
 ?>

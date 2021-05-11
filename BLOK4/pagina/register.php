@@ -1,5 +1,5 @@
-<?php include('../models/server.php');
- 
+<?php include('../models/config.php');
+ include('../models/server.php');
  require_once 'header.php';
  
 ?>
@@ -59,3 +59,6 @@
     </body>
 
     </html>
+
+
+

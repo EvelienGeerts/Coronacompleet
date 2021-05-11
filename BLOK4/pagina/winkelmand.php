@@ -15,7 +15,9 @@ if (empty($_SESSION['gebruikersnaam'])){
  
 // cart.php
 // winkelwagen met bijbehorende functionaliteit
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
 ?>
 
   <div class="container">

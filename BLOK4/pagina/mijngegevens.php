@@ -1,7 +1,8 @@
 <?php 
 $page = 'mijngegevens';
 
-include('../models/server.php'); 
+//include('../models/server.php'); 
+include('../models/config.php');
      
     //if klant is not logged in, they cannot access this page (optie, kan zo weg)
     if (empty($_SESSION['gebruikersnaam'])){
@@ -31,7 +32,8 @@ require_once 'header.php';
         <?php if (isset($_SESSION['gebruikersnaam'])):?>
         <p>Welkom <strong><?php echo $_SESSION['gebruikersnaam']; ?></strong></p>
         <div class="input-group">
-        <a href="webshop.php?logout=1"class="button">Uitloggen</a>
+        <a href="../models/logout.php"class="button">Uitloggen</a>
+        
         <!--<a href="wijzig.php" class="button">Gegevens wijzigen?</a>  alvast voor later-->
           
         </div>          
@@ -41,21 +43,34 @@ require_once 'header.php';
     
 
         <?php
-            
-        $sql = "SELECT * FROM klanten WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
-        $een= mysqli_query($db, $sql);
-        $twee= mysqli_num_rows($een);
-        if ($twee > 0) {
-            while ($row = mysqli_fetch_assoc($een)) {
-            ?>Uw gebruikersnaam is <?php echo $row['gebruikersnaam'] . " " . "<br>". $row['naam'] . " " . "<br>". $row['adres'] . " " . "<br>". $row['postcode'] . " " . "<br>". $row['woonplaats'] . " " . "<br>". $row['telefoonnummer'] . " " . "<br>". $row['gebruikersnaam'] . " "."<br>" . $row['email'] . " " . "<br>";
-            }
-        }
 
-       ?>
 
-       
 
+$sql = "SELECT * FROM klanten WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'";
+$results = $conn->query($sql);
+
+foreach($results as $row)
+{
+    echo $row['gebruikersnaam'] . " " . "<br>". $row['naam'] . " " . "<br>". $row['adres'] . " " . "<br>". $row['postcode'] . " " . "<br>". $row['woonplaats'] . " " . "<br>". $row['telefoonnummer'] . " " . "<br>". $row['gebruikersnaam'] . " "."<br>" . $row['email'];
+}
+
+
+?>
 
 </body>
 </html> 
 
+<?php  
+ //login_success.php  
+ if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}  
+ if(isset($_SESSION["gebruikersnaam"]))  
+ {  
+      echo '<h3>Login Success, Welcome - '.$_SESSION["gebruikersnaam"].'</h3>';   
+ }  
+ else  
+ {  
+      header("location:login.php");  
+ }  
+ ?>

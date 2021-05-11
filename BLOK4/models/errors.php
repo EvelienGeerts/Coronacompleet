@@ -1,9 +1,4 @@
-<DOCTYPE html>
-<html>
-<head>
-    <title>klant registratie systeem</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
+
 
 <?php if (count($errors)> 0 ): ?>
     <div class="error">
