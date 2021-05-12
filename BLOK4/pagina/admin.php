@@ -4,6 +4,7 @@
   include('../models/config.php');
   include('../models/functions.php');
   require_once 'header.php';
+  
 ?>
 
 
@@ -21,7 +22,7 @@
 						</a>
 					</div>
 					<div class="Product2">
-						<a href="testProduct.php"><img src="../img/Admin/csv.png" class="Images"
+						<a href="csvfile.php"><img src="../img/Admin/csv.png" class="Images"
 								alt="TestPic">
 							<div class="container">
 								<h3><b>CSV-FILE</b></h3>
@@ -39,7 +40,7 @@
 						</a>
 					</div>
 					<div class="Product4">
-						<a href="mondkapProduct.php"><img src="../img/Admin/upload.jpg" class="Images"
+						<a href="uploadimg.php"><img src="../img/Admin/upload.jpg" class="Images"
 								alt="mondkapPic">
 							<div class="container">
 								<h3><b>Uploaden afbeeldingen</b></h3>
