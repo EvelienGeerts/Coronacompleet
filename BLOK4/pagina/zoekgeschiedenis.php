@@ -5,57 +5,60 @@
   include('../models/functions.php');
   require_once 'header.php';
 
-
-
-
-$result = FetchQuery($conn, "SELECT zoekterm, datum, gebruiker, zoekID  FROM zoekgeschiedenis");
-?>
-<form method="post">
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">Zoekterm</th>
-            <th scope="col">Datum Name</th>
-            <th scope="col">Gebruiker</th>
-            <th scope="col">ZoekID</th>
-
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <?php
-            foreach ($result as $row) {
-            echo "<tr>
-            <td>" . $row['zoekterm'] . "</td>
-            <td>" . $row['datum'] . "</td>
-            <td>" . $row['gebruiker'] . "</td>
-            <td>" . $row['zoekID'] . "</td>
-            <td><input type='checkbox' name = 'checkBox'></td>
-            <td><input type='button' name = 'verwijderRecord'></td>"  ;}?>
-            
-
-          </tr>   
-              
-        </tbody>
-      </table>
-      <input type="submit" name="verwijderButton" value="Verwijder data"/>
-    </div>
-  </div>
-  </form>
-</div>
-
-<?php
-print_r(count($checkbox));
-if(isset($_POST['verwijderButton'])){
-	$checkbox = $_POST['checkBox'];
+if(isset($_POST['save'])){
+	$checkbox = $_POST['check'];
 	for($i=0;$i<count($checkbox);$i++){
-	$del_id = $checkbox[$i]; 
-	mysqli_query($conn,"DELETE FROM zoekgeschiedenis WHERE zoekID='".$del_id."'");
-	$message = "Data deleted successfully !";
+	$delete_id = $checkbox[$i]; 
+	ExecuteQuery($conn,"DELETE FROM zoekgeschiedenis WHERE zoekID='".$delete_id."'");
+	$message = "Data succesvol verwijderd!";
 }
 }
-
+$result = ExecuteQuery($conn,"SELECT * FROM zoekgeschiedenis");
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<title>Delete zoeksleutels</title>
+</head>
+<body>
+<div><?php if(isset($message)) { echo $message; } ?>
+</div>
+<form method="post" action="">
+<table class="table table-bordered">
+<thead>
+<tr>
+
+	<th>zoekterm</th>
+	<th>datum</th>
+	<th>gebruiker</th>
+	<th>zoekID</th>
+  <th><input type="checkbox" id="checkAl"> Select All</th>
+</tr>
+</thead>
+<?php
+$i=0;
+foreach ($result as $row ) {
+?>
+<tr>
+	<td><?php echo $row["zoekterm"]; ?></td>
+	<td><?php echo $row["datum"]; ?></td>
+	<td><?php echo $row["gebruiker"]; ?></td>
+	<td><?php echo $row["zoekID"]; ?></td>
+  <td><input type="checkbox" id="checkItem" name="check[]" value="<?php echo $row["zoekID"]; ?>"></td>
+</tr>
+<?php
+$i++;
+}
+?>
+</table>
+<p align="center"><button type="submit" class="btn btn-success" name="save">DELETE</button></p>
+</form>
+<script>
+$("#checkAl").click(function () {
+$('input:checkbox').not(this).prop('checked', this.checked);
+});
+</script>
+</body>
+</html>
