@@ -11,7 +11,7 @@ include('../models/config.php');
 //}
 
 /*
-	$eindtotaal = 0;
+	$grand_total = 0;
 	$allItems = '';
 	$items = [];
 
@@ -25,43 +25,37 @@ include('../models/config.php');
 	$allItems = implode(', ', $items);
 */
 require_once 'header.php'; 
-
-  require '../models/config.php';
-  $stmt = $conn->query('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer');
-  $stmt->execute();
-  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  foreach($result as $row)
-  {
-  var_dupm($eindtotaal);
-  echo
-  '<div class="container">
+?>
+  
+  <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6 px-4 pb-4" id="order">
         <h4 class="text-center text-info p-2">Rond uw bestelling af!</h4>
         <div class="jumbotron p-3 mb-2 text-center">
-          <h6 class="lead"><b>Product(en) : </b>' . $allItems . '</h6>
+          <h6 class="lead"><b>Product(en) : </b><?= $allItems; ?></h6>
           <h6 class="lead"><b>Bezorgkosten : </b>Gratis</h6>
-          <h5><b>Totaal te betalen bedrag  : </b>' . number_format($eindtotaal,2) . '/-</h5>
+          <h5><b>Totaal te betalen bedrag  : </b><?= number_format($grand_total,2) ?>/-</h5>
         </div>
         <form action="" method="post" id="placeOrder">
-          <input type="hidden" name="products" value="' . $allItems; . '">
-          <input type="hidden" name="grand_total" value="' . $eindtotaal; . '">
+          <input type="hidden" name="products" value="<?= $allItems; ?>">
+          <input type="hidden" name="grand_total" value="<?= $grand_total; ?>">
           <div class="form-group">Naam
-            <input type="text" name="name"value="' . 
-            //$sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
-            //$een= mysqli_query($db, $sql);
-            //$twee= mysqli_num_rows($een);
-            //if ($twee > 0) {
-                //while ($row = mysqli_fetch_assoc($een)) {
-                //echo $row['naam'] . " " ;
-                //}
-            //}
-            . '" class="form-control" required>
+            <input type="text" name="name"value="<?php
+            
+            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
+            $een= mysqli_query($db, $sql);
+            $twee= mysqli_num_rows($een);
+            if ($twee > 0) {
+                while ($row = mysqli_fetch_assoc($een)) {
+                echo $row['naam'] . " " ;
+                }
+            }
+          ?>" class="form-control" required>
           </div>
 
           <div class="form-group">Klantnummer
-            <input type="text" name="klantnr"value="' .           
-            /*
+            <input type="text" name="klantnr"value="<?php
+            
             $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
             $een= mysqli_query($db, $sql);
             $twee= mysqli_num_rows($een);
@@ -70,13 +64,12 @@ require_once 'header.php';
                 echo $row['klantnummer'] . " " ;
                 }
             }
-            */
-          . '" class="form-control" placeholder="klantnr" required>
+          ?>" class="form-control" placeholder="klantnr" required>
           </div>
 
           <div class="form-group">Emailadres
-            <input type="email" name="email"value="' .
-            /*
+            <input type="email" name="email"value="<?php
+            
             $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
             $een= mysqli_query($db, $sql);
             $twee= mysqli_num_rows($een);
@@ -85,12 +78,11 @@ require_once 'header.php';
                 echo $row['email'] . " " ;
                 }
             }
-            */
-          . '" class="form-control" placeholder="E-Mail" required>
+          ?>" class="form-control" placeholder="E-Mail" required>
           </div>
           <div class="form-group">Telefoonnummer
-            <input type="tel" name="phone"value="' .
-            /*
+            <input type="tel" name="phone"value="<?php
+            
             $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
             $een= mysqli_query($db, $sql);
             $twee= mysqli_num_rows($een);
@@ -99,13 +91,12 @@ require_once 'header.php';
                 echo $row['telefoonnummer'] . " " ;
                 }
             }
-            */
-          . '" class="form-control" placeholder="Telefoon" required>
+          ?>" class="form-control" placeholder="Telefoon" required>
           </div>
 
           <div class="form-group">Adres
-            <input type="text" name="address"value="' .
-            /*
+            <input type="text" name="address"value="<?php
+            
             $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
             $een= mysqli_query($db, $sql);
             $twee= mysqli_num_rows($een);
@@ -114,8 +105,7 @@ require_once 'header.php';
                   echo $row['adres']." ". $row['postcode']." ".$row['woonplaats']  . " ";
                 }
             }
-            */
-          . '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
+          ?>" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
           </div>
         
           
@@ -134,8 +124,7 @@ require_once 'header.php';
         </form>
       </div>
     </div>
-  </div>';}
-          
+  </div>
 
 	<br/>
 	
@@ -145,6 +134,42 @@ require_once 'header.php';
 	
 </div>	
 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+
+    // Sending Form data to the server
+    $("#placeOrder").submit(function(e) {
+      e.preventDefault();
+      $.ajax({
+        url: '../models/actie.php',
+        method: 'post',
+        data: $('form').serialize() + "&action=order",
+        success: function(response) {
+          $("#order").php(response);
+        }
+      });
+    });
+
+    // Load total no.of items added in the cart and display in the navbar
+    load_cart_item_number();
+
+    function load_cart_item_number() {
+      $.ajax({
+        url: '../models/actie.php',
+        method: 'get',
+        data: {
+          cartItem: "cart_item"
+        },
+        success: function(response) {
+          $("#cart-item").php(response);
+        }
+      });
+    }
+  });
+  </script>
 </body>
 
 </html>
