@@ -111,4 +111,16 @@
 						  </div>';
 	  echo $data;
 	}
+
+	// Berekening van het eindtotaal
+	$stmt = $conn->query('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer');
+                $stmt->execute();
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $eindtotaal = 0;
+                foreach($result as $row)
+                {
+                // Berekening van eindtotaal
+                $tprijs = $row["prijs"] * $row["aantal"];
+                $eindtotaal += $tprijs;
+								}
 ?>

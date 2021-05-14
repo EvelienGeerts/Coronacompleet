@@ -2,7 +2,7 @@
 $page = 'winkelmand';
 
 include('../models/config.php');
-//include('../models/toevoegen.php');
+//include('../models/actie.php');
  
 
 

@@ -1,51 +1,47 @@
 <?php
 $page = 'bestellen';
 
-include('../models/config.php'); 
+include('../models/actie.php'); 
+include('../models/config.php');
 
 //include('../models/server.php'); 
      
 //if klant is not logged in, they cannot access this page (optie, kan zo weg)
 //if (empty($_SESSION['gebruikersnaam'])){
-//    header('location: bestellen.php');
+//   header('location: bestellen.php');
 //}
 
-/*
-	$eindtotaal = 0;
-	$allItems = '';
-	$items = [];
-
-	$sql = "SELECT CONCAT(naam, '(',aantal,')') AS ItemQty, totaal_prijs FROM winkelmand";
-	$stmt = $conn->prepare($sql);
-	$stmt->execute();
-	$result = $stmt->get_result();
-	while ($row = $result->fetch_assoc()) {
-	  $items[] = $row['ItemQty'];
-	}
-	$allItems = implode(', ', $items);
-*/
 require_once 'header.php'; 
 
-  require '../models/config.php';
-  $stmt = $conn->query('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer');
+  $allItems = '';
+	$items = [];
+
+  $stmt = $conn->query('SELECT CONCAT(naam, "(",aantal,")") AS ItemQty FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer');
   $stmt->execute();
   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  foreach($result as $row)
-  {
-  var_dupm($eindtotaal);
+  foreach($result as $row) {
+    $items[] = $row['ItemQty'];
+  }
+  $allItems = implode(', ', $items);
+
   echo
   '<div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6 px-4 pb-4" id="order">
         <h4 class="text-center text-info p-2">Rond uw bestelling af!</h4>
         <div class="jumbotron p-3 mb-2 text-center">
-          <h6 class="lead"><b>Product(en) : </b>' . $allItems . '</h6>
+          <h6 class="lead"><b>Product(en) : </b>' . $allItems . 
+          '</h6>
           <h6 class="lead"><b>Bezorgkosten : </b>Gratis</h6>
-          <h5><b>Totaal te betalen bedrag  : </b>' . number_format($eindtotaal,2) . '/-</h5>
+          <h5><b>Totaal te betalen bedrag  : </b>' . 
+          // Berekening $eindtotaal komt uit actie.php
+          number_format($eindtotaal,2) . '/-</h5>
         </div>
-        <form action="" method="post" id="placeOrder">
-          <input type="hidden" name="products" value="' . $allItems; . '">
-          <input type="hidden" name="grand_total" value="' . $eindtotaal; . '">
+        <form action="../models/order.php" method="post" id="placeOrder">
+          <input type="hidden" name="products" value="' . $allItems . 
+          '">
+          <input type="hidden" name="eindtotaal" value="' . $eindtotaal . 
+          '">
           <div class="form-group">Naam
             <input type="text" name="name"value="' . 
             //$sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
@@ -56,7 +52,7 @@ require_once 'header.php';
                 //echo $row['naam'] . " " ;
                 //}
             //}
-            . '" class="form-control" required>
+             '" class="form-control" required>
           </div>
 
           <div class="form-group">Klantnummer
@@ -71,7 +67,7 @@ require_once 'header.php';
                 }
             }
             */
-          . '" class="form-control" placeholder="klantnr" required>
+           '" class="form-control" placeholder="klantnr" required>
           </div>
 
           <div class="form-group">Emailadres
@@ -86,7 +82,7 @@ require_once 'header.php';
                 }
             }
             */
-          . '" class="form-control" placeholder="E-Mail" required>
+           '" class="form-control" placeholder="E-Mail" required>
           </div>
           <div class="form-group">Telefoonnummer
             <input type="tel" name="phone"value="' .
@@ -100,7 +96,7 @@ require_once 'header.php';
                 }
             }
             */
-          . '" class="form-control" placeholder="Telefoon" required>
+           '" class="form-control" placeholder="Telefoon" required>
           </div>
 
           <div class="form-group">Adres
@@ -115,7 +111,7 @@ require_once 'header.php';
                 }
             }
             */
-          . '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
+           '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
           </div>
         
           
@@ -134,8 +130,8 @@ require_once 'header.php';
         </form>
       </div>
     </div>
-  </div>';}
-          
+  </div>';
+  ?>        
 
 	<br/>
 	
