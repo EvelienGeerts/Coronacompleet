@@ -1,18 +1,36 @@
 <?php
 $page = 'bestellen';
 
-include('../models/actie.php'); 
 include('../models/config.php');
-
-//include('../models/server.php'); 
-     
-//if klant is not logged in, they cannot access this page (optie, kan zo weg)
-//if (empty($_SESSION['gebruikersnaam'])){
-//   header('location: bestellen.php');
-//}
 
 require_once 'header.php'; 
 
+// Berekening van het eindtotaal
+$stmt = $conn->query('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer');
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$eindtotaal = 0;
+foreach($result as $row) {
+  $tprijs = $row["prijs"] * $row["aantal"];
+  $eindtotaal += $tprijs;
+}
+
+// session start klant gegevens
+$gebruikersnaam = $_SESSION["gebruikersnaam"];
+
+$stmt1 = $conn->query("SELECT * FROM klanten WHERE '{$gebruikersnaam}' = gebruikersnaam;");
+$stmt1->execute();
+$result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+foreach($result as $row) {
+ $snaam = $row["naam"];
+ $semail = $row["email"];
+ $stelefoon = $row["telefoonnummer"]; 
+ $sadres = $row["adres"];
+ $spostcode = $row["postcode"];
+ $swoonplaats = $row["woonplaats"];
+}
+
+// Overzicht alle producten uit de winkelmand met aantal er bij                 
   $allItems = '';
 	$items = [];
 
@@ -22,6 +40,7 @@ require_once 'header.php';
   foreach($result as $row) {
     $items[] = $row['ItemQty'];
   }
+
   $allItems = implode(', ', $items);
 
   echo
@@ -33,88 +52,31 @@ require_once 'header.php';
           <h6 class="lead"><b>Product(en) : </b>' . $allItems . 
           '</h6>
           <h6 class="lead"><b>Bezorgkosten : </b>Gratis</h6>
-          <h5><b>Totaal te betalen bedrag  : </b>' . 
-          // Berekening $eindtotaal komt uit actie.php
-          number_format($eindtotaal,2) . '/-</h5>
+          <h5><b>Totaal te betalen bedrag  : </b>' . number_format($eindtotaal,2) . '</h5>
         </div>
         <form action="../models/order.php" method="post" id="placeOrder">
-          <input type="hidden" name="products" value="' . $allItems . 
-          '">
-          <input type="hidden" name="eindtotaal" value="' . $eindtotaal . 
-          '">
+          <input type="hidden" name="products" value="' . $allItems . '">
+          <input type="hidden" name="eindtotaal" value="' . $eindtotaal . '">
           <div class="form-group">Naam
-            <input type="text" name="name"value="' . 
-            //$sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
-            //$een= mysqli_query($db, $sql);
-            //$twee= mysqli_num_rows($een);
-            //if ($twee > 0) {
-                //while ($row = mysqli_fetch_assoc($een)) {
-                //echo $row['naam'] . " " ;
-                //}
-            //}
-             '" class="form-control" required>
+            <input type="text" name="name"value="' . $snaam . '" class="form-control" disabled>
           </div>
-
-          <div class="form-group">Klantnummer
-            <input type="text" name="klantnr"value="' .           
-            /*
-            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
-            $een= mysqli_query($db, $sql);
-            $twee= mysqli_num_rows($een);
-            if ($twee > 0) {
-                while ($row = mysqli_fetch_assoc($een)) {
-                echo $row['klantnummer'] . " " ;
-                }
-            }
-            */
-           '" class="form-control" placeholder="klantnr" required>
-          </div>
-
           <div class="form-group">Emailadres
-            <input type="email" name="email"value="' .
-            /*
-            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
-            $een= mysqli_query($db, $sql);
-            $twee= mysqli_num_rows($een);
-            if ($twee > 0) {
-                while ($row = mysqli_fetch_assoc($een)) {
-                echo $row['email'] . " " ;
-                }
-            }
-            */
-           '" class="form-control" placeholder="E-Mail" required>
+            <input type="email" name="email"value="' . $semail . '" class="form-control" placeholder="E-Mail" disabled>
           </div>
           <div class="form-group">Telefoonnummer
-            <input type="tel" name="phone"value="' .
-            /*
-            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
-            $een= mysqli_query($db, $sql);
-            $twee= mysqli_num_rows($een);
-            if ($twee > 0) {
-                while ($row = mysqli_fetch_assoc($een)) {
-                echo $row['telefoonnummer'] . " " ;
-                }
-            }
-            */
-           '" class="form-control" placeholder="Telefoon" required>
+            <input type="tel" name="phone"value="' . $stelefoon . '" class="form-control" placeholder="Telefoon" disabled>
           </div>
 
           <div class="form-group">Adres
-            <input type="text" name="address"value="' .
-            /*
-            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
-            $een= mysqli_query($db, $sql);
-            $twee= mysqli_num_rows($een);
-            if ($twee > 0) {
-                while ($row = mysqli_fetch_assoc($een)) {
-                  echo $row['adres']." ". $row['postcode']." ".$row['woonplaats']  . " ";
-                }
-            }
-            */
-           '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
+            <input type="text" name="address"value="' . $sadres . '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." disabled>
           </div>
-        
-          
+          <div class="form-group">Postcode
+            <input type="text" name="postcode"value="' . $spostcode . '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." disabled>
+          </div>
+          <div class="form-group">Woonplaats
+            <input type="text" name="woonplaats"value="' . $swoonplaats . '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." disabled>
+          </div>
+                  
           <h6 class="text-center lead">Selecteer Betalingsmodus </h6>
           <div class="form-group">
             <select name="pmode" class="form-control">

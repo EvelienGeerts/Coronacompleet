@@ -2,23 +2,9 @@
 $page = 'winkelmand';
 
 include('../models/config.php');
-//include('../models/actie.php');
- 
 
-
-/*
-if (empty($_SESSION['gebruikersnaam'])){
-    header('location: login.php');
-}
-*/
- require_once 'header.php';
+require_once 'header.php';
  
- 
-// cart.php
-// winkelwagen met bijbehorende functionaliteit
-if (session_status() === PHP_SESSION_NONE) {
-  session_start();
-}
 ?>
 
   <div class="container">
@@ -56,7 +42,6 @@ if (session_status() === PHP_SESSION_NONE) {
             </thead>
             <tbody>
               <?php
-                require '../models/config.php';
                 $stmt = $conn->query('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer');
                 $stmt->execute();
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);

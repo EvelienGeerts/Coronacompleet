@@ -1,13 +1,13 @@
 <?php 
   $page = 'webshop';
   require_once 'header.php';
+  include ('../models/config.php');
 ?>
 
 <div class="container">
     <div id="message"></div>
     <div class="row mt-2 pb-3">
       <?php
-  			include '../models/config.php';
   			$stmt = $conn->prepare('SELECT * FROM producten');
   			$stmt->execute();
   			$result = $stmt->fetchAll(PDO::FETCH_BOTH);
