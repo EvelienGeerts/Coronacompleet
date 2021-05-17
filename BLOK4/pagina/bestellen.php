@@ -78,12 +78,13 @@ foreach($result as $row) {
           </div>
                   
           <h6 class="text-center lead">Selecteer Betalingsmodus </h6>
-          <div class="form-group">
-            <select name="pmode" class="form-control">
+          <div class="form-group">Betalingsmodus
+            <select name="bmode" class="form-control">
               <option value="" selected disabled>-Selecteer Betalingsmodus-</option>
-              <option value="cod">Onder rembours </option>
-              <option value="netbanking">iDeal</option>
-              <option value="cards">Debit/Credit Card</option>
+              <option value="rembours">Onder rembours </option>
+              <option value="ideal">iDeal</option>
+              <option value="paypal">paypal</option>
+              <option value="mastercard">MasterCard</option>
             </select>
           </div>
           <div class="form-group">

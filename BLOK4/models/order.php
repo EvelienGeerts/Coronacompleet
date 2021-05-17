@@ -1,73 +1,59 @@
 <?php
 	require 'config.php';
+  require_once '../pagina/header.php';
 
-  // nog verder aan werken
-  if(isset($_POST['productnummer'])) {
-    $productnummer = $_POST['productnummer'];
-    $email = "piet@hotmail.com";
-    $aantal = $_POST['aantal'];
-    $pprijs = $_POST['prijs'];
-    $tprijs = $aantal * $pprijs;
+  // Berekening van het eindtotaal
+    $stmt = $conn->query('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer');
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $eindtotaal = 0;
+    foreach($result as $row) {
+      $tprijs = $row["prijs"] * $row["aantal"];
+      $eindtotaal += $tprijs;
+    }
 
-	  $stmt = $conn->prepare("START TRANSACTION;
+  // session start klant gegevens // ** kan ook met post zoals bij bmode **
+    $gebruikersnaam = $_SESSION["gebruikersnaam"];
+
+    $stmt1 = $conn->query("SELECT * FROM klanten WHERE '{$gebruikersnaam}' = gebruikersnaam;");
+    $stmt1->execute();
+    $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+    foreach($result as $row) {
+    $snaam = $row["naam"];
+    $semail = $row["email"];
+    $stelefoon = $row["telefoonnummer"]; 
+    $sadres = $row["adres"];
+    $spostcode = $row["postcode"];
+    $swoonplaats = $row["woonplaats"];
+    }
+
+    $bmode = $_POST['bmode'];
+
+	  $stmt = $conn->query("START TRANSACTION;
     SELECT @ordernummer:=COALESCE(MAX(ordernummer)+1, 1) FROM bestellingen;
-    
     SELECT @totaalbedrag:= (select SUM(wm.aantal*p.prijs) from winkelmand wm 
                            inner join producten p on p.productnummer = wm.productnummer);
-                           
     SELECT @email:= (SELECT email FROM winkelmand LIMIT 1);
-    
-    INSERT INTO bestellingen values (@ordernummer, @email, 'paypal', @totaalbedrag);
-    
+    INSERT INTO bestellingen values (@ordernummer, @email, '{$bmode}', @totaalbedrag);
     INSERT INTO orders (select @ordernummer, productnummer, aantal from winkelmand);
-    
     UPDATE producten p
     INNER JOIN winkelmand w ON p.productnummer = w.productnummer
     SET p.voorraad = p.voorraad - w.aantal;
-    
     DELETE FROM winkelmand;
-    
     COMMIT;
     ");
-    $stmt->execute([$email, $productnummer, $aantal]);
-  }
+    $stmt->execute();
 
-  	// Set total price of the product in the winkelmand table
-	  if (isset($_POST['aantal'])) {
-      $aantal = $_POST['aantal'];
-      $pprijs = $_POST['prijs'];
-
-      $tprice = $aantal * $pprijs;
-	}
-  
-// Checkout and save customer info in the orders table
-if (isset($_POST['action']) && isset($_POST['action']) == 'order') {
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $phone = $_POST['phone'];
-  $products = $_POST['products'];
-  $grand_total = $_POST['grand_total'];
-  $address = $_POST['address'];
-  $pmode = $_POST['pmode'];
-
-  $data = '';
-
-  $stmt = $conn->prepare('INSERT INTO bestellingen (naam,email,telefoon,adres,pmode,producten,hoeveel_betaald)VALUES(?,?,?,?,?,?,?)');
-  $stmt->bind_param('sssssss',$name,$email,$phone,$address,$pmode,$products,$grand_total);
-  $stmt->execute();
-  $stmt2 = $conn->prepare('DELETE FROM winkelmand');
-  $stmt2->execute();
-  $data .= '<div class="text-center">
-              <h1 class="display-4 mt-2 text-danger">Thank You!</h1>
+  echo '
+  <div class="text-center">
+              <h1 class="display-4 mt-2 text-danger">Dank u!</h1>
               <h2 class="text-success">Uw bestelling is succesvol geplaatst!</h2>
-              <h4 class="bg-danger text-light rounded p-2">Aangekochte artikelen : ' . $products . '</h4>
-              <h4>Naam : ' . $name . '</h4>
-              <h4>E-mail : ' . $email . '</h4>
-              <h4>Telefoon : ' . $phone . '</h4>
-              <h4>Betaald : ' . number_format($grand_total,2) . '</h4>
-              <h4>Betaalmethode : ' . $pmode . '</h4>
+              <h4>Naam : ' . $snaam . '</h4>
+              <h4>E-mail : ' . $semail . '</h4>
+              <h4>Telefoon : ' . $stelefoon . '</h4>
+              <h4>Betaald : ' . number_format($eindtotaal,2) . '</h4>
+              <h4>Betaalmethode : ' . $bmode . '</h4>
             </div>';
-  echo $data;
-}
+ 
 ?> 
   
