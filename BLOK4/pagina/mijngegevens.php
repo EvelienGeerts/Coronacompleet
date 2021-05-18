@@ -5,7 +5,7 @@ include('../models/server.php');
 include('../models/config.php');
      
     //if klant is not logged in, they cannot access this page (optie, kan zo weg)
-    if (empty($_SESSION['gebruikersnaam'])){
+    if (empty($_SESSION['email'])){
         header('location: login.php');
     }
 ?>
@@ -21,8 +21,8 @@ include('../models/functions.php');
 
 
 
-    <?php if (isset($_SESSION['gebruikersnaam'])):?>
-    <p>Welkom <strong><?php echo $_SESSION['gebruikersnaam']; ?></strong></p>
+    <?php if (isset($_SESSION['email'])):?>
+    <p>Welkom <strong><?php echo $_SESSION['email']; ?></strong></p>
     <div class="input-group">
     <a href="../models/logout.php"class="button">Uitloggen</a>
     
@@ -32,26 +32,10 @@ include('../models/functions.php');
     
     <?php endif ?>
     
-
-
-<?php
-//ophalen klantgegevens
-
-$results = ExecuteQuery($conn, "SELECT * FROM klanten WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'");
-/*
-$sql = "SELECT * FROM klanten WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'";
-$results = $conn->query($sql);
-*/
-foreach($results as $row)
-{
-    echo 'Uw gebruikersnaam is'. " " . $row['gebruikersnaam'] . " " . "<br>". 'Uw naam is'. " ".  $row['naam'] . " " . "<br>" . 'Uw adres is'. " " . $row['adres'] . " " . "<br>". 'Uw postcode is' . " " . $row['postcode'] . " " . "<br>". 'Uw woonplaats is'. " ". $row['woonplaats'] . " " . "<br>". 'Uw telefoonnummer is'. " ". $row['telefoonnummer'] . " " . "<br>". 'Uw gebruikersnaam is'. " ". $row['gebruikersnaam'] . " "."<br>" . 'Uw email is'. " ". $row['email'];
-}
-?>
+<!--ophalen klantgegevens-->
 
 <table>
-
 <tr>
-
 <th>Naam</th>
 <th>Adres</th>
 <th>Postcode</th>
@@ -59,12 +43,10 @@ foreach($results as $row)
 <th>Telefoonnummer</th>
 <th>Email</th>
 <th>Gebruikersnaam</th>
-
 </tr>
 
 <?php
-
-$result = FetchQuery($conn, "SELECT naam, adres, postcode, woonplaats, telefoonnummer, email, gebruikersnaam FROM klanten WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'");
+$result = FetchQuery($conn, "SELECT naam, adres, postcode, woonplaats, telefoonnummer, email, gebruikersnaam FROM klanten WHERE email= '$_SESSION[email]'");
 
 $array = array();
 
@@ -79,9 +61,9 @@ foreach ($result as $row) {
         <td>" . $row['email'] . "</td>
         <td>" . $row['gebruikersnaam'] . "</td> " ;
     }
-    
 ?>
 </table>
+<br>
 
 <!--bestellingen inzien-->
 <table>
@@ -91,8 +73,8 @@ foreach ($result as $row) {
 <th>Totaalbedrag</th>
 </tr>
 <?php
-$email_klant= FetchQuery($conn, "select email FROM klanten WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'");
-$resultbestelling = FetchQuery($conn, "SELECT ordernummer, betaalmethode, totaalbedrag FROM bestellingen  WHERE email = '$_SESSION[gebruikersnaam]'");//inner join? 
+//$email_klant= FetchQuery($conn, "select email FROM klanten WHERE gebruikersnaam= '$_SESSION[email]'");
+$resultbestelling = FetchQuery($conn, "SELECT ordernummer, betaalmethode, totaalbedrag FROM bestellingen  WHERE email = '$_SESSION[email]'");//inner join? 
 
 $array = array();
 
@@ -105,6 +87,7 @@ foreach ($resultbestelling as $row) {
     }
 ?>
 </table>
+<br>
 
 <table>
 <tr>
@@ -113,18 +96,16 @@ foreach ($resultbestelling as $row) {
 <th>Aantal</th>
 </tr>
 <?php
-$orderinzicht= FetchQuery($conn, "SELECT o.productnummer, p.naam, o.aantal FROM orders o 
-INNER JOIN producten p  on o.productnummer = p.productnummer
-FULL OUTER JOIN klanten on b.email = k.email
+$orderinzicht= FetchQuery($conn, "SELECT ordernummer, productnummer, aantal FROM orders  
 WHERE ordernummer = 1");
 // klopt niet. moet even puzzelen hoe ik dit kan koppelen aan de sessie.
 $array = array();
 
-foreach ($resultbestelling as $row) {
+foreach ($orderinzicht as $row) {
 		echo "<tr>
-		<td>" . $row['o.productnummer'] . "</td>
-		<td>" . $row['p.naam'] . "</td>
-		<td>" . $row['o.aantal'] . "</td>"
+		<td>" . $row['ordernummer'] . "</td>
+		<td>" . $row['productnummer'] . "</td>
+		<td>" . $row['aantal'] . "</td>"
         ;
     }
     ?>

@@ -17,8 +17,8 @@
         ?>
 
     <form method="post">  
-            <label>gebruikersnaam</label>  
-            <input type="text" name="gebruikersnaam" class="" />  
+            <label>email</label>  
+            <input type="email" name="email" class="" />  
             <br />  
             <label>Wachtwoord</label>  
             <input type="password" name="wachtwoord" class="" />  
@@ -47,24 +47,24 @@
       $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
       if(isset($_POST["login"]))  
       {  
-           if(empty($_POST["gebruikersnaam"]) || empty($_POST["wachtwoord"]))  
+           if(empty($_POST["email"]) || empty($_POST["wachtwoord"]))  
            {  
                 $message = '<label>All fields are required</label>';  
            }  
            else  
            {  
-                $query = "SELECT * FROM klanten WHERE gebruikersnaam = :gebruikersnaam AND wachtwoord = :wachtwoord";  
+                $query = "SELECT * FROM klanten WHERE email = :email AND wachtwoord = :wachtwoord";  
                 $statement = $connect->prepare($query);  
                 $statement->execute(  
                      array(  
-                          'gebruikersnaam'     =>     $_POST["gebruikersnaam"],  
+                          'email'     =>     $_POST["email"],  
                           'wachtwoord'     =>     $_POST["wachtwoord"]  
                      )  
                 );  
                 $count = $statement->rowCount();  
                 if($count > 0)  
                 {  
-                     $_SESSION["gebruikersnaam"] = $_POST["gebruikersnaam"];  
+                     $_SESSION["email"] = $_POST["email"];  
                      header("location:mijngegevens.php");  
                 }  
                 else  
