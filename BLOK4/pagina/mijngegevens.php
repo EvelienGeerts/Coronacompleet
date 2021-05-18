@@ -92,7 +92,7 @@ foreach ($result as $row) {
 </tr>
 <?php
 $email_klant= FetchQuery($conn, "select email FROM klanten WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'");
-$resultbestelling = FetchQuery($conn, "SELECT ordernummer, betaalmethode, totaalbedrag FROM bestellingen  WHERE email = '$_SESSION[gebruikersnaam]'");//inner join? 
+$resultbestelling = FetchQuery($conn, "SELECT ordernummer, betaalmethode, totaalbedrag FROM bestellingen  WHERE email = 'piet@hotmail.com'");//inner join? 
 
 $array = array();
 
@@ -109,22 +109,24 @@ foreach ($resultbestelling as $row) {
 <table>
 <tr>
 <th>Productnummer</th>
-<th>Productnaam</th>
+<th>productnummer</th>
 <th>Aantal</th>
 </tr>
 <?php
-$orderinzicht= FetchQuery($conn, "SELECT o.productnummer, p.naam, o.aantal FROM orders o 
+/*$orderinzicht= FetchQuery($conn, "SELECT o.productnummer, p.naam, o.aantal FROM orders o 
 INNER JOIN producten p  on o.productnummer = p.productnummer
 FULL OUTER JOIN klanten on b.email = k.email
-WHERE ordernummer = 1");
+WHERE ordernummer = 1");*/
+
+$resultbestelling1 = FetchQuery($conn, "SELECT ordernummer, productnummer, aantal FROM orders  WHERE ordernummer = '1'");/*== ordernummer weergegeven*/
 // klopt niet. moet even puzzelen hoe ik dit kan koppelen aan de sessie.
 $array = array();
 
-foreach ($resultbestelling as $row) {
+foreach ($resultbestelling1 as $row) {
 		echo "<tr>
-		<td>" . $row['o.productnummer'] . "</td>
-		<td>" . $row['p.naam'] . "</td>
-		<td>" . $row['o.aantal'] . "</td>"
+		<td>" . $row['ordernummer'] . "</td>
+		<td>" . $row['productnummer'] . "</td>
+		<td>" . $row['aantal'] . "</td>"
         ;
     }
     ?>
