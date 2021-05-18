@@ -5,68 +5,59 @@
   include('../models/functions.php');
   require_once 'header.php';
 
-
-$result = FetchQuery($conn, "SELECT zoekterm, datum, gebruiker, zoekID FROM zoekgeschiedenis");
-$array = array();
-
-
-foreach ($result as $row) {
-
-		echo "<tr>
-		<td>" .$row['zoekterm'] . "</td>
-		<td>" .$row['datum'] . "</td>
-		<td>" .$row['gebruiker'] . "</td>
-        <td>" .$row['zoekID'] . "</td>";
-
-
-	};
+if(isset($_POST['save'])){
+	$checkbox = $_POST['check'];
+	for($i=0;$i<count($checkbox);$i++){
+	$delete_id = $checkbox[$i]; 
+	ExecuteQuery($conn,"DELETE FROM zoekgeschiedenis WHERE zoekID='".$delete_id."'");
+	$message = "Data succesvol verwijderd!";
+}
+}
+$result = ExecuteQuery($conn,"SELECT * FROM zoekgeschiedenis");
 ?>
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">Select Day</th>
-            <th scope="col">Article Name</th>
-            <th scope="col">Author</th>
-            <th scope="col">Words</th>
-            <th scope="col">Shares</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
-                  <label class="custom-control-label" for="customCheck1">1</label>
-              </div>
-            </td>
-            <?php foreach ($result as $row) {
-            echo"";
-            echo" <td>$row['zoekterm']</td>";
-            echo"<td>.$row['zoekterm']</td>";
-
-
-          echo "<a href='".$row["naam"]."Product.php"."'<div class = 'zoekResultaat'>
-          ".$row["naam"]."
-          ".$row["prijs"]." 
-   
-
-        </tbody>
-      </table>
-    </div>
-  </div>
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<title>Delete zoeksleutels</title>
+</head>
+<body>
+<div><?php if(isset($message)) { echo $message; } ?>
 </div>
-"
+<form method="post" action="">
+<table class="table table-bordered">
+<thead>
+<tr>
 
-
-
-
-	<footer class="borderfooter">
-		<p><strong>CORONA COMPLEET</strong> in partnership with <a href="https://www.u-earth.eu/">U-EARTH</a></p>
-	</footer>	
-</div>
-
+	<th>zoekterm</th>
+	<th>datum</th>
+	<th>gebruiker</th>
+	<th>zoekID</th>
+  <th><input type="checkbox" id="checkAl"> Select All</th>
+</tr>
+</thead>
+<?php
+$i=0;
+foreach ($result as $row ) {
+?>
+<tr>
+	<td><?php echo $row["zoekterm"]; ?></td>
+	<td><?php echo $row["datum"]; ?></td>
+	<td><?php echo $row["gebruiker"]; ?></td>
+	<td><?php echo $row["zoekID"]; ?></td>
+  <td><input type="checkbox" id="checkItem" name="check[]" value="<?php echo $row["zoekID"]; ?>"></td>
+</tr>
+<?php
+$i++;
+}
+?>
+</table>
+<p align="center"><button type="submit" class="btn btn-success" name="save">DELETE</button></p>
+</form>
+<script>
+$("#checkAl").click(function () {
+$('input:checkbox').not(this).prop('checked', this.checked);
+});
+</script>
 </body>
 </html>

@@ -1,173 +1,90 @@
 <?php
 $page = 'bestellen';
 
-include('../models/server.php'); 
-     
-//if klant is not logged in, they cannot access this page (optie, kan zo weg)
-if (empty($_SESSION['gebruikersnaam'])){
-    header('location: bestellen.php');
+include('../models/config.php');
+
+require_once 'header.php'; 
+
+// Berekening van het eindtotaal
+$stmt = $conn->query('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer');
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$eindtotaal = 0;
+foreach($result as $row) {
+  $tprijs = $row["prijs"] * $row["aantal"];
+  $eindtotaal += $tprijs;
 }
 
-	require '../models/config.php';
+// session start klant gegevens
+$gebruikersnaam = $_SESSION["gebruikersnaam"];
 
-	$grand_total = 0;
-	$allItems = '';
+$stmt1 = $conn->query("SELECT * FROM klanten WHERE '{$gebruikersnaam}' = gebruikersnaam;");
+$stmt1->execute();
+$result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+foreach($result as $row) {
+ $snaam = $row["naam"];
+ $semail = $row["email"];
+ $stelefoon = $row["telefoonnummer"]; 
+ $sadres = $row["adres"];
+ $spostcode = $row["postcode"];
+ $swoonplaats = $row["woonplaats"];
+}
+
+// Overzicht alle producten uit de winkelmand met aantal er bij                 
+  $allItems = '';
 	$items = [];
 
-	$sql = "SELECT CONCAT(product_naam, '(',product_aantal,')') AS ItemQty, totaal_prijs FROM winkelmand";
-	$stmt = $conn->prepare($sql);
-	$stmt->execute();
-	$result = $stmt->get_result();
-	while ($row = $result->fetch_assoc()) {
-	  $grand_total += $row['totaal_prijs'];
-	  $items[] = $row['ItemQty'];
-	}
-	$allItems = implode(', ', $items);
-?>
+  $stmt = $conn->query('SELECT CONCAT(naam, "(",aantal,")") AS ItemQty FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer');
+  $stmt->execute();
+  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  foreach($result as $row) {
+    $items[] = $row['ItemQty'];
+  }
 
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-	<meta charset="utf-8" />
-	<meta name="description" content="Coronacompleet. De beste webshop voor mondkaps, handschoenen, testen en desinfectie">
-	<meta name="keywords" content="coronacompleet, corona, COVID-19, beschermingsmiddelen, handschoenen, mondkap, desinfectie, test, webshop">
-	<title>CORONA COMPLEET</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">	
-	<link rel="stylesheet" href="../css/bootstrap.css">
-	<link rel="stylesheet" href="../css/bootstrap-grid.css">
-	<link rel="stylesheet" href="../css/style.css">
-	<link rel="stylesheet" href="../css/fontawesome.css">
-	<link rel="icon" href="../img/favicon.png" type="image/x-icon">
-	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
-	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
-</head>
-<body>
+  $allItems = implode(', ', $items);
 
-
-<div class="container">
-	<header>
-		<a href="index.php"><h1>CORONA COMPLEET</h1></a>
-	
-		<div class="hamburger-menu">
-			<i class="fa fa-bars burger" onclick="burgerMenu()"></i>
-			<i class="fa fa-times burger" onclick="burgerMenu()"></i>	
-		</div>
-		
-		<nav>
-			<ul class="nav-list">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Informatie</a>
-					<ul class = "dropdown">
-						<li><a href='#'>Mondkap</a></li>
-						<li><a href='#'>handschoen</a></li>
-						<li><a href='#'>tester</a></li>
-						<li><a href='#'>desinfectie</a></li>
-					</ul>
-				</li>
-				<li><a href="index.php">Webshop</a></li>
-				<li><a href="bestellen.php" class="selected">Bestellen</a></li>
-				<li><a href="winkelmand.php">Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>	
-        <li><a href="mijngegevens.php">Mijn gegevens</a></li>		
-			</ul>
-		</nav>
-
-		<div class="banner">
-			<span class="spanwrap">
-				Bescherm andere en uzelf met de veiligste en beste kwaliteit producten.
-			</span>
-		</div>
-	</header>
-
-  
-  <div class="container">
+  echo
+  '<div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6 px-4 pb-4" id="order">
         <h4 class="text-center text-info p-2">Rond uw bestelling af!</h4>
         <div class="jumbotron p-3 mb-2 text-center">
-          <h6 class="lead"><b>Product(en) : </b><?= $allItems; ?></h6>
+          <h6 class="lead"><b>Product(en) : </b>' . $allItems . 
+          '</h6>
           <h6 class="lead"><b>Bezorgkosten : </b>Gratis</h6>
-          <h5><b>Totaal te betalen bedrag  : </b><?= number_format($grand_total,2) ?>/-</h5>
+          <h5><b>Totaal te betalen bedrag  : </b>' . number_format($eindtotaal,2) . '</h5>
         </div>
-        <form action="" method="post" id="placeOrder">
-          <input type="hidden" name="products" value="<?= $allItems; ?>">
-          <input type="hidden" name="grand_total" value="<?= $grand_total; ?>">
+        <form action="../models/order.php" method="post" id="placeOrder">
+          <input type="hidden" name="products" value="' . $allItems . '">
+          <input type="hidden" name="eindtotaal" value="' . $eindtotaal . '">
           <div class="form-group">Naam
-            <input type="text" name="name"value="<?php
-            
-            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
-            $een= mysqli_query($db, $sql);
-            $twee= mysqli_num_rows($een);
-            if ($twee > 0) {
-                while ($row = mysqli_fetch_assoc($een)) {
-                echo $row['naam'] . " " ;
-                }
-            }
-          ?>" class="form-control" required>
+            <input type="text" name="name"value="' . $snaam . '" class="form-control" disabled>
           </div>
-
-          <div class="form-group">Klantnummer
-            <input type="text" name="klantnr"value="<?php
-            
-            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
-            $een= mysqli_query($db, $sql);
-            $twee= mysqli_num_rows($een);
-            if ($twee > 0) {
-                while ($row = mysqli_fetch_assoc($een)) {
-                echo $row['klantnummer'] . " " ;
-                }
-            }
-          ?>" class="form-control" placeholder="klantnr" required>
-          </div>
-
           <div class="form-group">Emailadres
-            <input type="email" name="email"value="<?php
-            
-            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
-            $een= mysqli_query($db, $sql);
-            $twee= mysqli_num_rows($een);
-            if ($twee > 0) {
-                while ($row = mysqli_fetch_assoc($een)) {
-                echo $row['email'] . " " ;
-                }
-            }
-          ?>" class="form-control" placeholder="E-Mail" required>
+            <input type="email" name="email"value="' . $semail . '" class="form-control" placeholder="E-Mail" disabled>
           </div>
           <div class="form-group">Telefoonnummer
-            <input type="tel" name="phone"value="<?php
-            
-            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
-            $een= mysqli_query($db, $sql);
-            $twee= mysqli_num_rows($een);
-            if ($twee > 0) {
-                while ($row = mysqli_fetch_assoc($een)) {
-                echo $row['telefoonnummer'] . " " ;
-                }
-            }
-          ?>" class="form-control" placeholder="Telefoon" required>
+            <input type="tel" name="phone"value="' . $stelefoon . '" class="form-control" placeholder="Telefoon" disabled>
           </div>
 
           <div class="form-group">Adres
-            <input type="text" name="address"value="<?php
-            
-            $sql = "SELECT * FROM klant WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'";
-            $een= mysqli_query($db, $sql);
-            $twee= mysqli_num_rows($een);
-            if ($twee > 0) {
-                while ($row = mysqli_fetch_assoc($een)) {
-                  echo $row['adres']." ". $row['postcode']." ".$row['woonplaats']  . " ";
-                }
-            }
-          ?>" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
+            <input type="text" name="address"value="' . $sadres . '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." disabled>
           </div>
-        
-          
+          <div class="form-group">Postcode
+            <input type="text" name="postcode"value="' . $spostcode . '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." disabled>
+          </div>
+          <div class="form-group">Woonplaats
+            <input type="text" name="woonplaats"value="' . $swoonplaats . '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." disabled>
+          </div>
+                  
           <h6 class="text-center lead">Selecteer Betalingsmodus </h6>
-          <div class="form-group">
-            <select name="pmode" class="form-control">
+          <div class="form-group">Betalingsmodus
+            <select name="bmode" class="form-control">
               <option value="" selected disabled>-Selecteer Betalingsmodus-</option>
-              <option value="cod">Onder rembours </option>
-              <option value="netbanking">iDeal</option>
-              <option value="cards">Debit/Credit Card</option>
+              <option value="rembours">Onder rembours </option>
+              <option value="ideal">iDeal</option>
+              <option value="paypal">paypal</option>
+              <option value="mastercard">MasterCard</option>
             </select>
           </div>
           <div class="form-group">
@@ -176,7 +93,8 @@ if (empty($_SESSION['gebruikersnaam'])){
         </form>
       </div>
     </div>
-  </div>
+  </div>';
+  ?>        
 
 	<br/>
 	
@@ -186,42 +104,6 @@ if (empty($_SESSION['gebruikersnaam'])){
 	
 </div>	
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
-
-  <script type="text/javascript">
-  $(document).ready(function() {
-
-    // Sending Form data to the server
-    $("#placeOrder").submit(function(e) {
-      e.preventDefault();
-      $.ajax({
-        url: '../models/actie.php',
-        method: 'post',
-        data: $('form').serialize() + "&action=order",
-        success: function(response) {
-          $("#order").php(response);
-        }
-      });
-    });
-
-    // Load total no.of items added in the cart and display in the navbar
-    load_cart_item_number();
-
-    function load_cart_item_number() {
-      $.ajax({
-        url: '../models/actie.php',
-        method: 'get',
-        data: {
-          cartItem: "cart_item"
-        },
-        success: function(response) {
-          $("#cart-item").php(response);
-        }
-      });
-    }
-  });
-  </script>
 </body>
 
 </html>

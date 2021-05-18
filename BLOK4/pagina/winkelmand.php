@@ -2,22 +2,9 @@
 $page = 'winkelmand';
 
 include('../models/config.php');
- 
 
-
-/*
-if (empty($_SESSION['gebruikersnaam'])){
-    header('location: login.php');
-}
-*/
- require_once 'header.php';
+require_once 'header.php';
  
- 
-// cart.php
-// winkelwagen met bijbehorende functionaliteit
-if (session_status() === PHP_SESSION_NONE) {
-  session_start();
-}
 ?>
 
   <div class="container">
@@ -55,13 +42,17 @@ if (session_status() === PHP_SESSION_NONE) {
             </thead>
             <tbody>
               <?php
-                require '../models/config.php';
                 $stmt = $conn->query('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer');
                 $stmt->execute();
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                $grand_total = 0;
+                $eindtotaal = 0;
                 foreach($result as $row)
                 {
+                // Berekening van eindtotaal
+                $tprijs = $row["prijs"] * $row["aantal"];
+                $eindtotaal += $tprijs;
+                
+                // Inhoud winkelmand
                 echo 
                 '<tr>
                   <td>'.$row["productnummer"].'</td>
@@ -85,18 +76,14 @@ if (session_status() === PHP_SESSION_NONE) {
                 }
               ?>
 
-              <?php // nog niet goed
-              //$grand_total = $row['aantal']; 
-              ?>      
-              <?php // endwhile; ?>
               <tr>
                 <td colspan="3">
                   <a href="webshop.php" class="btn btn-success"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Verder winkelen</a>
                 </td>
                 <td colspan="2"><b>Totaal</b></td>
-                <td><b><i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?= number_format($grand_total,2); ?></b></td>
+                <td><b><i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?= number_format($eindtotaal,2); ?></b></td>
                 <td>
-                  <a href="bestellen.php" class="btn btn-info <?= ($grand_total > 1) ? '' : 'disabled'; ?>"><i class="far fa-credit-card"></i>&nbsp;&nbsp;Bestellen</a>
+                  <a href="bestellen.php" class="btn btn-info <?= ($eindtotaal > 1) ? '' : 'disabled'; ?>"><i class="far fa-credit-card"></i>&nbsp;&nbsp;Bestellen</a>
                 </td>
               </tr>
             </tbody>
