@@ -14,39 +14,44 @@ require_once 'header.php';
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    <div id="wrap">
-        <div class="container">
-            <div class="row">
-                <form class="form-horizontal" action="functions.php" method="post" name="upload_excel" enctype="multipart/form-data">
-                    <fieldset>
-                        <!-- Form Name -->
-                        <legend>Form Name</legend>
-                        <!-- File Button -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="filebutton">Select File</label>
-                            <div class="col-md-4">
-                                <input type="file" name="file" id="file" class="input-large">
-                            </div>
-                        </div>
-                        <!-- Button -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="singlebutton">Import data</label>
-                            <div class="col-md-4">
-                                <button type="submit" id="submit" name="Import" class="btn btn-primary button-loading" data-loading-text="Loading...">Import</button>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-            <?php
-               get_all_records();
-            ?>
-        </div>
-    </div>
+<?php
+if(isset($_POST["import"])){
+    $fileName = $_FILES["file"]["tmp_name"];
+
+    if($_FILES["file"]["size"]>0){
+        $file = fopen($fileName,"r");
+        
+
+        while(($column = fgetcsv($file, 10000, ",")) !== FALSE){
+            $sqlInsert = ExecuteQuery($conn, "INSERT INTO `producten`(`productnummer`, `naam`, `prijs`, `image`, `voorraad`) 
+            VALUES ('" . $column[0] . "','" . $column[1] ."','" . $column[2] . "','" . $column[3] . "','" . $column[4] . "') 
+            ON DUPLICATE KEY UPDATE  naam = '" . $column[1] ."', prijs = $column[2],`image` = '" . $column[3] ."', voorraad =$column[4]");
+
+            if(!empty($sqlInsert)){
+                echo "csv geimporteerd";
+            }else{
+                echo "failed";
+            }
+        }
+    }
+}
+
+?>
+<form class = "form-horizontal" action = "" method="post" name="uploadCSV" enctype="multipart/form-data">
+
+<div>
+<label> choose scv file </label>
+<input type = "file" name = "file" accept = ".csv">
+<button type = "submit" name="import"> </button>
+</div>
+
+
+</form>
+
+
+
 </body>
 </html>

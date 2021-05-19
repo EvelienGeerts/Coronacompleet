@@ -15,11 +15,7 @@ require_once 'header.php';?>
 if(isset($_POST['zoeken'])){
 $zoeksleutel = $_POST['zoeken'];
 $Noresult = 'geen resultaat';
-/*
-$qry = 'SELECT * from producten WHERE naam LIKE :zoeksleutel';
-$stmt = $conn->prepare($qry);
-$stmt->execute(array(':zoeksleutel' => '%' . $zoeksleutel . '%'));
-*/
+
 $stmt = ExecuteQuery($conn, "SELECT * from producten WHERE naam LIKE :zoeksleutel and :zoeksleutel != '%%'", array(':zoeksleutel' => '%' . $zoeksleutel . '%'));
 
 if($stmt->rowCount() > 0)

@@ -21,9 +21,9 @@ CREATE TABLE `klanten` (
 CREATE TABLE `producten` (
   `productnummer` INT(50) NOT NULL,
   `naam` VARCHAR(50) NOT NULL,
-  `prijs` VARCHAR(50) NOT NULL,
-  `image` VARCHAR(255) NOT NULL,
-  `voorraad` INT(50) NOT NULL,
+  `prijs` VARCHAR(50) ,
+  `image` VARCHAR(255) ,
+  `voorraad` INT(50) ,
   PRIMARY KEY (`productnummer`)
 );
 
