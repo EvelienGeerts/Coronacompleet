@@ -5,7 +5,7 @@ include('../models/server.php');
 include('../models/config.php');
      
     //if klant is not logged in, they cannot access this page (optie, kan zo weg)
-    if (empty($_SESSION['gebruikersnaam'])){
+    if (empty($_SESSION['email'])){
         header('location: login.php');
     }
 ?>
@@ -21,8 +21,8 @@ include('../models/functions.php');
 
 
 
-    <?php if (isset($_SESSION['gebruikersnaam'])):?>
-    <p>Welkom <strong><?php echo $_SESSION['gebruikersnaam']; ?></strong></p>
+    <?php if (isset($_SESSION['email'])):?>
+    <p>Welkom <strong><?php echo $_SESSION['email']; ?></strong></p>
     <div class="input-group">
     <a href="../models/logout.php"class="button">Uitloggen</a>
     
@@ -32,26 +32,10 @@ include('../models/functions.php');
     
     <?php endif ?>
     
-
-
-<?php
-//ophalen klantgegevens
-
-$results = ExecuteQuery($conn, "SELECT * FROM klanten WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'");
-/*
-$sql = "SELECT * FROM klanten WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'";
-$results = $conn->query($sql);
-*/
-foreach($results as $row)
-{
-    echo 'Uw gebruikersnaam is'. " " . $row['gebruikersnaam'] . " " . "<br>". 'Uw naam is'. " ".  $row['naam'] . " " . "<br>" . 'Uw adres is'. " " . $row['adres'] . " " . "<br>". 'Uw postcode is' . " " . $row['postcode'] . " " . "<br>". 'Uw woonplaats is'. " ". $row['woonplaats'] . " " . "<br>". 'Uw telefoonnummer is'. " ". $row['telefoonnummer'] . " " . "<br>". 'Uw gebruikersnaam is'. " ". $row['gebruikersnaam'] . " "."<br>" . 'Uw email is'. " ". $row['email'];
-}
-?>
+<!--ophalen klantgegevens-->
 
 <table>
-
 <tr>
-
 <th>Naam</th>
 <th>Adres</th>
 <th>Postcode</th>
@@ -59,12 +43,10 @@ foreach($results as $row)
 <th>Telefoonnummer</th>
 <th>Email</th>
 <th>Gebruikersnaam</th>
-
 </tr>
 
 <?php
-
-$result = FetchQuery($conn, "SELECT naam, adres, postcode, woonplaats, telefoonnummer, email, gebruikersnaam FROM klanten WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'");
+$result = FetchQuery($conn, "SELECT naam, adres, postcode, woonplaats, telefoonnummer, email, gebruikersnaam FROM klanten WHERE email= '$_SESSION[email]'");
 
 $array = array();
 
@@ -79,9 +61,9 @@ foreach ($result as $row) {
         <td>" . $row['email'] . "</td>
         <td>" . $row['gebruikersnaam'] . "</td> " ;
     }
-    
 ?>
 </table>
+<br>
 
 <!--bestellingen inzien-->
 <table>
@@ -105,6 +87,7 @@ foreach ($resultbestelling as $row) {
     }
 ?>
 </table>
+<br>
 
 <table>
 <tr>

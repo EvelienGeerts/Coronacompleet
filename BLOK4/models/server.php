@@ -62,7 +62,7 @@ if (isset($_POST['register'])){
         $query = $conn->prepare ("INSERT INTO klanten (email, naam, adres, postcode, woonplaats, gebruikersnaam, telefoonnummer, wachtwoord) VALUES('$email', '$naam', '$adres', '$postcode', '$woonplaats', '$gebruikersnaam', '$telefoonnummer', '$password_1')"); 
     //if there are no errors, safe klant to database
         $query->execute();
-       $_SESSION['gebruikersnaam'] = $gebruikersnaam;
+       $_SESSION['email'] = $email;
        $_SESSION['succes'] = "U bent nu ingelogd";  
        header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');//redirect to home page
     }
@@ -81,11 +81,11 @@ if (isset($_POST['verander'])){
     if(count($errors)== 0){
        
         //if there are no errors, safe klant to database
-        $query = $conn->prepare ("UPDATE klanten SET email = $email2 WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'"); 
+        $query = $conn->prepare ("UPDATE klanten SET email = $email2 WHERE email = '$_SESSION[email]'"); 
         //if there are no errors, safe klant to database
         $query->execute();
         //$verander = ExecuteQuery($conn, "UPDATE klanten SET email = $email WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'"); 
-       $_SESSION['gebruikersnaam'] = $gebruikersnaam;
+       $_SESSION['email'] = $email;
        $_SESSION['succes'] = "Uw gegevens zijn aangepast";  
        header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');//redirect to home page
     }

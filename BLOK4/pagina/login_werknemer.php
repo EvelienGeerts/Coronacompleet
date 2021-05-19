@@ -65,7 +65,7 @@
                 if($count > 0)  
                 {  
                      $_SESSION["gebruikersnaam"] = $_POST["gebruikersnaam"];  
-                     header("location:mijngegevens.php");  
+                     header("location:admin.php");  
                 }  
                 else  
                 {  
