@@ -24,7 +24,8 @@ include('../models/functions.php');
     <?php if (isset($_SESSION['email'])):?>
     <p>Welkom <strong><?php echo $_SESSION['email']; ?></strong></p>
     <div class="input-group">
-    <a href="../models/logout.php"class="button">Uitloggen</a>
+    <p><a href="../models/logout.php"class="button">Uitloggen</a></p>
+    <p><a href="gegevensAanpassen.php"class="button">Gegevens aanpassen</a></p>
     
     <!--<a href="wijzig.php" class="button">Gegevens wijzigen?</a>  alvast voor later-->
         
@@ -66,6 +67,32 @@ foreach ($result as $row) {
 <br>
 
 <!--bestellingen inzien-->
+</table>
+<br>
+<table>
+<tr>
+<th>Ordernummer</th>
+<th>productnaam</th>
+<th>Aantal</th>
+</tr>
+<?php 
+$orderinzicht2= FetchQuery($conn, "SELECT o.ordernummer, p.naam, o.aantal FROM orders o 
+INNER JOIN producten p  on o.productnummer = p.productnummer
+INNER JOIN bestellingen b on o.ordernummer = b.ordernummer
+WHERE email= '$_SESSION[email]'");
+
+$array = array();
+
+foreach ($orderinzicht2 as $row) {
+		echo "<tr>
+		<td>" . $row['ordernummer'] . "</td>
+		<td>" . $row['naam'] . "</td>
+		<td>" . $row['aantal'] . "</td>"
+        ;
+    }
+
+?>
+
 <table>
 <tr>
 <th>Ordernummer</th>
@@ -73,8 +100,7 @@ foreach ($result as $row) {
 <th>Totaalbedrag</th>
 </tr>
 <?php
-$email_klant= FetchQuery($conn, "select email FROM klanten WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'");
-$resultbestelling = FetchQuery($conn, "SELECT ordernummer, betaalmethode, totaalbedrag FROM bestellingen  WHERE email = 'piet@hotmail.com'");//inner join? 
+$resultbestelling = FetchQuery($conn, "SELECT ordernummer, betaalmethode, totaalbedrag FROM bestellingen  WHERE email= '$_SESSION[email]'");
 
 $array = array();
 
@@ -91,18 +117,15 @@ foreach ($resultbestelling as $row) {
 
 <table>
 <tr>
-<th>Productnummer</th>
+<th>Ordernummer</th>
 <th>productnummer</th>
 <th>Aantal</th>
 </tr>
-<?php
-/*$orderinzicht= FetchQuery($conn, "SELECT o.productnummer, p.naam, o.aantal FROM orders o 
-INNER JOIN producten p  on o.productnummer = p.productnummer
-FULL OUTER JOIN klanten on b.email = k.email
-WHERE ordernummer = 1");*/
 
+<!--Deze werken niet goed, even laten staan voor het geval er nog tijd is iets klikbaars van te maken, anders verwijderen voor inleveren-->
+<?php
 $resultbestelling1 = FetchQuery($conn, "SELECT ordernummer, productnummer, aantal FROM orders  WHERE ordernummer = '1'");/*== ordernummer weergegeven*/
-// klopt niet. moet even puzzelen hoe ik dit kan koppelen aan de sessie.
+
 $array = array();
 
 foreach ($resultbestelling1 as $row) {
@@ -116,35 +139,33 @@ foreach ($resultbestelling1 as $row) {
 </table>
 
 
-<!--Aanpassen gegevens
-Werk deels, stuurt bij telefoonnummer je naar login? en logt je uit, denk iets fout met de sessions, email doet het niet-->
+</table>
+<br>
+<table>
+<tr>
+<th>Productnummer</th>
+<th>productnaam</th>
+<th>Aantal</th>
+</tr>
+<?php 
+$orderinzicht= FetchQuery($conn, "SELECT o.productnummer, p.naam, o.aantal FROM orders o 
+INNER JOIN producten p  on o.productnummer = p.productnummer
+WHERE ordernummer = 1");
 
-<form method="post" action="register.php">
-            <!--display validation errors here -->
-            <?php include('../models/errors.php'); ?>
+$array = array();
 
-            <div class="input-group">
-                <label>Email</label>
-                <input type="email" name="email2" value="<?php echo $row['email']; ?>"> 
-            </div>
-            <div class="input-group">
-                <button type="submit" name="verander" class="btn">Verander mail</button>
-            </div>
-            
-        </form>
-        <form method="post" action="register.php">
-            <!--display validation errors here -->
-            <?php include('../models/errors.php'); ?>
+foreach ($orderinzicht as $row) {
+		echo "<tr>
+		<td>" . $row['productnummer'] . "</td>
+		<td>" . $row['naam'] . "</td>
+		<td>" . $row['aantal'] . "</td>"
+        ;
+    }
 
-            <div class="input-group">
-                <label>Telefoonnummer</label>
-                <input type="text" name="telefoonnummer2" value="<?php echo $row['telefoonnummer']; ?>"> 
-            </div>
-            <div class="input-group">
-                <button type="submit" name="verander2" class="button">Verander telefoonnummer</button>
-            </div>
-            
-        </form>
+?>
+
+
+
 </body>
 </html>
 

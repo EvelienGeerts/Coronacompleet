@@ -60,7 +60,7 @@ if (isset($_POST['register'])){
     if(count($errors)== 0){
         //$wachtwoord = md5($wachtwoord); //encrypt password before comparing with database
         $query = $conn->prepare ("INSERT INTO klanten (email, naam, adres, postcode, woonplaats, gebruikersnaam, telefoonnummer, wachtwoord) VALUES('$email', '$naam', '$adres', '$postcode', '$woonplaats', '$gebruikersnaam', '$telefoonnummer', '$password_1')"); 
-    //if there are no errors, safe klant to database
+    //if there are no errors, safe klant to database 
         $query->execute();
        $_SESSION['email'] = $email;
        $_SESSION['succes'] = "U bent nu ingelogd";  
@@ -84,9 +84,7 @@ if (isset($_POST['verander'])){
         $query = $conn->prepare ("UPDATE klanten SET email = $email2 WHERE email = '$_SESSION[email]'"); 
         //if there are no errors, safe klant to database
         $query->execute();
-        //$verander = ExecuteQuery($conn, "UPDATE klanten SET email = $email WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'"); 
-       $_SESSION['email'] = $email;
-       $_SESSION['succes'] = "Uw gegevens zijn aangepast";  
+        //$verander = ExecuteQuery($conn, "UPDATE klanten SET email = $email WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'");   
        header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');//redirect to home page
     }
     else{
@@ -103,16 +101,42 @@ if (isset($_POST['verander2'])){
     if(count($errors)== 0){
        
         //if there are no errors, safe klant to database
-        $query = $conn->prepare ("UPDATE klanten SET telefoonnummer = $telefoonnummer2 WHERE gebruikersnaam = '$_SESSION[gebruikersnaam]'"); 
+        $query = $conn->prepare ("UPDATE klanten SET telefoonnummer = $telefoonnummer2 WHERE email = '$_SESSION[email]'"); 
         //if there are no errors, safe klant to database
         $query->execute();
-        //$verander = ExecuteQuery($conn, "UPDATE klanten SET email = $email WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'"); 
-       $_SESSION['gebruikersnaam'] = $gebruikersnaam;
-       $_SESSION['succes'] = "Uw gegevens zijn aangepast";  
+        //$verander = ExecuteQuery($conn, "UPDATE klanten SET email = $email WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'");  
        header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');//redirect to home page
     }
     else{
         echo 'Veranderen telefoonnummer mislukt';
+        header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');
+    }
+}
+
+if (isset($_POST['verander3'])){
+    $adres2 = $_POST['adres2'];
+    $postcode2 = $_POST['postcode2'];
+    $woonplaats2 = $_POST['woonplaats2'];
+    if (empty($adres2)){
+        array_push($errors, "Adres is verplicht"); //add error to errors array
+    }
+    if (empty($postcode2)){
+        array_push($errors, " Email is verplicht"); //add error to errors array
+    }
+    if (empty($woonplaats2)){
+        array_push($errors, " Email is verplicht"); //add error to errors array
+    }
+    if(count($errors)== 0){
+       
+        //if there are no errors, safe klant to database
+        $query = $conn->prepare ("UPDATE klanten SET (adres, postcode, woonplaats) VALUES('$adres2', '$postcode2', '$woonplaats2') WHERE email = '$_SESSION[email]'"); 
+        //if there are no errors, safe klant to database
+        $query->execute();
+        //$verander = ExecuteQuery($conn, "UPDATE klanten SET email = $email WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'");  
+       header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');//redirect to home page
+    }
+    else{
+        echo 'Veranderen adres is mislukt';
         header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');
     }
 }
