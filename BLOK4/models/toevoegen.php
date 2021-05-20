@@ -1,14 +1,19 @@
 <?php
 	require 'config.php';
+    
+  if (empty($_SESSION['email'])){
+    header('location: ../pagina/login.php');
+  }
+
 
 // session start klant gegevens
-$gebruikersnaam = $_SESSION["gebruikersnaam"];
+$email = $_SESSION["email"];
 
-$stmt1 = $conn->query("SELECT * FROM klanten WHERE '{$gebruikersnaam}' = gebruikersnaam;");
+$stmt1 = $conn->query("SELECT * FROM klanten WHERE '{$email}' = email;");
 $stmt1->execute();
 $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 foreach($result as $row) {
- $semail = $row["email"];
+ $email = $row["email"];
 }
 
   // Toevoegen van producten aan de winkelmand tabel
@@ -19,7 +24,7 @@ foreach($result as $row) {
     $tprijs = $aantal * $pprijs;
 
 	  $stmt = $conn->prepare("INSERT INTO winkelmand (email, productnummer, aantal) VALUES (?,?,?) ON DUPLICATE KEY UPDATE aantal = aantal + {$aantal};");
-    $stmt->execute([$semail, $productnummer, $aantal]);
+    $stmt->execute([$email, $productnummer, $aantal]);
   }
 
   	// Set total price of the product in the winkelmand table

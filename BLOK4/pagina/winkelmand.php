@@ -4,7 +4,10 @@ $page = 'winkelmand';
 include('../models/config.php');
 
 require_once 'header.php';
- 
+
+if (empty($_SESSION['email'])){
+  header('location: login.php');
+}
 ?>
 
   <div class="container">

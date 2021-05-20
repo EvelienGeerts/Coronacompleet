@@ -1,6 +1,7 @@
 <?php
-	require 'config.php';
-  require_once '../pagina/header.php';
+
+	require '../models/config.php';
+  require_once 'header.php';
 
   // Berekening van het eindtotaal
     $stmt = $conn->query('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer');
@@ -13,9 +14,9 @@
     }
 
   // session start klant gegevens // ** kan ook met post zoals bij bmode **
-    $gebruikersnaam = $_SESSION["gebruikersnaam"];
+    $email = $_SESSION["email"];
 
-    $stmt1 = $conn->query("SELECT * FROM klanten WHERE '{$gebruikersnaam}' = gebruikersnaam;");
+    $stmt1 = $conn->query("SELECT * FROM klanten WHERE '{$email}' = email;");
     $stmt1->execute();
     $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
     foreach($result as $row) {
@@ -26,7 +27,7 @@
     $spostcode = $row["postcode"];
     $swoonplaats = $row["woonplaats"];
     }
-
+  
     $bmode = $_POST['bmode'];
 
 	  $stmt = $conn->query("START TRANSACTION;

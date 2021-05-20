@@ -16,9 +16,9 @@ foreach($result as $row) {
 }
 
 // session start klant gegevens
-$gebruikersnaam = $_SESSION["gebruikersnaam"];
+$email = $_SESSION["email"];
 
-$stmt1 = $conn->query("SELECT * FROM klanten WHERE '{$gebruikersnaam}' = gebruikersnaam;");
+$stmt1 = $conn->query("SELECT * FROM klanten WHERE '{$email}' = email;");
 $stmt1->execute();
 $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 foreach($result as $row) {
@@ -54,7 +54,7 @@ foreach($result as $row) {
           <h6 class="lead"><b>Bezorgkosten : </b>Gratis</h6>
           <h5><b>Totaal te betalen bedrag  : </b>' . number_format($eindtotaal,2) . '</h5>
         </div>
-        <form action="../models/order.php" method="post" id="placeOrder">
+        <form action="order.php" method="post" id="placeOrder">
           <input type="hidden" name="products" value="' . $allItems . '">
           <input type="hidden" name="eindtotaal" value="' . $eindtotaal . '">
           <div class="form-group">Naam
@@ -83,7 +83,7 @@ foreach($result as $row) {
               <option value="" selected disabled>-Selecteer Betalingsmodus-</option>
               <option value="rembours">Onder rembours </option>
               <option value="ideal">iDeal</option>
-              <option value="paypal">paypal</option>
+              <option value="paypal">PayPal</option>
               <option value="mastercard">MasterCard</option>
             </select>
           </div>

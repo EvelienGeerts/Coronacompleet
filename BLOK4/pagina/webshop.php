@@ -2,6 +2,7 @@
   $page = 'webshop';
   require_once 'header.php';
   include ('../models/config.php');
+
 ?>
 
 <div class="container">
