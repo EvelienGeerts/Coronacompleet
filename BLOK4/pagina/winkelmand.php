@@ -66,7 +66,7 @@ if (empty($_SESSION['email'])){
                     <i class="fas fa-euro-sign"></i>&nbsp;&nbsp;'.number_format($row["prijs"],2).'
                   </td>
                   <td>
-                    <input type="number" class="form-control itemQty" value="'.$row["aantal"].'" style="width:75px;">
+                    <input type="number" class="form-control itemQty" value="'.$row["aantal"].'" style="width:75px;" disabled>
                   </td>
                   <td>
                     <i class="fas fa-euro-sign"></i>&nbsp;&nbsp;'.number_format($row["prijs"] * $row["aantal"],2).'

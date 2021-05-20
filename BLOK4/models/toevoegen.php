@@ -20,7 +20,7 @@ foreach($result as $row) {
   if(isset($_POST['productnummer'])) {
     $productnummer = $_POST['productnummer'];
     $aantal = $_POST['aantal'];
-    $pprijs = $_POST['prijs'];
+    $pprijs = $_POST['pprijs'];
     $tprijs = $aantal * $pprijs;
 
 	  $stmt = $conn->prepare("INSERT INTO winkelmand (email, productnummer, aantal) VALUES (?,?,?) ON DUPLICATE KEY UPDATE aantal = aantal + {$aantal};");
