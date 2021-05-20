@@ -27,8 +27,9 @@ if(isset($_POST["import"])){
 
         while(($column = fgetcsv($file, 10000, ",")) !== FALSE){
             $sqlInsert = ExecuteQuery($conn, "INSERT INTO `producten`(`productnummer`, `naam`, `prijs`, `image`, `voorraad`) 
-            VALUES ('" . $column[0] . "','" . $column[1] ."','" . $column[2] . "','" . $column[3] . "','" . $column[4] . "') 
-            ON DUPLICATE KEY UPDATE  naam = '" . $column[1] ."', prijs = $column[2],`image` = '" . $column[3] ."', voorraad =$column[4]");
+            VALUES (:column0,:column1,:column2,:column3,:column4) 
+            ON DUPLICATE KEY UPDATE  naam = :column1, prijs = :column2,`image` = :column3, voorraad = :column4", 
+            array(':column0'=>$column[0], ':column1'=>$column[1], ':column2'=>$column[2], ':column3'=>$column[3],':column4'=>$column[4]));
 
             if(!empty($sqlInsert)){
                 echo "csv geimporteerd";
@@ -41,13 +42,11 @@ if(isset($_POST["import"])){
 
 ?>
 <form class = "form-horizontal" action = "" method="post" name="uploadCSV" enctype="multipart/form-data">
-
 <div>
 <label> choose scv file </label>
 <input type = "file" name = "file" accept = ".csv">
 <button type = "submit" name="import"> </button>
 </div>
-
 
 </form>
 
@@ -55,3 +54,4 @@ if(isset($_POST["import"])){
 
 </body>
 </html>
+

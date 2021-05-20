@@ -19,7 +19,7 @@ CREATE TABLE `klanten` (
 );
 
 CREATE TABLE `producten` (
-  `productnummer` INT(50) NOT NULL,
+  `productnummer` INT(50) AUTO_INCREMENT,
   `naam` VARCHAR(50) NOT NULL,
   `prijs` VARCHAR(50) ,
   `image` VARCHAR(255) ,

@@ -20,11 +20,9 @@
 </tr>
 
 <?php
-
+/* Overzicht productenbestand*/ 
 $result = FetchQuery($conn, "SELECT productnummer, naam, voorraad FROM producten");
-
 $array = array();
-
 
 foreach ($result as $row) {
 		$product = "product" . $row['productnummer'];
@@ -34,8 +32,7 @@ foreach ($result as $row) {
 		<td>" . $row['voorraad'] . "</td>
 		<td><input type='text' name ='".$product."' placeholder = '".$row['naam']."'></td>" ;
 		$array[$row['productnummer']] = $product;
-
-	}
+	}	
 
 ?>
 </table>
@@ -47,9 +44,8 @@ foreach ($result as $row) {
 
 </html>
 
-
 <?php 
-
+//voorraad laten zien en aanpassen 
 if (isset($_POST['update']))
 {
 	$query = "";
@@ -63,10 +59,38 @@ if (isset($_POST['update']))
 
 	echo "<meta http-equiv='refresh' content='0'>";	
 }
+//csv file upload
+if(isset($_POST["import"])){
+    $fileName = $_FILES["file"]["tmp_name"];
 
+    if($_FILES["file"]["size"]>0){
+        $file = fopen($fileName,"r");
+        
+
+        while(($column = fgetcsv($file, 10000, ",")) !== FALSE){
+            $sqlInsert = ExecuteQuery($conn, "INSERT INTO `producten`(`productnummer`, `naam`, `prijs`, `image`, `voorraad`) 
+            VALUES (:column0,:column1,:column2,:column3,:column4) 
+            ON DUPLICATE KEY UPDATE  naam = :column1, prijs = :column2,`image` = :column3, voorraad = :column4", 
+            array(':column0'=>$column[0], ':column1'=>$column[1], ':column2'=>$column[2], ':column3'=>$column[3],':column4'=>$column[4]));
+
+            if(!empty($sqlInsert)){
+                echo "csv geimporteerd";
+            }else{
+                echo "failed";
+				echo "<meta http-equiv='refresh' content='0'>";	
+            }
+        }
+    }
+}
 
 ?>
+<!--Form csv file -->
+<form class = "form-horizontal" action = "" method="post" name="uploadCSV" enctype="multipart/form-data">
+<div>
+<label> choose scv file </label>
+<input type = "file" name = "file" accept = ".csv">
+<button type = "submit" name="import"> </button>
+</div>
 
-
-
+</form>
 
