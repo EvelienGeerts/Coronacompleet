@@ -13,16 +13,20 @@ if (empty($_SESSION['email'])){
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-10">
-        <div style="display:<?php if (isset($_SESSION['showAlert'])) {
-  echo $_SESSION['showAlert'];
-} else {
-  echo 'none';
-} unset($_SESSION['showAlert']); ?>" class="alert alert-success alert-dismissible mt-3">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <strong><?php if (isset($_SESSION['message'])) {
-  echo $_SESSION['message'];
-} unset($_SESSION['showAlert']); ?></strong>
+        <div style="display:
+        <?php // Doet niets
+        if (isset($_SESSION['showAlert'])) {
+          echo $_SESSION['showAlert'];
+          } else {
+            echo 'none';
+          } unset($_SESSION['showAlert']); ?>" class="alert alert-success alert-dismissible mt-3">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong><?php if (isset($_SESSION['message'])) {
+            echo $_SESSION['message'];
+          } unset($_SESSION['showAlert']); ?></strong>
         </div>
+
+        
         <div class="table-responsive mt-2">
           <table class="table table-bordered table-striped text-center">
             <thead>
@@ -49,42 +53,50 @@ if (empty($_SESSION['email'])){
                 $stmt->execute();
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $eindtotaal = 0;
-                foreach($result as $row)
-                {
+                foreach($result as $row) :
+                
                 // Berekening van eindtotaal
                 $tprijs = $row["prijs"] * $row["aantal"];
                 $eindtotaal += $tprijs;
                 
                 // Inhoud winkelmand
-                echo 
-                '<tr>
-                  <td>'.$row["productnummer"].'</td>
-                  <input type="hidden" class="productnummer" value="'.$row["productnummer"].'">
-                  <td><img src="'.$row["image"].'" width="50"></td>
-                  <td>'.$row["naam"].'</td>
+                ?>    
+                <tr>
                   <td>
-                    <i class="fas fa-euro-sign"></i>&nbsp;&nbsp;'.number_format($row["prijs"],2).'
+                    <?php echo $row["productnummer"]; ?>
+                  </td>
+                  <input type="hidden" class="productnummer" value=<?php echo $row["productnummer"] ?>>
+                  <td>
+                    <img src="<?php echo $row["image"] ?>" width="50">
                   </td>
                   <td>
-                    <input type="number" class="form-control itemQty" value="'.$row["aantal"].'" style="width:75px;" disabled>
+                    <?php echo $row["naam"]?>
                   </td>
                   <td>
-                    <i class="fas fa-euro-sign"></i>&nbsp;&nbsp;'.number_format($row["prijs"] * $row["aantal"],2).'
+                    <i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?php echo number_format($row["prijs"],2) ?>
                   </td>
                   <td>
-                  <input type="hidden" class="pprijs" value="'.$row["prijs"].'">
-                    <a href="../models/actie.php?remove='.$row["productnummer"].'" class="text-danger lead" onclick="return confirm("Weet u zeker dat u dit artikel wilt verwijderen?");"><i class="fas fa-trash-alt"></i></a>
+                    <input type="number" class="form-control itemQty" value=<?php echo $row["aantal"] ?> style="width:75px;" disabled>
                   </td>
-                </tr>';
-                }
-              ?>
+                  <td>
+                    <i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?php echo number_format($row["prijs"] * $row["aantal"],2) ?>
+                  </td>
+                  <td>
+                  <input type="hidden" class="pprijs" value=<?php echo $row["prijs"]?>>
+                    <a href="../models/actie.php?remove=<?php echo $row["productnummer"]?>" class="text-danger lead" onclick="return confirm('Weet u zeker dat u dit artikel wilt verwijderen?')";>
+                    <i class="fas fa-trash-alt"></i>
+                    </a>
+                  </td>
+                </tr>
+
+              <?php endforeach; ?>
 
               <tr>
                 <td colspan="3">
                   <a href="webshop.php" class="btn btn-success"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Verder winkelen</a>
                 </td>
                 <td colspan="2"><b>Totaal</b></td>
-                <td><b><i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?= number_format($eindtotaal,2); ?></b></td>
+                <td><b><i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?php echo number_format($eindtotaal,2); ?></b></td>
                 <td>
                   <a href="bestellen.php" class="btn btn-info <?= ($eindtotaal > 1) ? '' : 'disabled'; ?>"><i class="far fa-credit-card"></i>&nbsp;&nbsp;Bestellen</a>
                 </td>
