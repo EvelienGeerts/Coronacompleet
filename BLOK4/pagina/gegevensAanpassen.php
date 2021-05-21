@@ -42,11 +42,10 @@ include('../models/functions.php');
 <th>Woonplaats</th>
 <th>Telefoonnummer</th>
 <th>Email</th>
-<th>Gebruikersnaam</th>
 </tr>
 
 <?php
-$result = FetchQuery($conn, "SELECT naam, adres, postcode, woonplaats, telefoonnummer, email, gebruikersnaam FROM klanten WHERE email= '$_SESSION[email]'");
+$result = FetchQuery($conn, "SELECT naam, adres, postcode, woonplaats, telefoonnummer, email FROM klanten WHERE email= '$_SESSION[email]'");
 
 $array = array();
 
@@ -59,7 +58,6 @@ foreach ($result as $row) {
         <td>" . $row['woonplaats'] . "</td>
         <td>" . $row['telefoonnummer'] . "</td>
         <td>" . $row['email'] . "</td>
-        <td>" . $row['gebruikersnaam'] . "</td> " ;
     }
 ?>
 </table>

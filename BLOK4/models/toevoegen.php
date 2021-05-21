@@ -2,7 +2,7 @@
 	require 'config.php';
     
   if (empty($_SESSION['email'])){
-    header('location: ../pagina/login.php');
+    header('location: ../pagina/testgebruiker.php');
   }
 
 

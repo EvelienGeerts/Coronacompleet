@@ -58,29 +58,29 @@ foreach($result as $row) {
           <input type="hidden" name="products" value="' . $allItems . '">
           <input type="hidden" name="eindtotaal" value="' . $eindtotaal . '">
           <div class="form-group">Naam
-            <input type="text" name="name"value="' . $snaam . '" class="form-control" disabled>
+            <input type="text" name="name"value="' . $snaam . '" class="form-control" required>
           </div>
           <div class="form-group">Emailadres
-            <input type="email" name="email"value="' . $semail . '" class="form-control" placeholder="E-Mail" disabled>
+            <input type="email" name="email"value="' . $semail . '" class="form-control" placeholder="E-Mail" required>
           </div>
           <div class="form-group">Telefoonnummer
-            <input type="tel" name="phone"value="' . $stelefoon . '" class="form-control" placeholder="Telefoon" disabled>
+            <input type="tel" name="phone"value="' . $stelefoon . '" class="form-control" placeholder="Telefoon" required>
           </div>
 
           <div class="form-group">Adres
-            <input type="text" name="address"value="' . $sadres . '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." disabled>
+            <input type="text" name="address"value="' . $sadres . '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
           </div>
           <div class="form-group">Postcode
-            <input type="text" name="postcode"value="' . $spostcode . '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." disabled>
+            <input type="text" name="postcode"value="' . $spostcode . '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
           </div>
           <div class="form-group">Woonplaats
-            <input type="text" name="woonplaats"value="' . $swoonplaats . '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." disabled>
+            <input type="text" name="woonplaats"value="' . $swoonplaats . '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
           </div>
                   
           <h6 class="text-center lead">Selecteer Betalingsmodus </h6>
           <div class="form-group">Betalingsmodus
             <select name="bmode" class="form-control">
-              <option value="" selected disabled>-Selecteer Betalingsmodus-</option>
+              <option value="" selected required>-Selecteer Betalingsmodus-</option>
               <option value="rembours">Onder rembours </option>
               <option value="ideal">iDeal</option>
               <option value="paypal">PayPal</option>

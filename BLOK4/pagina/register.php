@@ -31,11 +31,6 @@
                 <label>telefoonnummer</label>
                 <input type="text" name="telefoonnummer" value="<?php echo $telefoonnummer; ?>">
             </div>
-
-            <div class="input-group">
-                <label>gebruikersnaam</label>
-                <input type="text" name="gebruikersnaam" value="<?php echo $gebruikersnaam; ?>">
-            </div>
             <div class="input-group">
                 <label>Email</label>
                 <input type="email" name="email" value="<?php echo $email; ?>"> 

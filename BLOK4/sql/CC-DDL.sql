@@ -8,13 +8,12 @@ USE coronacompleet;
 
 CREATE TABLE `klanten` (
   `email` VARCHAR(30) NOT NULL,
-  `naam` VARCHAR(50) NOT NULL,
-  `adres` VARCHAR(50) NOT NULL,
-  `postcode` CHAR(6) NOT NULL,
-  `woonplaats`VARCHAR(50) NOT NULL,
-  `gebruikersnaam` VARCHAR(20) NOT NULL UNIQUE,
-  `telefoonnummer`INT(10) NOT NULL,
-  `wachtwoord` VARCHAR(20) NOT NULL,
+  `naam` VARCHAR(50),
+  `adres` VARCHAR(50),
+  `postcode` CHAR(6),
+  `woonplaats`VARCHAR(50),
+  `telefoonnummer`INT(10),
+  `wachtwoord` VARCHAR(20),
   PRIMARY KEY (`email`)  
 );
 
