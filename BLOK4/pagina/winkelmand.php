@@ -49,8 +49,10 @@ if (empty($_SESSION['email'])){
             </thead>
             <tbody>
               <?php
-                $stmt = $conn->query('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer');
-                $stmt->execute();
+                $email = $_SESSION["email"];
+
+                $stmt = $conn->prepare('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email= :email');
+                $stmt->execute([':email' => $email]);
                 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $eindtotaal = 0;
                 foreach($result as $row) :

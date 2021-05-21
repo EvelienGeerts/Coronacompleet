@@ -9,8 +9,8 @@
 // session start klant gegevens
 $email = $_SESSION["email"];
 
-$stmt1 = $conn->query("SELECT * FROM klanten WHERE '{$email}' = email;");
-$stmt1->execute();
+$stmt1 = $conn->query("SELECT * FROM klanten WHERE ':email' = email;");
+$stmt1->execute([':email' => $email]);
 $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 foreach($result as $row) {
  $email = $row["email"];
@@ -23,8 +23,8 @@ foreach($result as $row) {
     $pprijs = $_POST['pprijs'];
     $tprijs = $aantal * $pprijs;
 
-	  $stmt = $conn->prepare("INSERT INTO winkelmand (email, productnummer, aantal) VALUES (?,?,?) ON DUPLICATE KEY UPDATE aantal = aantal + {$aantal};");
-    $stmt->execute([$email, $productnummer, $aantal]);
+	  $stmt = $conn->prepare("INSERT INTO winkelmand (email, productnummer, aantal) VALUES (?,?,?) ON DUPLICATE KEY UPDATE aantal = aantal + ?;");
+    $stmt->execute([$email, $productnummer, $aantal, $aantal]);
   }
 
   	// Set total price of the product in the winkelmand table
@@ -34,6 +34,6 @@ foreach($result as $row) {
 
       $tprice = $aantal * $pprijs;
 	}
-  header('Location:../pagina/winkelmand.php');  
+  header('Location:../pagina/webshop.php');  
 ?> 
   
