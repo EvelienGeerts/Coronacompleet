@@ -31,7 +31,7 @@ CREATE TABLE `winkelmand` (
   `productnummer` INT(50) NOT NULL,
   `aantal` INT(225) NOT NULL,
   PRIMARY KEY (`email`,`productnummer`),
-  FOREIGN KEY (`email`) REFERENCES `klanten`(`email`),
+  FOREIGN KEY (`email`) REFERENCES `klanten`(`email`) ON UPDATE CASCADE,
   FOREIGN KEY (`productnummer`) REFERENCES `producten`(`productnummer`)
 );
 
@@ -41,7 +41,7 @@ CREATE TABLE `bestellingen` (
   `betaalmethode` VARCHAR(255) NOT NULL,
   `totaalbedrag` DOUBLE(6,2) NOT NULL,
   PRIMARY KEY (`ordernummer`),
-  FOREIGN KEY (`email`) REFERENCES `klanten`(`email`)
+  FOREIGN KEY (`email`) REFERENCES `klanten`(`email`) ON UPDATE CASCADE
 );
 
 CREATE TABLE `orders` (

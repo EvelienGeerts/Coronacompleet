@@ -23,6 +23,7 @@ $stmt1->execute();
 $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 foreach($result as $row) {
  $snaam = $row["naam"];
+ // !! if email bevat @ dan laten zien else placeholder="E-Mail" !!
  $semail = $row["email"];
  $stelefoon = $row["telefoonnummer"]; 
  $sadres = $row["adres"];
@@ -40,41 +41,42 @@ foreach($result as $row) {
   foreach($result as $row) {
     $items[] = $row['ItemQty'];
   }
+    $allItems = implode(', ', $items);
+  ?>
 
-  $allItems = implode(', ', $items);
+<?php // $allItems = implode(', ', $items);?>
 
-  echo
-  '<div class="container">
+ 
+  <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6 px-4 pb-4" id="order">
         <h4 class="text-center text-info p-2">Rond uw bestelling af!</h4>
         <div class="jumbotron p-3 mb-2 text-center">
-          <h6 class="lead"><b>Product(en) : </b>' . $allItems . 
-          '</h6>
+          <h6 class="lead"><b>Product(en) : </b><?php echo $allItems ?></h6>
           <h6 class="lead"><b>Bezorgkosten : </b>Gratis</h6>
-          <h5><b>Totaal te betalen bedrag  : </b>' . number_format($eindtotaal,2) . '</h5>
+          <h5><b>Totaal te betalen bedrag  : </b><?php echo number_format($eindtotaal,2) ?></h5>
         </div>
         <form action="order.php" method="post" id="placeOrder">
-          <input type="hidden" name="products" value="' . $allItems . '">
-          <input type="hidden" name="eindtotaal" value="' . $eindtotaal . '">
+          <input type="hidden" name="products" value="<?php  $allItems ?>">
+          <input type="hidden" name="eindtotaal" value="<?php $eindtotaal ?>">
           <div class="form-group">Naam
-            <input type="text" name="name"value="' . $snaam . '" class="form-control" required>
+            <input type="text" name="naam"value="<?php echo $snaam ?>" class="form-control" required>
           </div>
           <div class="form-group">Emailadres
-            <input type="email" name="email"value="' . $semail . '" class="form-control" placeholder="E-Mail" required>
+            <input type="email" name="email"value="<?php echo $semail ?>" class="form-control" placeholder="E-Mail" required>
           </div>
           <div class="form-group">Telefoonnummer
-            <input type="tel" name="phone"value="' . $stelefoon . '" class="form-control" placeholder="Telefoon" required>
+            <input type="tel" name="telefoonnummer"value="<?php echo $stelefoon ?>" class="form-control" placeholder="Telefoon" required>
           </div>
 
           <div class="form-group">Adres
-            <input type="text" name="address"value="' . $sadres . '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
+            <input type="text" name="adres"value="<?php echo $sadres ?>" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
           </div>
           <div class="form-group">Postcode
-            <input type="text" name="postcode"value="' . $spostcode . '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
+            <input type="text" name="postcode"value="<?php echo $spostcode ?>" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
           </div>
           <div class="form-group">Woonplaats
-            <input type="text" name="woonplaats"value="' . $swoonplaats . '" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
+            <input type="text" name="woonplaats"value="<?php echo $swoonplaats ?>" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
           </div>
                   
           <h6 class="text-center lead">Selecteer Betalingsmodus </h6>
@@ -93,8 +95,9 @@ foreach($result as $row) {
         </form>
       </div>
     </div>
-  </div>';
-  ?>        
+  </div>
+
+ <?php //endforeach; ?>        
 
 	<br/>
 	

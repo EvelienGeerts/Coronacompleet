@@ -50,6 +50,7 @@ if (empty($_SESSION['email'])){
             <tbody>
               <?php
                 $email = $_SESSION["email"];
+                var_dump($email);
 
                 $stmt = $conn->prepare('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email= :email');
                 $stmt->execute([':email' => $email]);
