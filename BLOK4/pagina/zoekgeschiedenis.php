@@ -5,7 +5,7 @@
   include('../models/functions.php');
   require_once 'header.php';
 
-if(isset($_POST['save'])){
+if(isset($_POST['save']) && isset($_post['çheck'])){
 	$checkbox = $_POST['check'];
 	for($i=0;$i<count($checkbox);$i++){
 	$delete_id = $checkbox[$i]; 

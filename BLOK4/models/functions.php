@@ -15,7 +15,7 @@ function FetchQuery($conn, $query, $params = array())
 ?>
 
 <?php
- if(isset($_POST["Import"])){
+ /*if(isset($_POST["Import"])){
     
     $filename=$_FILES["file"]["tmp_name"];    
      if($_FILES["file"]["size"] > 0)
@@ -43,5 +43,5 @@ function FetchQuery($conn, $query, $params = array())
       
            fclose($file);  
      }
-  }   
+  }   */
  ?>

@@ -129,7 +129,7 @@ if (isset($_POST['verander3'])){
     if(count($errors)== 0){
        
         //if there are no errors, safe klant to database
-        $query = $conn->prepare ("UPDATE klanten SET `adres` = '$adres2', postcode = '$postcode2', woonplaats = '$woonplaats2' WHERE email = '$_SESSION[email]'");
+        $query = $conn->prepare ("UPDATE klanten SET adres = '$adres2', postcode = '$postcode2', woonplaats = '$woonplaats2' WHERE email = '$_SESSION[email]'");
         //if there are no errors, safe klant to database
         $query->execute();
         //$verander = ExecuteQuery($conn, "UPDATE klanten SET email = $email WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'");  
