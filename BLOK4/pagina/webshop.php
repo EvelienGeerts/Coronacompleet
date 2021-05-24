@@ -1,8 +1,13 @@
 <?php 
   $page = 'webshop';
   require_once 'header.php';
-  include ('../models/config.php');
+  include('../models/functions.php');
+    
+  if (empty($_SESSION['email'])){
+    CreateTempUser($conn);
+  }
 
+  echo $_SESSION["email"];
 ?>
 
 <div class="container">

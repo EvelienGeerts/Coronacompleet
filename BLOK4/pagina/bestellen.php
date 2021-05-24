@@ -2,12 +2,21 @@
 $page = 'bestellen';
 
 include('../models/config.php');
+include('../models/functions.php');
 
 require_once 'header.php'; 
 
-// Berekening van het eindtotaal
-$stmt = $conn->query('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer');
-$stmt->execute();
+$test = $_SESSION["email"];
+echo $test;
+
+// Berekening van het eindtotaal !!! were
+/*
+ExecuteQuery($conn, "SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email = ':email'", array(':email' => $email));
+*/
+
+//  WHERE email = :email'
+$stmt = $conn->query("SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer");
+$stmt->execute([':email' => $email]);
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $eindtotaal = 0;
 foreach($result as $row) {
@@ -15,8 +24,10 @@ foreach($result as $row) {
   $eindtotaal += $tprijs;
 }
 
+
 // session start klant gegevens
 $email = $_SESSION["email"];
+var_dump($email);
 
 $stmt1 = $conn->query("SELECT * FROM klanten WHERE '{$email}' = email;");
 $stmt1->execute();
@@ -60,7 +71,7 @@ foreach($result as $row) {
           <input type="hidden" name="products" value="<?php  $allItems ?>">
           <input type="hidden" name="eindtotaal" value="<?php $eindtotaal ?>">
           <div class="form-group">Naam
-            <input type="text" name="naam"value="<?php echo $snaam ?>" class="form-control" required>
+            <input type="text" name="naam"value="<?php echo $snaam ?>" class="form-control" placeholder="Naam" required>
           </div>
           <div class="form-group">Emailadres
             <input type="email" name="email"value="<?php echo $semail ?>" class="form-control" placeholder="E-Mail" required>
@@ -97,7 +108,7 @@ foreach($result as $row) {
     </div>
   </div>
 
- <?php //endforeach; ?>        
+ <?php // endforeach; ?>        
 
 	<br/>
 	

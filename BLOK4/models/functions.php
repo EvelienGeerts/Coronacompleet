@@ -43,5 +43,15 @@ function FetchQuery($conn, $query, $params = array())
       
            fclose($file);  
      }
-  }   
- ?>
+  } 
+  
+  function CreateTempUser($conn){
+    $sessionId = session_id();
+
+    $stmt = $conn->prepare("INSERT INTO klanten (email) VALUES (?);");
+    $stmt->execute([$sessionId]);
+
+    $_SESSION["email"] = $sessionId; 
+  }
+ 
+?>

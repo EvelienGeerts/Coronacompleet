@@ -2,6 +2,7 @@
 
 	require '../models/config.php';
   require_once 'header.php';
+  include('../models/functions.php');
 
   // Berekening van het eindtotaal
     $stmt = $conn->query('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer');
@@ -41,26 +42,40 @@
     $swoonplaats = $_POST["woonplaats"];
     $bmode = $_POST['bmode'];
 
+//semail = nieuwe fatsoenlijke email
+//email = temp generated code
+    $klant = ExecuteQuery($conn,"select * from klanten where email = ? limit 1", array($semail));
+    if($klant->rowCount() > 0 && $email != $semail)
+    {
+      ExecuteQuery($conn,"UPDATE winkelmand set email = ? where email = ?", array($semail, $email));
+      ExecuteQuery($conn,"delete from klanten where email = ?", array($email));
+    }
+    else
+    {
+      // IGNORE statement of ON DUPLICATE KEY UPDATE
     $stmt1 = $conn->prepare("UPDATE klanten SET email = ?, naam = ?, adres = ?, postcode = ?, woonplaats = ?, telefoonnummer = ? WHERE klanten.email = ?");
+    //laatste ? moet $email zijn
     $stmt1->execute([$semail, $snaam, $sadres, $spostcode, $swoonplaats, $stelefoon, $email]);
     var_dump($semail);
+    }
     
 
-	  $stmt = $conn->query("START TRANSACTION;
+
+//In de query hieronder moet je semail gaan meegeven zodat je de correcte winkelmand delete
+ExecuteQuery($conn, "START TRANSACTION;
     SELECT @ordernummer:=COALESCE(MAX(ordernummer)+1, 1) FROM bestellingen;
     SELECT @totaalbedrag:= (select SUM(wm.aantal*p.prijs) from winkelmand wm 
                            inner join producten p on p.productnummer = wm.productnummer);
-    SELECT @email:= (SELECT email FROM winkelmand LIMIT 1);
-    INSERT INTO bestellingen values (@ordernummer, @email, '{$bmode}', @totaalbedrag);
+    INSERT INTO bestellingen values (@ordernummer, :email, :bmode, @totaalbedrag);
     INSERT INTO orders (select @ordernummer, productnummer, aantal from winkelmand);
     UPDATE producten p
     INNER JOIN winkelmand w ON p.productnummer = w.productnummer
     SET p.voorraad = p.voorraad - w.aantal;
-    DELETE FROM winkelmand;
+    DELETE FROM winkelmand WHERE email = :email;
     COMMIT;
-    ");
-    $stmt->execute();
+    ", array(':email' => $semail, ':bmode' => $bmode));
 
+    $_SESSION["email"] = $semail;
 
   echo '
   <div class="text-center">
