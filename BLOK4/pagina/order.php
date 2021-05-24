@@ -13,9 +13,11 @@
       $eindtotaal += $tprijs;
     }
 
-  // session start klant gegevens // ** kan ook met post zoals bij bmode **
+  // session start klant gegevens // !! kan ook met post zoals bij bmode !!
     $email = $_SESSION["email"];
-
+    var_dump($email);
+    echo session_id();
+/*
     $stmt1 = $conn->query("SELECT * FROM klanten WHERE '{$email}' = email;");
     $stmt1->execute();
     $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
@@ -27,8 +29,22 @@
     $spostcode = $row["postcode"];
     $swoonplaats = $row["woonplaats"];
     }
-  
+
+    UPDATE `klanten` SET `email` = 'michiel@michiel.nl', `naam` = 'michiel', `adres` = 'ooster 8', `postcode` = '4413CS', `woonplaats` = 'Kruiningen', `telefoonnummer` = '012345678' WHERE `klanten`.`email` = '16g029lnmrfts09hdd22ap7560'
+   */
+    //$sessionId = session_id();
+    $snaam = $_POST["naam"];
+    $semail = $_POST["email"];
+    $stelefoon = $_POST["telefoonnummer"]; 
+    $sadres = $_POST["adres"];
+    $spostcode = $_POST["postcode"];
+    $swoonplaats = $_POST["woonplaats"];
     $bmode = $_POST['bmode'];
+
+    $stmt1 = $conn->prepare("UPDATE klanten SET email = ?, naam = ?, adres = ?, postcode = ?, woonplaats = ?, telefoonnummer = ? WHERE klanten.email = ?");
+    $stmt1->execute([$semail, $snaam, $sadres, $spostcode, $swoonplaats, $stelefoon, $email]);
+    var_dump($semail);
+    
 
 	  $stmt = $conn->query("START TRANSACTION;
     SELECT @ordernummer:=COALESCE(MAX(ordernummer)+1, 1) FROM bestellingen;
@@ -44,6 +60,7 @@
     COMMIT;
     ");
     $stmt->execute();
+
 
   echo '
   <div class="text-center">

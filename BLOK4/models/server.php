@@ -6,7 +6,6 @@ if (isset($_POST['register'])){
     $postcode = $_POST['postcode'];
     $woonplaats = $_POST['woonplaats'];
     $telefoonnummer = $_POST['telefoonnummer'];
-    $gebruikersnaam = $_POST['gebruikersnaam'];
     $email = $_POST['email'];
     $password_1 = $_POST['password_1'];
     $password_2 = $_POST['password_2'];
@@ -26,10 +25,6 @@ if (isset($_POST['register'])){
     }
     if (empty($telefoonnummer)){
         array_push($errors, " Telefoonnummer is verplicht"); //add error to errors array
-    }
-
-    if (empty($gebruikersnaam)){
-        array_push($errors, " Gebruikersnaam is verplicht"); //add error to errors array
     }
     if (empty($email)){
         array_push($errors, " Email is verplicht"); //add error to errors array
@@ -59,7 +54,7 @@ if (isset($_POST['register'])){
 
     if(count($errors)== 0){
         //$wachtwoord = md5($wachtwoord); //encrypt password before comparing with database
-        $query = $conn->prepare ("INSERT INTO klanten (email, naam, adres, postcode, woonplaats, gebruikersnaam, telefoonnummer, wachtwoord) VALUES('$email', '$naam', '$adres', '$postcode', '$woonplaats', '$gebruikersnaam', '$telefoonnummer', '$password_1')"); 
+        $query = $conn->prepare ("INSERT INTO klanten (email, naam, adres, postcode, woonplaats, telefoonnummer, wachtwoord) VALUES('$email', '$naam', '$adres', '$postcode', '$woonplaats', '$telefoonnummer', '$password_1')"); 
     //if there are no errors, safe klant to database 
         $query->execute();
        $_SESSION['email'] = $email;

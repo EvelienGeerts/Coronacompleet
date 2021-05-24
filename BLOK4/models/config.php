@@ -24,7 +24,6 @@ $adres = "";
 $postcode = "";
 $woonplaats = "";
 $telefoonnummer = "";
-$gebruikersnaam = "";
 $email = "";
 $errors = array();
 $password_1 = "";
