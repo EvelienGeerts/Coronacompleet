@@ -6,9 +6,10 @@
   require_once 'header.php';
   
   //if klant is not logged in, they cannot access this page (optie, kan zo weg)
- /* if (empty($_SESSION['gebruikersnaam'])){
+  if (empty($_SESSION['gebruikersnaam'])){
 	header('location: login_werknemer.php');
-}*/
+	exit;
+}
 ?>
 
 

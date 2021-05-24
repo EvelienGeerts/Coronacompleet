@@ -75,9 +75,10 @@ if(isset($_POST["import"])){
 
             if(!empty($sqlInsert)){
                 echo "csv geimporteerd";
+				echo "<meta http-equiv='refresh' content='0'>";	
             }else{
                 echo "failed";
-				echo "<meta http-equiv='refresh' content='0'>";	
+
             }
         }
     }
