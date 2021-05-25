@@ -25,6 +25,7 @@ function FetchQuery($conn, $query, $params = array())
            {
              $sql = "INSERT into employeeinfo (emp_id,firstname,lastname,email,reg_date) 
                    values ('".$getData[0]."','".$getData[1]."','".$getData[2]."','".$getData[3]."','".$getData[4]."')";
+        // mysqli_query ?????
                    $result = mysqli_query($con, $sql);
         if(!isset($result))
         {

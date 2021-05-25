@@ -6,31 +6,40 @@ include('../models/functions.php');
 
 require_once 'header.php'; 
 
+$email = $_SESSION["email"];
+var_dump($email);
+
+/*
 $test = $_SESSION["email"];
 echo $test;
 
-// Berekening van het eindtotaal !!! were
 /*
-ExecuteQuery($conn, "SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email = ':email'", array(':email' => $email));
+// Berekening van het eindtotaal !!! were
+FetchQuery($conn, "SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email = ?", array($email));
+$eindtotaal = 0;
+foreach($resultfetch as $row) {
+  $tprijs = $row["prijs"] * $row["aantal"];
+  $eindtotaal += $tprijs;
+}
 */
 
+
 //  WHERE email = :email'
-$stmt = $conn->query("SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer");
+$stmt = $conn->prepare('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email = :email');
+//$stmt->bindValue(':email',$email);
 $stmt->execute([':email' => $email]);
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $eindtotaal = 0;
 foreach($result as $row) {
   $tprijs = $row["prijs"] * $row["aantal"];
   $eindtotaal += $tprijs;
+
 }
 
 
 // session start klant gegevens
-$email = $_SESSION["email"];
-var_dump($email);
-
-$stmt1 = $conn->query("SELECT * FROM klanten WHERE '{$email}' = email;");
-$stmt1->execute();
+$stmt1 = $conn->prepare("SELECT * FROM klanten WHERE :email = email;");
+$stmt1->execute([':email' => $email]);
 $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
 foreach($result as $row) {
  $snaam = $row["naam"];
@@ -46,8 +55,8 @@ foreach($result as $row) {
   $allItems = '';
 	$items = [];
 
-  $stmt = $conn->query('SELECT CONCAT(naam, "(",aantal,")") AS ItemQty FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer');
-  $stmt->execute();
+  $stmt = $conn->prepare('SELECT CONCAT(naam, "(",aantal,")") AS ItemQty FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE :email = email;');
+  $stmt->execute([':email' => $email]);
   $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
   foreach($result as $row) {
     $items[] = $row['ItemQty'];
