@@ -4,6 +4,11 @@ include('../models/server.php');
 include('../models/config.php');
 include('../models/functions.php');
 
+if (empty($_SESSION['gebruikersnaam'])){
+  header('location: login_werknemer.php');
+  exit;
+}
+
 ob_start();
 $query_file_name = "voorraadExport";
 $query_file = fopen("php://output", "w");

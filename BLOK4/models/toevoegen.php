@@ -4,8 +4,8 @@
 // session start klant gegevens
   $email = $_SESSION["email"];
 
-  $stmt1 = $conn->query("SELECT * FROM klanten WHERE ':email' = email;");
-  $stmt1->execute([':email' => $email]);
+  $stmt1 = $conn->prepare("SELECT * FROM klanten WHERE 'email' = :email");
+  $stmt1->execute(array(':email' => $email));
   $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
   foreach($result as $row) {
     $email = $row["email"];
