@@ -1,4 +1,3 @@
-
 <?php
 include('../models/config.php');
 
@@ -20,7 +19,5 @@ function FetchQuery($conn, $query, $params = array())
     $stmt->execute([$sessionId]);
 
     $_SESSION["email"] = $sessionId; 
-  }
- 
+  } 
 ?>
-

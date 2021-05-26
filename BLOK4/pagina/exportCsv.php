@@ -2,13 +2,13 @@
 $page = 'exportCsv.php'; 
 include('../models/server.php');
 include('../models/config.php');
+include('../models/functions.php');
 
 ob_start();
-$query_file_name = "App_data.csv";
+$query_file_name = "voorraadExport";
 $query_file = fopen("php://output", "w");
 // write file
-$stmt = $conn->prepare("SELECT * FROM `producten`");
-$stmt->execute();
+$stmt = ExecuteQuery($conn, "SELECT * from producten");
 $row = $stmt->fetch(PDO::FETCH_NAMED);
 fputcsv($query_file, array_keys($row));  // csv head
 fputcsv($query_file, $row);  // first line
