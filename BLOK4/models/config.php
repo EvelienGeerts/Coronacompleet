@@ -28,6 +28,4 @@ $email = "";
 $errors = array();
 $password_1 = "";
 $password_2 = "";
-
 ?>
-

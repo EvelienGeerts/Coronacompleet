@@ -1,5 +1,4 @@
 <?php
-
 if (isset($_POST['register'])){
     $naam = $_POST['naam'];
     $adres = $_POST['adres'];
@@ -62,10 +61,6 @@ if (isset($_POST['register'])){
        header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');//redirect to home page
     }
 }
-?>
-
-
-<?php 
 //updaten gegevens
 
 if (isset($_POST['verander'])){
@@ -135,5 +130,4 @@ if (isset($_POST['verander3'])){
         header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');
     }
 }
-
 ?>

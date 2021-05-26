@@ -1,10 +1,9 @@
 <?php 
  $page = 'voorraad';
-	include('../models/server.php');
 	include('../models/config.php');
+	include('../models/server.php');
 	include('../models/functions.php');
-	include('../pagina/exportCsv.php');
- 	require_once 'header.php';
+	require_once 'header.php';
 ?>
 
     <body>
@@ -67,21 +66,19 @@ if(isset($_POST["import"])){
     if($_FILES["file"]["size"]>0){
         $file = fopen($fileName,"r");
         
-
+		$headers = fgetcsv($file, 10000, ",");
         while(($column = fgetcsv($file, 10000, ",")) !== FALSE){
             $sqlInsert = ExecuteQuery($conn, "INSERT INTO `producten`(`productnummer`, `naam`, `prijs`, `image`, `voorraad`) 
             VALUES (:column0,:column1,:column2,:column3,:column4) 
             ON DUPLICATE KEY UPDATE  naam = :column1, prijs = :column2,`image` = :column3, voorraad = :column4", 
             array(':column0'=>$column[0], ':column1'=>$column[1], ':column2'=>$column[2], ':column3'=>$column[3],':column4'=>$column[4]));
-
-            if(!empty($sqlInsert)){
-                echo "csv geimporteerd";
-				echo "<meta http-equiv='refresh' content='0'>";	
-            }else{
-                echo "failed";
-
             }
         }
+		if(!empty($sqlInsert)){
+			echo "csv geimporteerd";
+			//echo "<meta http-equiv='refresh' content='0'>";	
+		}else{
+			echo "failed";
     }
 }
 
@@ -91,7 +88,7 @@ if(isset($_POST["import"])){
 	<div>
 		<input type = "file" name = "file" accept = ".csv">
 		<button type = "submit" name="import">Upload csv </button>
-		<button type = "submit" name="export">Export csv </button>
+		<button><a class="linkasbutton" href="exportCsv.php">Export CSV</a></button>
 	</div>
 </form>
 
