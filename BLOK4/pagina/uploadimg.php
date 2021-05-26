@@ -19,19 +19,22 @@ require_once 'header.php';
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    
-    <?php
-// output headers so that the file is downloaded rather than displayed
-header('Content-Type: text/csv; charset=utf-8');
-header('Content-Disposition: attachment; filename=data.csv');
+<?php
 
-// create a file pointer connected to the output stream
-$output = fopen('php://output', 'w');
-$rows = FetchQuery($conn, "SELECT productnummer, naam, voorraad FROM producten");
-// loop over the rows, outputting them
-while ($row = mysql_fetch_assoc($rows)) fputcsv($output, $row);
+
+// (B) HTTP CSV HEADERS
+header('Content-Type: application/octet-stream');
+header("Content-Transfer-Encoding: Binary"); 
+header("Content-disposition: attachment; filename=\"export.csv\""); 
+
+// (C) GET USERS FROM DATABASE + DIRECT OUTPUT
+$stmt = $conn->prepare("SELECT * FROM `producten`");
+$stmt->execute();
+while ($row = $stmt->fetch(PDO::FETCH_NAMED)) {
+  echo implode(",", [$row['productnummer'], $row['naam'], $row['prijs'], $row['image'], $row['voorraad']]);
+  echo "\r\n";
+}
 ?>
-
 
 </body>
 </html>

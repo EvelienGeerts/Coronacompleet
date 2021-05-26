@@ -3,6 +3,7 @@
 	include('../models/server.php');
 	include('../models/config.php');
 	include('../models/functions.php');
+	include('../pagina/exportCsv.php');
  	require_once 'header.php';
 ?>
 
@@ -90,6 +91,9 @@ if(isset($_POST["import"])){
 	<div>
 		<input type = "file" name = "file" accept = ".csv">
 		<button type = "submit" name="import">Upload csv </button>
+		<button type = "submit" name="export">Export csv </button>
 	</div>
 </form>
+
+
 
