@@ -87,11 +87,9 @@ if(isset($_POST["import"])){
 ?>
 <!--Form csv file -->
 <form class = "form-horizontal" action = "" method="post" name="uploadCSV" enctype="multipart/form-data">
-<div>
-<label> choose scv file </label>
-<input type = "file" name = "file" accept = ".csv">
-<button type = "submit" name="import"> </button>
-</div>
-
+	<div>
+		<input type = "file" name = "file" accept = ".csv">
+		<button type = "submit" name="import">Upload csv </button>
+	</div>
 </form>
 

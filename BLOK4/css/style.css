@@ -730,3 +730,6 @@ tr:nth-child(even) {
 
 
 /* voorraad*/
+.form-horizontal{
+	padding-top: 20px;
+}

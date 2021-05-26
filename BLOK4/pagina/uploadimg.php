@@ -19,34 +19,19 @@ require_once 'header.php';
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="wrap">
-        <div class="container">
-            <div class="row">
-                <form class="form-horizontal" action="functions.php" method="post" name="upload_excel" enctype="multipart/form-data">
-                    <fieldset>
-                        <!-- Form Name -->
-                        <legend>Form Name</legend>
-                        <!-- File Button -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="filebutton">Select File</label>
-                            <div class="col-md-4">
-                                <input type="file" name="file" id="file" class="input-large">
-                            </div>
-                        </div>
-                        <!-- Button -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="singlebutton">Import data</label>
-                            <div class="col-md-4">
-                                <button type="submit" id="submit" name="Import" class="btn btn-primary button-loading" data-loading-text="Loading...">Import</button>
-                            </div>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
-            <?php
-               get_all_records();
-            ?>
-        </div>
-    </div>
+    
+    <?php
+// output headers so that the file is downloaded rather than displayed
+header('Content-Type: text/csv; charset=utf-8');
+header('Content-Disposition: attachment; filename=data.csv');
+
+// create a file pointer connected to the output stream
+$output = fopen('php://output', 'w');
+$rows = FetchQuery($conn, "SELECT productnummer, naam, voorraad FROM producten");
+// loop over the rows, outputting them
+while ($row = mysql_fetch_assoc($rows)) fputcsv($output, $row);
+?>
+
+
 </body>
 </html>
