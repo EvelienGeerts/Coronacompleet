@@ -1,5 +1,6 @@
 <?php
 	require 'config.php';
+  include('../models/functions.php');
 
 // session start klant gegevens
   $email = $_SESSION["email"];

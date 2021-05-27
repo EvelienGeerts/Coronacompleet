@@ -48,9 +48,9 @@ function FetchQuery($conn, $query, $params = array()) {
   // Aanmaken van een tijdelijke gebruiker mbv het session_id
   function CreateTempUser($conn){
     $sessionId = session_id();
-
-    $stmt = $conn->prepare("INSERT INTO klanten (email, gebruikersnaam) VALUES (:sessionID, :sessionID);");
-    $stmt->execute(array(":sessionID" => $sessionId));
+    
+    $stmt = $conn->prepare("INSERT INTO klanten (email) VALUES (?);");
+    $stmt->execute([$sessionId]);
 
     $_SESSION["email"] = $sessionId; 
   } 
