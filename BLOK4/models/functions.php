@@ -8,10 +8,10 @@ function ExecuteQuery($conn, $query, $params = array()) {
 return $stmt;
 }
 
-function FetchQuery($conn, $query, $params = array())
-{
+function FetchQuery($conn, $query, $params = array()) {
     return ExecuteQuery($conn, $query, $params)->fetchAll(PDO::FETCH_ASSOC);
 }
+
 ?>
 
 <?php
@@ -46,6 +46,7 @@ function FetchQuery($conn, $query, $params = array())
      }
   } 
   
+  // Aanmaken van een tijdelijke gebruiker mbv het session_id
   function CreateTempUser($conn){
     $sessionId = session_id();
 
