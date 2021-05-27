@@ -1,6 +1,6 @@
 <?PHP
-$_LANG['TITEL']['SITE'] = "Sitemasters"; // Website naam
-$_LANG['TITEL']['UITLEG'] = "Everything for the webmaster "; // Website 'slogan'
+$_LANG['TITEL']['SITE'] = ""; // Website naam
+$_LANG['TITEL']['UITLEG'] = ""; // Website 'slogan'
 
 //index.php
 $_LANG['index'] = '<div class="row">
@@ -66,3 +66,26 @@ If you have any questions about our products, delivery or other questions, you c
 </div>
 </div>'
 ?>
+
+
+<h2><?php _('About us', $_COOKie['lang']); ?></h2>
+<?php
+
+$taalArray =[
+    'About us' => 'Over ons'
+];
+
+
+function _(string $text, string $taal)
+{
+    global $taalArray;
+
+    if( array_key_exists($text, $taalArray) )
+    {
+        echo $taalArray[$text];
+    }
+    else
+    {
+        echo $text;
+    }
+}

@@ -57,7 +57,7 @@ foreach ($result as $row) {
 		<td>" . $row['postcode'] . "</td>
         <td>" . $row['woonplaats'] . "</td>
         <td>" . $row['telefoonnummer'] . "</td>
-        <td>" . $row['email'] . "</td>
+        <td>" . $row['email'] . "</td>";
     }
 ?>
 </table>
@@ -112,7 +112,10 @@ Werk deels, stuurt bij telefoonnummer je naar login? en logt je uit, denk iets f
 
 
 
-
-
+<div>
+<footer class="borderfooter">
+<p><strong>CORONA COMPLEET</strong> in partnership with <a href="https://www.u-earth.eu/">U-EARTH</a></p>
+</footer>
+</div>
 </body>
 </html>

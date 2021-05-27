@@ -6,8 +6,8 @@
 
 
 <?PHP
-$_LANG['TITEL']['SITE'] = "Sitemasters"; // Website naam
-$_LANG['TITEL']['UITLEG'] = "Alles voor de webmaster"; // Website 'slogan'
+$_LANG['TITEL']['SITE'] = ""; // Website naam
+$_LANG['TITEL']['UITLEG'] = ""; // Website 'slogan'
 
 $_LANG['WELKOM'] = "Welkom bij sitemasters!";
 $_LANG['PLEZIER'] = "Wij wensesn u veel plezier toe";

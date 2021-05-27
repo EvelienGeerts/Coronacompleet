@@ -149,3 +149,20 @@ function burgerMenu() {
 function myOops() {
     alert("Dankjewel! Je ontvangt een bericht van ons");
 }
+
+
+/***********************
+ ** klikken bestelling**
+ ***********************/
+
+ function myAjax() {
+    $.ajax({
+         type: "POST",
+         url: 'your_url/ajax.php',
+         data:{action:'call_this'},
+         success:function(html) {
+           alert(html);
+         }
+
+    });
+}
