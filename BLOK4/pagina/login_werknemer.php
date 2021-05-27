@@ -26,10 +26,7 @@
             <input type="submit" name="login" class="button" value="Login" />  
     </form>  
         </div>  
-        <br />  
-
-
- 
+        <br />   
 </body>
 </html>
 <?php  

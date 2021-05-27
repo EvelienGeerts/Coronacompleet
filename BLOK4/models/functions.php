@@ -10,7 +10,6 @@ return $stmt;
 function FetchQuery($conn, $query, $params = array()) {
     return ExecuteQuery($conn, $query, $params)->fetchAll(PDO::FETCH_ASSOC);
 }
-
 ?>
 
 <?php
