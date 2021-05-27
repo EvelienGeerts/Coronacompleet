@@ -26,15 +26,6 @@
 							</div>
 						</a>
 					</div>
-					<div class="Product2">
-						<a href="csvfile.php"><img src="../img/Admin/csv.png" class="Images"
-								alt="TestPic">
-							<div class="container">
-								<h3><b>CSV-FILE</b></h3>
-
-							</div>
-						</a>
-					</div>
 					<div class="Product3">
 						<a href="zoekgeschiedenis.php"><img src="../img/Admin/zoekgeschiedenis.jpg"
 								class="Images" alt="handschoenPic">

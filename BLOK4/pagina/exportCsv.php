@@ -1,24 +1,19 @@
 <?php
-$page = 'zoekfunctie'; 
-//include('../models/server.php');
-//include('../models/config.php');
-//include('../models/functions.php');
-
-//require_once 'header.php';
-
-
-?>
-<?php
 $page = 'exportCsv.php'; 
 include('../models/server.php');
 include('../models/config.php');
+include('../models/functions.php');
+
+if (empty($_SESSION['gebruikersnaam'])){
+  header('location: login_werknemer.php');
+  exit;
+}
 
 ob_start();
-$query_file_name = "App_data.csv";
+$query_file_name = "voorraadExport";
 $query_file = fopen("php://output", "w");
 // write file
-$stmt = $conn->prepare("SELECT * FROM `producten`");
-$stmt->execute();
+$stmt = ExecuteQuery($conn, "SELECT * from producten");
 $row = $stmt->fetch(PDO::FETCH_NAMED);
 fputcsv($query_file, array_keys($row));  // csv head
 fputcsv($query_file, $row);  // first line
@@ -34,8 +29,4 @@ header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
 header('Pragma: public'); // HTTP/1.0
 fpassthru($query_file);
 fclose($query_file);
-
-
-
-
 ?>

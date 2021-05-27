@@ -7,6 +7,8 @@
   /* ONDERSTAANDE NOG EVEN TESTEN!!
   $stmt1 = $conn->query("SELECT * FROM klanten WHERE ':email' = email;");
   $stmt1->execute([':email' => $email]);
+  $stmt1 = $conn->prepare("SELECT * FROM klanten WHERE 'email' = :email");
+  $stmt1->execute(array(':email' => $email));
   $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
   */
   $result = FetchQuery($conn, "SELECT * FROM klanten WHERE ':email' = email;", array([':email' => $email]));

@@ -730,3 +730,15 @@ tr:nth-child(even) {
 
 
 /* voorraad*/
+.form-horizontal{
+	padding-top: 20px;
+}
+
+.linkasbutton{
+	color: black;
+}
+
+.linkasbutton:link { text-decoration: none; }
+.linkasbutton:visited { text-decoration: none; }
+.linkasbutton:hover { text-decoration: none; }
+.linkasbutton:active { text-decoration: none; }
