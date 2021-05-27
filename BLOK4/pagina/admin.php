@@ -36,7 +36,7 @@
 						</a>
 					</div>
 					<div class="Product4">
-						<a href="uploadimg.php"><img src="../img/Admin/upload.jpg" class="Images"
+						<a href="upload.php"><img src="../img/Admin/upload.jpg" class="Images"
 								alt="mondkapPic">
 							<div class="container">
 								<h3><b>Uploaden afbeeldingen</b></h3>
