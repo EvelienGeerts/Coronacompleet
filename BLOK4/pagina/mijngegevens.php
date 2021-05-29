@@ -86,36 +86,7 @@ foreach ($resultbestelling as $row) {
 ?>
 </table>
 
-
 <!--bestellingen inzien-->
-</table>
-<br>
-<table>
-<tr>
-<th>Ordernummer</th>
-<th>productnaam</th>
-<th>Aantal</th>
-</tr>
-<?php 
-$orderinzicht2= FetchQuery($conn, "SELECT o.ordernummer, p.naam, o.aantal FROM orders o 
-INNER JOIN producten p  on o.productnummer = p.productnummer
-INNER JOIN bestellingen b on o.ordernummer = b.ordernummer
-WHERE email= '$_SESSION[email]'");
-
-$array = array();
-
-foreach ($orderinzicht2 as $row) {
-		echo "<tr>
-		<td>" . $row['ordernummer'] . "</td>
-		<td>" . $row['naam'] . "</td>
-		<td>" . $row['aantal'] . "</td>"
-        ;
-    }
-?>
-
-<!--bestellingen inzien proberen-->
-<!--Welke bestellingen gedaan-->
-
 <br>
 <form method="post" action="mijngegevens.php">
 
@@ -157,32 +128,9 @@ foreach ($orderinzicht2 as $row) {
         }
     }
 ?>
-
 <br>
-
-<!--klikbaar maken-->
-<table>
-<tr>
-<th>Ordernummer</th>
-<th>Betaalmethode</th>
-<th>Totaalbedrag</th>
-</tr>
-<?php
-$resultbestelling = FetchQuery($conn, "SELECT ordernummer, betaalmethode, totaalbedrag FROM bestellingen  WHERE email= '$_SESSION[email]'");
-
-$array = array();
-
-foreach ($resultbestelling as $row) {
-		echo "<tr>
-        
-		<td>" . $row['ordernummer'] . "</td>
-		<td>" . $row['betaalmethode'] . "</td>
-		<td>" . $row['totaalbedrag'] . "</td>"
-        ;
-    }
-?>
 </table>
-<br>
+
 
 
 

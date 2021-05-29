@@ -107,6 +107,7 @@ if (isset($_POST['verander3'])){
     $adres2 = $_POST['adres2'];
     $postcode2 = $_POST['postcode2'];
     $woonplaats2 = $_POST['woonplaats2'];
+    $telefoonnummer2 = $_POST['telefoonnummer2'];
     if (empty($adres2)){
         array_push($errors, "Adres is verplicht"); //add error to errors array
     }
@@ -114,19 +115,23 @@ if (isset($_POST['verander3'])){
         array_push($errors, " Email is verplicht"); //add error to errors array
     }
     if (empty($woonplaats2)){
-        array_push($errors, " Email is verplicht"); //add error to errors array
+        array_push($errors, " Woonplaats is verplicht"); //add error to errors array
+    }
+    if (empty($telefoonnummer2)){
+        array_push($errors, " Telefoonnummer is verplicht"); //add error to errors array
     }
     if(count($errors)== 0){
        
         //if there are no errors, safe klant to database
-        $query = $conn->prepare ("UPDATE klanten SET adres = '$adres2', postcode = '$postcode2', woonplaats = '$woonplaats2' WHERE email = '$_SESSION[email]'");
+        $query = $conn->prepare ("UPDATE klanten SET adres = '$adres2', postcode = '$postcode2', woonplaats = '$woonplaats2', telefoonnummer = $telefoonnummer2 WHERE email = '$_SESSION[email]'");
         //if there are no errors, safe klant to database
         $query->execute();
-        //$verander = ExecuteQuery($conn, "UPDATE klanten SET email = $email WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'");  
+        //$verander = ExecuteQuery($conn, "UPDATE klanten SET email = $email WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'"); 
+        
        header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');//redirect to home page
     }
     else{
-        echo 'Veranderen adres is mislukt';
+        echo 'Veranderen gegevens is mislukt';
         header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');
     }
 }

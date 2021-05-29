@@ -8,7 +8,7 @@ body{
 }
 
 .header{ 
-    width: 30%;
+    width: 60%;
     margin: 50px auto 0px;
     color: white;
     background: #939494;
@@ -20,7 +20,7 @@ body{
 }
 /* .content werkt niet? */
 form, .content {
-   width: 30%;
+   width: 60%;
    margin: 0px auto;
    padding: 20px;
    border: 1px solid #B0C4DE;
@@ -39,7 +39,7 @@ form, .content {
 }
 
 .input-group input{
-    height: 30px;
+    height: 25px;
     width: 93%;
     padding: 5px 10px;
     font-size: 16px;

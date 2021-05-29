@@ -3,6 +3,7 @@ $page = 'gegevensAanpassen';
 
 include('../models/server.php'); 
 include('../models/config.php');
+
      
     //if klant is not logged in, they cannot access this page (optie, kan zo weg)
     if (empty($_SESSION['email'])){
@@ -13,7 +14,8 @@ include('../models/config.php');
 require_once 'header.php';
 include('../models/functions.php');
 ?>
-
+<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="css/style.css">
 <div class="header">
 <br>
 <h2>mijn gegevens</h2>
@@ -62,52 +64,32 @@ foreach ($result as $row) {
 ?>
 </table>
 
-<!--Aanpassen gegevens
-Werk deels, stuurt bij telefoonnummer je naar login? en logt je uit, denk iets fout met de sessions, email doet het niet-->
-
-<form method="post" action="register.php">
-            <!--display validation errors here -->
-            <?php include('../models/errors.php'); ?>
-
-            <div class="input-group">
-                <label>Email</label>
-                <input type="email" name="email2" value="<?php echo $row['email']; ?>"> 
-            </div>
-            <div class="input-group">
-                <button type="submit" name="verander" class="btn">Verander mail</button>
-            </div>
-        </form>
-
+<!--Aanpassen gegevens-->
+    <div class="aanpassen">
         <form method="post" action="register.php">
             <!--display validation errors here -->
             <?php include('../models/errors.php'); ?>
 
-            <div class="input-group">
-                <label>Telefoonnummer</label>
-                <input type="text" name="telefoonnummer2" value="<?php echo $row['telefoonnummer']; ?>"> 
-            </div>
-            <div class="input-group">
-                <button type="submit" name="verander2" class="button">Verander telefoonnummer</button>
-            </div>
-        </form>
-        <div>
-        <form method="post" action="register.php">
-            <!--display validation errors here -->
-            <?php include('../models/errors.php'); ?>
-
-            <div class="input-group">
+            <div class="invoer">
                 <label>Adres</label>
                 <input type="text" name="adres2" value="<?php echo $row['adres']; ?>"> 
             </div>
+            <div class="invoer">
             <label>Postcode</label>
                 <input type="text" name="postcode2" value="<?php echo $row['postcode']; ?>"> 
             </div>
+            <div class="invoer">
             <label>Woonplaats</label>
                 <input type="text" name="woonplaats2" value="<?php echo $row['woonplaats']; ?>"> 
             </div>
-            <div class="input-group">
-                <button type="submit" name="verander3" class="button">Verander adres</button>
+            <div class="invoer">
+            <label>Telefoonnummer</label>
+                <input type="text" name="telefoonnummer2" value="<?php echo $row['telefoonnummer']; ?>"> 
             </div>
+            
+            <div class="">
+                <button type="submit" name="verander3" class="button">Verander gegevens</button>
+            </div></div>
         </form></div>
 
 

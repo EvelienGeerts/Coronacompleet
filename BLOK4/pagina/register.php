@@ -3,6 +3,10 @@
  require_once 'header.php';
  
 ?>
+
+<link rel="stylesheet" href="../css/style2.css">
+	<link rel="stylesheet" href="css/style2.css">
+
 	
         <div class="header">
             <h2>Registreer</h2>
@@ -50,7 +54,7 @@
                 Al een account?<a href="login.php">Sign in</a>
             </p>
         </form>
-
+        </div>
     </body>
 
     </html>
