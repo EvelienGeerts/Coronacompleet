@@ -101,8 +101,8 @@ foreach($result as $row) {
                   
           <h6 class="text-center lead">Selecteer Betalingsmodus </h6>
           <div class="form-group">Betalingsmodus
-            <select name="bmode" class="form-control">
-              <option value="" selected required>-Selecteer Betalingsmodus-</option>
+            <select name="bmode" class="form-control" required>
+              <option value="" selected >-Selecteer Betalingsmodus-</option>
               <option value="rembours">Onder rembours </option>
               <option value="ideal">iDeal</option>
               <option value="paypal">PayPal</option>

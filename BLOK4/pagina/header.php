@@ -49,7 +49,7 @@
 							<li><a href='https://localhost/git-coronacompleet/BLOK4/models/logout.php'>log uit</a></li>
 						</ul>
 					</li>
-					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/admin.php"<?php if(isset($page) && $page == "mijngegevens") echo " class='selected'";?>>Admin</a></li>
+					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/admin.php"<?php if(isset($page) && $page == "admin") echo " class='selected'";?>>Admin</a></li>
 				</ul>
 			</nav>
 

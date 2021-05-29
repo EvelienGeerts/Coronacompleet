@@ -2,11 +2,12 @@
 $page = 'winkelmand';
 
 include('../models/config.php');
+include('../models/functions.php');
 
 require_once 'header.php';
 
 if (empty($_SESSION['email'])){
-  header('location: login.php');
+      CreateTempUser($conn);
 }
 ?>
 
