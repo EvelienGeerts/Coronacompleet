@@ -53,6 +53,13 @@
 				</ul>
 			</nav>
 
+			<div id = "zoekBar" style  = "float:right">
+				<form action = "zoekfunctie.php" method="post">
+					<input type="text" name="zoeken" placeholder= "zoek voor producten"/>
+					<input type="submit" value=">>"/>
+				</form>
+			</div>
+
 			<div class="banner">
 				<span class="spanwrap">
 					Bescherm andere en uzelf met de veiligste en beste kwaliteit producten.

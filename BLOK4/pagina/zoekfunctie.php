@@ -21,10 +21,13 @@ $stmt = ExecuteQuery($conn, "SELECT * from producten WHERE naam LIKE :zoeksleute
 if($stmt->rowCount() > 0)
 {
 foreach ($stmt as $row) {
-    echo "<a href='".$row["naam"]."Product.php"."'<div class = 'zoekResultaat'>
+$myvalue = $row["naam"];
+$arr = explode(' ',trim($myvalue));
+    echo "<a href='".$arr["0"]."Product.php"."'<div class = 'zoekResultaat'>
         ".$row["naam"]."
         ".$row["prijs"]." 
     </div></a>";}
+
 }
 else
 

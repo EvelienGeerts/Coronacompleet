@@ -11,7 +11,7 @@
 </body>
 </html>
 <?php
-
+if(isset($_FILES["fileToUpload"])){
 $target_dir = "../img/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
@@ -58,5 +58,6 @@ if ($uploadOk == 0) {
   } else {
     echo "Sorry, there was an error uploading your file.";
   }
+}
 }
 ?>
