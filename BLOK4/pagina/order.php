@@ -77,16 +77,26 @@ ExecuteQuery($conn, "START TRANSACTION;
 
     $_SESSION["email"] = $semail;
 
-  echo '
-  <div class="text-center">
-              <h1 class="display-4 mt-2 text-danger">Dank u!</h1>
-              <h2 class="text-success">Uw bestelling is succesvol geplaatst!</h2>
-              <h4>Naam : ' . $snaam . '</h4>
-              <h4>E-mail : ' . $semail . '</h4>
-              <h4>Telefoon : ' . $stelefoon . '</h4>
-              <h4>Betaald : ' . number_format($eindtotaal,2) . '</h4>
-              <h4>Betaalmethode : ' . $bmode . '</h4>
-            </div>';
+  ?>
  
-?> 
-  
+  <div class="text-center">
+    <h1 class="display-4 mt-2 text-danger">Dank u!</h1>
+    <h2 class="text-success">Uw bestelling is succesvol geplaatst!</h2>
+    <h4>Naam : <?php echo $snaam ?></h4>
+    <h4>E-mail : <?php echo $semail ?></h4>
+    <h4>Telefoon : <?php echo  $stelefoon ?></h4>
+    <h4>Betaald : <?php echo number_format($eindtotaal,2) ?></h4>
+    <h4>Betaalmethode : <?php echo $bmode  ?></h4>
+  </div>
+ 
+  <br/>
+	
+	<footer class="borderfooter">
+		<p><strong>CORONA COMPLEET</strong> in partnership with <a href="https://www.u-earth.eu/">U-EARTH</a></p>
+	</footer>
+	
+</div>	
+
+</body>
+
+</html>

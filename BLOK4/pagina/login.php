@@ -1,81 +1,65 @@
-<?php include('../models/config.php');
-
- require_once 'header.php';
+<?php 
+include('../models/config.php');
+include('../models/functions.php');
 //display validation errors here -->
- include('../models/errors.php');
+include('../models/errors.php');
+
+require_once 'header.php';
 
  //if klant is logged in, they cannot access this page (optie, kan zo weg)
- 
- 
- ?>
+?>
     <div class="container" style="width:500px;">  
-        <?php  
+        <?php 
         if(isset($message))  
         {  
                 echo '<label class="text-danger">'.$message.'</label>';  
         }  
         ?>
+     <br />
+     <br />
+     <form action="../models/loginsubmit.php" method="post">  
+          <label>email</label>  
+          <input type="email" name="email" required />  
+          <br />  
+          <label>Wachtwoord</label>  
+          <input type="password" name="wachtwoord" required />  
+          <br />  
+          <input type="submit" name="login" class="button" value="Login" />  
+     </form>  
+     </div>  
+     <br />  
 
-    <form method="post">  
-            <label>email</label>  
-            <input type="email" name="email" class="" />  
-            <br />  
-            <label>Wachtwoord</label>  
-            <input type="password" name="wachtwoord" class="" />  
-            <br />  
-            <input type="submit" name="login" class="button" value="Login" />  
-    </form>  
-        </div>  
-        <br />  
-
-
- 
-</body>
-</html>
-<?php  
+<?php 
+/*
  if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }  
- $host = "localhost";  
- $username = "root";  
- $password = "";  
- $database = "coronacompleet";  
- $message = "";  
- try  
- {  
-      $connect = new PDO("mysql:host=$host; dbname=$database", $username, $password);  
-      $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
-      if(isset($_POST["login"]))  
-      {  
-           if(empty($_POST["email"]) || empty($_POST["wachtwoord"]))  
-           {  
-                $message = '<label>All fields are required</label>';  
-           }  
-           else  
-           {  
-                $query = "SELECT * FROM klanten WHERE email = :email AND wachtwoord = :wachtwoord";  
-                $statement = $connect->prepare($query);  
-                $statement->execute(  
-                     array(  
-                          'email'     =>     $_POST["email"],  
-                          'wachtwoord'     =>     $_POST["wachtwoord"]  
-                     )  
-                );  
-                $count = $statement->rowCount();  
-                if($count > 0)  
-                {  
-                     $_SESSION["email"] = $_POST["email"];  
-                     header("location:mijngegevens.php");  
-                }  
-                else  
-                {  
-                     $message = '<label>Wrong Data</label>';  
-                }  
-           }  
-      }  
- }  
- catch(PDOException $error)  
- {  
-      $message = $error->getMessage();  
- }  
- ?> 
+
+if(isset($_POST["login"])) {
+          $stmt = ExecuteQuery($conn, 'SELECT * FROM klanten WHERE email = ? AND wachtwoord = ?', array($_POST["email"], $_POST["wachtwoord"]));
+          $count = $stmt->rowCount();  
+          if($count > 0)  
+          {
+               $_SESSION['email'] = $_POST['email'];  
+               //header("Location: /producten.php"); 
+               var_dump($_SESSION['email']); 
+          } else {  
+          $message = '<label>Wrong Data</label>';  
+          }  
+     }
+*/
+         
+// catch(PDOException $error)  
+// {  
+//      $message = $error->getMessage();  
+// }  
+ ?>
+ 	<footer class="borderfooter">
+		<p><strong>CORONA COMPLEET</strong> in partnership with <a href="https://www.u-earth.eu/">U-EARTH</a></p>
+	</footer>
+	
+	
+
+</body>
+
+</html>
