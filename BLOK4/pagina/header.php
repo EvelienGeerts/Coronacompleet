@@ -13,7 +13,6 @@
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-
 	<div class="container">
 		<header>
 			<a href="https://localhost/git-coronacompleet/BLOK4/index.php"><h1>CORONA COMPLEET</h1></a>
@@ -56,14 +55,9 @@
 					<input type="submit" value=">>"/>
 				</form>
 			</div>
-
 			<div class="banner">
 				<span class="spanwrap">
 					Bescherm andere en uzelf met de veiligste en beste kwaliteit producten.
 				</span>
 			</div>
 		</header>
-
-		
-
-<!-- Start of the page-specific content. -->

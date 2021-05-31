@@ -10,9 +10,7 @@ return $stmt;
 function FetchQuery($conn, $query, $params = array()) {
     return ExecuteQuery($conn, $query, $params)->fetchAll(PDO::FETCH_ASSOC);
 }
-?>
 
-<?php
  if(isset($_POST["Import"])){
     
     $filename=$_FILES["file"]["tmp_name"];    

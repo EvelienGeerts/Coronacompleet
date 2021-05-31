@@ -5,18 +5,14 @@
 	include('../models/functions.php');
 	require_once 'header.php';
 ?>
-
     <body>
 	<form action="" method="post" id="voorraad">
 <table>
-
 <tr>
-
-<th>product id</th>
-<th>product naam</th>
-<th>aantal</th>
-<th>aanpassen</th>
-
+	<th>product id</th>
+	<th>product naam</th>
+	<th>aantal</th>
+	<th>aanpassen</th>
 </tr>
 
 <?php
@@ -33,7 +29,6 @@ foreach ($result as $row) {
 		<td><input type='text' name ='".$product."' placeholder = '".$row['naam']."'></td>" ;
 		$array[$row['productnummer']] = $product;
 	}	
-
 ?>
 </table>
 <BR>
@@ -41,9 +36,7 @@ foreach ($result as $row) {
 	<input type="submit" name="update" value="UPDATE DATA"/>
 </form>
 </body>
-
 </html>
-
 <?php 
 //voorraad laten zien en aanpassen 
 if (isset($_POST['update']))
@@ -53,11 +46,9 @@ if (isset($_POST['update']))
 		if(isset($_POST[$value]) && $_POST[$value] != '')
 		{
 			$stmt = ExecuteQuery($conn, "UPDATE producten SET voorraad = voorraad + " . ":value". " where productnummer = " . ':key' . ";", array(':value'=>$_POST[$value], ':key'=>$key));
-			print_r($query) ;
+			echo "<meta http-equiv='refresh' content='0'>";	 ;
 		}
 	}
-
-	echo "<meta http-equiv='refresh' content='0'>";	
 }
 //csv file upload
 if(isset($_POST["import"])){
@@ -76,12 +67,11 @@ if(isset($_POST["import"])){
         }
 		if(!empty($sqlInsert)){
 			echo "csv geimporteerd";
-			//echo "<meta http-equiv='refresh' content='0'>";	
+			echo "<meta http-equiv='refresh' content='0'>";	
 		}else{
 			echo "failed";
     }
 }
-
 ?>
 <!--Form csv file -->
 <form class = "form-horizontal" action = "" method="post" name="uploadCSV" enctype="multipart/form-data">
@@ -91,6 +81,3 @@ if(isset($_POST["import"])){
 		<button><a class="linkasbutton" href="exportCsv.php">Export CSV</a></button>
 	</div>
 </form>
-
-
-
