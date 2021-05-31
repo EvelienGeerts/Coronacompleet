@@ -15,9 +15,10 @@
                 echo '<label class="text-danger">'.$message.'</label>';  
         }  
         ?>
-
-    <form method="post">  
-            <label>gebruikersnaam</label>  
+     <br />
+     <br />
+    <form action="../models/loginsubmitw.php" method="post">  
+            <label>Gebruikersnaam</label>  
             <input type="text" name="gebruikersnaam" class="" />  
             <br />  
             <label>Wachtwoord</label>  
@@ -30,6 +31,7 @@
 </body>
 </html>
 <?php  
+/*
  if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }  
@@ -75,4 +77,14 @@
  {  
       $message = $error->getMessage();  
  }  
+ */
  ?> 
+  	<footer class="borderfooter">
+		<p><strong>CORONA COMPLEET</strong> in partnership with <a href="https://www.u-earth.eu/">U-EARTH</a></p>
+	</footer>
+	
+	
+
+</body>
+
+</html>

@@ -1,16 +1,16 @@
 <?php 
-  $page = 'admin';
-  include('../models/server.php');
-  include('../models/config.php');
-  include('../models/functions.php');
-  
-  
-  //if klant is not logged in, they cannot access this page (optie, kan zo weg)
-  if (empty($_SESSION['gebruikersnaam'])){
-	header('location: login_werknemer.php');
-	exit;
-}
+$page = 'mijngegevens';
+
+include('../models/server.php'); 
+include('../models/config.php');
+include('../models/functions.php');
+     
+    //if werknemer is not logged in, they cannot access this page (optie, kan zo weg)
+    if (empty($_SESSION['gebruikersnaam'])){
+        header('location: login.php');
+    }
 ?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -54,52 +54,65 @@
 			</div>
 		</header>
 
-		
-
-
-<div class="container main">
-			<div class="row">
-				<h2>Admin opties</h2>
-				<div class="productImages">
-					<div class="Product1">
-						<a href="voorraad.php"><img src="../img/Admin/voorraad.jpg"
-								class="Images" alt="desinfectiePic">
-							<div class="container">
-								<h3><b>Voorraad</b></h3>
-
-							</div>
-						</a>
-					</div>
-					<div class="Product3">
-						<a href="zoekgeschiedenis.php"><img src="../img/Admin/zoekgeschiedenis.jpg"
-								class="Images" alt="handschoenPic">
-							<div class="container">
-								<h3>Zoekgeschiedenis</h3>
-
-							</div>
-						</a>
-					</div>
-					<div class="Product4">
-						<a href="upload.php"><img src="../img/Admin/upload.jpg" class="Images"
-								alt="mondkapPic">
-							<div class="container">
-								<h3><b>Uploaden afbeeldingen</b></h3>
-
-							</div>
-						</a>
-					</div>	
-				</div>
-			</div>
-		</div>
-
-
-
-
-
-	<footer class="borderfooter">
-		<p><strong>CORONA COMPLEET</strong> in partnership with <a href="https://www.u-earth.eu/">U-EARTH</a></p>
-	</footer>	
+<div class="header">
+<br>
+<h2>mijn gegevens</h2>
 </div>
 
+
+
+    <?php if (isset($_SESSION['gebruikersnaam'])):?>
+    <p>Welkom <strong><?php echo $_SESSION['gebruikersnaam']; ?></strong></p>
+    <div class="input-group">
+    <p><a href="../models/logout.php"class="button">Uitloggen</a></p>
+    <!--<p><a href="gegevensAanpassen.php"class="button">Gegevens aanpassen</a></p>-->
+    
+    <!--<a href="wijzig.php" class="button">Gegevens wijzigen?</a>  alvast voor later-->
+        
+    </div>          
+    
+    <?php endif ?>
+    
+<!--ophalen klantgegevens-->
+
+<table>
+<tr>
+<th>Naam</th>
+<th>Adres</th>
+<th>Postcode</th>
+<th>Woonplaats</th>
+<th>Telefoonnummer</th>
+<th>Email</th>
+</tr>
+
+<?php
+$result = FetchQuery($conn, "SELECT naam, adres, postcode, woonplaats, telefoonnummer, gebruikersnaam FROM werknemers WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'");
+
+$array = array();
+
+
+foreach ($result as $row) {
+		echo "<tr>
+		<td>" . $row['naam'] . "</td>
+		<td>" . $row['adres'] . "</td>
+		<td>" . $row['postcode'] . "</td>
+        <td>" . $row['woonplaats'] . "</td>
+        <td>" . $row['telefoonnummer'] . "</td>
+        <td>" . $row['gebruikersnaam'] . "</td> " ;
+    }
+?>
+</table>
+<br>
+
+
+<div>
+<footer class="borderfooter">
+<p><strong>CORONA COMPLEET</strong> in partnership with <a href="https://www.u-earth.eu/">U-EARTH</a></p>
+</footer>
+</div>
 </body>
 </html>
+
+
+
+

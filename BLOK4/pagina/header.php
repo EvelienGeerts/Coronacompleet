@@ -6,12 +6,9 @@
 	<meta name="keywords" content="coronacompleet, corona, COVID-19, beschermingsmiddelen, handschoenen, mondkap, desinfectie, test, webshop">
 	<title>CORONA COMPLEET</title>
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
-	<link rel="stylesheet" href="../css/bootstrap.css">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="../css/bootstrap-grid.css">
-	<link rel="stylesheet" href="css/bootstrap-grid.css">
-	<link rel="stylesheet" href="../css/style.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://localhost/git-coronacompleet/BLOK4/css/bootstrap.css">
+	<link rel="stylesheet" href="https://localhost/git-coronacompleet/BLOK4/css/bootstrap-grid.css">
+	<link rel="stylesheet" href="https://localhost/git-coronacompleet/BLOK4/css/style.css">
 	<link rel="icon" href="img/favicon.png" type="image/x-icon">
 	<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
