@@ -8,6 +8,12 @@ require_once 'header.php';
 
  //if klant is logged in, they cannot access this page (optie, kan zo weg)
 ?>
+
+<div class="header">
+<br>
+<h2>Login</h2>
+</div>
+
     <div class="container" style="width:500px;">  
         <?php 
         if(isset($message))  
@@ -17,17 +23,18 @@ require_once 'header.php';
         ?>
      <br />
      <br />
-     <form action="../models/loginsubmit.php" method="post">  
+     <form class="aanpassen" action="../models/loginsubmit.php" method="post">  
+          <div class="invoer">     
           <label>email</label>  
-          <input type="email" name="email" required />  
-          <br />  
+          <input type="email" name="email" required /> </div> 
+          <div class="invoer"> 
           <label>Wachtwoord</label>  
-          <input type="password" name="wachtwoord" required />  
-          <br />  
-          <input type="submit" name="login" class="button" value="Login" />  
+          <input type="password" name="wachtwoord" required /> </div> 
+          <div class=""> 
+          <input type="submit" name="login" class="button" value="Login" /> </div> 
      </form>  
      </div>  
-     <br />  
+      
 
 <?php 
 /*

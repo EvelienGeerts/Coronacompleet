@@ -8,6 +8,12 @@
  
  
  ?>
+
+<div class="header">
+<br>
+<h2>Login werknemer</h2>
+</div>
+
     <div class="container" style="width:500px;">  
         <?php  
         if(isset($message))  
@@ -17,17 +23,18 @@
         ?>
      <br />
      <br />
-    <form action="../models/loginsubmitw.php" method="post">  
-            <label>Gebruikersnaam</label>  
-            <input type="text" name="gebruikersnaam" class="" />  
-            <br />  
-            <label>Wachtwoord</label>  
-            <input type="password" name="wachtwoord" class="" />  
-            <br />  
-            <input type="submit" name="login" class="button" value="Login" />  
+    <form class="aanpassen" action="../models/loginsubmitw.php" method="post">  
+          <div class="invoer">     
+          <label>Gebruikersnaam</label>  
+          <input type="text" name="gebruikersnaam" required /> </div> 
+          <div class="invoer"> 
+          <label>Wachtwoord</label>  
+          <input type="password" name="wachtwoord" required /> </div> 
+          <div class="">   
+          <input type="submit" name="login" class="button" value="Login" />  
     </form>  
-        </div>  
-        <br />   
+     </div>  
+       
 </body>
 </html>
 <?php  

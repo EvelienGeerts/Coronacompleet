@@ -5,9 +5,12 @@ include('../models/server.php');
 include('../models/config.php');
      
     //if klant is not logged in, they cannot access this page (optie, kan zo weg)
-    if (empty($_SESSION['email'])){
+    if (isset($_SESSION['gebruikersnaam'])){
+        header('location: mijngegevensw.php');
+    }elseif (empty($_SESSION['email'])) {
         header('location: login.php');
     }
+    
 ?>
 <?php
 require_once 'header.php';
@@ -23,12 +26,9 @@ include('../models/functions.php');
 
     <?php if (isset($_SESSION['email'])):?>
     <p>Welkom <strong><?php echo $_SESSION['email']; ?></strong></p>
-    <div class="input-group">
+    <div class="">
     <p><a href="../models/logout.php"class="button">Uitloggen</a></p>
     <p><a href="gegevensAanpassen.php"class="button">Gegevens aanpassen</a></p>
-    
-    <!--<a href="wijzig.php" class="button">Gegevens wijzigen?</a>  alvast voor later-->
-        
     </div>          
     
     <?php endif ?>
@@ -84,22 +84,21 @@ foreach ($resultbestelling as $row) {
         ;
     }
 ?>
-</table>
+</table><br>
 
 <!--bestellingen inzien-->
 <br>
 <form method="post" action="mijngegevens.php">
 
-            <div class="">
-                
-                <input type="text" name="ordernummer" value=""> 
-            </div>
-            <div class="">
-                <button type="submit" name="vraag op" class="btn">Vraag ordergegevens op</button>
+            <div class="invoer2">
+                <input class="invoer3" type="text" name="ordernummer" placeholder="Voer uw ordernummer in" value=""> 
+            </div><br>
+            <div class="button2">
+                <button type="submit" name="vraag op" class="button">Vraag ordergegevens op</button>
             </div>
         </form>
-
         </table>
+
 <br>
 <table>
 <tr>

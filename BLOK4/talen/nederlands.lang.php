@@ -9,8 +9,6 @@
 $_LANG['TITEL']['SITE'] = ""; // Website naam
 $_LANG['TITEL']['UITLEG'] = ""; // Website 'slogan'
 
-$_LANG['WELKOM'] = "Welkom bij sitemasters!";
-$_LANG['PLEZIER'] = "Wij wensesn u veel plezier toe";
 
 $_LANG['index'] = '<div class="row">
 <div class="col-xl-4 col-lg-6 col-md-12 main">

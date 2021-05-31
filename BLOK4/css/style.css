@@ -737,13 +737,40 @@ tr:nth-child(even) {
 }
 
 .invoer {
+	margin: 10px 0px 10px 0px
+}
+
+.invoer label{
 	display: block;
     text-align: left;
     margin: 3px;
 }
 
+.invoer input {
+	height: 25px;
+    width: 93%;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
 
-  
+/*mijn gegevens*/
+
+.invoer2 input {
+	width: 17%;
+}
+
+.invoer3 {
+	font-size: small;
+	color: #7e7e7e;
+	
+}
+
+.button2 {
+	font-size: small;
+}
+
 
 
 /* voorraad*/

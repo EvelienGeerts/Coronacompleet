@@ -71,20 +71,20 @@ foreach ($result as $row) {
             <?php include('../models/errors.php'); ?>
 
             <div class="invoer">
-                <label>Adres</label>
-                <input type="text" name="adres2" value="<?php echo $row['adres']; ?>"> 
+            <label>Adres</label>
+                <input class="invoer3" type="text" name="adres2" value="<?php echo $row['adres']; ?>"> 
             </div>
             <div class="invoer">
             <label>Postcode</label>
-                <input type="text" name="postcode2" value="<?php echo $row['postcode']; ?>"> 
+                <input class="invoer3" type="text" name="postcode2" value="<?php echo $row['postcode']; ?>"> 
             </div>
             <div class="invoer">
             <label>Woonplaats</label>
-                <input type="text" name="woonplaats2" value="<?php echo $row['woonplaats']; ?>"> 
+                <input class="invoer3" type="text" name="woonplaats2" value="<?php echo $row['woonplaats']; ?>"> 
             </div>
             <div class="invoer">
             <label>Telefoonnummer</label>
-                <input type="text" name="telefoonnummer2" value="<?php echo $row['telefoonnummer']; ?>"> 
+                <input class="invoer3" type="text" name="telefoonnummer2" value="<?php echo $row['telefoonnummer']; ?>"> 
             </div>
             
             <div class="">

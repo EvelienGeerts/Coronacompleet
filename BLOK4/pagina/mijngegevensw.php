@@ -7,7 +7,7 @@ include('../models/functions.php');
      
     //if werknemer is not logged in, they cannot access this page (optie, kan zo weg)
     if (empty($_SESSION['gebruikersnaam'])){
-        header('location: login.php');
+        header('location: login_werknemer.php');
     }
 ?>
 
@@ -56,7 +56,7 @@ include('../models/functions.php');
 
 <div class="header">
 <br>
-<h2>mijn gegevens</h2>
+<h2>mijn werknemersgegevens</h2>
 </div>
 
 
@@ -82,7 +82,7 @@ include('../models/functions.php');
 <th>Postcode</th>
 <th>Woonplaats</th>
 <th>Telefoonnummer</th>
-<th>Email</th>
+<th>Gebruikersnaam</th>
 </tr>
 
 <?php
