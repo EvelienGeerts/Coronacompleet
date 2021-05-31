@@ -5,7 +5,7 @@
   include('../models/functions.php');
   require_once 'header.php';
 
-if(isset($_POST['save']) && isset($checkbox)){
+if(isset($_POST['save'])){
 	$checkbox = $_POST['check'];
 	for($i=0;$i<count($checkbox);$i++){
 	$delete_id = $checkbox[$i]; 
@@ -27,14 +27,14 @@ $result = ExecuteQuery($conn,"SELECT * FROM zoekgeschiedenis");
 <form method="post" action="">
 <table class="table table-bordered">
 <thead>
-<tr>
+	<tr>
 
-	<th>zoekterm</th>
-	<th>datum</th>
-	<th>gebruiker</th>
-	<th>zoekID</th>
-  <th><input type="checkbox" id="checkAl"> Select All</th>
-</tr>
+		<th>zoekterm</th>
+		<th>datum</th>
+		<th>gebruiker</th>
+		<th>zoekID</th>
+	    <th><input type="checkbox" id="checkAl"> Select All</th>
+	</tr>
 </thead>
 <?php
 $i=0;
