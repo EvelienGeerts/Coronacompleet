@@ -2,7 +2,8 @@
 
 $page = 'index';
 
- require_once 'pagina/header.php';
+include('models/config.php');
+require_once 'pagina/header.php';
 ?>
 
 		<div class="row">

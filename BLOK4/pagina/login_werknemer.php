@@ -1,8 +1,9 @@
-<?php include('../models/config.php');
+<?php 
 
- require_once 'header.php';
+include('../models/config.php');
+require_once 'header.php';
 //display validation errors here -->
- include('../models/errors.php');
+include('../models/errors.php');
 
  //if klant is logged in, they cannot access this page (optie, kan zo weg)
  

@@ -15,25 +15,8 @@
     }
 
   // session start klant gegevens // !! kan ook met post zoals bij bmode !!
-    $email = $_SESSION["email"];
-    var_dump($email);
-    echo session_id();
-/*
-    $stmt1 = $conn->query("SELECT * FROM klanten WHERE '{$email}' = email;");
-    $stmt1->execute();
-    $result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
-    foreach($result as $row) {
-    $snaam = $row["naam"];
-    $semail = $row["email"];
-    $stelefoon = $row["telefoonnummer"]; 
-    $sadres = $row["adres"];
-    $spostcode = $row["postcode"];
-    $swoonplaats = $row["woonplaats"];
-    }
+    $tempuser = $_SESSION["email"];
 
-    UPDATE `klanten` SET `email` = 'michiel@michiel.nl', `naam` = 'michiel', `adres` = 'ooster 8', `postcode` = '4413CS', `woonplaats` = 'Kruiningen', `telefoonnummer` = '012345678' WHERE `klanten`.`email` = '16g029lnmrfts09hdd22ap7560'
-   */
-    //$sessionId = session_id();
     $snaam = $_POST["naam"];
     $semail = $_POST["email"];
     $stelefoon = $_POST["telefoonnummer"]; 
@@ -45,17 +28,17 @@
 //semail = nieuwe fatsoenlijke email
 //email = temp generated code
     $klant = ExecuteQuery($conn,"select * from klanten where email = ? limit 1", array($semail));
-    if($klant->rowCount() > 0 && $email != $semail)
+    if($klant->rowCount() > 0 && $tempuser != $semail)
     {
-      ExecuteQuery($conn,"UPDATE winkelmand set email = ? where email = ?", array($semail, $email));
-      ExecuteQuery($conn,"delete from klanten where email = ?", array($email));
+      ExecuteQuery($conn,"UPDATE winkelmand set email = ? where email = ?", array($semail, $tempuser));
+      ExecuteQuery($conn,"delete from klanten where email = ?", array($tempuser));
     }
     else
     {
       // IGNORE statement of ON DUPLICATE KEY UPDATE
     $stmt1 = $conn->prepare("UPDATE klanten SET email = ?, naam = ?, adres = ?, postcode = ?, woonplaats = ?, telefoonnummer = ? WHERE klanten.email = ?");
-    //laatste ? moet $email zijn
-    $stmt1->execute([$semail, $snaam, $sadres, $spostcode, $swoonplaats, $stelefoon, $email]);
+    //laatste ? moet $tempuser zijn
+    $stmt1->execute([$semail, $snaam, $sadres, $spostcode, $swoonplaats, $stelefoon, $tempuser]);
     var_dump($semail);
     }
     
@@ -63,17 +46,13 @@
 
 //In de query hieronder moet je semail gaan meegeven zodat je de correcte winkelmand delete
 ExecuteQuery($conn, "START TRANSACTION;
-    SELECT @ordernummer:=COALESCE(MAX(ordernummer)+1, 1) FROM bestellingen;
-    SELECT @totaalbedrag:= (select SUM(wm.aantal*p.prijs) from winkelmand wm 
-                           inner join producten p on p.productnummer = wm.productnummer);
-    INSERT INTO bestellingen values (@ordernummer, :email, :bmode, @totaalbedrag);
-    INSERT INTO orders (select @ordernummer, productnummer, aantal from winkelmand);
-    UPDATE producten p
-    INNER JOIN winkelmand w ON p.productnummer = w.productnummer
-    SET p.voorraad = p.voorraad - w.aantal;
-    DELETE FROM winkelmand WHERE email = :email;
-    COMMIT;
-    ", array(':email' => $semail, ':bmode' => $bmode));
+SELECT @ordernummer:=COALESCE(MAX(ordernummer)+1, 1) FROM bestellingen;
+SELECT @totaalbedrag:= (select SUM(wm.aantal*p.prijs) from winkelmand wm inner join producten p on p.productnummer = wm.productnummer);
+INSERT INTO bestellingen values (@ordernummer, :email, :bmode, @totaalbedrag);
+INSERT INTO orders (select @ordernummer, productnummer, aantal from winkelmand where email = :email);
+UPDATE producten p INNER JOIN winkelmand w ON p.productnummer = w.productnummer SET p.voorraad = p.voorraad - w.aantal;
+DELETE FROM winkelmand WHERE email = 'kees@kees.nl';
+COMMIT;", array(':email' => $semail, ':bmode' => $bmode));
 
     $_SESSION["email"] = $semail;
 

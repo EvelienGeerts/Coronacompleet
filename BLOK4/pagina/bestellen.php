@@ -7,26 +7,9 @@ include('../models/functions.php');
 require_once 'header.php'; 
 
 $email = $_SESSION["email"];
-var_dump($email);
 
-/*
-$test = $_SESSION["email"];
-echo $test;
-
-/*
-// Berekening van het eindtotaal !!! were
-FetchQuery($conn, "SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email = ?", array($email));
-$eindtotaal = 0;
-foreach($resultfetch as $row) {
-  $tprijs = $row["prijs"] * $row["aantal"];
-  $eindtotaal += $tprijs;
-}
-*/
-
-
-//  WHERE email = :email'
+//  
 $stmt = $conn->prepare('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email = :email');
-//$stmt->bindValue(':email',$email);
 $stmt->execute([':email' => $email]);
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $eindtotaal = 0;
@@ -35,7 +18,6 @@ foreach($result as $row) {
   $eindtotaal += $tprijs;
 
 }
-
 
 // session start klant gegevens
 $stmt1 = $conn->prepare("SELECT * FROM klanten WHERE :email = email;");
@@ -64,9 +46,6 @@ foreach($result as $row) {
     $allItems = implode(', ', $items);
   ?>
 
-<?php // $allItems = implode(', ', $items);?>
-
- 
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6 px-4 pb-4" id="order">
@@ -115,9 +94,7 @@ foreach($result as $row) {
         </form>
       </div>
     </div>
-  </div>
-
- <?php // endforeach; ?>        
+  </div>      
 
 	<br/>
 	
