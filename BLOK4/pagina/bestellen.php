@@ -3,48 +3,40 @@ $page = 'bestellen';
 
 include('../models/config.php');
 include('../models/functions.php');
-
 require_once 'header.php'; 
 
 $email = $_SESSION["email"];
 
-//  
-$stmt = $conn->prepare('SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email = :email');
-$stmt->execute([':email' => $email]);
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// Maakt een berekening van het eintotaal van alle producten in de winkelmand van een klant
+$result = FetchQuery($conn,"SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email = :email", array(':email' => $email));
 $eindtotaal = 0;
 foreach($result as $row) {
   $tprijs = $row["prijs"] * $row["aantal"];
   $eindtotaal += $tprijs;
-
 }
 
-// session start klant gegevens
-$stmt1 = $conn->prepare("SELECT * FROM klanten WHERE :email = email;");
-$stmt1->execute([':email' => $email]);
-$result = $stmt1->fetchAll(PDO::FETCH_ASSOC);
+$result = FetchQuery($conn, "SELECT * FROM klanten WHERE :email = email;", array (':email' => $email));
 foreach($result as $row) {
- $snaam = $row["naam"];
- // !! if email bevat @ dan laten zien else placeholder="E-Mail" !!
- $semail = $row["email"];
- $stelefoon = $row["telefoonnummer"]; 
- $sadres = $row["adres"];
- $spostcode = $row["postcode"];
- $swoonplaats = $row["woonplaats"];
-}
+  $snaam = $row["naam"];
+  $semail = $row["email"];
+  $stelefoon = $row["telefoonnummer"]; 
+  $sadres = $row["adres"];
+  $spostcode = $row["postcode"];
+  $swoonplaats = $row["woonplaats"];
+ }
 
 // Overzicht alle producten uit de winkelmand met aantal er bij                 
-  $allItems = '';
-	$items = [];
+$allItems = '';
+$items = [];
 
-  $stmt = $conn->prepare('SELECT CONCAT(naam, "(",aantal,")") AS ItemQty FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE :email = email;');
-  $stmt->execute([':email' => $email]);
-  $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  foreach($result as $row) {
-    $items[] = $row['ItemQty'];
-  }
-    $allItems = implode(', ', $items);
-  ?>
+$result = FetchQuery($conn, 'SELECT CONCAT(naam, "(",aantal,")") AS ItemQty FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE :email = email', array(":email" => $email));
+foreach($result as $row) 
+{
+  $items[] = $row['ItemQty'];
+}
+$allItems = implode(', ', $items);
+
+?>
 
   <div class="container">
     <div class="row justify-content-center">
@@ -62,12 +54,16 @@ foreach($result as $row) {
             <input type="text" name="naam"value="<?php echo $snaam ?>" class="form-control" placeholder="Naam" required>
           </div>
           <div class="form-group">Emailadres
-            <input type="email" name="email"value="<?php echo $semail ?>" class="form-control" placeholder="E-Mail" required>
+            <input type="email" name="email"value="<?php
+
+            // Functie geeft het email adres alleen weer als het email adres een @ bevat
+              AtSignCheck($semail);
+
+            ?>" class="form-control" placeholder="E-Mail" required>
           </div>
           <div class="form-group">Telefoonnummer
             <input type="tel" name="telefoonnummer"value="<?php echo $stelefoon ?>" class="form-control" placeholder="Telefoon" required>
           </div>
-
           <div class="form-group">Adres
             <input type="text" name="adres"value="<?php echo $sadres ?>" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
           </div>
