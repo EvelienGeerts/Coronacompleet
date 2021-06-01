@@ -51,4 +51,16 @@ function FetchQuery($conn, $query, $params = array()) {
 
     $_SESSION["email"] = $sessionId; 
   } 
+/*
+function EindTotaal(){
+  $result = FetchQuery($conn, "SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email= :email", array(':email'));
+  $eindtotaal = 0;
+  foreach($result as $row) {
+    $tprijs = $row["prijs"] * $row["aantal"];
+    $eindtotaal += $tprijs;
+    echo $eindtotaal;
+  }
+}
+*/
+
 ?>
