@@ -68,24 +68,3 @@ If you have any questions about our products, delivery or other questions, you c
 ?>
 
 
-<h2><?php _('About us', $_COOKie['lang']); ?></h2>
-<?php
-
-$taalArray =[
-    'About us' => 'Over ons'
-];
-
-
-function _(string $text, string $taal)
-{
-    global $taalArray;
-
-    if( array_key_exists($text, $taalArray) )
-    {
-        echo $taalArray[$text];
-    }
-    else
-    {
-        echo $text;
-    }
-}

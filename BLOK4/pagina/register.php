@@ -1,7 +1,11 @@
 <?php include('../models/config.php');
  include('../models/server.php');
  require_once 'header.php';
- 
+
+ //zorgt ervoor dat je ingelogd niet op registreren kan komen
+ if (!empty($_SESSION['email'])){
+    header('location: mijngegevens.php');
+}
 ?>
 
 

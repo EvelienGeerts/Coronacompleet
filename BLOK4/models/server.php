@@ -1,4 +1,6 @@
 <?php
+//include('../models/functions.php');
+
 if (isset($_POST['register'])){
     $naam = $_POST['naam'];
     $adres = $_POST['adres'];
@@ -36,23 +38,14 @@ if (isset($_POST['register'])){
     if($password_1 != $password_2){
         array_push($errors, "Wachtwoorden moeten gelijk zijn");
     }
-    /*
-    if (isset($_POST['register'])){
-        $gebruikersnaam = $_POST['gebruikersnaam'];{
-            array_push($errors, "Gebruikersnaam bestaat al");
-        }
-    }
-        
-        if (isset($_POST['register'])){
-            $email = $_POST['email'];{
-            array_push($errors, "Er is al een account met dit emailadres.");
-            }    
-    }
-    */
-    
+    //check of er al een account bestaat met zelfde mailadres
+    $checkmail = $conn->query("SELECT COUNT(*) FROM klanten WHERE email = '$email'")->fetchColumn(); echo $checkmail;
+    if($checkmail >= 1) { array_push($errors, "Er is al een account met dit emailadres."); } 
 
+    
+    //wegschrijven klant naar database
     if(count($errors)== 0){
-        //$wachtwoord = md5($wachtwoord); //encrypt password before comparing with database
+        //$password_1 = md5($password_1); //encrypt password before comparing with database
         $query = $conn->prepare ("INSERT INTO klanten (email, naam, adres, postcode, woonplaats, telefoonnummer, wachtwoord) VALUES('$email', '$naam', '$adres', '$postcode', '$woonplaats', '$telefoonnummer', '$password_1')"); 
     //if there are no errors, safe klant to database 
         $query->execute();
