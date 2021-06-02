@@ -3,6 +3,13 @@
 * =miscellaneous        *
 *************************
 */
+.zoekBar{
+float:right;
+padding:5px;
+}
+.zoekBarBestel{
+	padding-top:5px;
+}
 
 body {
 	font-family: 'Nunito', sans-serif;

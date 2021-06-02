@@ -1,19 +1,21 @@
-<?php 
-  $page = 'admin';
-  include('../models/server.php');
-  include('../models/config.php');
-  include('../models/functions.php');
-  require_once 'header.php';
+<?php
+$page = 'admin';
+include ('../models/server.php');
+include ('../models/config.php');
+include ('../models/functions.php');
+require_once 'header.php';
 
-if(isset($_POST['save'])){
-	$checkbox = $_POST['check'];
-	for($i=0;$i<count($checkbox);$i++){
-	$delete_id = $checkbox[$i]; 
-	ExecuteQuery($conn,"DELETE FROM zoekgeschiedenis WHERE zoekID='".$delete_id."'");
-	$message = "Data succesvol verwijderd!";
+if (isset($_POST['save']))
+{
+    $checkbox = $_POST['check'];
+    for ($i = 0;$i < count($checkbox);$i++)
+    {
+        $delete_id = $checkbox[$i];
+        ExecuteQuery($conn, "DELETE FROM zoekgeschiedenis WHERE zoekID='" . $delete_id . "'");
+        $message = "Data succesvol verwijderd!";
+    }
 }
-}
-$result = ExecuteQuery($conn,"SELECT * FROM zoekgeschiedenis");
+$result = ExecuteQuery($conn, "SELECT * FROM zoekgeschiedenis");
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,7 +24,10 @@ $result = ExecuteQuery($conn,"SELECT * FROM zoekgeschiedenis");
 <title>Delete zoeksleutels</title>
 </head>
 <body>
-<div><?php if(isset($message)) { echo $message; } ?>
+<div><?php if (isset($message))
+{
+    echo $message;
+} ?>
 </div>
 <form method="post" action="">
 <table class="table table-bordered">
@@ -37,8 +42,9 @@ $result = ExecuteQuery($conn,"SELECT * FROM zoekgeschiedenis");
 	</tr>
 </thead>
 <?php
-$i=0;
-foreach ($result as $row ) {
+$i = 0;
+foreach ($result as $row)
+{
 ?>
 <tr>
 	<td><?php echo $row["zoekterm"]; ?></td>
@@ -48,7 +54,7 @@ foreach ($result as $row ) {
   <td><input type="checkbox" id="checkItem" name="check[]" value="<?php echo $row["zoekID"]; ?>"></td>
 </tr>
 <?php
-$i++;
+    $i++;
 }
 ?>
 </table>
