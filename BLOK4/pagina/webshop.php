@@ -2,7 +2,8 @@
   $page = 'webshop';
   require_once 'header.php';
   include('../models/functions.php');
-    
+  include('../models/config.php');
+
   if (empty($_SESSION['email'])) {
     CreateTempUser($conn);
   }
@@ -56,6 +57,7 @@
 		<p><strong>CORONA COMPLEET</strong> in partnership with <a href="https://www.u-earth.eu/">U-EARTH</a></p>
 	</footer>	
 </div>
+
 
 </body>
 </html>
