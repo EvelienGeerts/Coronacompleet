@@ -1,15 +1,5 @@
-<html>
-    <head>
-        <title><?=$_LANG['TITEL']['SITE'] . " - " . $_LANG['TITEL']['UITLEG'];?></title>
-    </head>
-    <body>
-
 
 <?PHP
-$_LANG['TITEL']['SITE'] = ""; // Website naam
-$_LANG['TITEL']['UITLEG'] = ""; // Website 'slogan'
-
-
 $_LANG['index'] = '<div class="row">
 <div class="col-xl-4 col-lg-6 col-md-12 main">
     <h2>Wat is COVID-19 ?</h2>
@@ -73,5 +63,3 @@ $_LANG['aboutus'] = '<div class="row">
 </div>'
 ?>
 
-</body>
-</html>

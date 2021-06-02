@@ -76,7 +76,7 @@ foreach ($result as $row) {
             </div>
             <div class="invoer">
             <label>Postcode</label>
-                <input class="invoer3" type="text" name="postcode2" value="<?php echo $row['postcode']; ?>"> 
+                <input class="invoer3" pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}" name="postcode2" value="<?php echo $row['postcode']; ?>"> 
             </div>
             <div class="invoer">
             <label>Woonplaats</label>
@@ -84,7 +84,7 @@ foreach ($result as $row) {
             </div>
             <div class="invoer">
             <label>Telefoonnummer</label>
-                <input class="invoer3" type="text" name="telefoonnummer2" value="<?php echo $row['telefoonnummer']; ?>"> 
+                <input class="invoer3" type="tel"  minlength="10" maxlength="11" name="telefoonnummer2" value="<?php echo $row['telefoonnummer']; ?>"> 
             </div>
             
             <div class="">

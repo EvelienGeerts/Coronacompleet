@@ -1,7 +1,4 @@
 <?PHP
-$_LANG['TITEL']['SITE'] = ""; // Website naam
-$_LANG['TITEL']['UITLEG'] = ""; // Website 'slogan'
-
 //index.php
 $_LANG['index'] = '<div class="row">
 <div class="col-xl-4 col-lg-6 col-md-12 main">
@@ -20,7 +17,7 @@ $_LANG['index'] = '<div class="row">
 <div class="bron"> Source; RIVM</div>
 
 
-<p  class= "buttonSpace" ><a href="https://www.rivm.nl/coronavirus-covid-19" class="button" target="blank">Link naar RIVM</a></p>
+<p  class= "buttonSpace" ><a href="https://www.rivm.nl/coronavirus-covid-19" class="button" target="blank">Link to RIVM</a></p>
 
 </div>
 

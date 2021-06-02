@@ -27,7 +27,7 @@
             </div>
             <div class="invoer">
                 <label>postcode</label>
-                <input type="text" name="postcode" value="<?php echo $postcode; ?>">
+                <input type="text" pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}" name="postcode" value="<?php echo $postcode; ?>">
             </div>
             <div class="invoer">
                 <label>Woonplaats</label>
@@ -35,7 +35,7 @@
             </div>
             <div class="invoer">
                 <label>telefoonnummer</label>
-                <input type="text" name="telefoonnummer" value="<?php echo $telefoonnummer; ?>">
+                <input type="tel"  minlength="10" maxlength="11"name="telefoonnummer" value="<?php echo $telefoonnummer; ?>">
             </div>
             <div class="invoer">
                 <label>Email</label>

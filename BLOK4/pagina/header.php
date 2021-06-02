@@ -1,3 +1,7 @@
+<?php
+//include_once dirname(__FILE__) . '/../talen/vertaal.php';
+include_once __DIR__ . '/../talen/vertaal.php';
+?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -54,6 +58,20 @@
 					<input type="submit" value=">>"/>
 				</form>
 			</div>
+			<form action="" method="post">
+            <select name="taalkeuze">
+                <?PHP
+                for ($i=0; $i < count ($aTalen); $i++)
+                {
+                ?>
+                    <option value="<?=$aTalen[$i];?>"><?=$aTalen[$i];?></option>
+                <?PHP
+                }
+                ?>
+            </select>
+            <input name="kiezen" type="submit" value="Kies Taal" />
+        </form>
+
 			<div class="banner">
 				<span class="spanwrap">
 					Bescherm andere en uzelf met de veiligste en beste kwaliteit producten.
