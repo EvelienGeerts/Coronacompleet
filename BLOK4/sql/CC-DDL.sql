@@ -67,7 +67,7 @@ CREATE TABLE `werknemers` (
 
 CREATE TABLE `zoekGeschiedenis` (
   `zoekterm` VARCHAR(25) NOT NULL,
-  `datum` DATETIME(6),
+  `datum` DATETIME,
   `gebruiker` VARCHAR(25),
   `zoekID` INT(10)AUTO_INCREMENT,
   PRIMARY KEY (`zoekID`)
