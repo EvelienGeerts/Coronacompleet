@@ -1,15 +1,40 @@
 <?php 
-  $page = 'webshop';
-  require_once 'header.php';
-  include('../models/functions.php');
-  include('../models/config.php');
+$page = 'webshop';
 
-  if (empty($_SESSION['email'])) {
-    CreateTempUser($conn);
-  }
+include('../models/functions.php');
+include('../models/config.php');
+
+require_once 'header.php';
+
+if (empty($_SESSION['email'])) {
+  CreateTempUser($conn);
+}
+  
 ?>
 
 <div class="container">
+  <div style="display: <?php
+    if (isset($_SESSION['showAlert']))
+    {
+        echo $_SESSION['showAlert'];
+    }
+    else
+    {
+        echo 'none';
+    }
+    unset($_SESSION['showAlert']); ?>" class="alert alert-success alert-dismissible mt-3">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong><?php if (isset($_SESSION['message']))
+    {
+        echo $_SESSION['message'];
+    }
+    unset($_SESSION['showAlert']); 
+    ?>
+      </strong>
+  </div>
+
+
+
     <div id="message"></div>
     <div class="row mt-2 pb-3">
         
@@ -58,6 +83,8 @@
 	</footer>	
 </div>
 
-
+<!-- Voor het wegklikken van de alert message-->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
 </body>
 </html>
