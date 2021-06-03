@@ -46,4 +46,15 @@ function AtSignCheck($semail)
     }
 }
 
+
+function DeleteTempUser($sessionId, $conn)
+{
+  $sessionId = session_id();
+  if ($sessionId == $_SESSION['email']) 
+  {
+    ExecuteQuery($conn, "DELETE FROM winkelmand WHERE email = ?", array($sessionId));
+    ExecuteQuery($conn, "DELETE FROM klanten WHERE email = ?", array($sessionId));
+  }
+}
+
 ?>

@@ -3,18 +3,29 @@ $page = 'mijngegevens';
 
 include('../models/server.php'); 
 include('../models/config.php');
-     
-    //if klant is not logged in, they cannot access this page (optie, kan zo weg)
-    if (isset($_SESSION['gebruikersnaam'])){
-        header('location: mijngegevensw.php');
-    }elseif (empty($_SESSION['email'])) {
-        header('location: login.php');
-    }
-    
-?>
-<?php
-require_once 'header.php';
 include('../models/functions.php');
+require_once 'header.php';
+
+$sessionId = session_id();
+
+// Als de sessie een gebruikersnaam bevat dan ga je naar de gegevens van de werknemer
+// Sessie email leeg naar login
+// Als temp user naar mijngevens wordt de tempusergegevens en sessie vewijderd en naar login.php
+if (isset($_SESSION['gebruikersnaam']))
+{
+    header('location: mijngegevensw.php');
+}
+elseif (empty($_SESSION['email']))
+{
+    header('location: login.php');
+}
+elseif ($sessionId == $_SESSION['email'])
+{
+    DeleteTempUser($sessionId, $conn);
+    session_destroy();
+    header('location: login.php');
+}
+
 ?>
 
 <div class="header">
