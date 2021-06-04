@@ -1,14 +1,6 @@
 <?php
 require_once 'header.php';
-//include_once ('../talen/vertaal.php');
 $page = 'aboutus';
- 
- 
-?>
-
- 
-
-        <?PHP
         
         echo $_LANG['aboutus'];
 

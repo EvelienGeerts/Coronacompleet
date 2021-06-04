@@ -23,6 +23,7 @@ if (!isset ($_COOKIE['taal']))
 {
     # Cookie met de nederlandse taal met de duur van 1 jaar aanmaken
     setcookie ("taal", "nederlands", ['expires' => time()+60*60*24*7*52, 'path' => '/']);
+    header("Refresh:0");
 }
 
 // Als de cookie wel is gezet, maar niet geldig is, maak dan een nieuwe
@@ -31,6 +32,7 @@ elseif (!in_array ($_COOKIE['taal'], $aTalen))
 {
     # Cookie met de nederlandse taal met de duur van 1 jaar aanmaken
     setcookie ("taal", "nederlands", ['expires' => time()+60*60*24*7*52, 'path' => '/']);
+    header("Refresh:0");
 }
 
 // De cookie is nu hoe dan ook geldig, en kan gebruikt worden
@@ -40,6 +42,4 @@ else
      include __dir__ . ("../" . $_COOKIE['taal'] . ".lang.php");
     
 }
-
-var_dump($_COOKIE);
 ?> 

@@ -1,5 +1,4 @@
 <?php
-//include_once dirname(__FILE__) . '/../talen/vertaal.php';
 include_once __DIR__ . '/../talen/vertaal.php';
 ?>
 <!DOCTYPE html>
@@ -58,6 +57,7 @@ include_once __DIR__ . '/../talen/vertaal.php';
 					<input type="submit" value=">>"/>
 				</form>
 			</div>
+			<div>
 			<form action="" method="post">
             <select name="taalkeuze">
                 <?PHP
@@ -70,7 +70,7 @@ include_once __DIR__ . '/../talen/vertaal.php';
                 ?>
             </select>
             <input name="kiezen" type="submit" value="Kies Taal" />
-        </form>
+        </form></div>
 
 			<div class="banner">
 				<span class="spanwrap">
