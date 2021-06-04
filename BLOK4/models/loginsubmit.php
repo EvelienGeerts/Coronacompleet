@@ -1,21 +1,27 @@
 <?php
-include('../models/config.php');
-include('../models/functions.php');
-
-if (session_status() === PHP_SESSION_NONE) {
+include ('../models/config.php');
+//include('../models/functions.php');
+if (session_status() === PHP_SESSION_NONE)
+{
     session_start();
-}  
+}
 
-if(isset($_POST["login"])) {
-          $stmt = ExecuteQuery($conn, 'SELECT * FROM klanten WHERE email = ? AND wachtwoord = ?', array($_POST["email"], $_POST["wachtwoord"]));
-          $count = $stmt->rowCount();  
-          if($count > 0)  
-          {
-               $_SESSION['email'] = $_POST['email'];  
-               header("Location: ../pagina/mijngegevens.php"); 
-          } else {  
-          $message = '<label>Wrong Data</label>';
-          echo $message;  
-          }  
-     }  
+if (isset($_POST["login"]))
+{
+    $stmt = $conn->prepare("SELECT * FROM klanten WHERE email = ?");
+    $stmt->execute([$_POST['email']]);
+    $user = $stmt->fetch();
+
+    if ($user && password_verify($_POST['wachtwoord'], $user['wachtwoord']))
+    {
+        $_SESSION['email'] = $_POST['email'];
+        header("Location: ../pagina/mijngegevens.php");
+    }
+    else
+    {
+        $message = '<label>Wrong Data</label>';
+        echo $message;
+    }
+}
+
 ?>

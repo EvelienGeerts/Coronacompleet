@@ -45,8 +45,7 @@ if (isset($_POST['register'])){
     
     //wegschrijven klant naar database
     if(count($errors)== 0){
-        //$password_1 = password_hash($password_1, PASSWORD_DEFAULT);
-        //$password_1 = md5($password_1); //encrypt password before comparing with database
+        $password_1 = password_hash($password_1, PASSWORD_DEFAULT); //wachtwoord encrypten
         $query = $conn->prepare ("INSERT INTO klanten (email, naam, adres, postcode, woonplaats, telefoonnummer, wachtwoord) VALUES('$email', '$naam', '$adres', '$postcode', '$woonplaats', '$telefoonnummer', '$password_1')"); 
     //if there are no errors, safe klant to database 
         $query->execute();

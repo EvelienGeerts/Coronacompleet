@@ -34,7 +34,6 @@ require_once 'header.php';
           <input type="submit" name="login" class="button" value="Login" /> </div> 
      </form>  
      </div>  
-      
 
 <?php 
 /*
