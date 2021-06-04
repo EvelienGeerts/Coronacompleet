@@ -11,7 +11,7 @@ $aTalen = array ("nederlands", "engels");
 if (isset ($_POST['kiezen']))
 {   
     # Cookie met de gekozen taal met de duur van 1 jaar aanmaken
-    setcookie ("taal", $_POST['taalkeuze'], time()+60*60*24*7*52);
+    setcookie ("taal", $_POST['taalkeuze'], ['expires' => time()+60*60*24*7*52, 'path' => '/']);
     # De pagina moet gerefreshed worden voordat de cookie goed werkt bij een $_POST
     //header ("Location: index.php");
     header("Refresh:0");
@@ -22,7 +22,8 @@ if (isset ($_POST['kiezen']))
 if (!isset ($_COOKIE['taal']))
 {
     # Cookie met de nederlandse taal met de duur van 1 jaar aanmaken
-    setcookie ("taal", "nederlands", time()+60*60*24*7*52);
+    setcookie ("taal", "nederlands", ['expires' => time()+60*60*24*7*52, 'path' => '/']);
+    header("Refresh:0");
 }
 
 // Als de cookie wel is gezet, maar niet geldig is, maak dan een nieuwe
@@ -30,18 +31,15 @@ if (!isset ($_COOKIE['taal']))
 elseif (!in_array ($_COOKIE['taal'], $aTalen))
 {
     # Cookie met de nederlandse taal met de duur van 1 jaar aanmaken
-    setcookie ("taal", "nederlands", time()+60*60*24*7*52);
+    setcookie ("taal", "nederlands", ['expires' => time()+60*60*24*7*52, 'path' => '/']);
+    header("Refresh:0");
 }
 
 // De cookie is nu hoe dan ook geldig, en kan gebruikt worden
 else
 {
     # Include de gekozen (indien nodig: -aangewezen) taal
-     //include ("talen". $_COOKIE['taal'] . ".lang.php");
-     //include __dir__ . ( $_COOKIE['taal'] . ".lang.php");
-     //include_once dirname(__FILE__) . '/../talen/vertaal.php';
      include __dir__ . ("../" . $_COOKIE['taal'] . ".lang.php");
-     //include ("../talen/" . $_COOKIE['taal'] . ".lang.php");
     
 }
 ?> 

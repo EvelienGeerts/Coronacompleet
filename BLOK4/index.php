@@ -1,5 +1,6 @@
 <?php
 
+require_once 'pagina/header.php';
 $page = 'index';
 
 include_once('models/config.php');
