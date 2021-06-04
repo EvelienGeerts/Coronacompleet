@@ -60,6 +60,46 @@ $_LANG['aboutus'] = '<div class="row">
     <a href="producten.php"><img src="https://media.giphy.com/media/UKpjTejsSpYDPyPkEW/giphy.gif" class= "rounded" alt="gifmondkap"> 
 </a>
 </div>
-</div>'
+</div>';
+
+$_LANG['handschoenProduct'] = '<h2>Productbeschrijving</h2>
+<p>Deze handschoen is speciaal ontwikkeld voor een optimale bescherming. Binnenin de handschoen zit een
+  desinfecterende gel die de handen ontdoet van alle virussen en bacteriën. Naast dit effect, zal de dikke
+  buiten laag ervoor zorgen dat er niks kan doordringen tot naar de binnenkant. </p>
+<p class=webshopLink><a href="webshop.php" class="selected">Klik hier om naar de webshop te gaan.</a></p>';
+
+$_LANG['testProduct'] = '<h2>Productbeschrijving</h2>
+<p>Deze kit is ontworpen voor een accurate en snelle bepaling van SARS - CoV - 2 infectie uit uitstrijkjes.
+  Eventueel aanwezige stoffen van van de SARS-cov-2 in de gegeven monster word gekoppeld met het
+  antis-SARS-Cov-2 aanwezig in het testproduct.
+  Bij een positief resultaat reageerd het door een duidelijke lijn aan te geven zoals weergegeven op de
+  afbeelding.
+  Dit blijft een particulier product en mag niet gebruikt worden als medische toekenning. </p>
+<p class=webshopLink><a href="webshop.php" class="selected">Klik hier om naar de webshop te gaan.</a></p>';
+
+$_LANG['mondkapProduct'] = '<h2>Productbeschrijving</h2>
+<p>
+  Na de uitbraak van het coronavirus COVID-19 heeft U-Earth geïnvesteerd in het ontwikkelen van een oplossing
+  om te helpen bij de #WarToCovid. Het resultaat is het U-Mask Model 2 - een unieke compositie van vorm en
+  functie. Door een stijlvolle buitenlaag te combineren met een filter met vijf lagen die een
+  antiproliferatieve BioLayer bevat die is gecoat met een natuurlijk actief bestanddeel (patent aangevraagd),
+  kan het U-Mask Model 2 zichzelf reinigen, heeft het een houdbaarheid van 3 jaar en is geschikt voor maximaal
+  200 uur gebruik zonder interne bacteriële proliferatie.
+</p>
+<p class=webshopLink><a href="webshop.php" class="selected">Klik hier om naar de webshop te gaan.</a></p>';
+
+$_LANG['desinfectieProduct'] = '<h2>Productbeschrijving</h2>
+<p>Automatische desinfectie dispenser met 500l inhoud. De dispenser heeft verschillende voordelen. Zoals:
+</p>
+<ol>
+  <li>Slimme sensor, deze zorgt ervoor dat er automatisch en zonder handcontact de handen gedesinfecteerd
+    worden.</li>
+  <li>Perfecte dosering, in tegenstelling tot standaard handpompen wordt er vaak te veel desinfectie
+    gebruikt. Nadeel hiervan zijn de kosten en te veel zorgt voor natte handen en minder goede werking.</li>
+  <li>Overal te gebruiken door een makkelijk bevestigingssysteem.</li>
+</ol>
+<p class=webshopLink><a href="webshop.php" class="selected">Klik hier om naar de webshop te gaan.</a></p>';
+
+
 ?>
 

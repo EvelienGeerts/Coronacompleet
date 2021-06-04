@@ -34,11 +34,9 @@
           </div>
 
           <div class="textWrapperHandschoen">
-            <h2>Productbeschrijving</h2>
-            <p>Deze handschoen is speciaal ontwikkeld voor een optimale bescherming. Binnenin de handschoen zit een
-              desinfecterende gel die de handen ontdoet van alle virussen en bacteriën. Naast dit effect, zal de dikke
-              buiten laag ervoor zorgen dat er niks kan doordringen tot naar de binnenkant. </p>
-            <p class=webshopLink><a href="webshop.php" class="selected">Klik hier om naar de webshop te gaan.</a></p>
+          <?php
+          echo $_LANG['handschoenProduct'];
+          ?>
           </div>
 
           <div class="row imagePadding">

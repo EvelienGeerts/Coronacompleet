@@ -52,16 +52,9 @@
         </div>
 
         <div class="textWrappermondkap">
-          <h2>Productbeschrijving</h2>
-          <p>
-            Na de uitbraak van het coronavirus COVID-19 heeft U-Earth geïnvesteerd in het ontwikkelen van een oplossing
-            om te helpen bij de #WarToCovid. Het resultaat is het U-Mask Model 2 - een unieke compositie van vorm en
-            functie. Door een stijlvolle buitenlaag te combineren met een filter met vijf lagen die een
-            antiproliferatieve BioLayer bevat die is gecoat met een natuurlijk actief bestanddeel (patent aangevraagd),
-            kan het U-Mask Model 2 zichzelf reinigen, heeft het een houdbaarheid van 3 jaar en is geschikt voor maximaal
-            200 uur gebruik zonder interne bacteriële proliferatie.
-          </p>
-          <p class=webshopLink><a href="webshop.php" class="selected">Klik hier om naar de webshop te gaan.</a></p>
+        <?PHP
+        echo $_LANG['mondkapProduct'];
+        ?>
         </div>
 
         <div class="slider-buttons-wrapper">

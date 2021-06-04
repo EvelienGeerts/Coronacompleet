@@ -32,14 +32,9 @@
           </div>
 
           <div class="textWrapperTest">
-            <h2>Productbeschrijving</h2>
-            <p>Deze kit is ontworpen voor een accurate en snelle bepaling van SARS - CoV - 2 infectie uit uitstrijkjes.
-              Eventueel aanwezige stoffen van van de SARS-cov-2 in de gegeven monster word gekoppeld met het
-              antis-SARS-Cov-2 aanwezig in het testproduct.
-              Bij een positief resultaat reageerd het door een duidelijke lijn aan te geven zoals weergegeven op de
-              afbeelding.
-              Dit blijft een particulier product en mag niet gebruikt worden als medische toekenning. </p>
-            <p class=webshopLink><a href="webshop.php" class="selected">Klik hier om naar de webshop te gaan.</a></p>
+          <?php 
+          echo $_LANG['testProduct'];
+          ?>
           </div>
           <div class="row imagePadding">
             <div class="column">

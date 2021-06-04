@@ -34,17 +34,9 @@
 
 
         <div class="textWrapperTest">
-          <h2>Productbeschrijving</h2>
-          <p>Automatische desinfectie dispenser met 500l inhoud. De dispenser heeft verschillende voordelen. Zoals:
-          </p>
-          <ol>
-            <li>Slimme sensor, deze zorgt ervoor dat er automatisch en zonder handcontact de handen gedesinfecteerd
-              worden.</li>
-            <li>Perfecte dosering, in tegenstelling tot standaard handpompen wordt er vaak te veel desinfectie
-              gebruikt. Nadeel hiervan zijn de kosten en te veel zorgt voor natte handen en minder goede werking.</li>
-            <li>Overal te gebruiken door een makkelijk bevestigingssysteem.</li>
-          </ol>
-          <p class=webshopLink><a href="webshop.php" class="selected">Klik hier om naar de webshop te gaan.</a></p>
+        <?PHP
+        echo $_LANG['desinfectieProduct'];
+        ?>
         </div>
         <div class="row imagePadding">
           <div class="column">

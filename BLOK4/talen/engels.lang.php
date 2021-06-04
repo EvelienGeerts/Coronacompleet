@@ -61,7 +61,46 @@ If you have any questions about our products, delivery or other questions, you c
     <a href="producten.php"><img src="https://media.giphy.com/media/UKpjTejsSpYDPyPkEW/giphy.gif" class= "rounded" alt="gifmondkap"> 
 </a>
 </div>
-</div>'
+</div>';
+
+$_LANG['handschoenProduct']= '<h2>Product description</h2>
+<p>This glove has been specially developed for optimal protection. Inside the glove is a
+  disinfecting gel that rids the hands of all viruses and bacteria. In addition to this effect, the thick
+  outer layer ensure that nothing can penetrate to the inside. </p>
+<p class=webshopLink><a href="webshop.php" class="selected">Click here to go to the webshop.</a></p> ';
+
+$_LANG['testProduct'] ='<h2>Product description</h2>
+<p>This kit is designed for accurate and rapid determination of SARS - CoV - 2 infection from swabs.
+  Any substances of SARS-cov-2 present in the given sample are coupled with the
+  antis-SARS-Cov-2 present in the test product.
+  With a positive result, it responds by indicating a clear line as shown on the
+  image.
+  This remains a private product and may not be used as a medical award. </p>
+<p class=webshopLink><a href="webshop.php" class="selected">Click here to go to the webshop.</a></p> ';
+
+
+$_LANG['mondkapProduct'] = '<h2>Product description</h2>
+<p>
+  After the outbreak of the coronavirus COVID-19, U-Earth has invested in developing a solution
+  to help with the #WarToCovid. The result is the U-Mask Model 2 - a unique composition of form and
+  function. By combining a stylish outer layer with a five-layer filter that provides a
+  contains antiproliferative BioLayer which is coated with a natural active ingredient (patent pending),
+  the U-Mask Model 2 can clean itself, has a shelf life of 3 years and is suitable for up to
+  200 hours of use without internal bacterial proliferation.
+</p>
+<p class=webshopLink><a href="webshop.php" class="selected">Click here to go to the webshop.</a></p>';
+
+$_LANG['desinfectieProduct'] = '<h2>Product description</h2>
+<p>Automatic disinfection dispenser with 500l content. The dispenser has several advantages. As:
+</p>
+<ol>
+  <li> Smart sensor, this ensures that the hands are disinfected automatically and without hand contact
+    become.</li>
+  <li>Perfect dosage, unlike standard hand pumps, there is often too much disinfection de
+    used. The disadvantage of this is the cost and too much results in wet hands and less effective operation.</li>
+  <li>Can be used anywhere thanks to an easy mounting system.</li>
+</ol>
+<p class=webshopLink><a href="webshop.php" class="selected">Click here to go to the webshop.</a></p> ';
 ?>
 
 
