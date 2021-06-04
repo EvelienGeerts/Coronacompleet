@@ -1,10 +1,10 @@
 <?php
-
+require_once 'pagina/header.php';
+//include_once ('talen/vertaal.php');
 $page = 'index';
 
 include('models/config.php');
-require_once 'pagina/header.php';
-//include_once ('talen/vertaal.php');
+
 
 ?> 
 

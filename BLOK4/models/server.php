@@ -45,6 +45,7 @@ if (isset($_POST['register'])){
     
     //wegschrijven klant naar database
     if(count($errors)== 0){
+        //$password_1 = password_hash($password_1, PASSWORD_DEFAULT);
         //$password_1 = md5($password_1); //encrypt password before comparing with database
         $query = $conn->prepare ("INSERT INTO klanten (email, naam, adres, postcode, woonplaats, telefoonnummer, wachtwoord) VALUES('$email', '$naam', '$adres', '$postcode', '$woonplaats', '$telefoonnummer', '$password_1')"); 
     //if there are no errors, safe klant to database 
@@ -54,47 +55,9 @@ if (isset($_POST['register'])){
        header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');//redirect to home page
     }
 }
+
 //updaten gegevens
 
-if (isset($_POST['verander'])){
-    $email2 = $_POST['email2'];
-    if (empty($email2)){
-        array_push($errors, " Email is verplicht"); //add error to errors array
-    }
-    if(count($errors)== 0){
-       
-        //if there are no errors, safe klant to database
-        $query = $conn->prepare ("UPDATE klanten SET email = $email2 WHERE email = '$_SESSION[email]'"); 
-        //if there are no errors, safe klant to database
-        $query->execute();
-        //$verander = ExecuteQuery($conn, "UPDATE klanten SET email = $email WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'");   
-       header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');//redirect to home page
-    }
-    else{
-        echo 'Veranderen email mislukt';
-        header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');
-    }
-}
-
-if (isset($_POST['verander2'])){
-    $telefoonnummer2 = $_POST['telefoonnummer2'];
-    if (empty($telefoonnummer2)){
-        array_push($errors, "Telefoonnummer is verplicht"); //add error to errors array
-    }
-    if(count($errors)== 0){
-       
-        //if there are no errors, safe klant to database
-        $query = $conn->prepare ("UPDATE klanten SET telefoonnummer = $telefoonnummer2 WHERE email = '$_SESSION[email]'"); 
-        //if there are no errors, safe klant to database
-        $query->execute();
-        //$verander = ExecuteQuery($conn, "UPDATE klanten SET email = $email WHERE gebruikersnaam= '$_SESSION[gebruikersnaam]'");  
-       header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');//redirect to home page
-    }
-    else{
-        echo 'Veranderen telefoonnummer mislukt';
-        header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');
-    }
-}
 
 if (isset($_POST['verander3'])){
     $adres2 = $_POST['adres2'];
