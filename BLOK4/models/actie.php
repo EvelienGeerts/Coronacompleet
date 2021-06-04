@@ -1,5 +1,5 @@
 <?php
-	require 'config.php';
+	require_once 'config.php';
 
 	// Verwijderen van een product uit de winkelmand
 	$email = $_SESSION["email"];

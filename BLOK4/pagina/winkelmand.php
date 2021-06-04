@@ -1,8 +1,8 @@
 <?php 
 $page = 'winkelmand';
 
-include('../models/config.php');
-include('../models/functions.php');
+include_once('../models/config.php');
+include_once('../models/functions.php');
 
 require_once 'header.php';
 
@@ -58,7 +58,7 @@ if (empty($_SESSION['email'])){
           <tbody>
             <?php
               $email = $_SESSION["email"];
-              var_dump($email);
+             
 
               // Berekening van eindtotaal met foreach loop tot endforeach 
               $result = FetchQuery($conn,"SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email = ?", array($email));

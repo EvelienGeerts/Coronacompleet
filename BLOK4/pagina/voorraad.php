@@ -1,8 +1,8 @@
 <?php
 $page = 'voorraad';
-include ('../models/config.php');
-include ('../models/server.php');
-include ('../models/functions.php');
+include_once ('../models/config.php');
+include_once ('../models/server.php');
+include_once ('../models/functions.php');
 require_once 'header.php';
 ?>
     <body>

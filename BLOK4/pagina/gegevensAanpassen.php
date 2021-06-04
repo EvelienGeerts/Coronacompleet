@@ -1,8 +1,8 @@
 <?php 
 $page = 'gegevensAanpassen';
 
-include('../models/server.php'); 
-include('../models/config.php');
+include_once('../models/server.php'); 
+include_once('../models/config.php');
 
      
     //if klant is not logged in, they cannot access this page (optie, kan zo weg)
@@ -12,7 +12,7 @@ include('../models/config.php');
 ?>
 <?php
 require_once 'header.php';
-include('../models/functions.php');
+include_once('../models/functions.php');
 ?>
 <link rel="stylesheet" href="../css/style.css">
 	<link rel="stylesheet" href="css/style.css">

@@ -1,6 +1,6 @@
 <?php
-include('config.php');
-include('functions.php');
+include_once('config.php');
+include_once('functions.php');
 
 // Bij het uitloggen wordt hier de temp user verwijderd uit de database
 DeleteTempUser($sessionId, $conn);

@@ -1,7 +1,7 @@
 <?php
 	require '../models/config.php';
   require_once 'header.php';
-  include('../models/functions.php');
+  include_once('../models/functions.php');
 
 // Maakt een variable van de eventuele temp user met session_id als email in het tabel klanten 
   $tempuser = $_SESSION["email"];

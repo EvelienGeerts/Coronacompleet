@@ -1,5 +1,5 @@
-<?php include('../models/config.php');
- include('../models/server.php');
+<?php include_once('../models/config.php');
+ include_once('../models/server.php');
  require_once 'header.php';
 
  //zorgt ervoor dat je ingelogd niet op registreren kan komen

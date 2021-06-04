@@ -1,15 +1,15 @@
 <?php 
 $page = 'webshop';
 
-include('../models/functions.php');
-include('../models/config.php');
+include_once('../models/functions.php');
+include_once('../models/config.php');
 
 require_once 'header.php';
 
 if (empty($_SESSION['email'])) {
   CreateTempUser($conn);
 }
-  
+
 ?>
 
 <div class="container">

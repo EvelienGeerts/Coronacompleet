@@ -1,8 +1,8 @@
 <?php
 $page = 'bestellen';
 
-include('../models/config.php');
-include('../models/functions.php');
+include_once('../models/config.php');
+include_once('../models/functions.php');
 require_once 'header.php'; 
 
 $email = $_SESSION["email"];

@@ -2,9 +2,11 @@
 
 $page = 'index';
 
-include('models/config.php');
+include_once('models/config.php');
+//include('models/functions.php');
 require_once 'pagina/header.php';
 //include_once ('talen/vertaal.php');
+
 
 ?> 
 

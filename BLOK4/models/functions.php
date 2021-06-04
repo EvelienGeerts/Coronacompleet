@@ -1,5 +1,5 @@
 <?php
-include('../models/config.php');
+include_once('config.php');
 
 function ExecuteQuery($conn, $query, $params = array()) {
   $stmt = $conn->prepare($query);
@@ -45,7 +45,6 @@ function AtSignCheck($semail)
         echo $semail;
     }
 }
-
 
 function DeleteTempUser($sessionId, $conn)
 {

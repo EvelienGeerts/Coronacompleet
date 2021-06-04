@@ -1,8 +1,8 @@
 <?php
 $page = 'exportCsv.php'; 
-include('../models/server.php');
-include('../models/config.php');
-include('../models/functions.php');
+include_once('../models/server.php');
+include_once('../models/config.php');
+include_once('../models/functions.php');
 
 if (empty($_SESSION['gebruikersnaam'])){
   header('location: login_werknemer.php');

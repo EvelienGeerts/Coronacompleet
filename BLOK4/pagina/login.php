@@ -1,8 +1,8 @@
 <?php 
-include('../models/config.php');
-include('../models/functions.php');
+include_once('../models/config.php');
+include_once('../models/functions.php');
 //display validation errors here -->
-include('../models/errors.php');
+include_once('../models/errors.php');
 
 require_once 'header.php';
 
