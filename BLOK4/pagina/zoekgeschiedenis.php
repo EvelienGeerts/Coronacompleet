@@ -5,7 +5,7 @@ include_once ('../models/config.php');
 include_once ('../models/functions.php');
 require_once 'header.php';
 
-if (isset($_POST['save']))
+if (isset($_POST['save']) && isset($_POST['check']))
 {
     $checkbox = $_POST['check'];
     for ($i = 0;$i < count($checkbox);$i++)

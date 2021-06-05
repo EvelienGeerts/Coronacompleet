@@ -49,7 +49,7 @@ if ($session && !isset($_SESSION['login_time'])) {
       session_unset();
       header("location:../../../../../git-coronacompleet/BLOK4/test.php");
   } else {
-      echo "Logged In<br>";
+      //echo "Logged In<br>";
   }
 }
 $naam = "";

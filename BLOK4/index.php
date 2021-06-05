@@ -1,5 +1,4 @@
 <?php
-
 require_once 'pagina/header.php';
 $page = 'index';
 
@@ -15,7 +14,6 @@ require_once 'pagina/header.php';
 
 
 <?PHP
-        
         echo $_LANG['index'];
 
         ?>
