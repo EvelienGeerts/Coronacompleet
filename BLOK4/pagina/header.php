@@ -45,7 +45,7 @@ include_once __DIR__ . '/../talen/vertaal.php';
 			</nav>
 
 			<div class = "zoekBar">
-				<form action = "zoekfunctie.php" method="post">
+				<form action = "https://localhost/git-coronacompleet/BLOK4/pagina/zoekfunctie.php" method="post">
 					<input type="text" name="zoeken" placeholder= "zoek voor producten"/>
 					<input type="submit" value=">>"/>
 				</form>

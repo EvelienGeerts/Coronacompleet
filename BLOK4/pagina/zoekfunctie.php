@@ -27,9 +27,7 @@ if (isset($_POST['zoeken']))
     {
         foreach ($stmt as $row)
         {
-            $myvalue = $row["naam"];
-            $arr = explode(' ', trim($myvalue));
-            echo "<a href='" . $arr["0"] . "Product.php" . "'class = 'zoekResultaat'>
+            echo "<a href='/git-coronacompleet/oop/product/view/" . $row["productnummer"] . "'class = 'zoekResultaat'>
                 <ul >
                      <li>" . $row["naam"] . " . " . $row["prijs"] . " </li>
                 </ul>
