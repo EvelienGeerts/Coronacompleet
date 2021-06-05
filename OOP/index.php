@@ -37,8 +37,6 @@ if ( isset( $routing[4]) && $routing[4] != "" )
 if ( isset( $routing[5]) && $routing[5] != "" )
     $index = $routing[5];
 
-
-
 //$controller = new Controller('Task', 'index');
 $controller = new Controller($controller, $action, $index);
 

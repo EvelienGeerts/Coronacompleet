@@ -1,3 +1,6 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/git-coronacompleet/blok4/talen/vertaal.php';
+?>
 <!DOCTYPE html>
 
 <html lang="nl">
@@ -54,8 +57,14 @@
         <div>
             <form action="" method="post">
                 <select name="taalkeuze">
-                    <option value="nederlands">nederlands</option>
-                    <option value="engels">engels</option>
+                <?PHP
+                for ($i=0; $i < count ($aTalen); $i++)
+                {
+                ?>
+                    <option value="<?=$aTalen[$i];?>" <?php echo isset($_POST['taalkeuze']) ? ($_POST['taalkeuze'] == $aTalen[$i] ? "selected" : "") : ($_COOKIE["taal"] == $aTalen[$i] ? "selected" : "")?>><?=$aTalen[$i];?></option>
+                <?PHP
+                }
+                ?>
                 </select>
                 <input name="kiezen" type="submit" value="Kies Taal" />
             </form></div>

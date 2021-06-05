@@ -57,7 +57,7 @@ include_once __DIR__ . '/../talen/vertaal.php';
                 for ($i=0; $i < count ($aTalen); $i++)
                 {
                 ?>
-                    <option value="<?=$aTalen[$i];?>"><?=$aTalen[$i];?></option>
+                    <option value="<?=$aTalen[$i];?>" <?php echo isset($_POST['taalkeuze']) ? ($_POST['taalkeuze'] == $aTalen[$i] ? "selected" : "") : ($_COOKIE["taal"] == $aTalen[$i] ? "selected" : "")?>><?=$aTalen[$i];?></option>
                 <?PHP
                 }
                 ?>
@@ -70,5 +70,5 @@ include_once __DIR__ . '/../talen/vertaal.php';
 					Bescherm andere en uzelf met de veiligste en beste kwaliteit producten.
 				</span>
 			</div>
-			<script src="../js/script.js"></script>
+			<script src="/git-coronacompleet/blok4/js/script.js"></script>
 		</header>

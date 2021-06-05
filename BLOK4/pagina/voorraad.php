@@ -27,7 +27,7 @@ foreach ($result as $row)
 		<td>" . $row['productnummer'] . "</td>
 		<td>" . $row['naam'] . "</td>
 		<td>" . $row['voorraad'] . "</td>
-		<td><input type='text' name ='" . $product . "' placeholder = '" . $row['naam'] . "'></td>";
+		<td><input type='text' name ='" . $product . "' placeholder = 'aantal'></td>";
     $array[$row['productnummer']] = $product;
 }
 ?>

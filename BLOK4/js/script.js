@@ -22,7 +22,7 @@ function leesMeerHome() {
  ** slides        **
  *******************/
 var slideIndex = 0;
-showSlides(slideIndex);
+//showSlides(slideIndex);
 
 function plusSlides(n) {
 
@@ -79,7 +79,7 @@ function ShowOrHideElements(classname, displayStyle) {
         }
     }
 }
-
+/*
 document.getElementById("zwartButton").onclick = function() {
     ShowOrHideElements("blauw", "none");
     ShowOrHideElements("zwart", "initial");
@@ -110,7 +110,7 @@ document.getElementById("rozeButton").onclick = function() {
     ShowOrHideElements("groen", "none");
     ShowOrHideElements("roze", "initial");
     currentSlide(0);
-};
+};*/
 
 /********************
  ** Auto color pro **
