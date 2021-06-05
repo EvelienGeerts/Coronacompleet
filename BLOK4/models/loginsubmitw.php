@@ -1,5 +1,5 @@
 <?php
-include('../models/config.php');
+//include('../models/config.php');
 include('../models/functions.php');
 
 if (session_status() === PHP_SESSION_NONE) {

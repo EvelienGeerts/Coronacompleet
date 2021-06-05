@@ -19,8 +19,5 @@
     $_SESSION['message'] = $productnaam . ' is toegevoegd aan uw winkelmand!';
     header('Location:../pagina/webshop.php');  
   }
-
-
-
 ?> 
   
