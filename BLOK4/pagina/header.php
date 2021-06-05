@@ -28,14 +28,7 @@ include_once __DIR__ . '/../talen/vertaal.php';
 			<nav>
 				<ul class="nav-list">
 					<li><a href="https://localhost/git-coronacompleet/BLOK4/index.php"<?php if(isset($page) && $page == "index") echo " class='selected'";?>>Home</a></li>
-					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/producten.php"<?php if(isset($page) && $page == "producten") echo " class='selected'";?>>Producten</a>
-						<ul class="dropdown">
-							<li><a href='https://localhost/git-coronacompleet/BLOK4/pagina/mondkapProduct.php'>Mondkap</a></li>
-							<li><a href='https://localhost/git-coronacompleet/BLOK4/pagina/handschoenProduct.php'>handschoen</a></li>
-							<li><a href='https://localhost/git-coronacompleet/BLOK4/pagina/testProduct.php'>tester</a></li>
-							<li><a href='https://localhost/git-coronacompleet/BLOK4/pagina/desinfectieProduct.php'>desinfectie</a></li>
-						</ul>
-					</li>
+					<li><a href="https://localhost/git-coronacompleet/oop/product/overview"<?php if(isset($page) && $page == "producten") echo " class='selected'";?>>Producten</a></li>
 					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/webshop.php"<?php if(isset($page) && $page == "webshop") echo ' class="selected"';?>>Webshop</a></li>
 					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/winkelmand.php"<?php if(isset($page) && $page == "winkelmand") echo " class='selected'";?>>Winkelmand </a><span id="cart-item" class="badge badge-dark"></span></li>
 					<li><a href="https://localhost/git-coronacompleet/BLOK4/pagina/aboutus.php"<?php if(isset($page) && $page == "aboutus") echo " class='selected'";?>>About us</a></li>
