@@ -23,18 +23,19 @@ function CreateTempUser($conn)
     $_SESSION["email"] = $sessionId;
 } 
 
-/* 
-function EindTotaal($semail){
-  $semail = $_SESSION["email"];
-  $result = FetchQuery($conn, "SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email= :email", array(':email' => $semail));
+
+function EindTotaal($conn, $email){
+  //$email = $_SESSION["email"];
+  $result = FetchQuery($conn, "SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email= :email", array(':email' => $email));
   $eindtotaal = 0;
   foreach($result as $row) {
     $tprijs = $row["prijs"] * $row["aantal"];
-    $eindtotaal += $tprijs;
-    echo $eindtotaal;
+    $eindtotaal += $tprijs;    
   }
+  return $eindtotaal;
 }
-*/
+
+
 
 // Controle apenstaartje bij bestellingen.php
 function AtSignCheck($semail)

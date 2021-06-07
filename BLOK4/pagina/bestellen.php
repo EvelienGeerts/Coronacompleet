@@ -6,7 +6,9 @@ include_once('../models/functions.php');
 require_once 'header.php'; 
 
 $email = $_SESSION["email"];
+//$eindtotaal = 0;
 
+/*
 // Maakt een berekening van het eintotaal van alle producten in de winkelmand van een klant
 $result = FetchQuery($conn,"SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email = :email", array(':email' => $email));
 $eindtotaal = 0;
@@ -14,6 +16,8 @@ foreach($result as $row) {
   $tprijs = $row["prijs"] * $row["aantal"];
   $eindtotaal += $tprijs;
 }
+*/
+EindTotaal($conn, $email);
 
 $result = FetchQuery($conn, "SELECT * FROM klanten WHERE :email = email;", array (':email' => $email));
 foreach($result as $row) {
