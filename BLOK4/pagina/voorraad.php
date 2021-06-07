@@ -92,8 +92,15 @@ if (isset($_POST["import"]))
 <!--Form csv file -->
 <form class = "form-horizontal" action = "" method="post" name="uploadCSV" enctype="multipart/form-data">
 	<div>
-		<input type = "file" name = "file" accept = ".csv">
+    CSV upload:
+		<input type = "file" name = "file" accept = ".csv">        
 		<button type = "submit" name="import">Upload csv </button>
 		<button><a class="linkasbutton" href="exportCsv.php">Export CSV</a></button>
-	</div>
+	</div><br>
+</form>
+<!--Form voor het uploaden van images -->
+<form action="voorraad.php" method="post" enctype="multipart/form-data">
+  Image upload:
+  <input type="file" name="fileToUpload" id="fileToUpload">
+  <input type="submit" value="Upload Image" name="submit">
 </form>

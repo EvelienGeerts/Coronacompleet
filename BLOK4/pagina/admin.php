@@ -78,15 +78,8 @@
 
 							</div>
 						</a>
-					</div>
-					<div class="Product4">
-						<a href="upload.php"><img src="../img/Admin/upload.jpg" class="Images"
-								alt="mondkapPic">
-							<div class="container">
-								<h3><b>Uploaden afbeeldingen</b></h3>
+					</div>			
 
-							</div>
-						</a>
 					</div>	
 				</div>
 			</div>
