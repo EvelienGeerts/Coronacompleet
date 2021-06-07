@@ -1,92 +1,97 @@
 <?php
-include_once('config.php');
-
-function ExecuteQuery($conn, $query, $params = array()) {
-  $stmt = $conn->prepare($query);
-  $stmt->execute($params);
-return $stmt;
-}
-
-function FetchQuery($conn, $query, $params = array()) {
-    return ExecuteQuery($conn, $query, $params)->fetchAll(PDO::FETCH_ASSOC);
-}
-
   
-// Aanmaken van een tijdelijke gebruiker mbv het session_id
-function CreateTempUser($conn)
-{
-    $sessionId = session_id();
-
-    $stmt = $conn->prepare("INSERT INTO klanten (email) VALUES (?);");
-    $stmt->execute([$sessionId]);
-
-    $_SESSION["email"] = $sessionId;
-} 
+  include_once('config.php');
 
 
-function EindTotaal($conn, $email){
-  //$email = $_SESSION["email"];
-  $result = FetchQuery($conn, "SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email= :email", array(':email' => $email));
-  $eindtotaal = 0;
-  foreach($result as $row) {
-    $tprijs = $row["prijs"] * $row["aantal"];
-    $eindtotaal += $tprijs;    
+  // ExecuteQuery 
+  function ExecuteQuery($conn, $query, $params = array()) {
+    $stmt = $conn->prepare($query);
+    $stmt->execute($params);
+  return $stmt;
   }
-  return $eindtotaal;
-}
 
 
-
-// Controle apenstaartje bij bestellingen.php
-function AtSignCheck($semail)
-{
-    $semail = $_SESSION["email"];
-    if (strstr($semail, '@'))
-    {
-        echo $semail;
-    }
-}
-
-function DeleteTempUser($sessionId, $conn)
-{
-  $sessionId = session_id();
-  if ($sessionId == $_SESSION['email']) 
-  {
-    ExecuteQuery($conn, "DELETE FROM winkelmand WHERE email = ?", array($sessionId));
-    ExecuteQuery($conn, "DELETE FROM klanten WHERE email = ?", array($sessionId));
+  //FetchQuery
+  function FetchQuery($conn, $query, $params = array()) {
+      return ExecuteQuery($conn, $query, $params)->fetchAll(PDO::FETCH_ASSOC);
   }
-}
 
-// DestroySession logout na 60 min en verwijrderd de Temp User
-function DestroySessionTimer($session, $conn) {
-if ($session && !isset($_SESSION['login_time'])) {
-  if ($session == 1) {
-      $_SESSION['login_time']=time();
-      //echo "Login :".$_SESSION['login_time'];
-      //echo "<br>";
-      $_SESSION['idle_time']=$_SESSION['login_time']+3600;  // 3600 =60min
-      //echo "Session Idle :".$_SESSION['idle_time'];
-      //echo "<br>";
-  } else{
-      $_SESSION['login_time']="";
-  }
-} else {
-  if (time()>$_SESSION['idle_time']){
-      //echo "Session Idle :".$_SESSION['idle_time'];
-      //echo "<br>";
-      //echo "Current :".time();
-      //echo "<br>";
-      //echo "Session Time Out";
+    
+  // Aanmaken van een tijdelijke gebruiker mbv het session_id
+  function CreateTempUser($conn) {
       $sessionId = session_id();
-      DeleteTempUser($sessionId, $conn);
-      session_destroy();
-      session_unset();
-      header("location:../../../../../git-coronacompleet/BLOK4/pagina/logout.php");
-  } else {
-      //echo "Logged In<br>";
-  }
-}
-}
 
+      $stmt = $conn->prepare("INSERT INTO klanten (email) VALUES (?);");
+      $stmt->execute([$sessionId]);
+
+      $_SESSION["email"] = $sessionId;
+  } 
+
+
+  // Berekening van het eindtotaal bedrag
+  function EindTotaal($email, $conn) {
+    $result = FetchQuery($conn, "SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email = :email", array(':email' => $email));
+    $eindtotaal = 0;
+    foreach($result as $row) {
+      $tprijs = $row["prijs"] * $row["aantal"];
+      $eindtotaal += $tprijs;    
+    }
+    echo number_format($eindtotaal,2,",",".");
+  }
+
+
+  // Controle apenstaartje bij bestellingen.php
+  function AtSignCheck($semail)
+  {
+      $semail = $_SESSION["email"];
+      if (strstr($semail, '@'))
+      {
+          echo $semail;
+      }
+  }
+
+
+  // Verwijderen van de temp user + de winkelmand van de temp user
+  function DeleteTempUser($sessionId, $conn)
+  {
+    $sessionId = session_id();
+    if ($sessionId == $_SESSION['email']) 
+    {
+      ExecuteQuery($conn, "DELETE FROM winkelmand WHERE email = ?", array($sessionId));
+      ExecuteQuery($conn, "DELETE FROM klanten WHERE email = ?", array($sessionId));
+    }
+  }
+
+
+  // DestroySession logout na 60 min en verwijrderd de Temp User
+  function DestroySessionTimer($session, $conn) {
+  if ($session && !isset($_SESSION['login_time'])) {
+    if ($session == 1) {
+        $_SESSION['login_time']=time();
+        //echo "Login :".$_SESSION['login_time'];
+        //echo "<br>";
+        $_SESSION['idle_time']=$_SESSION['login_time']+3600;  // 3600 =60min
+        //echo "Session Idle :".$_SESSION['idle_time'];
+        //echo "<br>";
+    } else {
+        $_SESSION['login_time']="";
+    }
+  } else {
+    if (time()>$_SESSION['idle_time']){
+        //echo "Session Idle :".$_SESSION['idle_time'];
+        //echo "<br>";
+        //echo "Current :".time();
+        //echo "<br>";
+        //echo "Session Time Out";
+        $sessionId = session_id();
+        DeleteTempUser($sessionId, $conn);
+        session_destroy();
+        session_unset();
+        header("location:../../../../../git-coronacompleet/BLOK4/pagina/logout.php");
+    } else {
+        //echo "Logged In<br>";
+    }
+  }
+  }
 
 ?>

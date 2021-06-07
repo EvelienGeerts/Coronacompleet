@@ -49,7 +49,7 @@ if (empty($_SESSION['email'])) {
             <img src="<?php echo $row["image"]?>" class="card-img-top">
             <div class="card-body p-1">
               <h4 class="card-title text-center text-info"><?php echo $row["naam"]?></h4>
-              <h5 class="card-text text-center"><i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?php echo number_format($row["prijs"],2)?></h5> 
+              <h5 class="card-text text-center"><i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?php echo number_format($row["prijs"],2,",",".")?></h5> 
             </div>
             <div class="card-footer p-1">
               <form action="../models/toevoegen.php" class="form-submit" method="post">

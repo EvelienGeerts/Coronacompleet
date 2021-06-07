@@ -64,8 +64,8 @@ if (empty($_SESSION['email'])){
               $result = FetchQuery($conn,"SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email = ?", array($email));
               $eindtotaal = 0;
               foreach($result as $row) :
-                $tprijs = $row["prijs"] * $row["aantal"];
-                $eindtotaal += $tprijs;
+               // $tprijs = $row["prijs"] * $row["aantal"];
+               // $eindtotaal += $tprijs;
               
               // Inhoud winkelmand
               ?>    
@@ -104,7 +104,7 @@ if (empty($_SESSION['email'])){
                 <a href="webshop.php" class="btn btn-success"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Verder winkelen</a>
               </td>
               <td colspan="2"><b>Totaal</b></td>
-              <td><b><i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?php echo number_format($eindtotaal,2); ?></b></td>
+              <td><b><i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?php Eindtotaal($email, $conn); ?></b></td>
               <td>
                 <a href="bestellen.php" class="btn btn-info <?= ($eindtotaal > 1) ? '' : 'disabled'; ?>"><i class="far fa-credit-card"></i>&nbsp;&nbsp;Bestellen</a>
               </td>
