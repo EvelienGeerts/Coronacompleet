@@ -56,4 +56,36 @@ function DeleteTempUser($sessionId, $conn)
   }
 }
 
+// DestroySession logout na 60 min en verwijrderd de Temp User
+function DestroySessionTimer($session, $conn) {
+if ($session && !isset($_SESSION['login_time'])) {
+  if ($session == 1) {
+      $_SESSION['login_time']=time();
+      //echo "Login :".$_SESSION['login_time'];
+      //echo "<br>";
+      $_SESSION['idle_time']=$_SESSION['login_time']+3600;  // 3600 =60min
+      //echo "Session Idle :".$_SESSION['idle_time'];
+      //echo "<br>";
+  } else{
+      $_SESSION['login_time']="";
+  }
+} else {
+  if (time()>$_SESSION['idle_time']){
+      //echo "Session Idle :".$_SESSION['idle_time'];
+      //echo "<br>";
+      //echo "Current :".time();
+      //echo "<br>";
+      //echo "Session Time Out";
+      $sessionId = session_id();
+      DeleteTempUser($sessionId, $conn);
+      session_destroy();
+      session_unset();
+      header("location:../../../../../git-coronacompleet/BLOK4/pagina/logout.php");
+  } else {
+      //echo "Logged In<br>";
+  }
+}
+}
+
+
 ?>
