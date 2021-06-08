@@ -2,7 +2,6 @@
   
 include_once('config.php');
 
-
 // ExecuteQuery 
 function ExecuteQuery($conn, $query, $params = array())
 {
