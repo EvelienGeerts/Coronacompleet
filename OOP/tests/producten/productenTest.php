@@ -1,9 +1,12 @@
 <?php
+
 use PHPUnit\Framework\TestCase;
+import model\products;
 
 class productenTest extends TestCase {
-    public function testBootstrap()
+    public function testConstructor()
     {
-        $this->assertEquals(true, false);
+        $product = new Product('1');
+        $this->assertEquels('1', $product->getID())  ;       
     }
 }
