@@ -59,15 +59,13 @@ if (empty($_SESSION['email'])){
             <?php
               $email = $_SESSION["email"];
              
-
+              
               // Berekening van eindtotaal met foreach loop tot endforeach 
               $result = FetchQuery($conn,"SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email = ?", array($email));
               $eindtotaal = 0;
               foreach($result as $row) :
-               // $tprijs = $row["prijs"] * $row["aantal"];
-               // $eindtotaal += $tprijs;
               
-              // Inhoud winkelmand
+              // Inhoud winkelmand 
               ?>    
               <tr>
                 <td>
@@ -81,13 +79,13 @@ if (empty($_SESSION['email'])){
                   <?php echo $row["naam"]?>
                 </td>
                 <td>
-                  <i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?php echo number_format($row["prijs"],2) ?>
+                  <i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?php echo number_format($row["prijs"],2,",","."); ?>
                 </td>
                 <td>
                   <input type="number" class="form-control itemQty" value=<?php echo $row["aantal"] ?> style="width:75px;" disabled>
                 </td>
                 <td>
-                  <i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?php echo number_format($row["prijs"] * $row["aantal"],2) ?>
+                  <i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?php echo number_format($row["prijs"] * $row["aantal"],2,",",".") ?>
                 </td>
                 <td>
                 <input type="hidden" class="pprijs" value=<?php echo $row["prijs"]?>>
@@ -104,9 +102,13 @@ if (empty($_SESSION['email'])){
                 <a href="webshop.php" class="btn btn-success"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Verder winkelen</a>
               </td>
               <td colspan="2"><b>Totaal</b></td>
-              <td><b><i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?php Eindtotaal($email, $conn); ?></b></td>
+              <td><b><i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?php echo number_format(Eindtotaal($email, $conn),2,",","."); ?></b></td>
               <td>
-                <a href="bestellen.php" class="btn btn-info <?= ($eindtotaal > 1) ? '' : 'disabled'; ?>"><i class="far fa-credit-card"></i>&nbsp;&nbsp;Bestellen</a>
+                <a href="bestellen.php" class="btn btn-info 
+                
+                <?= (Eindtotaal($email, $conn) > 1) ? '' : 'disabled'; ?>">
+                
+                <i class="far fa-credit-card"></i>&nbsp;&nbsp;Bestellen</a>
               </td>
             </tr>
           </tbody>

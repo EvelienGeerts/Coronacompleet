@@ -38,11 +38,11 @@ $allItems = implode(', ', $items);
         <div class="jumbotron p-3 mb-2 text-center">
           <h6 class="lead"><b>Product(en) : </b><?php echo $allItems ?></h6>
           <h6 class="lead"><b>Bezorgkosten : </b>Gratis</h6>
-          <h5><b>Totaal te betalen bedrag  : &euro;</b><?php Eindtotaal($email, $conn);//echo number_format($eindtotaal,2) ?></h5>
+          <h5><b>Totaal te betalen bedrag  : &euro; </b><?php echo number_format(Eindtotaal($email, $conn),2,",","."); // Functie Eindtotaal ?></h5>
         </div>
         <form action="order.php" method="post" id="placeOrder">
           <input type="hidden" name="products" value="<?php  $allItems ?>">
-          <input type="hidden" name="eindtotaal" value="<?php $eindtotaal ?>">
+          <input type="hidden" name="eindtotaal" value="<?php Eindtotaal($email, $conn); ?>">
           <div class="form-group">Naam
             <input type="text" name="naam"value="<?php echo $snaam ?>" class="form-control" placeholder="Naam" required>
           </div>
