@@ -7,7 +7,7 @@ class unittest extends TestCase {
 
 //class unittest extends TestCase {
     public function testExecuteQuery() {
-    $
+    $query = 'SELECT naam FROM producten
     
 
 }
