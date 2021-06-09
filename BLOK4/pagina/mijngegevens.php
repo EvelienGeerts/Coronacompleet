@@ -32,19 +32,18 @@ elseif ($sessionId == $_SESSION['email'])
 <br>
 <h2>mijn gegevens</h2>
 </div>
-
+<div>
 <?php
 welkom();
-?>
+?></div>
 
-    <?php if (isset($_SESSION['email'])):?>
-    <p>Welkom <strong><?php echo $_SESSION['email']; ?></strong></p>
+    
     <div class="">
     <p><a href="../models/logout.php"class="button">Uitloggen</a></p>
     <p><a href="gegevensAanpassen.php"class="button">Gegevens aanpassen</a></p>
     </div>          
     
-    <?php endif ?>
+   
     
 <!--ophalen klantgegevens-->
 
