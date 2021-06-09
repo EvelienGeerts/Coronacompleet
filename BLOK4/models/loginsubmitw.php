@@ -14,8 +14,7 @@ if(isset($_POST["login"])) {
                $_SESSION['gebruikersnaam'] = $_POST['gebruikersnaam'];  
                header("Location: ../pagina/admin.php"); 
           } else {  
-          $message = '<label>Wrong Data</label>';
-          echo $message;  
+               header("location:../pagina/loginfout.php");
           }  
      }  
 ?>

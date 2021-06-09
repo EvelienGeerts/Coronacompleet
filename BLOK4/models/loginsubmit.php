@@ -19,8 +19,7 @@ if (isset($_POST["login"]))
     }
     else
     {
-        $message = '<label>Wrong Data</label>';
-        echo $message;
+        header("location:../pagina/loginfout.php");
     }
 }
 

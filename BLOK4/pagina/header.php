@@ -50,7 +50,7 @@ include_once __DIR__ . '/../talen/vertaal.php';
 					<input type="submit" value=">>"/>
 				</form>
 			</div>
-			<div>
+			<div class = "taalkeuze">
 			<form action="" method="post">
             <select name="taalkeuze">
                 <?PHP
