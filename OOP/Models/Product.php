@@ -22,6 +22,10 @@ class Product extends model
         $this->Image = $image;
         $this->Supply = $supply;
     }
+    public function getID()
+    {
+        return $this->ID;
+    }
 
     public static function getAll()
     {
