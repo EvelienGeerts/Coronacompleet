@@ -1,7 +1,6 @@
 <?php
 use PHPUnit\Framework\TestCase;
 include 'models/functions.php';
-//include 'pagina/mijngegevens.php';
 
 class unittest extends TestCase {
    
@@ -27,80 +26,26 @@ public function testWelkomw(){
     $this->assertEquals('welkom Piet', $welkom, 0);
 }
 
-}
-/*
-<?php function welkom(){
-    if (isset($_SESSION['email'])){
-        echo 'Welkom'. $_SESSION['email'];
-    } 
+//test of er false uitkomt, daardoor neemt hij domeinnaam en kan je dus @ testen
+public function testAtSignCheck(){
+    $_SESSION['email'] = 'test@test.nl';
+    $semail = $_SESSION["email"];
+    $this->assertFalse(AtSignCheck($semail)==(strstr($semail, '@')));
 }
 
-public function testExecuteQuery($conn, $query, $params = array()){
-    $servername = "localhost";
-    $database = "coronacompleet";
-    $username = "root";
-    $password = "";
+
+public function testAtSignCheckEqual(){
+    $_SESSION['email'] = 'test@test.nl';
+    $semail = $_SESSION["email"];
+    $email = '@test.nl';
+    //$email = Email::fromString('user@example.com')
+    $this->assertEquals($email,(strstr($semail, '@')),0);
+}
+
+//deze twijfel ik over of we hem moeten doen aangezien hij eigenlijk niet veel test.
+    public function testExecuteQuery() {
     $query = 'SELECT naam FROM producten WHERE productnummer = 1';
-    $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->prepare($query);
-    $stmt->execute($params);
-    return $stmt;
-    $query = 'mondkap zwart';
+    $stmt = 'Mondkap zwart';
     $this->assertEquals('Mondkap zwart', $stmt, 0);
 }
 }
-    //public function testExecuteQuery() {
-    //$query = 'SELECT naam FROM producten WHERE productnummer = 1';
-    //$stmt = 'Mondkap zwart';
-    //$this->assertEquals('Mondkap zwart', $stmt, 0);
-//}
-/*
-public function testExecuteQuery($conn, $query, $params = array() ) {
-    include 'models/config.php';
-    $query = 'SELECT naam FROM producten WHERE productnummer = 1';
-    $stmt = $conn->prepare($query);
-    $stmt->execute($params);
-    return $stmt;
-    $this->assertEquals('Mondkap zwart', $stmt, 0);
-}
-
-}
-// ExecuteQuery 
-function ExecuteQuery($conn, $query, $params = array())
-{
-    $stmt = $conn->prepare($query);
-    $stmt->execute($params);
-    return $stmt;
-}
-
-public function testCreateTempUser(){
-
-} 
-*/
-
-
-// Aanmaken van een tijdelijke gebruiker mbv het session_id
-/*function CreateTempUser($conn)
-{
-    $sessionId = session_id();
-
-    $stmt = $conn->prepare("INSERT INTO klanten (email) VALUES (?);");
-    $stmt->execute([$sessionId]);
-
-    $_SESSION["email"] = $sessionId;
-}
-
-public function testFetchQuery(){
-
-} 
-*/
-
-
-//FetchQuery
-/*function FetchQuery($conn, $query, $params = array())
-{
-    return ExecuteQuery($conn, $query, $params)->fetchAll(PDO::FETCH_ASSOC);
-}
-
-*/

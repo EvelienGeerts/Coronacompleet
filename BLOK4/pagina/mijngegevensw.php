@@ -63,8 +63,6 @@ include_once('../models/functions.php');
 welkomw();
 ?>
 
-    <?php if (isset($_SESSION['gebruikersnaam'])):?>
-    <p>Welkom <strong><?php echo $_SESSION['gebruikersnaam']; ?></strong></p>
     <div class="input-group">
     <p><a href="../models/logout.php"class="button">Uitloggen</a></p>
     <!--<p><a href="gegevensAanpassen.php"class="button">Gegevens aanpassen</a></p>-->
@@ -73,7 +71,6 @@ welkomw();
         
     </div>          
     
-    <?php endif ?>
     
 <!--ophalen klantgegevens-->
 

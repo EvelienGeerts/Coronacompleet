@@ -20,14 +20,14 @@ function FetchQuery($conn, $query, $params = array())
 //welkom klant
 function welkom(){
     if (isset($_SESSION['email'])){
-        echo 'Welkom'. $_SESSION['email'];
+        echo 'Welkom'. " ". $_SESSION['email'];
     } 
 }
 
 //welkom werknemer
 function welkomw(){
     if (isset($_SESSION['gebruikersnaam'])){
-        echo 'Welkom'. $_SESSION['gebruikersnaam'];
+        echo 'Welkom'. " ". $_SESSION['gebruikersnaam'];
     } 
 }
 
