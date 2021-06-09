@@ -17,7 +17,13 @@ function FetchQuery($conn, $query, $params = array())
     return ExecuteQuery($conn, $query, $params)->fetchAll(PDO::FETCH_ASSOC);
 }
 
-  
+//welkom klant
+function welkom(){
+    if (isset($_SESSION['email'])){
+        echo 'Welkom'. $_SESSION['email'];
+    } 
+}
+
 // Aanmaken van een tijdelijke gebruiker mbv het session_id
 function CreateTempUser($conn)
 {

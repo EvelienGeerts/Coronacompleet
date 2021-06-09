@@ -33,7 +33,9 @@ elseif ($sessionId == $_SESSION['email'])
 <h2>mijn gegevens</h2>
 </div>
 
-
+<?php
+welkom();
+?>
 
     <?php if (isset($_SESSION['email'])):?>
     <p>Welkom <strong><?php echo $_SESSION['email']; ?></strong></p>
