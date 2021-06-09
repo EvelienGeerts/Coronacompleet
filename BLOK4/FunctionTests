@@ -1,0 +1,16 @@
+<?php
+
+use PHPUnit\Framework\TestCase;
+
+require_once '..\models\functions.php';
+
+class UnitTestSample extends TestCase {
+    public function testSom() {
+        $x = 11;
+        $y = 12;
+        $result = som($x, $y);
+        $this-assertEquals(23, $result, 0);
+    }
+
+}
+
