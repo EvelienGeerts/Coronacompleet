@@ -21,6 +21,12 @@ public function testWelkom(){
     $this->assertEquals('welkom test@test.nl', $welkom, 0);
 }
 
+public function testWelkomw(){
+    $_SESSION['gebruikersnaam'] = 'Piet';
+    $welkom = 'welkom' . " ". $_SESSION['gebruikersnaam'];
+    $this->assertEquals('welkom Piet', $welkom, 0);
+}
+
 }
 /*
 <?php function welkom(){

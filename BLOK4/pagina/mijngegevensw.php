@@ -59,7 +59,9 @@ include_once('../models/functions.php');
 <h2>mijn werknemersgegevens</h2>
 </div>
 
-
+<?php
+welkomw();
+?>
 
     <?php if (isset($_SESSION['gebruikersnaam'])):?>
     <p>Welkom <strong><?php echo $_SESSION['gebruikersnaam']; ?></strong></p>

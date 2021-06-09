@@ -24,6 +24,13 @@ function welkom(){
     } 
 }
 
+//welkom werknemer
+function welkomw(){
+    if (isset($_SESSION['gebruikersnaam'])){
+        echo 'Welkom'. $_SESSION['gebruikersnaam'];
+    } 
+}
+
 // Aanmaken van een tijdelijke gebruiker mbv het session_id
 function CreateTempUser($conn)
 {
