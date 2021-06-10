@@ -22,11 +22,36 @@ class Product extends model
         $this->Image = $image;
         $this->Supply = $supply;
     }
+    // Class get tests // 
     public function getID()
     {
         return $this->ID;
     }
-
+    public function getName()
+    {
+        return $this->Name;
+    }
+    public function getDescription()
+    {
+        return $this->Description;
+    }
+    public function getContent()
+    {
+        return $this->Content;
+    }
+    public function getPrice()
+    {
+        return $this->Price;
+    }
+    public function getImage()
+    {
+        return $this->Image;
+    }
+    public function getSupply()
+    {
+        return $this->Supply;
+    }
+// Array selecteren van de producten en in een array opslaan //
     public static function getAll()
     {
         $pdo = DB::connect();
