@@ -3,13 +3,6 @@
 * =miscellaneous        *
 *************************
 */
-.zoekBar{
-    float:right;
-    padding:5px;
-}
-.zoekBarBestel{
-    padding-top:5px;
-}
 
 body {
     font-family: 'Nunito', sans-serif;
@@ -144,6 +137,19 @@ header h1 {
     height: 23px;
     margin: 35px 10px 22px;
     float: left;
+}
+
+.zoekBar {
+	float:right;
+	padding:5px;
+	}
+
+.zoekBarBestel {
+	padding-top:5px;
+}
+
+.taalkeuze {
+	padding-top: 2mm;
 }
 
 @media (min-width: 992px) {

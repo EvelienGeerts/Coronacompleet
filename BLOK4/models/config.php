@@ -19,7 +19,7 @@ if (!isset($_SESSION)) {
   $session = session_start();
 }
 
-// DestroySession logout na 60 min en verwijrderd de Temp User
+// DestroySession logout na 30 min en verwijrderd de Temp User
 DestroySessionTimer($session, $conn);
 
 $naam = "";

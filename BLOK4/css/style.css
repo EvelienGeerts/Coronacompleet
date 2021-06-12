@@ -143,14 +143,14 @@ header h1 {
 	float:right;
 	padding:5px;
 	}
-	.zoekBarBestel {
-		padding-top:5px;
-	}
-	
-	.taalkeuze {
-		padding-top: 2mm;
-	}
-	
+
+.zoekBarBestel {
+	padding-top:5px;
+}
+
+.taalkeuze {
+	padding-top: 2mm;
+}
 
 @media (min-width: 992px) {
 	header h1 {

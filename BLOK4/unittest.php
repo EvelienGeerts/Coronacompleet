@@ -18,7 +18,8 @@ public function testEindTotaal(){
     $eindtotaal = 0 ;
     $result = $eindtotaal += $tprijs;
     $this->assertEquals(20, $result, 0);
-} 
+}
+
 //deze zijn eigenlijk niet goed.... Functie wordt niet opgehaald
 public function testWelkom(){
     $_SESSION['email'] = 'test@test.nl';

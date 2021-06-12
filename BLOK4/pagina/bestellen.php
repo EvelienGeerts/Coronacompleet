@@ -50,7 +50,7 @@ $allItems = implode(', ', $items);
             <input type="email" name="email"value="<?php
 
             // Functie geeft het email adres alleen weer als het email adres een @ bevat
-              AtSignCheck($semail);
+              AtSignCheck();
 
             ?>" class="form-control" placeholder="E-Mail" required>
           </div>
