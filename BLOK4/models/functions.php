@@ -61,7 +61,7 @@ function EindTotaal($email, $conn)
 
 
 // Controle apenstaartje bij bestellingen.php
-function AtSignCheck($semail)
+function AtSignCheck()
 {
     $semail = $_SESSION["email"];
     if (strstr($semail, '@'))
