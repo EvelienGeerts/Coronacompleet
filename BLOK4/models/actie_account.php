@@ -5,7 +5,7 @@ if (isset($_POST['register'])){
     $adres = $_POST['adres'];
     $postcode = $_POST['postcode'];
     $woonplaats = $_POST['woonplaats'];
-    $telefoonnummer = $_POST['telefoonnummer'];
+    $telefoonnummer = strval($_POST['telefoonnummer']);
     $email = $_POST['email'];
     $password_1 = $_POST['password_1'];
     $password_2 = $_POST['password_2'];
@@ -58,7 +58,7 @@ if (isset($_POST['verander3'])){
     $adres2 = $_POST['adres2'];
     $postcode2 = $_POST['postcode2'];
     $woonplaats2 = $_POST['woonplaats2'];
-    $telefoonnummer2 = $_POST['telefoonnummer2'];
+    $telefoonnummer2 = strval($_POST['telefoonnummer2']);
     if (empty($adres2)){
         array_push($errors, "Adres is verplicht"); 
     }

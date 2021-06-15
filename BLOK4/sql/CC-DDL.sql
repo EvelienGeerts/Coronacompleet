@@ -12,7 +12,7 @@ CREATE TABLE `klanten` (
   `adres` VARCHAR(50),
   `postcode` CHAR(6),
   `woonplaats`VARCHAR(50),
-  `telefoonnummer`INT(10),
+  `telefoonnummer`CHAR(10),
   `wachtwoord` VARCHAR(100),
   PRIMARY KEY (`email`)  
 );
