@@ -1,12 +1,12 @@
 <?php 
   $page = 'admin';
-  include_once('../models/server.php');
+  include_once('../models/actie_account.php');
   include_once('../models/config.php');
   include_once('../models/functions.php');
 	require_once 'header.php';
   
   
-  //if klant is not logged in, they cannot access this page (optie, kan zo weg)
+  //Als werknemer niet ingelogd is kan hij niet op de pagina komen
   if (empty($_SESSION['gebruikersnaam'])){
 	header('location: login_werknemer.php');
 	exit;

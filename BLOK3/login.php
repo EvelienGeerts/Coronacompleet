@@ -1,4 +1,4 @@
-<?php include('server.php');
+<?php include('actie_account.php');
  
  //session_start();?>
 <!DOCTYPE html>

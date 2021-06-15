@@ -1,18 +1,16 @@
 <?php 
 $page = 'gegevensAanpassen';
 
-include_once('../models/server.php'); 
+include_once('../models/actie_account.php'); 
 include_once('../models/config.php');
-
-     
-    //if klant is not logged in, they cannot access this page (optie, kan zo weg)
-    if (empty($_SESSION['email'])){
-        header('location: login.php');
-    }
-?>
-<?php
 require_once 'header.php';
 include_once('../models/functions.php');
+     
+//Als klant niet ingelogd is kan hij niet op deze pagina
+if (empty($_SESSION['email'])){
+    header('location: login.php');
+}
+
 ?>
 <link rel="stylesheet" href="../css/style.css">
 	<link rel="stylesheet" href="css/style.css">
@@ -27,9 +25,6 @@ include_once('../models/functions.php');
     <p>Welkom <strong><?php echo $_SESSION['email']; ?></strong></p>
     <div class="input-group">
     <a href="../models/logout.php"class="button">Uitloggen</a>
-    
-    <!--<a href="wijzig.php" class="button">Gegevens wijzigen?</a>  alvast voor later-->
-        
     </div>          
     
     <?php endif ?>
@@ -67,7 +62,6 @@ foreach ($result as $row) {
 <!--Aanpassen gegevens-->
     <div class="aanpassen">
         <form method="post" action="register.php">
-            <!--display validation errors here -->
             <?php include('../models/errors.php'); ?>
 
             <div class="invoer">

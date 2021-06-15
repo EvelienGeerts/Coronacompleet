@@ -1,6 +1,6 @@
 <?php
 $page = 'admin';
-include_once ('../models/server.php');
+include_once ('../models/actie_account.php');
 include_once ('../models/config.php');
 include_once ('../models/functions.php');
 require_once 'header.php';

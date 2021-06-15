@@ -6,19 +6,16 @@ $aTalen = array ("nederlands", "engels");
 ?> 
 
 <?PHP
-// De gebruiker heeft zijn voorkeur veranderd door een taal te kiezen uit
-// het menu, en op de knop te drukken
+// De gebruiker kiest taal
 if (isset ($_POST['kiezen']))
 {   
     # Cookie met de gekozen taal met de duur van 1 jaar aanmaken
     setcookie ("taal", $_POST['taalkeuze'], ['expires' => time()+60*60*24*7*52, 'path' => '/']);
     # De pagina moet gerefreshed worden voordat de cookie goed werkt bij een $_POST
-    //header ("Location: index.php");
     header("Refresh:0");
 }
 
-// Heeft de gebruiker nog geen voorkeur-cookie? Maak dan een cookie aan
-// met de nederlandse taal
+// Heeft de gebruiker nog geen voorkeur-cookie? Maak dan een cookie aan met de nederlandse taal
 if (!isset ($_COOKIE['taal']))
 {
     # Cookie met de nederlandse taal met de duur van 1 jaar aanmaken
@@ -26,8 +23,7 @@ if (!isset ($_COOKIE['taal']))
     header("Refresh:0");
 }
 
-// Als de cookie wel is gezet, maar niet geldig is, maak dan een nieuwe
-// cookie aan met de nederlandse taal
+// Als de cookie wel is gezet, maar niet geldig is, maak dan een nieuwe cookie aan met de nederlandse taal
 elseif (!in_array ($_COOKIE['taal'], $aTalen))
 {
     # Cookie met de nederlandse taal met de duur van 1 jaar aanmaken

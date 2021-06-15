@@ -1,5 +1,5 @@
 <?php
-include('server.php'); 
+include('actie_account.php'); 
      
 //if klant is not logged in, they cannot access this page (optie, kan zo weg)
 if (empty($_SESSION['gebruikersnaam'])){

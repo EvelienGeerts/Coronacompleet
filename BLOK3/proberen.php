@@ -1,5 +1,5 @@
 
-<?php include('server.php');
+<?php include('actie_account.php');
 include('config.php')
 ?> 
 <DOCTYPE html>

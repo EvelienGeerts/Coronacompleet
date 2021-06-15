@@ -1,4 +1,4 @@
-<?php include('../models/server.php'); ?>
+<?php include('../models/actie_account.php'); ?>
 <?php
 	require '../models/config.php';?>
 <?php

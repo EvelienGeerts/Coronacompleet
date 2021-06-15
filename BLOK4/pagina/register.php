@@ -1,7 +1,8 @@
 <?php 
+$page = 'register';
  
  include_once('../models/config.php');
- include_once('../models/server.php');
+ include_once('../models/actie_account.php');
  require_once 'header.php';
 
  //zorgt ervoor dat je ingelogd niet op registreren kan komen
@@ -15,7 +16,6 @@
     </div>
 
     <form class="aanpassen" method="post" action="register.php">
-        <!--display validation errors here -->
         <?php include('../models/errors.php'); ?>
         <div class="invoer">
             <label>Naam</label>

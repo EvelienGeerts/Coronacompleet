@@ -1,4 +1,4 @@
-<?php include('server.php'); ?>
+<?php include('actie_account.php'); ?>
 <?php
   //session_start();
   /*waarvoor is dit precies?

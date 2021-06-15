@@ -6,8 +6,8 @@ include_once('functions.php');
 DeleteTempUser($sessionId, $conn);
 
 // Uitloggen einde sessie
-session_start(); //to ensure you are using same session
-session_destroy(); //destroy the session
-header("location:../pagina/logout.php"); //to redirect to "pagina/logout.php" after logging out
+session_start(); //zorgen dat je dezelde session hebt
+session_destroy(); //destroy de session
+header("location:../pagina/logout.php"); //naar logout pagina
 exit();
 ?>

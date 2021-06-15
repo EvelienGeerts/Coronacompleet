@@ -4,7 +4,7 @@ $page = 'aboutus';
         
         echo $_LANG['aboutus'];
 
-        ?>
+?>
 	  
 
 	<footer class="borderfooter">

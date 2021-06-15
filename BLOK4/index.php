@@ -3,20 +3,12 @@ require_once 'pagina/header.php';
 $page = 'index';
 
 include_once('models/config.php');
-//include('models/functions.php');
 require_once 'pagina/header.php';
-//include_once ('talen/vertaal.php');
 
 
-?> 
+echo $_LANG['index'];
 
-
-
-
-<?PHP
-        echo $_LANG['index'];
-
-        ?>
+?>
 		
 
 <footer class="borderfooter">

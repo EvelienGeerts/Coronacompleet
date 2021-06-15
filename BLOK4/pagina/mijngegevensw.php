@@ -1,15 +1,15 @@
 <?php 
 $page = 'mijngegevens';
 
-include_once('../models/server.php'); 
+include_once('../models/actie_account.php'); 
 include_once('../models/config.php');
 include_once('../models/functions.php');
 require_once 'header.php';
        
-    //if werknemer is not logged in, they cannot access this page (optie, kan zo weg)
-    if (empty($_SESSION['gebruikersnaam'])){
-        header('location: login_werknemer.php');
-    }
+//Als werknemer niet ingelogd is kan hij niet op deze pagina
+if (empty($_SESSION['gebruikersnaam'])){
+    header('location: login_werknemer.php');
+}
 ?>
 
 <div class="header">
@@ -23,14 +23,10 @@ welkomw();
 
     <div class="input-group">
     <p><a href="../models/logout.php"class="button">Uitloggen</a></p>
-    <!--<p><a href="gegevensAanpassen.php"class="button">Gegevens aanpassen</a></p>-->
-    
-    <!--<a href="wijzig.php" class="button">Gegevens wijzigen?</a>  alvast voor later-->
-        
     </div>          
     
     
-<!--ophalen klantgegevens-->
+<!--ophalen gegevens-->
 
 <table>
 <tr>

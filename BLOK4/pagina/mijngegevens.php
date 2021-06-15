@@ -1,7 +1,7 @@
 <?php 
 $page = 'mijngegevens';
 
-include_once('../models/server.php'); 
+include_once('../models/actie_account.php'); 
 include_once('../models/config.php');
 include_once('../models/functions.php');
 require_once 'header.php';
@@ -32,8 +32,8 @@ elseif ($sessionId == $_SESSION['email'])
 <br>
 <h2>mijn gegevens</h2>
 </div>
-<div>
-<?php
+
+<div><?php
 welkom();
 ?></div>
 
@@ -43,10 +43,8 @@ welkom();
     <p><a href="gegevensAanpassen.php"class="button">Gegevens aanpassen</a></p>
     </div>          
     
-   
-    
+       
 <!--ophalen klantgegevens-->
-
 <table>
 <tr>
 <th>Naam</th>
@@ -75,8 +73,8 @@ foreach ($result as $row) {
 ?>
 </table>
 <br>
-<!--Welke bestellingen gedaan-->
 
+<!--Welke bestellingen gedaan-->
 <table>
 <tr>
 <th>Ordernummer</th>
@@ -141,8 +139,6 @@ foreach ($resultbestelling as $row) {
 ?>
 <br>
 </table>
-
-
 
 
 <div>
