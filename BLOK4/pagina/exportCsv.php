@@ -20,6 +20,7 @@ fputcsv($query_file, $row);  // first line
 while($row = $stmt->fetch(PDO::FETCH_NAMED)) {
     fputcsv($query_file, $row, ",");
 }
+//Export CSV
 header('Content-type: application/csv');
 header('Content-Disposition: attachment;filename="' . $query_file_name . '.csv"');
 header('Cache-Control: max-age=0');

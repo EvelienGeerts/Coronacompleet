@@ -12,6 +12,7 @@ require_once 'header.php'; ?>
 </form>
 
 <?php
+// Zoekfunctie met resultaat
 if (isset($_POST['zoeken']))
 {
     $zoeksleutel = $_POST['zoeken'];
@@ -20,9 +21,8 @@ if (isset($_POST['zoeken']))
     $stmt = ExecuteQuery($conn, "SELECT * from producten WHERE naam LIKE :zoeksleutel and :zoeksleutel != '%%'", array(
         ':zoeksleutel' => '%' . $zoeksleutel . '%'
     ));
-?>
-
-<?php
+    
+// Opslaan in database zonder geldig resultaat
     if ($stmt->rowCount() > 0)
     {
         foreach ($stmt as $row)

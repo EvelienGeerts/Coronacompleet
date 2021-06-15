@@ -51,7 +51,7 @@ class Product extends model
     {
         return $this->Supply;
     }
-// Array selecteren van de producten en in een array opslaan //
+// Array van de producten en in een array opslaan //
     public static function getAll()
     {
         $pdo = DB::connect();

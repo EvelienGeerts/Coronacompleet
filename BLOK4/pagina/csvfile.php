@@ -24,7 +24,7 @@ if(isset($_POST["import"])){
     if($_FILES["file"]["size"]>0){
         $file = fopen($fileName,"r");
         
-
+// CSV file upload
         while(($column = fgetcsv($file, 10000, ",")) !== FALSE){
             $sqlInsert = ExecuteQuery($conn, "INSERT INTO `producten`(`productnummer`, `naam`, `prijs`, `image`, `voorraad`) 
             VALUES (:column0,:column1,:column2,:column3,:column4) 

@@ -5,6 +5,7 @@ include_once ('../models/config.php');
 include_once ('../models/functions.php');
 require_once 'header.php';
 
+//Deletefunctie bij de checkboxen
 if (isset($_POST['save']) && isset($_POST['check']))
 {
     $checkbox = $_POST['check'];
@@ -61,6 +62,7 @@ foreach ($result as $row)
 <p align="center"><button type="submit" class="btn btn-success" name="save">DELETE</button></p>
 </form>
 <script>
+//Javascript buttoncheck functie-
 $("#checkAl").click(function () {
 $('input:checkbox').not(this).prop('checked', this.checked);
 });

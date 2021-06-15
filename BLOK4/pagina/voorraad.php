@@ -39,7 +39,7 @@ foreach ($result as $row)
 </body>
 </html>
 <?php
-//voorraad laten zien en aanpassen
+//Voorraad aanpassen waar de value gelijk staat aan de key van de array.
 if (isset($_POST['update']))
 {
     $query = "";
@@ -55,7 +55,7 @@ if (isset($_POST['update']))
         }
     }
 }
-//csv file upload
+//Csv file upload
 if (isset($_POST["import"]))
 {
     $fileName = $_FILES["file"]["tmp_name"];
@@ -98,6 +98,7 @@ if (isset($_POST["import"]))
 		<button><a class="linkasbutton" href="exportCsv.php">Export CSV</a></button>
 	</div><br>
 </form>
+
 <!--Form voor het uploaden van images -->
 <form action="voorraad.php" method="post" enctype="multipart/form-data">
   Image upload:
