@@ -60,7 +60,7 @@ if (empty($_SESSION['email'])){
               $email = $_SESSION["email"];
              
               
-              // Berekening van eindtotaal met foreach loop tot endforeach 
+              // FetchQuery met foreach loop tot endforeach 
               $result = FetchQuery($conn,"SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email = ?", array($email));
               $eindtotaal = 0;
               foreach($result as $row) :
