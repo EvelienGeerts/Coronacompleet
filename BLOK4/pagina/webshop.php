@@ -52,7 +52,7 @@ if (empty($_SESSION['email'])) {
               <h5 class="card-text text-center"><i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?php echo number_format($row["prijs"],2,",",".")?></h5> 
             </div>
             <div class="card-footer p-1">
-              <form action="../models/toevoegen.php" class="form-submit" method="post">
+              <form action="../models/actie.php?toevoegen=" class="form-submit" method="post">
                 <div class="row p-2">
                   <div class="col-md-6 py-1 pl-4">
                     <b>Aantal: </b>

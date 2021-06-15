@@ -21,16 +21,12 @@ INSERT INTO `producten` (`productnummer`, `naam`, `prijs`, `image`, `voorraad`) 
 
 -- INSERT data `klanten`
 INSERT INTO `klanten`(`email`, `naam`, `adres`, `postcode`, `woonplaats`, `telefoonnummer`, `wachtwoord`) VALUES 
-('piet@hotmail.com', 'Piet van kelp','marktstraat 16', '5373ae', 'scheveningen', '0638329083', 'wachtwoord1'),
-('klaas@hotmail.com', 'jan klasen','teststraat 12', '5887dg', 'Herpen', '0635329083', 'wachtwoord2'),
-('joep@hotmail.com', 'joep van klad','laurenstraat 20', '4569df', 'Amsterdam', '0638529687', 'wachtwoord3'),
-('ckhan@isherz.net', 'Alcides Titiana','plein 16', '5373ae', 'scheveningen', '0638329083', 'wachtwoord4'),
-('mialsy@f-look.ru', 'Dzidra Gadise','marktstraat 16', '5373ae', 'scheveningen', '0614529083', 'wachtwoord5'),
-('egomes.j@csgoforces.com', 'Signý Lazaros','marktplein 16', '5373ae', 'scheveningen', '0634899083', 'wachtwoord6'),
-('qdmtelekx@celtric.org', 'Ronald Bragi','leidendam 2', '5373ae', 'scheveningen', '0612329083', 'wachtwoord7'),
-('5ethanwe@fabhax.com', 'Laila Maria',' 16', '5373ae', 'scheveningen', '0638329083', 'wachtwoord8'),
-('oabd@burgas.vip', 'Vikram Kreios','marktstraat 16', '5373ae', 'scheveningen', '0638329083', 'wachtwoord9'),
-('vmii@bjsulu.com', 'Horace Kumar','marktstraat 16', '5373ae', 'scheveningen', '0638456083', 'wachtwoord10');
+('chantal@gmail.com', 'Chantal Hoogstraten', 'Hoogstraten 45', '1234 D', 'Eindhoven', 642075899, '$2y$10$.wG7aLqw7VsJaSOzL6wDgeFuTyQ1qBDBuCdF0fm1jic9Ep83ON.Zu'),
+('joep@gmail.com', 'Joep Meloen', 'Westwaal 23', '2341 A', 'Rotterdam', 612345678, '$2y$10$qbPp1cAVXybXFtj921F.Q.UQNEcVGSVGaASDq30PToxt0a0QEBJAC'),
+('karin@gmail.com', 'Karin van As', 'Straatnaam 88', '3231 K', 'Roosendaal', 612345678, '$2y$10$IpBZRQjzk5fPeNeaC3PFnuytzkU9IKeOB3zr8VL6l5DGyGFptjISW'),
+('kees@gmail.com', 'Kees van Janssen', 'Teststraat 5', '2415 D', 'Amsterdam', 612345678, '$2y$10$H8A3bfvghcnNhbs/0/uxYetDIhih2Ho4F0xcfIpn9wNb4F9DqYRuW'),
+('piet@hotmail.com', 'Piet van Kelp', 'Marktstraat  16', '5373 A', 'Scheveningen', 612345678, '$2y$10$NOfZT931KowlZov1d1keROokNhcdBu5Ovxh5rb.YwDOJLi9lQSF4m'),
+('sjaak@gmail.com', 'Sjaak Bakker', 'Dorpstraat 84', '3413 C', 'Rilland', 612345678, '$2y$10$0aLwx4MJpyNVCHesiR1.te9wuqMOmoFvk4H3fDCRLLrC2Olbft1Zy');
 
 -- INSERT data `winkelmand`
 INSERT INTO `winkelmand` (`email`, `productnummer`, `aantal`) VALUES
