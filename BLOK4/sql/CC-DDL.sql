@@ -60,7 +60,7 @@ CREATE TABLE `werknemers` (
   `postcode`VARCHAR(6) NOT NULL,
   `woonplaats`VARCHAR(50) NOT NULL,
   `gebruikersnaam` VARCHAR(20) NOT NULL UNIQUE ,
-  `telefoonnummer`INT(10) NOT NULL,
+  `telefoonnummer`CHAR(10) NOT NULL,
   `wachtwoord` VARCHAR(20) NOT NULL,
   PRIMARY KEY (`personeelsnummer`)
 );

@@ -74,7 +74,7 @@ if (isset($_POST['verander3'])){
     if(count($errors)== 0){
        
         //als er geen errors zijn klantgegevens wijzigen in database
-        $query = $conn->prepare ("UPDATE klanten SET adres = '$adres2', postcode = '$postcode2', woonplaats = '$woonplaats2', telefoonnummer = $telefoonnummer2 WHERE email = '$_SESSION[email]'");
+        $query = $conn->prepare ("UPDATE klanten SET adres = '$adres2', postcode = '$postcode2', woonplaats = '$woonplaats2', telefoonnummer = '$telefoonnummer2' WHERE email = '$_SESSION[email]'");
         $query->execute();
 
        header('location: https://localhost/git-coronacompleet/BLOK4/pagina/mijngegevens.php');//redirect naar mijn gegevens

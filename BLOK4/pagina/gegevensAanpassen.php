@@ -77,8 +77,8 @@ foreach ($result as $row) {
                 <input class="invoer3" type="text" name="woonplaats2" value="<?php echo $row['woonplaats']; ?>"> 
             </div>
             <div class="invoer">
-            <label>Telefoonnummer</label><?php $telefoonnummer2 = strval($row['telefoonnummer']); ?>
-                <input class="invoer3" type="tel"  minlength="10" maxlength="11" name="telefoonnummer2" value="<?php echo $telefoonnummer2; ?>"> 
+            <label>Telefoonnummer</label>
+                <input class="invoer3" type="tel"  minlength="10" maxlength="11" name="telefoonnummer2" value="<?php echo $row['telefoonnummer']; ?>"> 
             </div>
             
             <div class="">
