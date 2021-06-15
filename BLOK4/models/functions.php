@@ -1,8 +1,8 @@
 <?php
-  
-include_once('config.php');
 
-// ExecuteQuery 
+include_once ('config.php');
+
+// ExecuteQuery
 function ExecuteQuery($conn, $query, $params = array())
 {
     $stmt = $conn->prepare($query);
@@ -10,28 +10,31 @@ function ExecuteQuery($conn, $query, $params = array())
     return $stmt;
 }
 
-
-//FetchQuery
+// FetchQuery
 function FetchQuery($conn, $query, $params = array())
 {
     return ExecuteQuery($conn, $query, $params)->fetchAll(PDO::FETCH_ASSOC);
 }
 
-//welkom klant
-function welkom(){
-    if (isset($_SESSION['email'])){
-        echo 'Welkom'. " ". $_SESSION['email'];
-    } 
+// Welkom klant
+function welkom()
+{
+    if (isset($_SESSION['email']))
+    {
+        echo 'Welkom' . " " . $_SESSION['email'];
+    }
 }
 
-//welkom werknemer
-function welkomw(){
-    if (isset($_SESSION['gebruikersnaam'])){
-        echo 'Welkom'. " ". $_SESSION['gebruikersnaam'];
-    } 
+// Welkom werknemer
+function welkomw()
+{
+    if (isset($_SESSION['gebruikersnaam']))
+    {
+        echo 'Welkom' . " " . $_SESSION['gebruikersnaam'];
+    }
 }
 
-// Aanmaken van een tijdelijke gebruiker mbv het session_id
+// Aanmaken van een tijdelijke gebruiker mbv het session_id en PK email in de database
 function CreateTempUser($conn)
 {
     $sessionId = session_id();
@@ -41,8 +44,6 @@ function CreateTempUser($conn)
 
     $_SESSION["email"] = $sessionId;
 }
-
-
 
 // Berekening van het eindtotaal bedrag
 function EindTotaal($email, $conn)
@@ -59,8 +60,7 @@ function EindTotaal($email, $conn)
     return $eindtotaal;
 }
 
-
-// Controle apenstaartje bij bestellingen.php
+// Controle apenstaartje (bestellingen.php)
 function AtSignCheck()
 {
     $semail = $_SESSION["email"];
@@ -70,20 +70,22 @@ function AtSignCheck()
     }
 }
 
-
-// Verwijderen van de temp user + de winkelmand van de temp user
+// Verwijderen van de temp user & de winkelmand van de temp user
 function DeleteTempUser($sessionId, $conn)
 {
-  $sessionId = session_id();
-  if ($sessionId == $_SESSION['email']) 
-  {
-    ExecuteQuery($conn, "DELETE FROM winkelmand WHERE email = ?", array($sessionId));
-    ExecuteQuery($conn, "DELETE FROM klanten WHERE email = ?", array($sessionId));
-  }
+    $sessionId = session_id();
+    if ($sessionId == $_SESSION['email'])
+    {
+        ExecuteQuery($conn, "DELETE FROM winkelmand WHERE email = ?", array(
+            $sessionId
+        ));
+        ExecuteQuery($conn, "DELETE FROM klanten WHERE email = ?", array(
+            $sessionId
+        ));
+    }
 }
 
-
-// DestroySession logout na 60 min en verwijrderd de Temp User
+// DestroySession logout na 30 min en verwijderd daarbij de temp user
 function DestroySessionTimer($session, $conn)
 {
     if ($session && !isset($_SESSION['login_time']))
