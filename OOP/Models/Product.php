@@ -1,8 +1,6 @@
 <?php
 
-require_once ( 'Model.php' );
-
-class Product extends model
+class Product 
 {
     public int $ID;
     public string $Name;

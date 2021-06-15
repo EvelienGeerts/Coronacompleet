@@ -43,9 +43,9 @@ $result = ExecuteQuery($conn, "SELECT * FROM zoekgeschiedenis");
 	</tr>
 </thead>
 <?php
-$i = 0;
+
 foreach ($result as $row)
-{
+:
 ?>
 <tr>
 	<td><?php echo $row["zoekterm"]; ?></td>
@@ -55,8 +55,7 @@ foreach ($result as $row)
   <td><input type="checkbox" id="checkItem" name="check[]" value="<?php echo $row["zoekID"]; ?>"></td>
 </tr>
 <?php
-    $i++;
-}
+endforeach
 ?>
 </table>
 <p align="center"><button type="submit" class="btn btn-success" name="save">DELETE</button></p>

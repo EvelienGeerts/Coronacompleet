@@ -16,9 +16,8 @@ require_once 'header.php';
 </tr>
 
 <?php
-/* Overzicht productenbestand*/
+//Overzicht productenbestand
 $result = FetchQuery($conn, "SELECT productnummer, naam, voorraad FROM producten");
-$array = array();
 
 foreach ($result as $row)
 {
@@ -39,10 +38,11 @@ foreach ($result as $row)
 </body>
 </html>
 <?php
-//Voorraad aanpassen waar de value gelijk staat aan de key van de array.
+//When we press the update button, we check for each product row, with its key and input field as value
+//If the field is set, and does not contain the empty string, we use its value to update the supply in the database, using the associated key
+//We realise that we have not performed input sanitasion, therefore invalid input will result in an error, this is a future improvement
 if (isset($_POST['update']))
 {
-    $query = "";
     foreach ($array as $key => $value)
     {
         if (isset($_POST[$value]) && $_POST[$value] != '')
@@ -51,9 +51,9 @@ if (isset($_POST['update']))
                 ':value' => $_POST[$value],
                 ':key' => $key
             ));
-            echo "<meta http-equiv='refresh' content='0'>";;
         }
     }
+    echo "<meta http-equiv='refresh' content='0'>";;
 }
 //Csv file upload
 if (isset($_POST["import"]))

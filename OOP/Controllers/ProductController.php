@@ -5,6 +5,7 @@ class ProductController
 {
     public function view(int $index)
     {
+        //initialiseerd de RenderView class.
         $view = new RenderView('Product/View');
         $product = Product::getByID($index);
         $url = "img/product/" . $product->ID . "/*";

@@ -66,7 +66,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . '/git-coronacompleet/blok4/talen/vertaa
                 }
                 ?>
                 </select>
-                <input name="kiezen" type="submit" value="Kies Taal" disabled/>
+                <input name="kiezen" type="submit" value="Kies Taal"/>
             </form></div>
 
         <div class="banner">

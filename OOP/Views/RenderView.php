@@ -24,7 +24,7 @@ class RenderView
     {
         if ( ! file_exists( 'Views/' . $this->template . '.php' ) )
             throw new Exception( "De template " . $this->template . " bestaat niet..." );
-
+// importeerd variabelen van een array in een tabel
         extract($this->data);
 
         require_once ( $this->template . '.php');

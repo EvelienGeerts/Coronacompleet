@@ -3,29 +3,11 @@
 require_once ( 'Controllers/Controller.php' );
 require_once ( 'DB.php' );
 
-/*
-// Include router class
-include('Route.php');
-
-define('BASEPATH','/oop');
-
-// Add base route (startpage)
-Route::add('/',function(){
-    echo 'Welcome :-)';
-});
-
-// Post route example
-Route::add('/contact-form',function(){
-    echo '<form method="post"><input type="text" name="test" /><input type="submit" value="send" /></form>';
-},'get');
-
-Route::run(BASEPATH);
-*/
-
 $controller = "Home";
 $action = "index";
 $index = -1;
-
+//    0             1           2     3       4 5
+//localhost/git-coronacompleet/oop/product/view/1
 $routing = explode('/', $_SERVER['REQUEST_URI']);
 
 if ( isset( $routing[3] ) && $routing[3] != "" )
