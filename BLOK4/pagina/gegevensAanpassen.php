@@ -78,7 +78,7 @@ foreach ($result as $row) {
             </div>
             <div class="invoer">
             <label>Telefoonnummer</label>
-                <input class="invoer3" type="tel"  minlength="10" maxlength="11" name="telefoonnummer2" value="<?php echo $row['telefoonnummer']; ?>"> 
+                <input class="invoer3" type="tel" pattern="[0-9]{10}" minlength="10" maxlength="11" name="telefoonnummer2" value="<?php echo $row['telefoonnummer']; ?>"> 
             </div>
             
             <div class="">

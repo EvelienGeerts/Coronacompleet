@@ -35,7 +35,7 @@ $page = 'register';
         </div>
         <div class="invoer">
             <label>telefoonnummer</label>
-            <input type="tel"  minlength="10" maxlength="11"name="telefoonnummer" value="<?php echo $telefoonnummer; ?>">
+            <input type="tel" pattern="[0-9]{10}" minlength="10" maxlength="11"name="telefoonnummer" value="<?php echo $telefoonnummer; ?>">
         </div>
         <div class="invoer">
             <label>Email</label>
