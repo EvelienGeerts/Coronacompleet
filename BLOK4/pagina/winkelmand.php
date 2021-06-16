@@ -102,12 +102,13 @@ if (empty($_SESSION['email'])){
                 <a href="webshop.php" class="btn btn-success"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Verder winkelen</a>
               </td>
               <td colspan="2"><b>Totaal</b></td>
-              <td><b><i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?php echo number_format(Eindtotaal($email, $conn),2,",","."); ?></b></td>
+              <td><b><i class="fas fa-euro-sign"></i>&nbsp;&nbsp;<?php 
+              // Functie Eindtotaal
+              echo number_format(Eindtotaal($email, $conn),2,",","."); 
+              ?></b></td>
               <td>
-                <a href="bestellen.php" class="btn btn-info 
-                
-                <?= (Eindtotaal($email, $conn) > 1) ? '' : 'disabled'; ?>">
-                
+                <a href="bestellen.php" class="btn btn-info               
+                <?= (Eindtotaal($email, $conn) > 1) ? '' : 'disabled'; ?>">                
                 <i class="far fa-credit-card"></i>&nbsp;&nbsp;Bestellen</a>
               </td>
             </tr>

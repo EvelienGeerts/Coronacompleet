@@ -53,7 +53,9 @@ $allItems = implode(', ', $items);
           <div class="form-group">Emailadres
           <input type="email" name="email"value="<?php
           // Functie geeft het email adres alleen weer als het email adres een @ bevat
-          AtSignCheck();?>" class="form-control" placeholder="E-Mail" required>
+          AtSignCheck();?>" class="form-control" placeholder="E-Mail" required <?php
+          // Functie zet het invoerveld op readyonly als het email adres een @ bevat
+          AtSignCheckReadyOnly();?>>
           </div>
           <div class="form-group">Telefoonnummer
             <input type="tel" name="telefoonnummer"value="<?php echo $stelefoon ?>" class="form-control" placeholder="Telefoon" required>

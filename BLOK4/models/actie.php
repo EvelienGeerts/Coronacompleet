@@ -1,6 +1,7 @@
 <?php
 
-require_once 'config.php';
+include_once ('../models/config.php');
+include_once ('../models/functions.php');
 
 $email = $_SESSION["email"];
 
@@ -9,11 +10,10 @@ if (isset($_GET['remove']))
 {
     $productnummer = $_GET['remove'];
 
-    $stmt = $conn->prepare('DELETE FROM winkelmand WHERE productnummer= :productnummer AND email= :email');
-    $stmt->bindValue(':productnummer', $productnummer);
-    $stmt->bindValue(':email', $email);
-    $stmt->execute();
-
+    ExecuteQuery($conn, "DELETE FROM winkelmand WHERE productnummer= :productnummer AND email= :email", array(
+        ':productnummer' => $productnummer,
+        ':email' => $email
+    ));
     $_SESSION['showAlert'] = 'block';
     $_SESSION['message'] = 'Artikel is verwijderd uit uw winkelmand!';
     header('location:../pagina/winkelmand.php');
@@ -22,9 +22,9 @@ if (isset($_GET['remove']))
 // Verwijderen van alle producten uit de winkelmand (bestellen.php)
 if (isset($_GET['clear']))
 {
-    $stmt = $conn->prepare('DELETE FROM winkelmand WHERE email= :email');
-    $stmt->bindValue(':email', $email);
-    $stmt->execute();
+    ExecuteQuery($conn, "DELETE FROM winkelmand WHERE email= :email", array(
+        ':email' => $email
+    ));
     $_SESSION['showAlert'] = 'block';
     $_SESSION['message'] = 'Alle artikelen zijn verwijderd uit uw winkelmand';
     header('location:../pagina/winkelmand.php');
@@ -39,8 +39,12 @@ if (isset($_GET['toevoegen']))
     $pprijs = $_POST['pprijs'];
     $tprijs = $aantal * $pprijs;
 
-    $stmt = $conn->prepare("INSERT INTO winkelmand (email, productnummer, aantal) VALUES (?,?,?) ON DUPLICATE KEY UPDATE aantal = aantal + ?;");
-    $stmt->execute([$email, $productnummer, $aantal, $aantal]);
+    ExecuteQuery($conn, "INSERT INTO winkelmand (email, productnummer, aantal) VALUES (?,?,?) ON DUPLICATE KEY UPDATE aantal = aantal + ?;", array(
+        $email,
+        $productnummer,
+        $aantal,
+        $aantal
+    ));
     $_SESSION['showAlert'] = 'block';
     $_SESSION['message'] = $productnaam . ' is toegevoegd aan uw winkelmand!';
     header('Location:../pagina/webshop.php');

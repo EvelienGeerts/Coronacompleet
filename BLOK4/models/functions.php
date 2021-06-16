@@ -70,6 +70,16 @@ function AtSignCheck()
     }
 }
 
+// Controle apenstaartje (bestellingen.php)
+function AtSignCheckReadyOnly()
+{
+    $semail = $_SESSION["email"];
+    if (strstr($semail, '@'))
+    {
+        echo "readonly";
+    }
+}
+
 // Verwijderen van de temp user & de winkelmand van de temp user
 function DeleteTempUser($sessionId, $conn)
 {
