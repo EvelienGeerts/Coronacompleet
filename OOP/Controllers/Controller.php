@@ -9,7 +9,6 @@ class Controller
     protected int $index;
 
 // initialisatie van de attributen
-// een klas die je initialiseerd roept de constructor aan
     public function __construct( string $controller, string $action, int $index = -1 )
     {
         if ( ! file_exists( 'Controllers/' . $controller . 'Controller.php' ) )
