@@ -10,7 +10,7 @@ $tempuser = $_SESSION["email"];
 // Form action POST uit bestellen.php
 $snaam = $_POST["naam"];
 $semail = $_POST["email"];
-$stelefoon = $_POST["telefoonnummer"];
+$stelefoon = strval($_POST['telefoonnummer']);
 $sadres = $_POST["adres"];
 $spostcode = $_POST["postcode"];
 $swoonplaats = $_POST["woonplaats"];

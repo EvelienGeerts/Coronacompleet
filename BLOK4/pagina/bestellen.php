@@ -60,13 +60,13 @@ $allItems = implode(', ', $items);
           AtSignCheckReadyOnly();?>>
           </div>
           <div class="form-group">Telefoonnummer
-            <input type="tel" name="telefoonnummer"value="<?php echo $stelefoon ?>" class="form-control" placeholder="Telefoon" required>
+            <input type="tel" name="telefoonnummer"pattern="[0-9]{10}" minlength="10" maxlength="11"value="<?php echo $stelefoon ?>" class="form-control" placeholder="Telefoon" required>
           </div>
           <div class="form-group">Adres
             <input type="text" name="adres"value="<?php echo $sadres ?>" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
           </div>
           <div class="form-group">Postcode
-            <input type="text" name="postcode"value="<?php echo $spostcode ?>" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
+            <input type="text" name="postcode"pattern="[1-9][0-9]{3}\s?[a-zA-Z]{2}"value="<?php echo $spostcode ?>" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
           </div>
           <div class="form-group">Woonplaats<input type="text" name="woonplaats"value="<?php echo $swoonplaats ?>" class="form-control" cols="10" placeholder="Voer hier het afleveradres in..." required>
           </div>    
