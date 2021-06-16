@@ -6,7 +6,7 @@ require_once ( 'DB.php' );
 $controller = "Home";
 $action = "index";
 $index = -1;
-//    0             1           2     3       4 5
+//Explode zorgt voor een array van de url gesplitst op /, deze array benderen we met $routing om de variabelen controller, action en index te initialiseren.
 //localhost/git-coronacompleet/oop/product/view/1
 $routing = explode('/', $_SERVER['REQUEST_URI']);
 

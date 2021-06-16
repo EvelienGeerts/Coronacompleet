@@ -7,7 +7,6 @@ require_once('Views/partials/header.php');
         <div class="complete-slider-wrapper">
 
             <div class="slidewrap">
-                <!--<img src="/oop/img/product/6/desinfectie1.jpg" alt="desinfectiePic">-->
                 <?php
                 $i = 1;
                 foreach ($images as $image) :

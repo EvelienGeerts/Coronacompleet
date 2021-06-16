@@ -1,5 +1,5 @@
 <?php
-
+//Class product met attributen en methoden
 class Product 
 {
     public int $ID;
@@ -9,7 +9,7 @@ class Product
     public string $Price;
     public string $Image;
     public int $Supply;
-
+// het initialiseren van de attributen
     public function __construct(int $id, string $name, string $description, string $content, string $price, string $image, int $supply)
     {
         $this->ID = $id;
@@ -49,7 +49,7 @@ class Product
     {
         return $this->Supply;
     }
-// Array van de producten en in een array opslaan //
+// Array van de producten en in een array opslaan 
     public static function getAll()
     {
         $pdo = DB::connect();

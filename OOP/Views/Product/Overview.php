@@ -10,7 +10,6 @@ require_once ( 'Views/partials/header.php' );
         <div class="productImages">
             <?php
             foreach ($products as $product) :
-                //print_r($product);
                 ?>
 
                 <div class="Product">
@@ -33,8 +32,5 @@ require_once ( 'Views/partials/header.php' );
 </footer>
 
 </div>
-
-<!--<script src="../js/script.js"></script>-->
 </body>
-
 </html>

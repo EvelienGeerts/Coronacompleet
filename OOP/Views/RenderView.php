@@ -4,17 +4,17 @@ class RenderView
 {
     protected string $template;
     protected array $data;
-
+// initiliseerd de template met superglobal construct
     public function __construct($template)
     {
         $this->template = $template;
     }
-
+//Set de waardes in een array voor de extract methode
     public function set($key, $value)
     {
         $this->data[$key] = $value;
     }
-
+//Vult de waarde van key in een array die vervolgens gebruikt wordt in de extraxt methode
     public function get($key)
     {
         return $this->data[$key];

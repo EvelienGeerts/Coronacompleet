@@ -6,6 +6,7 @@ include_once ('../models/functions.php');
 require_once 'header.php';
 
 //Deletefunctie bij de checkboxen
+//Als er op de save button wordt gedrukt en de post check is ingevuld loopen we over de array van checkboxes die vervolgens 
 if (isset($_POST['save']) && isset($_POST['check']))
 {
     $checkbox = $_POST['check'];
@@ -34,10 +35,8 @@ $result = ExecuteQuery($conn, "SELECT * FROM zoekgeschiedenis");
 <table class="table table-bordered">
 <thead>
 	<tr>
-
 		<th>zoekterm</th>
 		<th>datum</th>
-		<th>gebruiker</th>
 		<th>zoekID</th>
 	    <th><input type="checkbox" id="checkAl"> Select All</th>
 	</tr>
@@ -50,7 +49,6 @@ foreach ($result as $row)
 <tr>
 	<td><?php echo $row["zoekterm"]; ?></td>
 	<td><?php echo $row["datum"]; ?></td>
-	<td><?php echo $row["gebruiker"]; ?></td>
 	<td><?php echo $row["zoekID"]; ?></td>
   <td><input type="checkbox" id="checkItem" name="check[]" value="<?php echo $row["zoekID"]; ?>"></td>
 </tr>

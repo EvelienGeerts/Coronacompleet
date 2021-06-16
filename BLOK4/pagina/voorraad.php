@@ -38,9 +38,10 @@ foreach ($result as $row)
 </body>
 </html>
 <?php
-//When we press the update button, we check for each product row, with its key and input field as value
-//If the field is set, and does not contain the empty string, we use its value to update the supply in the database, using the associated key
-//We realise that we have not performed input sanitasion, therefore invalid input will result in an error, this is a future improvement
+
+// Met het indrukken van de update button checken we elke producten rij met zijn eigen key en input veld als value
+// als het veld ingevuld is en geen lege string bevat gebruiken we de ingevulde value om de voorraad te updaten in het systeem
+// gebruikmakend van de geassocieerde sleutel
 if (isset($_POST['update']))
 {
     foreach ($array as $key => $value)
