@@ -43,7 +43,7 @@ $result = ExecuteQuery($conn, "SELECT * FROM zoekgeschiedenis");
 	</tr>
 </thead>
 <?php
-
+// Echo resultaten van de query 
 foreach ($result as $row)
 :
 ?>
