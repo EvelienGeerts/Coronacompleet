@@ -16,8 +16,10 @@ $spostcode = $_POST["postcode"];
 $swoonplaats = $_POST["woonplaats"];
 $bmode = $_POST['bmode'];
 
-// Als een semail al bestaat in de database en hij niet gelijk is aan de tempuser en past vervolgens de juiste gegevens aan in de DB
-$klant = ExecuteQuery($conn, "select * from klanten where email = ? limit 1", array($semail));
+// De ingevulde gegevens worden hier aangepast in de database
+// Als een tempuser met session id als email adres gegevens aanpast dan 
+// worden de gegevens gewijzigd in tabel klanten en tabel winkelmand
+$klant = ExecuteQuery($conn, "SELECT * FROM klanten WHERE email = ? LIMIT 1", array($semail));
 if ($klant->rowCount() > 0 && $tempuser != $semail)
 {
     ExecuteQuery($conn, "UPDATE winkelmand SET email = ? WHERE email = ?", array(
@@ -54,7 +56,8 @@ foreach ($result as $row)
     $eindtotaal += $tprijs;
 }
 
-//In de query hieronder wordt de bestelling verwerkt en de desbetreffende winkelmand leeg gemaakt
+// In de query hieronder wordt de bestelling verwerkt en wordt de desbetreffende winkelmand leeg gemaakt
+// De tabellen in de database bestellingen en orders worden gevuld
 if ($eindtotaal > 0) 
 {
     ExecuteQuery($conn, "START TRANSACTION;
@@ -72,8 +75,9 @@ if ($eindtotaal > 0)
     ));
 }
 
-// Als de session email nog het session id bevat wordt deze hier weer van de juist waarde voorzien
-$_SESSION["email"] = $semail;
+// Uitloggen van de klant
+session_destroy(); 
+session_unset();
 
 ?>
 

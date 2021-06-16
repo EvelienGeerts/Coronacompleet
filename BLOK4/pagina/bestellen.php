@@ -7,6 +7,7 @@ require_once 'header.php';
 
 $email = $_SESSION["email"];
 
+// Aanmaken van variabelen van de desbetreffende klant gegevens.
 $result = FetchQuery($conn, "SELECT * FROM klanten WHERE :email = email;", array(':email' => $email));
 foreach ($result as $row)
 {
@@ -18,7 +19,7 @@ foreach ($result as $row)
     $swoonplaats = $row["woonplaats"];
 }
 
-// Overzicht alle producten uit de winkelmand met het aantal er bij
+// Overzicht alle producten uit de winkelmand van de desbetreffende klant met de aantallen er bij vermeld.
 $allItems = '';
 $items = [];
 
@@ -34,6 +35,7 @@ $allItems = implode(', ', $items);
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-6 px-4 pb-4" id="order">
+
         <h4 class="text-center text-info p-2">Rond uw bestelling af!</h4>
         <div class="jumbotron p-3 mb-2 text-center">
           <h6 class="lead"><b>Product(en) : </b><?php

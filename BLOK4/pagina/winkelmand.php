@@ -32,9 +32,7 @@ if (empty($_SESSION['email'])){
           unset($_SESSION['showAlert']);
         ?>
           </strong>
-      </div>
-
-      
+      </div>     
       <div class="table-responsive mt-2">
         <table class="table table-bordered table-striped text-center">
           <thead>
@@ -58,14 +56,15 @@ if (empty($_SESSION['email'])){
           <tbody>
             <?php
               $email = $_SESSION["email"];
-             
-              
-              // FetchQuery met foreach loop tot endforeach 
-              $result = FetchQuery($conn,"SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email = ?", array($email));
+                           
+              // FetchQuery met foreach loop tot endforeach
+              $result = FetchQuery($conn, "SELECT * FROM winkelmand INNER JOIN producten ON winkelmand.productnummer = producten.productnummer WHERE email = ?", array(
+                $email
+              ));
               $eindtotaal = 0;
-              foreach($result as $row) :
-              
-              // Inhoud winkelmand 
+              foreach ($result as $row):
+
+              // Inhoud winkelmand
               ?>    
               <tr>
                 <td>

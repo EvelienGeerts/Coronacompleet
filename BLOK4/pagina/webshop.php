@@ -33,9 +33,7 @@ if (empty($_SESSION['email'])) {
       </strong>
   </div>
 
-
-
-    <div id="message"></div>
+  <div id="message"></div>
     <div class="row mt-2 pb-3">
         
       <?php        
