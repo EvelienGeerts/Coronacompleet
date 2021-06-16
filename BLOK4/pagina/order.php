@@ -75,9 +75,8 @@ if ($eindtotaal > 0)
     ));
 }
 
-// Uitloggen van de klant
-session_destroy(); 
-session_unset();
+// Als de session email nog het session id bevat wordt deze hier weer van de juist waarde voorzien
+$_SESSION["email"] = $semail;;
 
 ?>
 
