@@ -3,6 +3,7 @@ $page = 'voorraad';
 include_once ('../models/config.php');
 include_once ('../models/actie_account.php');
 include_once ('../models/functions.php');
+include_once ('upload.php');
 require_once 'header.php';
 ?>
     <body>
@@ -21,7 +22,7 @@ $result = FetchQuery($conn, "SELECT productnummer, naam, voorraad FROM producten
 
 foreach ($result as $row)
 {
-    $product = "product" . $row['productnummer'];
+    $product = "invoerveld" . $row['productnummer'];
     echo "<tr>
 		<td>" . $row['productnummer'] . "</td>
 		<td>" . $row['naam'] . "</td>
