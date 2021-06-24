@@ -76,7 +76,7 @@ if ($eindtotaal > 0)
 }
 
 // Als de session email nog het session id bevat wordt deze hier weer van de juist waarde voorzien
-$_SESSION["email"] = $semail;;
+$_SESSION["email"] = $semail;
 
 ?>
 

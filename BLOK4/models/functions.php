@@ -103,8 +103,7 @@ function DestroySessionTimer($session, $conn)
         if ($session == 1)
         {
             $_SESSION['login_time'] = time();
-            $_SESSION['idle_time'] = $_SESSION['login_time'] + 1800; // 1800 = 30min
-            
+            $_SESSION['idle_time'] = $_SESSION['login_time'] + 1800; // 1800 = 30min           
         }
         else
         {
